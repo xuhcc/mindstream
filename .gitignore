@@ -1,0 +1,11 @@
+# NativeScript
+hooks/
+node_modules/
+platforms/
+src/fonts/
+
+# General
+Vagrantfile
+vagrant/
+.vagrant/
+.vagrant_ssh_config

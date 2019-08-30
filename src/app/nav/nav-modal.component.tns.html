@@ -1,0 +1,10 @@
+<StackLayout class="modal">
+  <Label class="modal-header" [text]="title"></Label>
+  <Label class="modal-subheader" [text]="subtitle"></Label>
+  <Label
+    *ngFor="let page of pages"
+    class="nav-item"
+    [text]="page.title"
+    (tap)="navigateTo(page.url)"
+  ></Label>
+</StackLayout>

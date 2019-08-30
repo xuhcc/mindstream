@@ -1,0 +1,31 @@
+<ActionBar class="action-bar">
+  <NavigationButton
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    ios:visibility="collapse"
+    (tap)="openDrawer()"
+  ></NavigationButton>
+  <ActionItem
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    android:visibility="collapse"
+    ios.position="left"
+    (tap)="openDrawer()"
+  ></ActionItem>
+  <Label class="action-bar-title" text="Settings"></Label>
+</ActionBar>
+
+<StackLayout [formGroup]="form">
+  <TextField
+    hint="Path to todo.txt file"
+    formControlName="filePath"
+  ></TextField>
+  <Button text="browse" class="btn btn-primary" (tap)="openPicker()"></Button>
+  <Button
+    text="save"
+    class="btn btn-primary"
+    (tap)="save()"
+    [isEnabled]="form.valid"
+  ></Button>
+</StackLayout>
+

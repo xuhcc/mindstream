@@ -1,0 +1,22 @@
+<ActionBar class="action-bar" [title]="title">
+  <NavigationButton
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    ios:visibility="collapse"
+    (tap)="openDrawer()"
+  ></NavigationButton>
+  <ActionItem
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    android:visibility="collapse"
+    ios.position="left"
+    (tap)="openDrawer()"
+  ></ActionItem>
+</ActionBar>
+
+<StackLayout class="page">
+  <ScrollView>
+    <Label text="{{ todoFile.content }}" textWrap="true">
+    </Label>
+  </ScrollView>
+</StackLayout>

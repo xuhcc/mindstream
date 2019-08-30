@@ -1,0 +1,25 @@
+@import '../../app-common';
+
+.modal {
+    background-color: $menu-color;
+    border-radius: 20 20 0 0;
+    text-align: center;
+    width: 250;
+}
+
+.modal-header {
+    font-size: 18;
+    font-weight: 500;
+    margin: 10 0 0;
+    padding: 0;
+}
+
+.modal-subheader {
+    font-size: 14;
+    font-weight: 500;
+    margin: 0 0 20;
+}
+
+.nav-item {
+    margin: 10 0;
+}

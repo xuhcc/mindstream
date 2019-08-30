@@ -1,0 +1,74 @@
+@import '../../app-common';
+
+.task-list {
+    font-family: serif;
+    font-size: 16;
+    height: 200;
+    separator-color: transparent;
+}
+
+.task {
+    background-color: #FEFFF3;
+    border-color: #E5E6DA;
+    border-style: solid;
+    border-radius: 5;
+    border-width: 1;
+    color: black;
+    padding: 7;
+    margin: 5;
+}
+
+.attributes {
+    font-family: sans-serif;
+    font-size: 14;
+    text-align: right;
+}
+
+.attribute {
+    background-color: #EDEEE2;
+    padding: 2 5;
+    margin-left: 5;
+
+    &.priority-A {
+        background-color: #EEAAA7;
+    }
+
+    &.priority-B {
+        background-color: #EECFA7;
+    }
+
+    &.priority-C {
+        background-color: #CAD1EE;
+    }
+
+    &.priority-D {
+        background-color: #CBEECA;
+    }
+}
+
+.task-checkbox {
+    background-color: #FFFFFF;
+    border-color: #333;
+    border-radius: 3;
+    border-width: 1;
+    color: #333;
+    font-size: 24;
+    font-weight: bold;
+    height: 30;
+    margin-right: 7;
+    max-height: 30;
+    min-width: 30;
+    padding: 1 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 30;
+}
+
+.task-text {
+    padding-top: 3;
+}
+
+.task-text.completed {
+    color: #999;
+    text-decoration: line-through;
+}

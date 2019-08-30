@@ -1,0 +1,71 @@
+<ActionBar title="Tasks" class="action-bar">
+  <NavigationButton
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    ios:visibility="collapse"
+    (tap)="openDrawer()"
+  ></NavigationButton>
+  <ActionItem
+    icon="res://baseline_menu_white_24"
+    text="Menu"
+    android:visibility="collapse"
+    ios.position="left"
+    (tap)="openDrawer()"
+  ></ActionItem>
+  <ActionItem
+    android.position="popup"
+    ios.position="right"
+    text="Add task"
+    (tap)="addTask()"
+  ></ActionItem>
+</ActionBar>
+
+<GridLayout rows="*" height="100%" class="page">
+  <PullToRefresh (refresh)="refresh($event)">
+    <ListView
+      height="100%"
+      class="task-list"
+      [items]="tasks"
+    >
+      <ng-template let-task="item">
+        <!-- Extra layout is needed for correct styling -->
+        <StackLayout>
+          <StackLayout *ngIf="isTaskVisible(task)" class="task">
+            <FlexboxLayout flexDirection="row" justifyContent="flex-end" class="attributes">
+              <Label
+                *ngIf="task.priority"
+                [className]="'attribute priority-' + task.priority"
+                [text]="task.priority"
+              ></Label>
+              <Label
+                *ngIf="task.due"
+                class="attribute"
+                [text]="task.due|date:'dd.MM.yyyy'"
+              ></Label>
+              <Label
+                *ngFor="let project of task.projects"
+                class="attribute"
+                [text]="project"
+              ></Label>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="row">
+              <Label
+                alignSelf="flex-start"
+                class="task-checkbox icon"
+                [text]="task.complete ? '&#xe876;' : ''"
+                (tap)="toggleCheckBox(task)"
+              ></Label>
+              <Label
+                flexGrow="1"
+                [className]="task.complete ? 'task-text completed' : 'task-text'"
+                [text]="task.text"
+                textWrap="true"
+                (tap)="editTask(task)"
+              ></Label>
+            </FlexboxLayout>
+          </StackLayout>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+  </PullToRefresh>
+</GridLayout>

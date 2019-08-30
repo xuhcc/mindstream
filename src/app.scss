@@ -1,0 +1,19 @@
+// Common styles for iOS and Android
+@import 'app-common';
+@import 'app-variables';
+
+.icon {
+    font-family: "Material Icons", "MaterialIcons-Regular";
+}
+
+.action-bar {
+    background-color: $header-color;
+    color: $header-text-color;
+    font-size: 20;
+    font-weight: bold;
+}
+
+.page {
+    background-color: $page-color;
+    color: $text-color;
+}

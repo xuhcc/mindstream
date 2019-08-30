@@ -1,0 +1,37 @@
+// https://stackoverflow.com/a/39040755/1868395
+def packageJsonFile = file("./../../../package.json")
+def packageJson = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
+def version = packageJson.version
+def (major, minor, patch) = version.split(/\./).collect{it.toInteger()}
+def versionInt = (major * 1000000) + (minor * 10000) + (patch * 100)
+
+android {
+  defaultConfig {
+    versionCode versionInt
+    versionName "$version"
+
+    generatedDensities = []
+  }
+
+  // Read signing config from gradle properties instead of CLI args
+  signingConfigs {
+    release {
+      if (project.hasProperty("release")) {
+        if (project.hasProperty("MINDSTREAM_RELEASE_STORE_FILE") &&
+            project.hasProperty("MINDSTREAM_RELEASE_STORE_PASSWORD") &&
+            project.hasProperty("MINDSTREAM_RELEASE_KEY_ALIAS") &&
+            project.hasProperty("MINDSTREAM_RELEASE_KEY_PASSWORD")) {
+
+          storeFile file(MINDSTREAM_RELEASE_STORE_FILE)
+          storePassword MINDSTREAM_RELEASE_STORE_PASSWORD
+          keyAlias MINDSTREAM_RELEASE_KEY_ALIAS
+          keyPassword MINDSTREAM_RELEASE_KEY_PASSWORD
+        }
+      }
+    }
+  }
+
+  aaptOptions {  
+    additionalParameters "--no-version-vectors"
+  }
+}

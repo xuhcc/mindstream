@@ -1,0 +1,43 @@
+<ActionBar class="action-bar" title="New task">
+  <NavigationButton
+    icon="res://baseline_close_white_24"
+    text="Back"
+    (tap)="goBack()"
+  ></NavigationButton>
+</ActionBar>
+<StackLayout [formGroup]="form">
+
+  <Label text="Task text"></Label>
+  <TextField
+    #taskTextField
+    formControlName="text"
+  ></TextField>
+
+  <Label text="Project"></Label>
+  <TextField formControlName="project"></TextField>
+
+  <Label text="Priority"></Label>
+  <TextField formControlName="priority"></TextField>
+
+  <Label text="Due date"></Label>
+  <FlexboxLayout flexDirection="row">
+    <TextField
+      flexGrow="1"
+      formControlName="dueDate"
+      keyboardType="datetime"
+    ></TextField>
+    <Button
+      id="calendar-btn"
+      class="icon"
+      text="&#xe878;"
+      (tap)="showDatePicker()"
+    ></Button>
+  </FlexboxLayout>
+
+  <Button
+    id="save-btn"
+    text="save"
+    (tap)="save()"
+    [isEnabled]="form.valid"
+  ></Button>
+</StackLayout>

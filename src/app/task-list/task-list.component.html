@@ -1,0 +1,6 @@
+<div>
+  <div *ngFor="let item of todoFile.tasks">
+    <div>{{ item.text }}</div>
+  </div>
+  <button (click)="save()">save</button>
+</div>
