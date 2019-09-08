@@ -12,7 +12,7 @@ import { compareEmptyGreater } from '../shared/misc';
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 @Component({
-    selector: 'app-task-list',
+    selector: 'ms-task-list',
     templateUrl: './task-list.component.html',
     styleUrls: ['./task-list.component.scss'],
 })

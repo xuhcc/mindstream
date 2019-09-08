@@ -8,7 +8,7 @@ import { SettingsService } from '../shared/settings.service';
 import { openFilePicker } from '../shared/file-picker';
 
 @Component({
-    selector: 'app-settings',
+    selector: 'ms-settings',
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss'],
 })

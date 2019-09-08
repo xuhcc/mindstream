@@ -27,7 +27,7 @@ function taskToFormData(task) {
 }
 
 @Component({
-    selector: 'app-task-form',
+    selector: 'ms-task-form',
     templateUrl: './task-form.component.html',
     styleUrls: ['./task-form.component.scss'],
 })

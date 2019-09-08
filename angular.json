@@ -10,7 +10,7 @@
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
-            "prefix": "app",
+            "prefix": "ms",
             "schematics": {
                 "@nativescript/schematics:component": {
                     "styleext": "scss"

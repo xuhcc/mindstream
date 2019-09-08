@@ -5,7 +5,7 @@ import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 
 @Component({
-    selector: 'app-plaintext',
+    selector: 'ms-plaintext',
     templateUrl: './plaintext.component.html',
     styleUrls: ['./plaintext.component.scss'],
 })

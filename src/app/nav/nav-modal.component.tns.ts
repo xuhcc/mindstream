@@ -6,7 +6,7 @@ import { getVersionNameSync } from 'nativescript-appversion';
 import { APP_NAME } from '../shared/constants';
 
 @Component({
-    selector: 'bc-nav-modal',
+    selector: 'ms-nav-modal',
     templateUrl: './nav-modal.component.html',
     styleUrls: ['./nav-modal.component.scss'],
 })
