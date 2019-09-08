@@ -6,6 +6,7 @@ import { SideDrawerService } from '../nav/sidedrawer.service';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
+import { compareEmptyGreater } from '../shared/misc';
 
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
@@ -19,16 +20,8 @@ export class TaskListComponent implements OnInit {
 
     tasks: TodoTxtItem[] = [];
     taskOrder = firstBy('complete')
-        .thenBy('due')
-        .thenBy('priority', {
-            cmp: (a: string, b: string): number => {
-                if (a && b) {
-                    return a < b ? -1 : a > b ? 1 : 0;
-                } else {
-                    return b ? 1 : a ? -1 : 0;
-                }
-            },
-        });
+        .thenBy('due', {cmp: compareEmptyGreater})
+        .thenBy('priority', {cmp: compareEmptyGreater});
 
     constructor(
         private router: RouterService,
