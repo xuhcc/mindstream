@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { registerElement } from 'nativescript-angular/element-registry';
 
 import { PullToRefresh } from '@nstudio/nativescript-pulltorefresh';
 
@@ -8,9 +7,7 @@ import { PullToRefresh } from '@nstudio/nativescript-pulltorefresh';
 })
 export class PullToRefreshService {
 
-    constructor() {
-        registerElement('PullToRefresh', () => PullToRefresh);
-    }
+    constructor() {}
 
     onRefresh(event, callback) {
         const pullRefresh = <PullToRefresh>event.object;

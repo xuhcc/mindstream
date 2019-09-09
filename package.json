@@ -39,6 +39,7 @@
         "@angular/platform-browser": "8.0.0",
         "@angular/platform-browser-dynamic": "8.0.0",
         "@angular/router": "8.0.0",
+        "@nstudio/nativescript-floatingactionbutton": "file:plugins/nstudio-nativescript-floatingactionbutton-1.0.1.tgz",
         "@nstudio/nativescript-pulltorefresh": "~1.0.1",
         "core-js": "^2.5.4",
         "jstodotxt": "github:xuhcc/jsTodoTxt#due-fix",

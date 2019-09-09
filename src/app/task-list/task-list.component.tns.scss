@@ -72,3 +72,14 @@
     color: #999;
     text-decoration: line-through;
 }
+
+.add-task-btn {
+    background-color: $menu-color;
+    color: $text-color;
+    height: 70;
+    horizontal-align: right;
+    margin: 0 20 20 0;
+    ripple-color: $text-color;
+    vertical-align: bottom;
+    width: 70;
+}
