@@ -5,26 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { openDatePicker } from '../shared/date-picker';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { dateToString } from '../shared/misc';
 import { DATESTRING_VALIDATOR_REGEXP, PRIORITY_VALIDATOR_REGEXP } from '../shared/validators';
-
-function taskToFormData(task) {
-    // TODO: move to task.model file
-    let project = '';
-    if (task.projects && task.projects.length > 0) {
-        project = task.projects[0];
-    }
-    let dueDate = '';
-    if (task.due) {
-        dueDate = dateToString(task.due);
-    }
-    return {
-        text: task.text,
-        project: project,
-        priority: task.priority,
-        dueDate: dueDate,
-    };
-}
+import { TaskData } from '../shared/task-data';
 
 @Component({
     selector: 'ms-task-form',
@@ -68,7 +50,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         if (this.taskId) {
             // Pre-fill form with data if taskId is provided
             const task = this.todoFile.tasks[this.taskId];
-            this.form.setValue(taskToFormData(task));
+            this.form.setValue(TaskData.fromTodoTxtItem(task));
         }
     }
 
@@ -93,10 +75,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         if (!this.form.valid) {
             return;
         }
+        const taskData = new TaskData(this.form.value);
         if (this.taskId) {
-            this.todoFile.updateTask(this.taskId, this.form.value);
+            this.todoFile.updateTask(this.taskId, taskData);
         } else {
-            this.todoFile.createTask(this.form.value);
+            this.todoFile.createTask(taskData);
         }
         this.router.navigate(['/tasks']);
     }
