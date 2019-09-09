@@ -86,6 +86,9 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     save() {
+        if (!this.form.valid) {
+            return;
+        }
         if (this.taskId) {
             this.todoFile.updateTask(this.taskId, this.form.value);
         } else {
