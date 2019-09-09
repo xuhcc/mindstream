@@ -6,6 +6,7 @@ import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { SettingsService } from '../shared/settings.service';
 import { openFilePicker } from '../shared/file-picker';
+import { FilePathValidator } from '../shared/validators';
 
 @Component({
     selector: 'ms-settings',
@@ -31,7 +32,7 @@ export class SettingsComponent implements OnInit {
         this.form = this.formBuilder.group({
             filePath: [
                 this.settings.path,
-                Validators.required,
+                [Validators.required, FilePathValidator()],
             ],
         });
     }

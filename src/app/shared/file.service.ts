@@ -47,3 +47,8 @@ export class FileService {
         });
     }
 }
+
+export function isValidPath(path: string): boolean {
+    console.log(path);
+    return true;
+}

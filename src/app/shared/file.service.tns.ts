@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { File } from 'tns-core-modules/file-system';
+import { File, Folder } from 'tns-core-modules/file-system';
 import { isAndroid } from 'tns-core-modules/platform';
 import * as permissions from 'nativescript-permissions';
 
@@ -46,4 +46,11 @@ export class FileService {
         const file = File.fromPath(path);
         await file.writeText(content);
     }
+}
+
+export function isValidPath(path: string): boolean {
+    if (path && File.exists(path) && !Folder.exists(path)) {
+        return true;
+    }
+    return false;
 }
