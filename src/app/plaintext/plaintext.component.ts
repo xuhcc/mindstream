@@ -10,8 +10,8 @@ import { TodoFileService } from '../shared/todo-file.service';
     styleUrls: ['./plaintext.component.scss'],
 })
 export class PlainTextComponent {
-    title = 'Plain Text';
-    todo: string;
+
+    title = 'Plain text';
 
     constructor(
         private router: RouterService,

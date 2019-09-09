@@ -79,6 +79,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         }, 100);
     }
 
+    get title(): string {
+        return this.taskId ? 'Edit task' : 'Add task';
+    }
+
     showDatePicker() {
         openDatePicker().then((dateString: string) => {
             this.form.controls.dueDate.setValue(dateString);

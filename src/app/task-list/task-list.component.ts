@@ -18,6 +18,7 @@ const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-
 })
 export class TaskListComponent implements OnInit {
 
+    title = 'Tasks';
     tasks: TodoTxtItem[] = [];
     taskOrder = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})

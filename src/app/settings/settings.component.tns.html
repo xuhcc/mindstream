@@ -1,4 +1,4 @@
-<ActionBar class="action-bar">
+<ActionBar class="action-bar" [title]="title">
   <NavigationButton
     icon="res://baseline_menu_white_24"
     text="Menu"
@@ -12,7 +12,6 @@
     ios.position="left"
     (tap)="openDrawer()"
   ></ActionItem>
-  <Label class="action-bar-title" text="Settings"></Label>
 </ActionBar>
 
 <StackLayout [formGroup]="form">

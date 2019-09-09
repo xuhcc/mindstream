@@ -14,6 +14,7 @@ import { openFilePicker } from '../shared/file-picker';
 })
 export class SettingsComponent implements OnInit {
 
+    title = 'Settings';
     form: FormGroup;
 
     constructor(
