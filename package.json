@@ -47,7 +47,7 @@
         "nativescript-angular": "8.0.2",
         "nativescript-appversion": "~1.4.2",
         "nativescript-foss-sidedrawer": "~2.0.0",
-        "nativescript-imagepicker": "^6.0.0",
+        "nativescript-imagepicker": "~7.1.0",
         "nativescript-mediafilepicker": "~2.0.16",
         "nativescript-modal-datetimepicker": "~1.2.0",
         "nativescript-permissions": "~1.3.7",

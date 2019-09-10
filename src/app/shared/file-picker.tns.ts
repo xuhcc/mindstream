@@ -1,14 +1,24 @@
 import { ImageAsset } from 'tns-core-modules/image-asset';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
 
-import { create, ImagePickerMediaType } from 'nativescript-imagepicker';
+import { ImagePicker, ImagePickerMediaType } from 'nativescript-imagepicker';
 import { Mediafilepicker, FilePickerOptions } from 'nativescript-mediafilepicker';
+
+class AndroidFilePicker extends ImagePicker {
+
+    get mimeTypes() {
+        const mimeTypes = Array.create(java.lang.String, 1); // eslint-disable-line no-undef
+        mimeTypes[0] = '*/*';
+        return mimeTypes;
+    }
+}
 
 export function openFilePicker(): Promise<string> {
     if (isAndroid) {
-        const imagePicker = create({
+        const imagePicker = new AndroidFilePicker({
             mode: 'single',
             mediaType: ImagePickerMediaType.Any,
+            showAdvanced: true,
         });
         return imagePicker.authorize()
             .then(() => imagePicker.present())
