@@ -63,7 +63,8 @@
                 alignSelf="flex-start"
                 class="task-checkbox icon"
                 [text]="task.complete ? '&#xe876;' : ''"
-                (tap)="toggleCheckBox(task)"
+                (tap)="toggleComplete(task)"
+                (longPress)="postponeTask(task)">
               ></Label>
               <Label
                 flexGrow="1"

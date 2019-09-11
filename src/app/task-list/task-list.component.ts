@@ -6,6 +6,7 @@ import { SideDrawerService } from '../nav/sidedrawer.service';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
+import { postponeTask } from '../shared/task-data';
 import { compareEmptyGreater } from '../shared/misc';
 
 // Use 'require' because the TypeScript module is buggy
@@ -90,7 +91,7 @@ export class TaskListComponent implements OnInit {
         this.filter = {};
     }
 
-    toggleCheckBox(task: TodoTxtItem) {
+    toggleComplete(task: TodoTxtItem) {
         if (!task.complete) {
             task.complete = true;
             task.completed = new Date();
@@ -99,6 +100,12 @@ export class TaskListComponent implements OnInit {
             task.completed = null;
         }
         this.todoFile.replaceTask(task.id, task);
+    }
+
+    postponeTask(task: TodoTxtItem) {
+        if (postponeTask(task)) {
+            this.todoFile.replaceTask(task.id, task);
+        }
     }
 
     editTask(task: TodoTxtItem) {

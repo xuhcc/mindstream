@@ -7,6 +7,17 @@ export function getExtensions(): TodoTxtExtension[] {
     return [new DueExtension()];
 }
 
+export function postponeTask(task: TodoTxtItem) {
+    if (!task.due) {
+        return;
+    }
+    const newDueDate = new Date(task.due);
+    newDueDate.setDate(newDueDate.getDate() + 1);
+    task.due = newDueDate;
+    task.dueString = dateToString(task.due);
+    return task;
+}
+
 export class TaskData {
 
     text: string;
