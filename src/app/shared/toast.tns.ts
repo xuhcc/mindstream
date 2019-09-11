@@ -1,6 +1,10 @@
-import { makeText } from 'nativescript-toast';
+import { Toasty, ToastPosition, ToastDuration } from 'nativescript-toasty';
 
 export function showToast(text: string) {
-    const toast = makeText(text, 'long');
+    const toast = new Toasty({
+        text: text,
+        position: ToastPosition.BOTTOM,
+        duration: ToastDuration.LONG,
+    });
     toast.show();
 }
