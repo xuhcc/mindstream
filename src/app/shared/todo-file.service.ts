@@ -6,6 +6,7 @@ import { FileService } from './file.service';
 import { RouterService } from './router.service';
 import { SettingsService } from './settings.service';
 import { TaskData, getExtensions } from './task-data';
+import { showToast } from './toast';
 
 @Injectable({
     providedIn: 'root',
@@ -65,6 +66,7 @@ export class TodoFileService {
             return;
         }
         this.parse();
+        showToast('File loaded');
     }
 
     async save(): Promise<void> {
