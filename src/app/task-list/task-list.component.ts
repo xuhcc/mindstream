@@ -11,6 +11,10 @@ import { compareEmptyGreater } from '../shared/misc';
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
 
+interface TaskFilter {
+    project?: string;
+}
+
 @Component({
     selector: 'ms-task-list',
     templateUrl: './task-list.component.html',
@@ -20,7 +24,8 @@ export class TaskListComponent implements OnInit {
 
     title = 'Tasks';
     tasks: TodoTxtItem[] = [];
-    taskOrder = firstBy('complete')
+    filter: TaskFilter = {};
+    ordering = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})
         .thenBy('priority', {cmp: compareEmptyGreater});
 
@@ -47,7 +52,7 @@ export class TaskListComponent implements OnInit {
                 task.id = index;
             });
             // Sort tasks
-            this.tasks.sort(this.taskOrder);
+            this.tasks.sort(this.ordering);
         });
     }
 
@@ -62,11 +67,27 @@ export class TaskListComponent implements OnInit {
     }
 
     isTaskVisible(task: TodoTxtItem): boolean {
+        let isVisible = true;
+        // Default filter
         if (task.complete) {
             const timeDiff = +new Date() - task.completed;
-            return (timeDiff < 24 * 3600 * 1000); // 1 day
+            isVisible = (timeDiff < 24 * 3600 * 1000); // 1 day
+        } else {
+            isVisible = true;
         }
-        return true;
+        // Filter by project
+        if (isVisible && this.filter.project) {
+            isVisible = (task.projects || []).includes(this.filter.project);
+        }
+        return isVisible;
+    }
+
+    isFilterEnabled(): boolean {
+        return Object.keys(this.filter).length !== 0;
+    }
+
+    removeFilter() {
+        this.filter = {};
     }
 
     toggleCheckBox(task: TodoTxtItem) {

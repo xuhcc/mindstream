@@ -13,6 +13,15 @@
     (tap)="openDrawer()"
   ></ActionItem>
   <ActionItem
+    *ngIf="isFilterEnabled()"
+    android.position="actionBar"
+    ios.position="right"
+    icon="font://&#xe888;"
+    class="icon"
+    text="Remove filter"
+    (tap)="removeFilter()"
+  ></ActionItem>
+  <ActionItem
     android.position="popup"
     ios.position="right"
     text="Add task"
@@ -46,6 +55,7 @@
                 *ngFor="let project of task.projects"
                 class="attribute"
                 [text]="project"
+                (tap)="filter = {project: project}"
               ></Label>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">
