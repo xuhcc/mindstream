@@ -4,6 +4,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 
 import { getVersionNameSync } from 'nativescript-appversion';
 import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer';
+import { Color } from 'tns-core-modules/color';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
 
 import { NavModalComponent } from './nav-modal.component';
@@ -57,6 +58,10 @@ export class SideDrawerService {
             title: APP_NAME,
             subtitle: `v${getVersionNameSync()}`,
             templates: this.navigationMenu,
+            headerTextColor: new Color('#FBFCF0'), // $header-text-color
+            textColor: new Color('#000000'), // $text-color
+            headerBackgroundColor: new Color('#333333'), // $header-color
+            backgroundColor: new Color('#FBFCF0'), // $page-color
             listener: (index: number) => {
                 const url = this.navigationMenu[index].url;
                 // Use NgZone because this is a callback from external JS library
