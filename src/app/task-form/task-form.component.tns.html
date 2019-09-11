@@ -12,19 +12,27 @@
     <Label text="Task text"></Label>
     <TextField
       #taskTextField
+      class="field"
       formControlName="text"
     ></TextField>
 
     <Label text="Project"></Label>
-    <TextField formControlName="project"></TextField>
+    <TextField
+      class="field"
+      formControlName="project"
+    ></TextField>
 
     <Label text="Priority"></Label>
-    <TextField formControlName="priority"></TextField>
+    <TextField
+      class="field"
+      formControlName="priority"
+    ></TextField>
 
     <Label text="Due date"></Label>
     <FlexboxLayout flexDirection="row">
       <TextField
         flexGrow="1"
+        class="field"
         formControlName="dueDate"
         keyboardType="datetime"
       ></TextField>

@@ -14,15 +14,20 @@
   ></ActionItem>
 </ActionBar>
 
-<StackLayout [formGroup]="form">
+<StackLayout class="page" [formGroup]="form">
+  <Label text="Path to todo.txt file"></Label>
   <TextField
-    hint="Path to todo.txt file"
+    class="field"
     formControlName="filePath"
   ></TextField>
-  <Button text="browse" class="btn btn-primary" (tap)="openPicker()"></Button>
   <Button
+    class="btn"
+    text="browse"
+    (tap)="openPicker()"
+  ></Button>
+  <Button
+    class="btn"
     text="save"
-    class="btn btn-primary"
     (tap)="save()"
     [isEnabled]="form.valid"
   ></Button>

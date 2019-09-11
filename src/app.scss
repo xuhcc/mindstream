@@ -30,6 +30,15 @@
 
 .btn-disabled {
     background-color: #EEEEEE;
-    border-color: #E6E6E6;
+    border-color: #EEEEEE;
     color: #B5B5B5;
+}
+
+.field {
+    background-color: white;
+    border-width: 2;
+    border-color: #ebebeb;
+    border-radius: 3;
+    font-size: 16;
+    padding: $main-padding;
 }

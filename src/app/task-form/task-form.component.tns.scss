@@ -1,14 +1,8 @@
 @import '../../app-common';
 @import '../../app-variables';
 
-TextField {
-    background-color: white;
-    border-width: 2;
-    border-color: #ebebeb;
-    border-radius: 3;
-    font-size: 16;
+.field {
     margin: 5 0;
-    padding: $main-padding;
 }
 
 #calendar-btn {
@@ -16,7 +10,7 @@ TextField {
     android-dynamic-elevation-offset: 0;
     color: $link-color;
     font-size: 32;
-    margin-bottom: 5 + 2;
+    margin: 0 0 7 7;
     padding: 0 0 0;
 }
 
