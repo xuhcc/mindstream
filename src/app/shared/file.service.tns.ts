@@ -22,7 +22,6 @@ export class FileService {
                     );
                     hasPermission = result[permissionName];
                 } catch (error) {
-                    console.warn('permission denied');
                     hasPermission = false;
                 }
             }
@@ -37,7 +36,7 @@ export class FileService {
             const file = File.fromPath(path);
             content = await file.readText();
         } else {
-            content = '';
+            throw new Error('permission denied');
         }
         return content;
     }

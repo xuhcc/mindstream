@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TodoTxt, TodoTxtItem } from 'jstodotxt';
 
 import { FileService } from './file.service';
+import { RouterService } from './router.service';
 import { SettingsService } from './settings.service';
 import { TaskData, getExtensions } from './task-data';
 
@@ -15,8 +16,9 @@ export class TodoFileService {
     tasks: TodoTxtItem[] = [];
 
     constructor(
-        private settings: SettingsService,
         private file: FileService,
+        private router: RouterService,
+        private settings: SettingsService,
     ) {
         if (settings.path) {
             this.load();
@@ -56,15 +58,18 @@ export class TodoFileService {
     }
 
     async load(): Promise<void> {
-        this.content = await this.file.read(this.settings.path);
+        try {
+            this.content = await this.file.read(this.settings.path);
+        } catch (error) {
+            this.router.navigate(['/settings']);
+            return;
+        }
         this.parse();
-        console.log('file loaded');
     }
 
     async save(): Promise<void> {
         await this.file.write(this.settings.path, this.content);
         this.parse();
-        console.log('file saved');
     }
 
 }

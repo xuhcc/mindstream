@@ -27,7 +27,7 @@ describe('TaskData', () => {
         const taskData = new TaskData(formData);
         const task = taskData.createTodoTxtItem();
         expect(task.text).toEqual('test');
-        expect(task.projects).toEqual(['testproject'])
+        expect(task.projects).toEqual(['testproject']);
         expect(task.priority).toEqual('A');
         expect(task.due).toEqual(new Date('2019-01-01'));
         expect(task.dueString).toEqual('2019-01-01');
