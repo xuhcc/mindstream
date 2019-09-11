@@ -45,9 +45,11 @@ export class SettingsComponent implements OnInit {
         openFilePicker().then((filePath) => {
             // TODO: ngZone.run() may be unnecessary here
             this.ngZone.run(() => {
-                console.log(`picked file ${filePath}`);
+                console.info(`picked file ${filePath}`);
                 this.form.controls.filePath.setValue(filePath);
             });
+        }).catch((error) => {
+            console.warn(error);
         });
     }
 

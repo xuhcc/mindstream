@@ -20,6 +20,5 @@ export class SettingsService {
             throw Error('Path can not be empty.');
         }
         appSettings.setString(TODO_PATH_SETTING, path);
-        console.log('path saved to settings');
     }
 }
