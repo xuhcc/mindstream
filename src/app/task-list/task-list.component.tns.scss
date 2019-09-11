@@ -1,4 +1,5 @@
 @import '../../app-common';
+@import '../../app-variables';
 
 .task-list {
     font-family: serif;
@@ -14,8 +15,8 @@
     border-radius: 5;
     border-width: 1;
     color: black;
-    padding: 7;
-    margin: 5;
+    padding: $main-padding;
+    margin-bottom: 5;
 }
 
 .attributes {

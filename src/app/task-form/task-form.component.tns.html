@@ -7,7 +7,7 @@
     ></NavigationButton>
   </ActionBar>
 
-  <StackLayout [formGroup]="form">
+  <StackLayout [formGroup]="form" class="page">
 
     <Label text="Task text"></Label>
     <TextField
@@ -28,16 +28,18 @@
         formControlName="dueDate"
         keyboardType="datetime"
       ></TextField>
-      <Button
+      <Label
         id="calendar-btn"
+        alignSelf="flex-end"
         class="icon"
         text="&#xe878;"
         (tap)="showDatePicker()"
-      ></Button>
+      ></Label>
     </FlexboxLayout>
 
     <Button
       id="save-btn"
+      [className]="form.valid ? 'btn' : 'btn btn-disabled'"
       text="save"
       (tap)="save()"
       [isEnabled]="form.valid"

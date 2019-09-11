@@ -1,5 +1,23 @@
+@import '../../app-common';
+@import '../../app-variables';
+
+TextField {
+    background-color: white;
+    border-width: 2;
+    border-color: #ebebeb;
+    border-radius: 3;
+    font-size: 16;
+    margin: 5 0;
+    padding: $main-padding;
+}
+
 #calendar-btn {
-    font-size: 20;
+    android-elevation: 0;
+    android-dynamic-elevation-offset: 0;
+    color: $link-color;
+    font-size: 32;
+    margin-bottom: 5 + 2;
+    padding: 0 0 0;
 }
 
 #save-btn {
