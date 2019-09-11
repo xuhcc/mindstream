@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
-import { TodoTxtItem } from 'jstodotxt';
-
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { postponeTask } from '../shared/task-data';
+import { Task } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 
 // Use 'require' because the TypeScript module is buggy
@@ -24,7 +22,7 @@ interface TaskFilter {
 export class TaskListComponent implements OnInit {
 
     title = 'Tasks';
-    tasks: TodoTxtItem[] = [];
+    tasks: Task[] = [];
     filter: TaskFilter = {};
     ordering = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})
@@ -44,13 +42,14 @@ export class TaskListComponent implements OnInit {
 
     loadTasks() {
         this.todoFile.load().then(() => {
-            // Deep copy
-            this.tasks = [...this.todoFile.tasks];
-            // Set IDs
-            // TODO: index can change if file has been updated from another device
-            // TODO: use UUIDs?
-            this.tasks.forEach((task, index) => {
+            // Copy
+            this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
+                const task = new Task(todoItem);
+                // Set IDs
+                // TODO: index can change if file has been updated from another device
+                // TODO: use UUIDs?
                 task.id = index;
+                return task;
             });
             // Sort tasks
             this.tasks.sort(this.ordering);
@@ -67,11 +66,11 @@ export class TaskListComponent implements OnInit {
         this.sideDrawer.open(this.viewContainerRef);
     }
 
-    isTaskVisible(task: TodoTxtItem): boolean {
+    isTaskVisible(task: Task): boolean {
         let isVisible = true;
         // Default filter
         if (task.complete) {
-            const timeDiff = +new Date() - task.completed;
+            const timeDiff = +new Date() - +task.completed;
             isVisible = (timeDiff < 24 * 3600 * 1000); // 1 day
         } else {
             isVisible = true;
@@ -91,24 +90,18 @@ export class TaskListComponent implements OnInit {
         this.filter = {};
     }
 
-    toggleComplete(task: TodoTxtItem) {
-        if (!task.complete) {
-            task.complete = true;
-            task.completed = new Date();
-        } else {
-            task.complete = false;
-            task.completed = null;
-        }
+    toggleComplete(task: Task) {
+        task.toggleComplete();
         this.todoFile.replaceTask(task.id, task);
     }
 
-    postponeTask(task: TodoTxtItem) {
-        if (postponeTask(task)) {
+    postponeTask(task: Task) {
+        if (task.postpone()) {
             this.todoFile.replaceTask(task.id, task);
         }
     }
 
-    editTask(task: TodoTxtItem) {
+    editTask(task: Task) {
         this.router.navigate(['/task-detail', {taskId: task.id}]);
     }
 

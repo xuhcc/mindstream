@@ -5,7 +5,7 @@ import { TodoTxt, TodoTxtItem } from 'jstodotxt';
 import { FileService } from './file.service';
 import { RouterService } from './router.service';
 import { SettingsService } from './settings.service';
-import { TaskData, getExtensions } from './task-data';
+import { Task, TaskData, getExtensions } from './task';
 import { showToast } from './toast';
 
 @Injectable({
@@ -14,7 +14,7 @@ import { showToast } from './toast';
 export class TodoFileService {
 
     content = '';
-    tasks: TodoTxtItem[] = [];
+    todoItems: TodoTxtItem[] = [];
 
     constructor(
         private file: FileService,
@@ -27,34 +27,32 @@ export class TodoFileService {
     }
 
     private parse() {
-        this.tasks = TodoTxt.parse(this.content, getExtensions());
+        this.todoItems = TodoTxt.parse(this.content, getExtensions());
+    }
+
+    private render(): string {
+        return TodoTxt.render(this.todoItems);
     }
 
     createTask(taskData: TaskData) {
-        const task = taskData.createTodoTxtItem();
+        const task = Task.create(taskData);
         // Append to the end of file
-        this.content += ('\n' + task.toString());
+        this.content += ('\n' + task.todoItem.toString());
         this.save();
     }
 
     updateTask(taskId: number, taskData: TaskData) {
-        const task = this.tasks[taskId];
-        taskData.updateTodoTxtItem(task);
+        const task = new Task(this.todoItems[taskId]);
+        task.update(taskData);
         // Rewrite all tasks
-        this.content = TodoTxt.render(this.tasks);
+        this.content = this.render();
         this.save();
     }
 
-    replaceTask(taskId: number, task: TodoTxtItem) {
-        this.tasks[taskId] = task;
+    replaceTask(taskId: number, task: Task) {
+        this.todoItems[taskId] = task.todoItem;
         // Rewrite all tasks
-        this.content = TodoTxt.render(this.tasks);
-        this.save();
-    }
-
-    update(tasks: TodoTxtItem[]) {
-        // Rewrite tasks in file
-        this.content = TodoTxt.render(tasks);
+        this.content = this.render();
         this.save();
     }
 

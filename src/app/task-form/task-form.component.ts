@@ -6,7 +6,7 @@ import { openDatePicker } from '../shared/date-picker';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { DATESTRING_VALIDATOR_REGEXP, PRIORITY_VALIDATOR_REGEXP } from '../shared/validators';
-import { TaskData } from '../shared/task-data';
+import { Task } from '../shared/task';
 
 @Component({
     selector: 'ms-task-form',
@@ -49,8 +49,8 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         this.taskId = this.route.snapshot.params.taskId;
         if (this.taskId) {
             // Pre-fill form with data if taskId is provided
-            const task = this.todoFile.tasks[this.taskId];
-            this.form.setValue(TaskData.fromTodoTxtItem(task));
+            const task = new Task(this.todoFile.todoItems[this.taskId]);
+            this.form.setValue(task.toTaskData());
         }
     }
 
@@ -75,11 +75,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         if (!this.form.valid) {
             return;
         }
-        const taskData = new TaskData(this.form.value);
         if (this.taskId) {
-            this.todoFile.updateTask(this.taskId, taskData);
+            this.todoFile.updateTask(this.taskId, this.form.value);
         } else {
-            this.todoFile.createTask(taskData);
+            this.todoFile.createTask(this.form.value);
         }
         this.router.navigate(['/tasks']);
     }
