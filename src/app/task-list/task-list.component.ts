@@ -21,7 +21,6 @@ interface TaskFilter {
 })
 export class TaskListComponent implements OnInit {
 
-    title = 'Tasks';
     tasks: Task[] = [];
     filter: TaskFilter = {};
     ordering = firstBy('complete')
@@ -60,6 +59,13 @@ export class TaskListComponent implements OnInit {
         this.pullToRefresh.onRefresh(event, () => {
             this.loadTasks();
         });
+    }
+
+    get title(): string {
+        if (this.filter.project) {
+            return `Tasks: ${this.filter.project}`;
+        }
+        return 'Tasks';
     }
 
     openDrawer() {
