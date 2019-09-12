@@ -41,14 +41,14 @@
     <FlexboxLayout flexDirection="row">
       <TextField
         flexGrow="1"
-        class="field"
+        class="field field-with-addon"
         formControlName="dueDate"
         keyboardType="datetime"
       ></TextField>
       <Label
         id="calendar-btn"
-        alignSelf="flex-end"
-        class="icon"
+        alignSelf="center"
+        class="field-addon icon"
         text="&#xe878;"
         (tap)="showDatePicker()"
       ></Label>

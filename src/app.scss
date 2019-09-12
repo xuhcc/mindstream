@@ -39,10 +39,25 @@
 }
 
 .field {
-    background-color: white;
-    border-width: 2;
-    border-color: #ebebeb;
-    border-radius: 3;
+    background-color: $field-color;
+    border-color: $field-border-color;
+    border-radius: $field-border-radius;
+    border-width: $field-border;
     font-size: 16;
     padding: $main-padding;
+}
+
+.field-with-addon {
+    border-radius: $field-border-radius 0 0 $field-border-radius;
+    border-width: $field-border 0 $field-border $field-border;
+}
+
+.field-addon {
+    background-color: $field-color;
+    border-color: $field-border-color;
+    border-radius: 0 $field-border-radius $field-border-radius 0;
+    border-width: $field-border $field-border $field-border 0;
+    height: 21 + $main-padding * 2 + $field-border * 2;
+    margin: 0;
+    padding: 3 $main-padding 0;
 }
