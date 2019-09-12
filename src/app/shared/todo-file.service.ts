@@ -34,6 +34,16 @@ export class TodoFileService {
         return TodoTxt.render(this.todoItems);
     }
 
+    getProjects(): string[] {
+        const projects = new Set();
+        this.todoItems.forEach((todoItem: TodoTxtItem) => {
+            (todoItem.projects || []).forEach((project: string) => {
+                projects.add(project);
+            });
+        });
+        return Array.from(projects).sort();
+    }
+
     createTask(taskData: TaskData) {
         const task = Task.create(taskData);
         // Append to the end of file

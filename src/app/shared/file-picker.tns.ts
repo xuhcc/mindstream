@@ -15,13 +15,13 @@ class AndroidFilePicker extends ImagePicker {
 
 export function openFilePicker(): Promise<string> {
     if (isAndroid) {
-        const imagePicker = new AndroidFilePicker({
+        const androidFilePicker = new AndroidFilePicker({
             mode: 'single',
             mediaType: ImagePickerMediaType.Any,
             showAdvanced: true,
         });
-        return imagePicker.authorize()
-            .then(() => imagePicker.present())
+        return androidFilePicker.authorize()
+            .then(() => androidFilePicker.present())
             .then((selection: ImageAsset[]) => selection[0].android);
 
     } else if (isIOS) {
