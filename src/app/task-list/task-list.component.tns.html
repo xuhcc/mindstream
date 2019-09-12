@@ -40,20 +40,20 @@
         <!-- Extra layout is needed for correct styling -->
         <StackLayout>
           <StackLayout *ngIf="isTaskVisible(task)" class="task">
-            <FlexboxLayout flexDirection="row" justifyContent="flex-end" class="attributes">
+            <FlexboxLayout flexDirection="row" justifyContent="flex-end" class="tags">
               <Label
                 *ngIf="task.priority"
-                [className]="'attribute priority-' + task.priority"
+                [className]="'tag priority-' + task.priority"
                 [text]="task.priority"
               ></Label>
               <Label
                 *ngIf="task.due"
-                class="attribute"
+                class="tag"
                 [text]="task.due|date:'dd.MM.yyyy'"
               ></Label>
               <Label
                 *ngFor="let project of task.projects"
-                class="attribute"
+                class="tag"
                 [text]="project"
                 (tap)="filter = {project: project}"
               ></Label>

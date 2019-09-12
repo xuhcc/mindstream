@@ -15,8 +15,9 @@ import { Task } from '../shared/task';
 })
 export class TaskFormComponent implements OnInit, AfterViewInit {
 
-    taskId: number;
     form: FormGroup;
+    taskId: number;
+    projects: string[];
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
@@ -52,6 +53,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             const task = new Task(this.todoFile.todoItems[this.taskId]);
             this.form.setValue(task.toTaskData());
         }
+        this.projects = this.todoFile.getProjects();
     }
 
     ngAfterViewInit(): void {
@@ -63,6 +65,21 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
 
     get title(): string {
         return this.taskId ? 'Edit task' : 'Add task';
+    }
+
+    getFilteredProjects(): string[] {
+        const search = this.form.controls.project.value;
+        if (!search) {
+            return [];
+        }
+        const searchRegexp = new RegExp(search, 'iu');
+        return this.projects.filter((project) => {
+            return project.search(searchRegexp) !== -1;
+        }).sort();
+    }
+
+    setProject(project: string) {
+        this.form.controls.project.setValue(project);
     }
 
     showDatePicker() {

@@ -18,9 +18,18 @@
 
     <Label text="Project"></Label>
     <TextField
+      id="project-field"
       class="field"
       formControlName="project"
     ></TextField>
+    <StackLayout class="project-list">
+      <Label
+        *ngFor="let project of getFilteredProjects()"
+        class="project"
+        [text]="project"
+        (tap)="setProject(project)"
+      ></Label>
+    </StackLayout>
 
     <Label text="Priority"></Label>
     <TextField

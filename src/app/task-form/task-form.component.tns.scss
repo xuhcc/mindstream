@@ -5,6 +5,20 @@
     margin: 5 0;
 }
 
+#project-field {
+    margin-bottom: 0;
+}
+
+.project-list {
+    margin: 0 2 5;
+}
+
+.project {
+    background-color: white;
+    font-size: 16;
+    padding: $main-padding;
+}
+
 #calendar-btn {
     android-elevation: 0;
     android-dynamic-elevation-offset: 0;
