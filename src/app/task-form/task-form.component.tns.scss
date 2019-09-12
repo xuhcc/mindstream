@@ -9,6 +9,13 @@
     margin-bottom: 0;
 }
 
+#clear-btn {
+    color: $link-color;
+    font-size: 28;
+    margin: 5 0 0;
+    padding: 3 3 0;
+}
+
 .project-list {
     margin: 0 2 5;
 }
@@ -22,6 +29,7 @@
 #calendar-btn {
     color: $link-color;
     font-size: 32;
+    margin: 0 0 5;
     padding: 3 3 0;
 }
 

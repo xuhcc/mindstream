@@ -17,11 +17,21 @@
     ></TextField>
 
     <Label text="Project"></Label>
-    <TextField
-      id="project-field"
-      class="field"
-      formControlName="project"
-    ></TextField>
+    <FlexboxLayout flexDirection="row">
+      <TextField
+        flexGrow="1"
+        id="project-field"
+        class="field field-with-addon"
+        formControlName="project"
+      ></TextField>
+      <Label
+        id="clear-btn"
+        alignSelf="flex-end"
+        class="field-addon icon"
+        [text]="form.controls.project.value ? '&#xe14c;' : ''"
+        (tap)="clearProject()"
+      ></Label>
+    </FlexboxLayout>
     <StackLayout class="project-list">
       <Label
         *ngFor="let project of getFilteredProjects()"
@@ -47,7 +57,7 @@
       ></TextField>
       <Label
         id="calendar-btn"
-        alignSelf="center"
+        alignSelf="flex-end"
         class="field-addon icon"
         text="&#xe878;"
         (tap)="showDatePicker()"
