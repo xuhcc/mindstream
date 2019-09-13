@@ -41,13 +41,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
+        this.createTaskList();
         // Workarounds for NS
         // ngOnInit is not called after back-navigation
         // ngOnDestroy is not called before navigation
         // https://github.com/NativeScript/nativescript-angular/issues/1049
         this.router.onNavigatedTo(this.viewContainerRef, () => {
             this.fileSubscribe();
-            this.todoFile.load();
         });
         this.router.onNavigatingFrom(this.viewContainerRef, () => {
             this.fileUnsubscribe();
@@ -58,21 +58,25 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.fileUnsubscribe();
     }
 
+    private createTaskList() {
+        this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
+            const task = new Task(todoItem);
+            // Set IDs
+            // TODO: index can change if file has been updated from another device
+            // TODO: use UUIDs?
+            task.id = index;
+            return task;
+        });
+        // Sort tasks
+        this.tasks.sort(this.ordering);
+    }
+
     private fileSubscribe() {
         this.fileSubscription = this.todoFile.fileChanged.subscribe((reload) => {
             if (!reload) {
                 return;
             }
-            this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
-                const task = new Task(todoItem);
-                // Set IDs
-                // TODO: index can change if file has been updated from another device
-                // TODO: use UUIDs?
-                task.id = index;
-                return task;
-            });
-            // Sort tasks
-            this.tasks.sort(this.ordering);
+            this.createTaskList();
         });
     }
 
