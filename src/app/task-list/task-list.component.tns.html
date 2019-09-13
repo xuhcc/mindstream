@@ -30,8 +30,9 @@
 </ActionBar>
 
 <GridLayout rows="*" height="100%" class="page">
-  <PullToRefresh (refresh)="refresh($event)">
+  <PullToRefresh (refresh)="reloadFile($event)">
     <ListView
+      #taskList
       height="100%"
       class="task-list"
       [items]="getTaskList()"

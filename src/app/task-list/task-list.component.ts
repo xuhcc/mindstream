@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
+import { isIOS } from '../shared/platform';
 
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
@@ -31,6 +32,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
         .thenBy('priority', {cmp: compareEmptyGreater});
 
     private fileSubscription: Subscription;
+
+    @ViewChild('taskList', {static: false})
+    taskList: ElementRef;
 
     constructor(
         private router: RouterService,
@@ -84,7 +88,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.fileSubscription.unsubscribe();
     }
 
-    refresh(event) {
+    reloadFile(event: any) {
         this.pullToRefresh.onRefresh(event, () => {
             this.todoFile.load();
         });
@@ -121,6 +125,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
         return isVisible;
     }
 
+    private refreshTaskList() {
+        if (isIOS) {
+            // Workaround for iOS ListView bug
+            // https://github.com/NativeScript/nativescript-angular/issues/377
+            this.taskList.nativeElement.refresh();
+        }
+    }
+
     isFilterEnabled(): boolean {
         return Object.keys(this.filter).length !== 0;
     }
@@ -131,6 +143,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     toggleComplete(task: Task) {
         task.toggleComplete();
+        this.refreshTaskList();
         this.todoFile.replaceTask(task.id, task);
     }
 
