@@ -1,3 +1,4 @@
+import { knownFolders, File, path as pathUtils } from 'tns-core-modules/file-system/file-system';
 import { ImageAsset } from 'tns-core-modules/image-asset';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
 
@@ -38,7 +39,15 @@ export function openFilePicker(): Promise<string> {
                 const files = res.object.get('results');
                 const fileUri = files[0].file;
                 const filePath = fileUri.slice(7, fileUri.length);
-                resolve(filePath);
+                // Copy file from temp dir to documents
+                File.fromPath(filePath).readText().then((content) => {
+                    const docDir = knownFolders.documents();
+                    const newFilePath = pathUtils.join(docDir.path, 'todo.txt');
+                    File.fromPath(newFilePath).writeText(content).then(() => {
+                        console.info(`file copied from ${filePath} to ${newFilePath}`);
+                        resolve(newFilePath);
+                    });
+                });
             });
             iosFilePicker.on('error', (res) => {
                 const message = res.object.get('msg');
