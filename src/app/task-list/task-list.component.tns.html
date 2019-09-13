@@ -39,7 +39,11 @@
       <ng-template let-task="item">
         <!-- Extra layout is needed for correct styling -->
         <StackLayout>
-          <StackLayout *ngIf="isTaskVisible(task)" class="task">
+          <StackLayout
+            *ngIf="isTaskVisible(task)"
+            class="task"
+            (swipe)="removeTask(task)"
+          >
             <FlexboxLayout flexDirection="row" justifyContent="flex-end" class="tags">
               <Label
                 *ngIf="task.priority"

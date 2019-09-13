@@ -66,6 +66,12 @@ export class TodoFileService {
         this.save();
     }
 
+    removeTask(taskId: number) {
+        this.todoItems.splice(taskId, 1);
+        this.content = this.render();
+        this.save();
+    }
+
     async load(): Promise<void> {
         try {
             this.content = await this.file.read(this.settings.path);

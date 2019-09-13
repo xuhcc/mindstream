@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
+import { showConfirmDialog } from '../shared/dialogs';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
@@ -109,6 +110,17 @@ export class TaskListComponent implements OnInit {
 
     editTask(task: Task) {
         this.router.navigate(['/task-detail', {taskId: task.id}]);
+    }
+
+    removeTask(task: Task) {
+        showConfirmDialog(
+            'Task removal',
+            'Are you sure you want to remove task?',
+        ).then((result: boolean) => {
+            if (result) {
+                this.todoFile.removeTask(task.id);
+            }
+        });
     }
 
     addTask() {
