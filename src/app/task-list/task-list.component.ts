@@ -97,7 +97,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.sideDrawer.open(this.viewContainerRef);
     }
 
-    isTaskVisible(task: Task): boolean {
+    getTaskList(): Task[] {
+        return this.tasks.filter((task) => this.isTaskVisible(task));
+    }
+
+    private isTaskVisible(task: Task): boolean {
         let isVisible = true;
         // Default filter
         if (task.complete) {

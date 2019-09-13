@@ -34,17 +34,20 @@
     <ListView
       height="100%"
       class="task-list"
-      [items]="tasks"
+      [items]="getTaskList()"
     >
       <ng-template let-task="item">
         <!-- Extra layout is needed for correct styling -->
         <StackLayout>
           <StackLayout
-            *ngIf="isTaskVisible(task)"
             class="task"
             (swipe)="removeTask(task)"
           >
-            <FlexboxLayout flexDirection="row" justifyContent="flex-end" class="tags">
+            <FlexboxLayout
+              flexDirection="row"
+              justifyContent="flex-end"
+              class="tags"
+            >
               <Label
                 *ngIf="task.priority"
                 [className]="'tag priority-' + task.priority"
