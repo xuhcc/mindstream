@@ -84,7 +84,12 @@ export class TodoFileService {
         }
         this.parse();
         this.fileChanged.next(true); // true = force task list reload
-        showToast('File loaded');
+        try {
+            showToast('File loaded');
+        } catch (error) {
+            // Ignore error if view is not ready
+            console.warn(error);
+        }
     }
 
     async save(): Promise<void> {
