@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild } from '@angular/core';
 import { formatDate } from '@angular/common';
 
+import * as MarkdownIt from 'markdown-it';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 
@@ -34,6 +35,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         .thenBy('projects');
 
     private fileSubscription: Subscription;
+    private markdown = new MarkdownIt({linkify: true});
 
     @ViewChild('taskList', {static: false})
     taskList: ElementRef;
@@ -172,6 +174,15 @@ export class TaskListComponent implements OnInit, OnDestroy {
     removeFilter() {
         this.filter = {};
         this.settings.filter = {};
+    }
+
+    getTaskHtml(task: Task): string {
+        const html = this.markdown.renderInline(task.text);
+        if (task.complete) {
+            return `<span style="text-decoration: line-through;">${html}</span>`;
+        } else {
+            return html;
+        }
     }
 
     toggleComplete(task: Task) {

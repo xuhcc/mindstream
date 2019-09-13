@@ -80,13 +80,12 @@
                 (tap)="toggleComplete(task)"
                 (longPress)="postponeTask(task, $event)">
               ></Label>
-              <Label
+              <CustomHtmlView
                 flexGrow="1"
                 [className]="task.complete ? 'task-text completed' : 'task-text'"
-                [text]="task.text"
-                textWrap="true"
+                [html]="getTaskHtml(task)"
                 (tap)="editTask(task)"
-              ></Label>
+              ></CustomHtmlView>
             </FlexboxLayout>
           </StackLayout>
         </StackLayout>

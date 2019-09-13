@@ -1,5 +1,5 @@
 import { Color } from 'tns-core-modules/color';
-import { HtmlView } from 'tns-core-modules/ui/html-view';
+import { HtmlView, htmlProperty } from 'tns-core-modules/ui/html-view';
 import { Font } from 'tns-core-modules/ui/styling/font';
 import {
     colorProperty,
@@ -15,6 +15,8 @@ export class CustomHtmlView extends HtmlView {
         // Remove extra padding
         // https://github.com/NativeScript/NativeScript/issues/4358
         this.nativeViewProtected.textContainer.lineFragmentPadding = 0;
+        // https://stackoverflow.com/questions/746670/how-to-lose-margin-padding-in-uitextview
+        this.nativeViewProtected.textContainerInset = (UIEdgeInsets as any).zero;
     }
 
     [colorProperty.setNative](value: Color) {
@@ -32,5 +34,15 @@ export class CustomHtmlView extends HtmlView {
     [fontInternalProperty.setNative](value: Font) {
         const font = value.getUIFont(this.nativeViewProtected.font);
         this.nativeViewProtected.font = font;
+    }
+
+    [htmlProperty.setNative](value: string) {
+        // Reassign font after changing content
+        // https://stackoverflow.com/questions/19049917/uitextview-style-is-being-reset-after-setting-text-property
+        const font = this.nativeViewProtected.font;
+        const textColor = this.nativeViewProtected.textColor;
+        super[htmlProperty.setNative](value);
+        this.nativeViewProtected.font = font;
+        this.nativeViewProtected.textColor = textColor;
     }
 }

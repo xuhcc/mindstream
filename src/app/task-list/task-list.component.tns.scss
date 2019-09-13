@@ -57,11 +57,14 @@ $priority-low: #F2EAAA;
 }
 
 .task-text {
-    padding-top: 3;
+    background-color: transparent; /* required on iOS */
+    link-color: $link-color;
+    margin-top: 3;
 }
 
 .task-text.completed {
     color: #999;
+    link-color: #999;
     text-decoration: line-through;
 }
 

@@ -44,6 +44,7 @@
         "@nstudio/nativescript-pulltorefresh": "~1.0.1",
         "core-js": "^2.5.4",
         "jstodotxt": "github:xuhcc/jsTodoTxt#due-fix",
+        "markdown-it": "~10.0.0",
         "material-design-icons-iconfont": "~5.0.1",
         "moment": "~2.24.0",
         "nativescript-angular": "8.0.2",
