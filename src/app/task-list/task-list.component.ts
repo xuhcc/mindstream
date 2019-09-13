@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+
+import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { showConfirmDialog } from '../shared/dialogs';
@@ -20,13 +22,15 @@ interface TaskFilter {
     templateUrl: './task-list.component.html',
     styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
 
     tasks: Task[] = [];
     filter: TaskFilter = {};
     ordering = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})
         .thenBy('priority', {cmp: compareEmptyGreater});
+
+    private fileSubscription: Subscription;
 
     constructor(
         private router: RouterService,
@@ -37,12 +41,28 @@ export class TaskListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.loadTasks();
+        // Workarounds for NS
+        // ngOnInit is not called after back-navigation
+        // ngOnDestroy is not called before navigation
+        // https://github.com/NativeScript/nativescript-angular/issues/1049
+        this.router.onNavigatedTo(this.viewContainerRef, () => {
+            this.fileSubscribe();
+            this.todoFile.load();
+        });
+        this.router.onNavigatingFrom(this.viewContainerRef, () => {
+            this.fileUnsubscribe();
+        });
     }
 
-    loadTasks() {
-        this.todoFile.load().then(() => {
-            // Copy
+    ngOnDestroy() {
+        this.fileUnsubscribe();
+    }
+
+    private fileSubscribe() {
+        this.fileSubscription = this.todoFile.fileChanged.subscribe((reload) => {
+            if (!reload) {
+                return;
+            }
             this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
                 const task = new Task(todoItem);
                 // Set IDs
@@ -56,9 +76,13 @@ export class TaskListComponent implements OnInit {
         });
     }
 
+    private fileUnsubscribe() {
+        this.fileSubscription.unsubscribe();
+    }
+
     refresh(event) {
         this.pullToRefresh.onRefresh(event, () => {
-            this.loadTasks();
+            this.todoFile.load();
         });
     }
 
@@ -118,6 +142,7 @@ export class TaskListComponent implements OnInit {
             'Are you sure you want to remove task?',
         ).then((result: boolean) => {
             if (result) {
+                this.tasks.splice(this.tasks.indexOf(task), 1);
                 this.todoFile.removeTask(task.id);
             }
         });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { TodoTxt, TodoTxtItem } from 'jstodotxt';
+import { Subject } from 'rxjs';
 
 import { FileService } from './file.service';
 import { RouterService } from './router.service';
@@ -15,6 +16,7 @@ export class TodoFileService {
 
     content = '';
     todoItems: TodoTxtItem[] = [];
+    fileChanged: Subject<boolean>;
 
     constructor(
         private file: FileService,
@@ -24,6 +26,7 @@ export class TodoFileService {
         if (settings.path) {
             this.load();
         }
+        this.fileChanged = new Subject();
     }
 
     private parse() {
@@ -80,12 +83,14 @@ export class TodoFileService {
             return;
         }
         this.parse();
+        this.fileChanged.next(true); // true = force task list reload
         showToast('File loaded');
     }
 
     async save(): Promise<void> {
         await this.file.write(this.settings.path, this.content);
         this.parse();
+        this.fileChanged.next(false);
     }
 
 }
