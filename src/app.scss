@@ -44,6 +44,7 @@
     border-radius: $field-border-radius;
     border-width: $field-border;
     font-size: 16;
+    height: 40;
     padding: $main-padding;
 }
 
@@ -57,6 +58,6 @@
     border-color: $field-border-color;
     border-radius: 0 $field-border-radius $field-border-radius 0;
     border-width: $field-border $field-border $field-border 0;
-    height: 21 + $main-padding * 2 + $field-border * 2;
+    height: 40;
     padding: 3 $main-padding 0;
 }
