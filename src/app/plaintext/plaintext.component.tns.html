@@ -14,9 +14,12 @@
   ></ActionItem>
 </ActionBar>
 
-<StackLayout class="page">
-  <ScrollView>
-    <Label text="{{ todoFile.content }}" textWrap="true">
-    </Label>
+<DockLayout class="page" stretchLastChild="true">
+  <ScrollView dock="top">
+    <Label
+      id="file-content"
+      text="{{ todoFile.content }}"
+      textWrap="true"
+    ></Label>
   </ScrollView>
-</StackLayout>
+</DockLayout>
