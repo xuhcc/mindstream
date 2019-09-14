@@ -4,8 +4,32 @@ import * as moment from 'moment';
 
 import { dateToString } from '../shared/misc';
 
+function RecurrenceExtension() {
+    this.name = 'rec';
+}
+
+RecurrenceExtension.prototype = new TodoTxtExtension();
+
+RecurrenceExtension.prototype.parsingFunction = function (line: string) {
+    // https://github.com/mpcjanssen/simpletask-android/blob/master/app/src/main/assets/index.en.md#extensions
+    const regexp = /\brec:(\d(d|w|m))\b/;
+    const match = regexp.exec(line);
+    if (match) {
+        return [
+            match[1], // repeat
+            line.replace(regexp, ''), // line with extension removed
+            match[1], // repeatString
+        ];
+    }
+    // Return nulls if not found
+    return [null, null, null];
+};
+
 export function getExtensions(): TodoTxtExtension[] {
-    return [new DueExtension()];
+    return [
+        new DueExtension(),
+        new RecurrenceExtension(),
+    ];
 }
 
 export interface TaskData {
@@ -13,6 +37,7 @@ export interface TaskData {
     project: string;
     priority: string;
     dueDate: string;
+    recurrence: string;
 }
 
 export class Task {
@@ -38,6 +63,10 @@ export class Task {
 
     get due(): Date {
         return this.todoItem.due;
+    }
+
+    get rec(): string {
+        return this.todoItem.rec;
     }
 
     get complete(): boolean {
@@ -68,6 +97,10 @@ export class Task {
             todoItem.due = new Date(taskData.dueDate);
             todoItem.dueString = taskData.dueDate;
         }
+        if (taskData.recurrence) {
+            todoItem.rec = taskData.recurrence;
+            todoItem.recString = taskData.recurrence;
+        }
         return new Task(todoItem);
     }
 
@@ -86,6 +119,13 @@ export class Task {
             delete this.todoItem.due;
             delete this.todoItem.dueString;
         }
+        if (taskData.recurrence) {
+            this.todoItem.rec = taskData.recurrence;
+            this.todoItem.recString = taskData.recurrence;
+        } else {
+            delete this.todoItem.rec;
+            delete this.todoItem.recString;
+        }
     }
 
     toTaskData(): TaskData {
@@ -102,6 +142,7 @@ export class Task {
             project: project,
             priority: this.todoItem.priority,
             dueDate: dueDate,
+            recurrence: this.todoItem.rec,
         };
     }
 

@@ -18,6 +18,7 @@ describe('TaskData', () => {
             project: 'testproject',
             priority: 'A',
             dueDate: '2019-01-01',
+            recurrence: '1w',
         };
         const task = Task.create(formData);
         expect(task.todoItem.text).toEqual('test');
@@ -25,6 +26,8 @@ describe('TaskData', () => {
         expect(task.todoItem.priority).toEqual('A');
         expect(task.todoItem.due).toEqual(new Date('2019-01-01'));
         expect(task.todoItem.dueString).toEqual('2019-01-01');
+        expect(task.todoItem.rec).toEqual('1w');
+        expect(task.todoItem.recString).toEqual('1w');
     });
 
     it('should update task', () => {
@@ -37,12 +40,15 @@ describe('TaskData', () => {
             project: '',
             priority: 'B',
             dueDate: '',
+            recurrence: '',
         };
         task.update(formData);
         expect(task.todoItem.text).toEqual('abc');
-        expect(task.todoItem.projects).toEqual([]);
+        expect(task.todoItem.projects).toBe(null);
         expect(task.todoItem.priority).toEqual('B');
         expect(task.todoItem.due).toBeUndefined();
         expect(task.todoItem.dueString).toBeUndefined();
+        expect(task.todoItem.rec).toBeUndefined();
+        expect(task.todoItem.recString).toBeUndefined();
     });
 });

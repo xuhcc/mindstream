@@ -61,6 +61,11 @@
                 (tap)="setFilter({dueDate: task.due})"
               ></Label>
               <Label
+                *ngIf="task.rec"
+                class="tag"
+                [text]="task.rec"
+              ></Label>
+              <Label
                 *ngFor="let project of task.projects"
                 class="tag"
                 [text]="project"

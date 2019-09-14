@@ -11,7 +11,13 @@ describe('TaskListComponent', () => {
         TestBed.configureTestingModule({
             declarations: [TaskListComponent],
             providers: [
-                {provide: RouterService, useValue: {}},
+                {
+                    provide: RouterService,
+                    useValue: {
+                        onNavigatedTo: () => {},
+                        onNavigatingFrom: () => {},
+                    },
+                },
             ],
         }).compileComponents();
     }));
@@ -19,6 +25,7 @@ describe('TaskListComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TaskListComponent);
         component = fixture.componentInstance;
+        (component as any).fileSubscription = {unsubscribe: () => {}};
         fixture.detectChanges();
     });
 

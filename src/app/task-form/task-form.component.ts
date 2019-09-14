@@ -5,7 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { openDatePicker } from '../shared/date-picker';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { DATESTRING_VALIDATOR_REGEXP, PRIORITY_VALIDATOR_REGEXP } from '../shared/validators';
+import {
+    DATESTRING_VALIDATOR_REGEXP,
+    PRIORITY_VALIDATOR_REGEXP,
+    RECURRENCE_VALIDATOR_REGEXP,
+} from '../shared/validators';
 import { Task } from '../shared/task';
 
 @Component({
@@ -46,6 +50,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             dueDate: [
                 '',
                 Validators.pattern(DATESTRING_VALIDATOR_REGEXP),
+            ],
+            recurrence: [
+                '',
+                Validators.pattern(RECURRENCE_VALIDATOR_REGEXP),
             ],
         });
         this.taskId = this.route.snapshot.params.taskId;
