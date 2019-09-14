@@ -42,7 +42,7 @@
         <StackLayout>
           <StackLayout
             class="task"
-            (swipe)="removeTask(task)"
+            (swipe)="removeTask(task, $event)"
           >
             <FlexboxLayout
               flexDirection="row"
@@ -72,7 +72,7 @@
                 class="task-checkbox icon"
                 [text]="task.complete ? '&#xe876;' : ''"
                 (tap)="toggleComplete(task)"
-                (longPress)="postponeTask(task)">
+                (longPress)="postponeTask(task, $event)">
               ></Label>
               <Label
                 flexGrow="1"

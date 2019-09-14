@@ -147,8 +147,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.todoFile.replaceTask(task.id, task);
     }
 
-    postponeTask(task: Task) {
+    postponeTask(task: Task, event: any) {
+        if (isIOS && event.ios.state !== 3) {
+            // Don't postpone until end of pressing
+            // https://github.com/NativeScript/NativeScript/issues/3573
+            return;
+        }
         if (task.postpone()) {
+            this.refreshTaskList();
             this.todoFile.replaceTask(task.id, task);
         }
     }
@@ -157,16 +163,19 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.router.navigate(['/task-detail', {taskId: task.id}]);
     }
 
-    removeTask(task: Task) {
-        showConfirmDialog(
-            'Task removal',
-            'Are you sure you want to remove task?',
-        ).then((result: boolean) => {
-            if (result) {
-                this.tasks.splice(this.tasks.indexOf(task), 1);
-                this.todoFile.removeTask(task.id);
-            }
-        });
+    removeTask(task: Task, event: any) {
+        // Only when swiping right and left (NS SwipeDirection enum)
+        if (event.direction === 1 || event.direction === 2) {
+            showConfirmDialog(
+                'Task removal',
+                'Are you sure you want to remove task?',
+            ).then((result: boolean) => {
+                if (result) {
+                    this.tasks.splice(this.tasks.indexOf(task), 1);
+                    this.todoFile.removeTask(task.id);
+                }
+            });
+        }
     }
 
     addTask() {
