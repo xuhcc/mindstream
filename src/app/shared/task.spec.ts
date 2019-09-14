@@ -1,7 +1,7 @@
 import { TodoTxtItem } from 'jstodotxt';
 import { DueExtension } from 'jstodotxt/jsTodoExtensions';
 
-import { Task, getExtensions, RecurrenceExtension } from './task';
+import { Task, getExtensions, RecurrenceExtension, TaskRecurrence } from './task';
 import { stringToDate } from './misc';
 
 describe('DueExtension', () => {
@@ -34,8 +34,9 @@ describe('RecurrenceExtension', () => {
 
     it('should parse line with recurrence tag', () => {
         const line = 'test due:2019-01-01 rec:1w';
+        const expectedRec = new TaskRecurrence('1w');
         const result = extension.parsingFunction(line);
-        expect(result[0]).toEqual('1w');
+        expect(result[0]).toEqual(expectedRec);
         expect(result[1]).toEqual('test due:2019-01-01 ');
         expect(result[2]).toEqual('1w');
     });
@@ -79,7 +80,7 @@ describe('TaskData', () => {
         expect(task.todoItem.priority).toEqual('A');
         expect(task.todoItem.due).toEqual(stringToDate('2019-01-01'));
         expect(task.todoItem.dueString).toEqual('2019-01-01');
-        expect(task.todoItem.rec).toEqual('1w');
+        expect(task.todoItem.rec.toString()).toEqual('1w');
         expect(task.todoItem.recString).toEqual('1w');
     });
 
@@ -108,7 +109,7 @@ describe('TaskData', () => {
         const taskStr = '(A) testTask due:2019-01-01 rec:1w';
         const task = Task.parse(taskStr);
         expect(task.text).toEqual('testTask');
-        expect(task.rec).toEqual('1w');
+        expect(task.rec.toString()).toEqual('1w');
         expect(task.todoItem.recString).toEqual('1w');
         expect(task.todoItem.toString()).toEqual(taskStr);
     });

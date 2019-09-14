@@ -5,12 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { openDatePicker } from '../shared/date-picker';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import {
-    DATESTRING_VALIDATOR_REGEXP,
-    PRIORITY_VALIDATOR_REGEXP,
-    RECURRENCE_VALIDATOR_REGEXP,
-} from '../shared/validators';
-import { Task } from '../shared/task';
+import { Task, DATESTRING_REGEXP, PRIORITY_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
 
 @Component({
     selector: 'ms-task-form',
@@ -45,15 +40,15 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             ],
             priority: [
                 '',
-                Validators.pattern(PRIORITY_VALIDATOR_REGEXP),
+                Validators.pattern(PRIORITY_REGEXP),
             ],
             dueDate: [
                 '',
-                Validators.pattern(DATESTRING_VALIDATOR_REGEXP),
+                Validators.pattern(DATESTRING_REGEXP),
             ],
             recurrence: [
                 '',
-                Validators.pattern(RECURRENCE_VALIDATOR_REGEXP),
+                Validators.pattern(RECURRENCE_REGEXP),
             ],
         });
         this.taskId = this.route.snapshot.params.taskId;

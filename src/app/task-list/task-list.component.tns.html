@@ -69,7 +69,7 @@
               <Label
                 *ngIf="task.rec"
                 class="tag"
-                [text]="task.rec"
+                [text]="task.rec.display()"
               ></Label>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">

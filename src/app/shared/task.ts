@@ -4,20 +4,60 @@ import * as moment from 'moment';
 
 import { dateToString, stringToDate } from '../shared/misc';
 
+export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
+export const PRIORITY_REGEXP = /^[A-Z]$/;
+
+export const RECURRENCE_REGEXP = /^([1-7])(d|w|m)$/;
+const RECURRENCE_TAG_REGEXP = /rec:([1-7](d|w|m))(\s|$)/;
+const RECURRENCE_KEYS = {
+    d: 'day',
+    w: 'week',
+    m: 'month',
+};
+
+export class TaskRecurrence {
+
+    amount: number;
+    key: string;
+
+    constructor(value: string) {
+        const match = value.match(RECURRENCE_REGEXP);
+        this.amount = parseInt(match[1]);
+        this.key = match[2];
+    }
+
+    toString(): string {
+        return `${this.amount}${this.key}`;
+    }
+
+    addTo(date: Date): Date {
+        const mDate = moment(date) as any;
+        return mDate.add(this.amount, this.key).toDate();
+    }
+
+    display(): string {
+        let result = 'every ';
+        if (this.amount > 1) {
+            result += `${this.amount} `;
+        }
+        result += RECURRENCE_KEYS[this.key];
+        return result;
+    }
+}
+
 export function RecurrenceExtension() {
     this.name = 'rec';
 }
 
 RecurrenceExtension.prototype = new TodoTxtExtension();
 
-RecurrenceExtension.prototype.parsingFunction = (line: string): string[] => {
+RecurrenceExtension.prototype.parsingFunction = (line: string): any[] => {
     // https://github.com/mpcjanssen/simpletask-android/blob/master/app/src/main/assets/index.en.md#extensions
-    const regexp = /rec:(\d(d|w|m))(\s|$)/;
-    const match = regexp.exec(line);
+    const match = RECURRENCE_TAG_REGEXP.exec(line);
     if (match) {
         return [
-            match[1], // rec
-            line.replace(regexp, ''), // line with tag removed
+            new TaskRecurrence(match[1]), // rec
+            line.replace(RECURRENCE_TAG_REGEXP, ''), // line with tag removed
             match[1], // recString
         ];
     }
@@ -98,7 +138,7 @@ export class Task {
             todoItem.dueString = taskData.dueDate;
         }
         if (taskData.recurrence) {
-            todoItem.rec = taskData.recurrence;
+            todoItem.rec = new TaskRecurrence(taskData.recurrence);
             todoItem.recString = taskData.recurrence;
         }
         return new Task(todoItem);
@@ -130,7 +170,7 @@ export class Task {
             delete this.todoItem.dueString;
         }
         if (taskData.recurrence) {
-            this.todoItem.rec = taskData.recurrence;
+            this.todoItem.rec = new TaskRecurrence(taskData.recurrence);
             this.todoItem.recString = taskData.recurrence;
         } else {
             delete this.todoItem.rec;
@@ -152,7 +192,7 @@ export class Task {
             project: project,
             priority: this.todoItem.priority,
             dueDate: dueDate,
-            recurrence: this.todoItem.rec,
+            recurrence: this.todoItem.rec.toString(),
         };
     }
 
@@ -179,10 +219,7 @@ export class Task {
 
     recur(): Task {
         if (this.todoItem.due && this.todoItem.rec) {
-            const newDueDate = moment(this.todoItem.due).add(
-                parseInt(this.todoItem.rec.substring(0, 1)),
-                this.todoItem.rec.substring(1, 2),
-            ).toDate();
+            const newDueDate = this.todoItem.rec.addTo(this.todoItem.due);
             const newTask = this.clone();
             newTask.todoItem.due = newDueDate;
             newTask.todoItem.dueString = dateToString(newDueDate);
