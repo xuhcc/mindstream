@@ -14,6 +14,7 @@ import { PlainTextComponent } from './plaintext/plaintext.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { isIOS } from './shared/platform';
 
 @NgModule({
     declarations: [
@@ -42,5 +43,9 @@ export class AppModule {
     constructor() {
         registerElement('Fab', () => Fab);
         registerElement('PullToRefresh', () => PullToRefresh);
+        if (isIOS) {
+            const iqKeyboard = IQKeyboardManager.sharedManager();
+            iqKeyboard.shouldResignOnTouchOutside = true;
+        }
     }
 }
