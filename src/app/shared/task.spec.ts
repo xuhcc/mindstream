@@ -1,7 +1,7 @@
 import { TodoTxtItem } from 'jstodotxt';
 import { DueExtension } from 'jstodotxt/jsTodoExtensions';
 
-import { Task, getExtensions } from './task';
+import { Task, getExtensions, RecurrenceExtension } from './task';
 import { stringToDate } from './misc';
 
 describe('DueExtension', () => {
@@ -17,6 +17,27 @@ describe('DueExtension', () => {
         expect(result[0]).toEqual(expectedDate);
         expect(result[1]).toEqual('test ');
         expect(result[2]).toEqual('2019-01-01');
+    });
+
+    it('should parse line without due tag', () => {
+        const line = 'test test:2019-01-01';
+        const result = extension.parsingFunction(line);
+        expect(result).toEqual([null, null, null]);
+    });
+});
+
+describe('RecurrenceExtension', () => {
+    let extension;
+    beforeEach(() => {
+        extension = new RecurrenceExtension();
+    });
+
+    it('should parse line with recurrence tag', () => {
+        const line = 'test due:2019-01-01 rec:1w';
+        const result = extension.parsingFunction(line);
+        expect(result[0]).toEqual('1w');
+        expect(result[1]).toEqual('test due:2019-01-01 ');
+        expect(result[2]).toEqual('1w');
     });
 
     it('should parse line without due tag', () => {
@@ -63,10 +84,9 @@ describe('TaskData', () => {
     });
 
     it('should update task', () => {
-        const task = new Task(new TodoTxtItem(
-            '(A) test +proj due:2019-01-01',
-            getExtensions(),
-        ));
+        const task = Task.parse('(A) test +proj due:2019-01-01');
+        expect(task.todoItem.due).toBeDefined();
+
         const formData = {
             text: 'abc',
             project: '',
@@ -82,5 +102,14 @@ describe('TaskData', () => {
         expect(task.todoItem.dueString).toBeUndefined();
         expect(task.todoItem.rec).toBeUndefined();
         expect(task.todoItem.recString).toBeUndefined();
+    });
+
+    it('should parse and render recurrence tag', () => {
+        const taskStr = '(A) testTask due:2019-01-01 rec:1w';
+        const task = Task.parse(taskStr);
+        expect(task.text).toEqual('testTask');
+        expect(task.rec).toEqual('1w');
+        expect(task.todoItem.recString).toEqual('1w');
+        expect(task.todoItem.toString()).toEqual(taskStr);
     });
 });

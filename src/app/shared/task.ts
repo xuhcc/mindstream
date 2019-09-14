@@ -4,21 +4,21 @@ import * as moment from 'moment';
 
 import { dateToString, stringToDate } from '../shared/misc';
 
-function RecurrenceExtension() {
+export function RecurrenceExtension() {
     this.name = 'rec';
 }
 
 RecurrenceExtension.prototype = new TodoTxtExtension();
 
-RecurrenceExtension.prototype.parsingFunction = function (line: string) {
+RecurrenceExtension.prototype.parsingFunction = (line: string): string[] => {
     // https://github.com/mpcjanssen/simpletask-android/blob/master/app/src/main/assets/index.en.md#extensions
-    const regexp = /\brec:(\d(d|w|m))\b/;
+    const regexp = /rec:(\d(d|w|m))(\s|$)/;
     const match = regexp.exec(line);
     if (match) {
         return [
-            match[1], // repeat
-            line.replace(regexp, ''), // line with extension removed
-            match[1], // repeatString
+            match[1], // rec
+            line.replace(regexp, ''), // line with tag removed
+            match[1], // recString
         ];
     }
     // Return nulls if not found
@@ -104,10 +104,14 @@ export class Task {
         return new Task(todoItem);
     }
 
+    static parse(text: string): Task {
+        const todoItem = new TodoTxtItem(text, getExtensions());
+        return new Task(todoItem);
+    }
+
     clone(): Task {
         const todoItemStr = this.todoItem.toString();
-        const todoItem = new TodoTxtItem(todoItemStr, getExtensions());
-        return new Task(todoItem);
+        return Task.parse(todoItemStr);
     }
 
     update(taskData: TaskData) {
