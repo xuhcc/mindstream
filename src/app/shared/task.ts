@@ -68,7 +68,7 @@ export class Task {
         if (taskData.project) {
             this.todoItem.projects = [taskData.project];
         } else {
-            this.todoItem.projects = [];
+            this.todoItem.projects = null;
         }
         this.todoItem.priority = taskData.priority;
         if (taskData.dueDate) {
