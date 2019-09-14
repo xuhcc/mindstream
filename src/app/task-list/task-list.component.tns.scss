@@ -25,6 +25,10 @@
     text-align: right;
 }
 
+$priority-high: #EEAAA7;
+$priority-medium: #F0D3A8;
+$priority-low: #F2EAAA;
+
 .tag {
     background-color: $button-color;
     color: $link-color;
@@ -32,19 +36,19 @@
     margin-left: 5;
 
     &.priority-A {
-        background-color: #EEAAA7;
+        background-color: $priority-high;
     }
 
     &.priority-B {
-        background-color: #EECFA7;
+        background-color: $priority-medium;
     }
 
     &.priority-C {
-        background-color: #CAD1EE;
+        background-color: $priority-low;
     }
 
-    &.priority-D {
-        background-color: #CBEECA;
+    &.overdue {
+        background-color: $priority-high;
     }
 }
 

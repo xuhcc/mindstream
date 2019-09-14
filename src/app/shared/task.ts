@@ -1,5 +1,6 @@
 import { TodoTxtItem } from 'jstodotxt';
 import { TodoTxtExtension, DueExtension } from 'jstodotxt/jsTodoExtensions';
+import * as moment from 'moment';
 
 import { dateToString } from '../shared/misc';
 
@@ -45,6 +46,13 @@ export class Task {
 
     get completed(): Date {
         return this.todoItem.completed;
+    }
+
+    isOverdue(): boolean {
+        if (!this.todoItem.due) {
+            return false;
+        }
+        return moment(this.todoItem.due) < moment().startOf('day');
     }
 
     static create(taskData: TaskData): Task {
