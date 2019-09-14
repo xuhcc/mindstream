@@ -58,6 +58,7 @@
                 *ngIf="task.due"
                 class="tag"
                 [text]="task.due|date:'dd.MM.yyyy'"
+                (tap)="filter = {dueDate: task.due}"
               ></Label>
               <Label
                 *ngFor="let project of task.projects"

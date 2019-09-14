@@ -8,7 +8,7 @@ import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
-import { compareEmptyGreater } from '../shared/misc';
+import { dateToString, compareEmptyGreater } from '../shared/misc';
 import { isIOS } from '../shared/platform';
 
 // Use 'require' because the TypeScript module is buggy
@@ -16,6 +16,7 @@ const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-
 
 interface TaskFilter {
     project?: string;
+    dueDate?: Date;
 }
 
 @Component({
@@ -27,7 +28,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     tasks: Task[] = [];
     filter: TaskFilter = {};
-    ordering = firstBy('complete')
+    private ordering = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})
         .thenBy('priority', {cmp: compareEmptyGreater});
 
@@ -98,6 +99,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
         if (this.filter.project) {
             return `Tasks: ${this.filter.project}`;
         }
+        if (this.filter.dueDate) {
+            return `Tasks: ${dateToString(this.filter.dueDate)}`;
+        }
         return 'Tasks';
     }
 
@@ -121,6 +125,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
         // Filter by project
         if (isVisible && this.filter.project) {
             isVisible = (task.projects || []).includes(this.filter.project);
+        }
+        // Filter by due date
+        if (isVisible && this.filter.dueDate) {
+            isVisible = (
+                task.due &&
+                task.due.valueOf() === this.filter.dueDate.valueOf()
+            );
         }
         return isVisible;
     }
