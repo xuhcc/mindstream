@@ -49,8 +49,13 @@ export class TodoFileService {
 
     createTask(taskData: TaskData) {
         const task = Task.create(taskData);
+        this.appendTask(task);
+    }
+
+    appendTask(task: Task) {
         // Append to the end of file
-        this.content += ('\n' + task.todoItem.toString());
+        this.todoItems.push(task.todoItem);
+        this.content = this.render();
         this.save();
     }
 

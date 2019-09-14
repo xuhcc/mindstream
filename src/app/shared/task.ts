@@ -104,6 +104,12 @@ export class Task {
         return new Task(todoItem);
     }
 
+    clone(): Task {
+        const todoItemStr = this.todoItem.toString();
+        const todoItem = new TodoTxtItem(todoItemStr, getExtensions());
+        return new Task(todoItem);
+    }
+
     update(taskData: TaskData) {
         this.todoItem.text = taskData.text;
         if (taskData.project) {
@@ -165,5 +171,18 @@ export class Task {
         this.todoItem.due = newDueDate;
         this.todoItem.dueString = dateToString(newDueDate);
         return true;
+    }
+
+    recur(): Task {
+        if (this.todoItem.due && this.todoItem.rec) {
+            const newDueDate = moment(this.todoItem.due).add(
+                parseInt(this.todoItem.rec.substring(0, 1)),
+                this.todoItem.rec.substring(1, 2),
+            ).toDate();
+            const newTask = this.clone();
+            newTask.todoItem.due = newDueDate;
+            newTask.todoItem.dueString = dateToString(newDueDate);
+            return newTask;
+        }
     }
 }

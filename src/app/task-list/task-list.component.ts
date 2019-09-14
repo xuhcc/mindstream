@@ -158,6 +158,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     toggleComplete(task: Task) {
+        if (task.due && task.rec && !task.completed) {
+            const newTask = task.recur();
+            this.todoFile.appendTask(newTask);
+        }
         task.toggleComplete();
         this.refreshTaskList();
         this.todoFile.replaceTask(task.id, task);
