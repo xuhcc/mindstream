@@ -1,8 +1,19 @@
 export function dateToString(date: Date): string {
+    // Compatible with jsTodoTxt
     const year = date.getFullYear();
     const month = ((date.getMonth() + 1 < 10) ? '0' : '') + (date.getMonth() + 1);
     const day = ((date.getDate() < 10) ? '0' : '') + date.getDate();
     return `${year}-${month}-${day}`;
+}
+
+export function stringToDate(dateStr: string): Date {
+    // Compatible with jsTodoTxt
+    const datePieces = dateStr.split('-');
+    return new Date(
+        parseInt(datePieces[0]),
+        parseInt(datePieces[1]) - 1,
+        parseInt(datePieces[2]),
+    );
 }
 
 function compare(v1: any, v2: any): number {

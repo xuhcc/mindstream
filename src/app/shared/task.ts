@@ -2,7 +2,7 @@ import { TodoTxtItem } from 'jstodotxt';
 import { TodoTxtExtension, DueExtension } from 'jstodotxt/jsTodoExtensions';
 import * as moment from 'moment';
 
-import { dateToString } from '../shared/misc';
+import { dateToString, stringToDate } from '../shared/misc';
 
 function RecurrenceExtension() {
     this.name = 'rec';
@@ -94,7 +94,7 @@ export class Task {
             todoItem.priority = taskData.priority;
         }
         if (taskData.dueDate) {
-            todoItem.due = new Date(taskData.dueDate);
+            todoItem.due = stringToDate(taskData.dueDate);
             todoItem.dueString = taskData.dueDate;
         }
         if (taskData.recurrence) {
@@ -119,7 +119,7 @@ export class Task {
         }
         this.todoItem.priority = taskData.priority;
         if (taskData.dueDate) {
-            this.todoItem.due = new Date(taskData.dueDate);
+            this.todoItem.due = stringToDate(taskData.dueDate);
             this.todoItem.dueString = taskData.dueDate;
         } else {
             delete this.todoItem.due;

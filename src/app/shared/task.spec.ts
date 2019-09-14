@@ -1,6 +1,30 @@
 import { TodoTxtItem } from 'jstodotxt';
+import { DueExtension } from 'jstodotxt/jsTodoExtensions';
 
 import { Task, getExtensions } from './task';
+import { stringToDate } from './misc';
+
+describe('DueExtension', () => {
+    let extension;
+    beforeEach(() => {
+        extension = new DueExtension();
+    });
+
+    it('should parse line with due tag', () => {
+        const line = 'test due:2019-01-01';
+        const expectedDate = stringToDate('2019-01-01');
+        const result = extension.parsingFunction(line);
+        expect(result[0]).toEqual(expectedDate);
+        expect(result[1]).toEqual('test ');
+        expect(result[2]).toEqual('2019-01-01');
+    });
+
+    it('should parse line without due tag', () => {
+        const line = 'test test:2019-01-01';
+        const result = extension.parsingFunction(line);
+        expect(result).toEqual([null, null, null]);
+    });
+});
 
 describe('TaskData', () => {
     it('should init', () => {
@@ -10,6 +34,14 @@ describe('TaskData', () => {
         );
         const task = new Task(todoItem);
         expect(task.todoItem).toBe(todoItem);
+        expect(task.todoItem.extensions.length).toBe(2);
+        expect(task.todoItem.date).toBe(null);
+        expect(task.text).toBe('test');
+        expect(task.priority).toBe('A');
+        expect(task.projects).toEqual(['proj']);
+        expect(task.due).toEqual(stringToDate('2019-01-01'));
+        expect(task.complete).toBe(false);
+        expect(task.completed).toBe(null);
     });
 
     it('should create task', () => {
@@ -24,7 +56,7 @@ describe('TaskData', () => {
         expect(task.todoItem.text).toEqual('test');
         expect(task.todoItem.projects).toEqual(['testproject']);
         expect(task.todoItem.priority).toEqual('A');
-        expect(task.todoItem.due).toEqual(new Date('2019-01-01'));
+        expect(task.todoItem.due).toEqual(stringToDate('2019-01-01'));
         expect(task.todoItem.dueString).toEqual('2019-01-01');
         expect(task.todoItem.rec).toEqual('1w');
         expect(task.todoItem.recString).toEqual('1w');
