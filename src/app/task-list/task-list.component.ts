@@ -188,7 +188,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         if (event.direction === 1 || event.direction === 2) {
             showConfirmDialog(
                 'Task removal',
-                'Are you sure you want to remove task?',
+                `Are you sure you want to remove "${task.text}"?`,
             ).then((result: boolean) => {
                 if (result) {
                     this.tasks.splice(this.tasks.indexOf(task), 1);
