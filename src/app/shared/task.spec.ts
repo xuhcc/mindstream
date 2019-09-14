@@ -113,4 +113,16 @@ describe('TaskData', () => {
         expect(task.todoItem.recString).toEqual('1w');
         expect(task.todoItem.toString()).toEqual(taskStr);
     });
+
+    it('should transform to task data', () => {
+        const task = Task.parse('(A) test +pro due:2019-01-01 rec:1d');
+        const taskData = task.toTaskData();
+        expect(taskData).toEqual({
+            text: 'test',
+            project: 'pro',
+            priority: 'A',
+            dueDate: '2019-01-01',
+            recurrence: '1d',
+        });
+    });
 });

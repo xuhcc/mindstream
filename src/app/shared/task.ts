@@ -187,12 +187,16 @@ export class Task {
         if (this.todoItem.due) {
             dueDate = dateToString(this.todoItem.due);
         }
+        let recurrence = '';
+        if (this.todoItem.rec) {
+            recurrence = this.todoItem.rec.toString();
+        }
         return {
             text: this.todoItem.text,
             project: project,
             priority: this.todoItem.priority,
             dueDate: dueDate,
-            recurrence: this.todoItem.rec.toString(),
+            recurrence: recurrence,
         };
     }
 
