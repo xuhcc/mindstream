@@ -8,10 +8,6 @@ module.exports = function (config) {
             require('karma-mocha-reporter'),
             require('@angular-devkit/build-angular/plugins/karma'),
         ],
-        files: [
-            // Provide global variable for jstodotxt
-            '../node_modules/jstodotxt/jsTodoExtensions.js',
-        ],
         reporters: ['mocha'],
         port: 9876,
         colors: true,
