@@ -57,7 +57,7 @@
               <Label
                 *ngIf="task.due"
                 [className]="task.isOverdue() ? 'tag overdue' : 'tag'"
-                [text]="task.due|date:'dd.MM.yyyy'"
+                [text]="task.due|date:dateFormat"
                 (tap)="setFilter({dueDate: task.due})"
               ></Label>
               <Label

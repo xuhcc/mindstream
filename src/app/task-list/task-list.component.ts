@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 import { Subscription } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { TaskFilter } from '../shared/settings';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
-import { dateToString, compareEmptyGreater } from '../shared/misc';
+import { compareEmptyGreater } from '../shared/misc';
 import { isIOS } from '../shared/platform';
 
 // Use 'require' because the TypeScript module is buggy
@@ -33,6 +34,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     @ViewChild('taskList', {static: false})
     taskList: ElementRef;
+
+    dateFormat = 'dd.MM.yyyy';
 
     constructor(
         private router: RouterService,
@@ -99,7 +102,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
             return `Tasks: ${this.filter.project}`;
         }
         if (this.filter.dueDate) {
-            return `Tasks: ${dateToString(this.filter.dueDate)}`;
+            const dateStr = formatDate(
+                this.filter.dueDate,
+                this.dateFormat,
+                'en-US');
+            return `Tasks: ${dateStr}`;
         }
         return 'Tasks';
     }
