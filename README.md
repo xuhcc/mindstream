@@ -1,6 +1,14 @@
 # Mindstream
 
-Task management app that uses todo.txt format.
+[![License: GPL v3](https://img.shields.io/github/license/xuhcc/beancount-mobile)](https://github.com/xuhcc/beancount-mobile/blob/HEAD/LICENSE)
+
+Task management app that uses [todo.txt](http://todotxt.org/) format.
+
+Features:
+
+- Projects, priorities, due dates.
+- Recurring tasks.
+- Filtering by project, due date.
 
 ## Development
 
@@ -17,8 +25,16 @@ npm install
 
 ### Mobile
 
+Run in android emulator:
+
 ```
 npm run android
+```
+
+Run in iOS emulator:
+
+```
+npm run ios
 ```
 
 ### Testing
@@ -27,3 +43,7 @@ npm run android
 npm run lint
 npm run test
 ```
+
+## License
+
+[GPL v3](LICENSE)
