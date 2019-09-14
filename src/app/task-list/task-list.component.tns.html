@@ -50,6 +50,12 @@
               class="tags"
             >
               <Label
+                *ngFor="let project of task.projects"
+                class="tag"
+                [text]="project"
+                (tap)="setFilter({project: project})"
+              ></Label>
+              <Label
                 *ngIf="task.priority"
                 [className]="'tag priority-' + task.priority"
                 [text]="task.priority"
@@ -64,12 +70,6 @@
                 *ngIf="task.rec"
                 class="tag"
                 [text]="task.rec"
-              ></Label>
-              <Label
-                *ngFor="let project of task.projects"
-                class="tag"
-                [text]="project"
-                (tap)="setFilter({project: project})"
               ></Label>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">
