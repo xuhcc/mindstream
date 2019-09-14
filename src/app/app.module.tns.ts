@@ -44,7 +44,7 @@ export class AppModule {
         registerElement('Fab', () => Fab);
         registerElement('PullToRefresh', () => PullToRefresh);
         if (isIOS) {
-            const iqKeyboard = IQKeyboardManager.sharedManager();
+            const iqKeyboard = IQKeyboardManager.sharedManager(); // eslint-disable-line no-undef
             iqKeyboard.shouldResignOnTouchOutside = true;
         }
     }

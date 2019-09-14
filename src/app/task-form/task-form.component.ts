@@ -18,6 +18,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     form: FormGroup;
     taskId: number;
     projects: string[];
+    showProjectSuggestions = false;
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
@@ -68,6 +69,9 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     getFilteredProjects(): string[] {
+        if (!this.showProjectSuggestions) {
+            return [];
+        }
         const search = this.form.controls.project.value;
         if (!search) {
             return [];
