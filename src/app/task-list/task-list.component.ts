@@ -6,6 +6,8 @@ import { SideDrawerService } from '../nav/sidedrawer.service';
 import { showConfirmDialog } from '../shared/dialogs';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
+import { TaskFilter } from '../shared/settings';
+import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
 import { dateToString, compareEmptyGreater } from '../shared/misc';
@@ -13,11 +15,6 @@ import { isIOS } from '../shared/platform';
 
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
-
-interface TaskFilter {
-    project?: string;
-    dueDate?: Date;
-}
 
 @Component({
     selector: 'ms-task-list',
@@ -39,13 +36,15 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: RouterService,
-        public todoFile: TodoFileService,
+        private settings: SettingsService,
+        private todoFile: TodoFileService,
         private sideDrawer: SideDrawerService,
         private viewContainerRef: ViewContainerRef,
         private pullToRefresh: PullToRefreshService, // TODO: simply 'refresh'
     ) { }
 
     ngOnInit() {
+        this.filter = this.settings.filter;
         this.createTaskList();
         // Workarounds for NS
         // ngOnInit is not called after back-navigation
@@ -148,8 +147,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
         return Object.keys(this.filter).length !== 0;
     }
 
+    setFilter(filter: TaskFilter) {
+        this.filter = filter;
+        this.settings.filter = filter;
+    }
+
     removeFilter() {
         this.filter = {};
+        this.settings.filter = {};
     }
 
     toggleComplete(task: Task) {

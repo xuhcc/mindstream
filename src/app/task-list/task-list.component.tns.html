@@ -58,13 +58,13 @@
                 *ngIf="task.due"
                 [className]="task.isOverdue() ? 'tag overdue' : 'tag'"
                 [text]="task.due|date:'dd.MM.yyyy'"
-                (tap)="filter = {dueDate: task.due}"
+                (tap)="setFilter({dueDate: task.due})"
               ></Label>
               <Label
                 *ngFor="let project of task.projects"
                 class="tag"
                 [text]="project"
-                (tap)="filter = {project: project}"
+                (tap)="setFilter({project: project})"
               ></Label>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">
