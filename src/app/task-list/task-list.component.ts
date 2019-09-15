@@ -5,7 +5,6 @@ import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
-import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TaskFilter } from '../shared/settings';
 import { SettingsService } from '../shared/settings.service';
@@ -14,6 +13,7 @@ import { Task } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 import { showConfirmDialog } from '../shared/helpers/dialogs';
 import { isIOS } from '../shared/helpers/platform';
+import { onPullRefresh } from '../shared/helpers/pullrefresh';
 
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
@@ -42,7 +42,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
         private todoFile: TodoFileService,
         private sideDrawer: SideDrawerService,
         private viewContainerRef: ViewContainerRef,
-        private pullToRefresh: PullToRefreshService, // TODO: simply 'refresh'
     ) { }
 
     ngOnInit() {
@@ -91,7 +90,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     reloadFile(event: any) {
-        this.pullToRefresh.onRefresh(event, () => {
+        onPullRefresh(event, () => {
             this.todoFile.load();
         });
     }
