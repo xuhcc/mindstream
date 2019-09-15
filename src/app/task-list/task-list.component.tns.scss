@@ -1,21 +1,8 @@
 @import '../../app-common';
 @import '../../app-variables';
 
-.task-list {
-    separator-color: transparent;
-}
-
 .task {
-    background-color: #FEFFF3;
-    border-color: #E5E6DA;
-    border-style: solid;
-    border-radius: 5;
-    border-width: 1;
-    color: black;
-    font-family: serif;
-    font-size: 16;
-    padding: $main-padding;
-    margin-bottom: 5;
+    @extend %task;
 }
 
 .tags {
@@ -56,11 +43,11 @@ $priority-low: #F2EAAA;
     border-color: #333;
     border-radius: 3;
     border-width: 1;
-    color: #333;
+    color: $header-color;
     font-size: 24;
     font-weight: bold;
     height: 30;
-    margin-right: 7;
+    margin-right: $main-padding;
     max-height: 30;
     min-width: 30;
     padding: 1 0;

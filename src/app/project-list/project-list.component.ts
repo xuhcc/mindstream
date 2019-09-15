@@ -12,6 +12,7 @@ import { TodoFileService } from '../shared/todo-file.service';
 })
 export class ProjectListComponent implements OnInit {
 
+    title = 'Projects';
     projects: string[];
 
     constructor(

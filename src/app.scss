@@ -26,7 +26,7 @@
 .btn {
     background-color: $button-color;
     border-width: 1;
-    border-color: #E3E6CF;
+    border-color: $button-border-color;
     border-radius: 3;
     color: $link-color;
     padding: $main-padding;
@@ -66,4 +66,8 @@
 .field-addon-last {
     border-radius: 0 $field-border-radius $field-border-radius 0;
     border-width: $field-border $field-border $field-border 0;
+}
+
+.item-list {
+    separator-color: transparent;
 }
