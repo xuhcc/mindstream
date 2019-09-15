@@ -52,7 +52,7 @@
               <Label
                 *ngFor="let project of task.projects"
                 class="tag"
-                [text]="project"
+                [text]="'+' + project"
                 (tap)="setFilter({project: project})"
               ></Label>
               <Label
@@ -63,7 +63,7 @@
               <Label
                 *ngIf="task.due"
                 [className]="task.isOverdue() ? 'tag overdue' : 'tag'"
-                [text]="task.due|date:dateFormat"
+                [text]="getDateDisplay(task.due)"
                 (tap)="setFilter({dueDate: task.due})"
               ></Label>
               <Label

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild } from '@angular/core';
 import { formatDate } from '@angular/common';
 
+import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
@@ -34,8 +35,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     @ViewChild('taskList', {static: false})
     taskList: ElementRef;
-
-    dateFormat = 'dd.MM.yyyy';
 
     constructor(
         private router: RouterService,
@@ -97,16 +96,25 @@ export class TaskListComponent implements OnInit, OnDestroy {
         });
     }
 
+    getDateDisplay(date: Date): string {
+        const mDate = moment(date);
+        const today = moment().startOf('day');
+        const tomorrow = today.clone().add(1, 'day');
+        if (mDate.isSame(today)) {
+            return 'today';
+        } else if (mDate.isSame(tomorrow)) {
+            return 'tomorrow';
+        } else {
+            return formatDate(date, 'dd.MM.yyyy', 'en-US');
+        }
+    }
+
     get title(): string {
         if (this.filter.project) {
             return `Tasks: ${this.filter.project}`;
         }
         if (this.filter.dueDate) {
-            const dateStr = formatDate(
-                this.filter.dueDate,
-                this.dateFormat,
-                'en-US');
-            return `Tasks: ${dateStr}`;
+            return `Tasks: ${this.getDateDisplay(this.filter.dueDate)}`;
         }
         return 'Tasks';
     }
