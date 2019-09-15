@@ -3,7 +3,7 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 
 import { getVersionNameSync } from 'nativescript-appversion';
 
-import { APP_NAME } from '../shared/constants';
+import { APP_NAME } from '../app.constants';
 
 @Component({
     selector: 'ms-nav-modal',

@@ -8,7 +8,7 @@ import { Color } from 'tns-core-modules/color';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
 
 import { NavModalComponent } from './nav-modal.component';
-import { APP_NAME } from '../shared/constants';
+import { APP_NAME } from '../app.constants';
 
 @Injectable({
     providedIn: 'root',
