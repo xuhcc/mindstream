@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { openDatePicker } from '../shared/date-picker';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
+import { dateToString } from '../shared/misc';
 import { Task, DATESTRING_REGEXP, PRIORITY_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
 
 @Component({
@@ -91,6 +92,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
 
     clearProject() {
         this.form.controls.project.reset();
+    }
+
+    setDueToday() {
+        const dateStr = dateToString(new Date());
+        this.form.controls.dueDate.setValue(dateStr);
     }
 
     showDatePicker() {

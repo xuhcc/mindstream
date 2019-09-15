@@ -5,12 +5,15 @@
     margin: 5 0;
 }
 
+.field-addon {
+    margin: 5 0;
+}
+
 #project-field {
     margin-bottom: 0;
 }
 
 #clear-btn {
-    color: $link-color;
     font-size: 28;
     margin: 5 0 0;
     padding: 3 3 0;
@@ -27,10 +30,8 @@
 }
 
 #calendar-btn {
-    color: $link-color;
     font-size: 32;
-    margin: 0 0 5;
-    padding: 3 3 0;
+    padding: 3 3 0 0;
 }
 
 #save-btn {

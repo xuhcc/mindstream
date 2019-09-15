@@ -56,8 +56,14 @@
 .field-addon {
     background-color: $field-color;
     border-color: $field-border-color;
+    border-radius: 0;
+    border-width: $field-border 0;
+    color: $link-color;
+    height: 40;
+    padding: $main-padding $main-padding $main-padding 0;
+}
+
+.field-addon-last {
     border-radius: 0 $field-border-radius $field-border-radius 0;
     border-width: $field-border $field-border $field-border 0;
-    height: 40;
-    padding: 3 $main-padding 0;
 }

@@ -28,8 +28,7 @@
       ></TextField>
       <Label
         id="clear-btn"
-        alignSelf="flex-end"
-        class="field-addon icon"
+        class="field-addon field-addon-last icon"
         [text]="form.controls.project.value ? '&#xe14c;' : ''"
         (tap)="clearProject()"
       ></Label>
@@ -58,9 +57,17 @@
         keyboardType="datetime"
       ></TextField>
       <Label
+        class="field-addon"
+        text="today"
+        (tap)="setDueToday()"
+      ></Label>
+      <Label
+        class="field-addon"
+        text="|"
+      ></Label>
+      <Label
         id="calendar-btn"
-        alignSelf="flex-end"
-        class="field-addon icon"
+        class="field-addon field-addon-last icon"
         text="&#xe878;"
         (tap)="showDatePicker()"
       ></Label>
