@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef, NgZone } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
@@ -25,7 +25,6 @@ export class SettingsComponent implements OnInit {
         private settings: SettingsService,
         private sideDrawer: SideDrawerService,
         private viewContainerRef: ViewContainerRef,
-        private ngZone: NgZone,
     ) { }
 
     ngOnInit() {
@@ -43,11 +42,8 @@ export class SettingsComponent implements OnInit {
 
     openPicker() {
         openFilePicker().then((filePath) => {
-            // TODO: ngZone.run() may be unnecessary here
-            this.ngZone.run(() => {
-                console.info(`picked file ${filePath}`);
-                this.form.controls.filePath.setValue(filePath);
-            });
+            console.info(`picked file ${filePath}`);
+            this.form.controls.filePath.setValue(filePath);
         }).catch((error) => {
             console.warn(error);
         });
