@@ -161,7 +161,11 @@ export class Task {
         } else {
             this.todoItem.projects = null;
         }
-        this.todoItem.priority = taskData.priority;
+        if (taskData.priority) {
+            this.todoItem.priority = taskData.priority;
+        } else {
+            this.todoItem.priority = null;
+        }
         if (taskData.dueDate) {
             this.todoItem.due = stringToDate(taskData.dueDate);
             this.todoItem.dueString = taskData.dueDate;
