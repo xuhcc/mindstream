@@ -132,7 +132,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
         // Default filter
         if (task.complete) {
             const timeDiff = +new Date() - +task.completed;
-            isVisible = (timeDiff < 24 * 3600 * 1000); // 1 day
+            const limit = 2 * 24 * 3600 * 1000; // 2 days
+            isVisible = (timeDiff < limit);
         } else {
             isVisible = true;
         }
