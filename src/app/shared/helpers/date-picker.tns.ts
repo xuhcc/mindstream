@@ -1,6 +1,6 @@
 import { ModalDatetimepicker } from 'nativescript-modal-datetimepicker';
 
-import { dateToString } from './misc';
+import { dateToString } from '../misc';
 
 export function openDatePicker(): Promise<string> {
     const picker = new ModalDatetimepicker();

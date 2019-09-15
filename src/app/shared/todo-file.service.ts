@@ -7,7 +7,7 @@ import { FileService } from './file.service';
 import { RouterService } from './router.service';
 import { SettingsService } from './settings.service';
 import { Task, TaskData, getExtensions } from './task';
-import { showToast } from './toast';
+import { showToast } from './helpers/toast';
 
 @Injectable({
     providedIn: 'root',

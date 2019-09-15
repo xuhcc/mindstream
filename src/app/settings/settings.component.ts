@@ -5,8 +5,8 @@ import { SideDrawerService } from '../nav/sidedrawer.service';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { SettingsService } from '../shared/settings.service';
-import { openFilePicker } from '../shared/file-picker';
 import { FilePathValidator } from '../shared/validators';
+import { openFilePicker } from '../shared/helpers/file-picker';
 
 @Component({
     selector: 'ms-settings',

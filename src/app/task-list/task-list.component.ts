@@ -5,7 +5,6 @@ import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
-import { showConfirmDialog } from '../shared/dialogs';
 import { PullToRefreshService } from '../shared/pulltorefresh.service';
 import { RouterService } from '../shared/router.service';
 import { TaskFilter } from '../shared/settings';
@@ -13,7 +12,8 @@ import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
-import { isIOS } from '../shared/platform';
+import { showConfirmDialog } from '../shared/helpers/dialogs';
+import { isIOS } from '../shared/helpers/platform';
 
 // Use 'require' because the TypeScript module is buggy
 const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires

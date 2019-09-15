@@ -2,7 +2,7 @@ import { TodoTxtItem } from 'jstodotxt';
 import { TodoTxtExtension, DueExtension } from 'jstodotxt/jsTodoExtensions';
 import * as moment from 'moment';
 
-import { dateToString, stringToDate } from '../shared/misc';
+import { dateToString, stringToDate } from './misc';
 
 export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
 export const PRIORITY_REGEXP = /^[A-Z]$/;
