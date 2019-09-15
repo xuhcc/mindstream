@@ -19,12 +19,13 @@
     <Label text="Project"></Label>
     <FlexboxLayout flexDirection="row">
       <TextField
+        #taskProjectField
         flexGrow="1"
         id="project-field"
         class="field field-with-addon"
         formControlName="project"
-        (focus)="showProjectSuggestions = true"
-        (blur)="showProjectSuggestions = false"
+        (focus)="showProjectSuggestions()"
+        (blur)="hideProjectSuggestions()"
       ></TextField>
       <Label
         id="clear-btn"

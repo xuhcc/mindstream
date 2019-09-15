@@ -7,6 +7,7 @@ import { showActionDialog } from '../shared/dialogs';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { dateToString } from '../shared/misc';
+import { isIOS } from '../shared/platform';
 import { Task, DATESTRING_REGEXP, PRIORITY_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
 
 @Component({
@@ -19,10 +20,14 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     form: FormGroup;
     taskId: number;
     projects: string[];
-    showProjectSuggestions = false;
+    projectSuggestionsVisible = false;
+    projectSuggestionsLocked = false;
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
+
+    @ViewChild('taskProjectField', {static: false})
+    taskProjectField: ElementRef;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -74,7 +79,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     getFilteredProjects(): string[] {
-        if (!this.showProjectSuggestions) {
+        if (!this.projectSuggestionsVisible) {
             return [];
         }
         const search = this.form.controls.project.value;
@@ -87,7 +92,30 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         }).sort();
     }
 
+    showProjectSuggestions() {
+        this.projectSuggestionsVisible = true;
+    }
+
+    hideProjectSuggestions() {
+        // On iOS "blur" event is emitted before "tap" event,
+        // so we need to delay hiding
+        setTimeout(() => {
+            if (this.projectSuggestionsLocked) {
+                // Unlock suggestion list and move focus back to project field
+                this.projectSuggestionsLocked = false;
+                this.taskProjectField.nativeElement.focus();
+            } else {
+                // Hide suggestion list
+                this.projectSuggestionsVisible = false;
+            }
+        }, 100);
+    }
+
     setProject(project: string) {
+        if (isIOS) {
+            // Prevent suggestions list from hiding on blur event
+            this.projectSuggestionsLocked = true;
+        }
         this.form.controls.project.setValue(project);
     }
 
