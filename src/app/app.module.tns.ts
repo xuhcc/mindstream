@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { isIOS } from './shared/platform';
+import { ProjectListComponent } from './project-list/project-list.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { isIOS } from './shared/platform';
         SettingsComponent,
         TaskFormComponent,
         TaskListComponent,
+        ProjectListComponent,
     ],
     entryComponents: [
         NavModalComponent,

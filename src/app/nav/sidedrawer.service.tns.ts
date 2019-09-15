@@ -21,6 +21,10 @@ export class SideDrawerService {
             url: '/tasks',
         },
         {
+            title: 'Projects',
+            url: '/projects',
+        },
+        {
             title: 'Plain text',
             url: '/plaintext',
         },

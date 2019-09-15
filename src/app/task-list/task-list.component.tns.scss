@@ -2,9 +2,6 @@
 @import '../../app-variables';
 
 .task-list {
-    font-family: serif;
-    font-size: 16;
-    height: 200;
     separator-color: transparent;
 }
 
@@ -15,6 +12,8 @@
     border-radius: 5;
     border-width: 1;
     color: black;
+    font-family: serif;
+    font-size: 16;
     padding: $main-padding;
     margin-bottom: 5;
 }
