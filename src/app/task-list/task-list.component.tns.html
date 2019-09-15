@@ -85,7 +85,7 @@
                 [className]="task.complete ? 'task-text completed' : 'task-text'"
                 [text]="task.text"
                 textWrap="true"
-                (doubleTap)="editTask(task)"
+                (tap)="editTask(task)"
               ></Label>
             </FlexboxLayout>
           </StackLayout>
