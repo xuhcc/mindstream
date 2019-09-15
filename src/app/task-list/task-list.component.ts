@@ -29,7 +29,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
     filter: TaskFilter = {};
     private ordering = firstBy('complete')
         .thenBy('due', {cmp: compareEmptyGreater})
-        .thenBy('priority', {cmp: compareEmptyGreater});
+        .thenBy('priority', {cmp: compareEmptyGreater})
+        .thenBy('projects');
 
     private fileSubscription: Subscription;
 
