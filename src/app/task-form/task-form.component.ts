@@ -7,7 +7,7 @@ import { showActionDialog } from '../shared/dialogs';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { dateToString } from '../shared/misc';
-import { isIOS } from '../shared/platform';
+import { isAndroid, isIOS } from '../shared/platform';
 import { Task, DATESTRING_REGEXP, PRIORITY_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
 
 @Component({
@@ -71,6 +71,13 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         // Focus on task text field
         setTimeout(() => {
             this.taskTextField.nativeElement.focus();
+            if (isAndroid) {
+                // Fix autosuggestion bug
+                const inputType = this.taskTextField.nativeElement.android.getInputType();
+                this.taskTextField.nativeElement.android.setInputType(
+                    inputType ^ android.text.InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE,
+                );
+            }
         }, 100);
     }
 

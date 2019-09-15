@@ -9,10 +9,11 @@
 
   <StackLayout [formGroup]="form" class="page">
 
-    <Label text="Task text"></Label>
+    <Label text="Task"></Label>
     <TextField
       #taskTextField
       class="field"
+      autocorrect="true"
       formControlName="text"
     ></TextField>
 
