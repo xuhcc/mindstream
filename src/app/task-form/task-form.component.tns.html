@@ -66,7 +66,6 @@
         text="|"
       ></Label>
       <Label
-        id="calendar-btn"
         class="field-addon field-addon-last icon"
         text="&#xe878;"
         (tap)="showDatePicker()"
@@ -74,10 +73,18 @@
     </FlexboxLayout>
 
     <Label text="Recurrence"></Label>
-    <TextField
-      class="field"
-      formControlName="recurrence"
-    ></TextField>
+    <FlexboxLayout flexDirection="row">
+      <TextField
+        flexGrow="1"
+        class="field field-with-addon"
+        formControlName="recurrence"
+      ></TextField>
+      <Label
+        class="field-addon field-addon-last icon"
+        text="&#xe241;"
+        (tap)="showRecurrencePicker()"
+      ></Label>
+    </FlexboxLayout>
 
     <Button
       id="save-btn"

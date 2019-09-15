@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { openDatePicker } from '../shared/date-picker';
+import { showActionDialog } from '../shared/dialogs';
 import { RouterService } from '../shared/router.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { dateToString } from '../shared/misc';
@@ -102,6 +103,22 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     showDatePicker() {
         openDatePicker().then((dateString: string) => {
             this.form.controls.dueDate.setValue(dateString);
+        });
+    }
+
+    showRecurrencePicker() {
+        const map = {
+            'Every day': '1d',
+            'Every week': '1w',
+            'Every month': '1m',
+        };
+        showActionDialog(
+            'Task recurrence',
+            'Choose recurrence interval',
+            Object.keys(map),
+        ).then((result: string) => {
+            const recurrence = map[result];
+            this.form.controls.recurrence.setValue(recurrence);
         });
     }
 
