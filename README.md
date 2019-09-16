@@ -10,6 +10,10 @@ Features:
 - Recurring tasks.
 - Filtering by project, due date.
 
+## Change log
+
+See [CHANGELOG](CHANGELOG.md).
+
 ## Development
 
 Prerequisites:

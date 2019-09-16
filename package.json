@@ -2,6 +2,7 @@
     "name": "mindstream",
     "version": "0.3.0",
     "license": "GPL-3.0-or-later",
+    "repository": "https://github.com/xuhcc/mindstream",
     "private": true,
     "nativescript": {
         "id": "im.mindstream.mobile",
