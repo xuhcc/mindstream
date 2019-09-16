@@ -4,9 +4,9 @@ import * as moment from 'moment';
 
 import { dateToString, stringToDate } from './misc';
 
-export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
+export const PROJECT_REGEXP = /^[^+\s]+$/;
 export const PRIORITY_REGEXP = /^[A-Z]$/;
-
+export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
 export const RECURRENCE_REGEXP = /^([1-7])(d|w|m)$/;
 const RECURRENCE_TAG_REGEXP = /rec:([1-7](d|w|m))(\s|$)/;
 const RECURRENCE_KEYS = {

@@ -4,8 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { dateToString } from '../shared/misc';
 import { RouterService } from '../shared/router.service';
+import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { Task, DATESTRING_REGEXP, PRIORITY_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
+import { Task, PROJECT_REGEXP, PRIORITY_REGEXP, DATESTRING_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { showActionDialog } from '../shared/helpers/dialogs';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
@@ -34,6 +35,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         private formBuilder: FormBuilder,
         private router: RouterService,
         private route: ActivatedRoute,
+        private settings: SettingsService,
         private todoFile: TodoFileService,
     ) { }
 
@@ -44,7 +46,8 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
                 Validators.required,
             ],
             project: [
-                '',
+                this.settings.filter.project,
+                Validators.pattern(PROJECT_REGEXP),
             ],
             priority: [
                 '',
