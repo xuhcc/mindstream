@@ -28,7 +28,7 @@
         "ios": "tns debug ios",
         "ios-unsigned": "./scripts/ios-unsigned.sh",
         "clean": "rm -rf platforms",
-        "version": "./scripts/bump-ios-version.js && git add -A"
+        "version": "./scripts/check-changelog.js && ./scripts/bump-ios-version.js && git add -A"
     },
     "dependencies": {
         "@angular/animations": "8.0.0",
