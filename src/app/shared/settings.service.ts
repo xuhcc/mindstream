@@ -36,4 +36,9 @@ export class SettingsService {
         const filterStr = JSON.stringify(filter);
         localStorage.setItem(Settings.TaskFilter, filterStr);
     }
+
+    reset() {
+        localStorage.removeItem(Settings.TaskFilter);
+        localStorage.removeItem(Settings.Path);
+    }
 }

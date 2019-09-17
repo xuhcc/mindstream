@@ -38,4 +38,9 @@ export class SettingsService {
         const filterStr = JSON.stringify(filter);
         appSettings.setString(Settings.TaskFilter, filterStr);
     }
+
+    reset() {
+        appSettings.remove(Settings.TaskFilter);
+        appSettings.remove(Settings.Path);
+    }
 }

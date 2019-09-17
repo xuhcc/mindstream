@@ -61,4 +61,9 @@ export class SettingsComponent implements OnInit {
         });
     }
 
+    reset() {
+        this.settings.reset();
+        this.form.reset();
+    }
+
 }

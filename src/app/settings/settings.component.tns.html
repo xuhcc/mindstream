@@ -14,22 +14,35 @@
   ></ActionItem>
 </ActionBar>
 
-<StackLayout class="page" [formGroup]="form">
-  <Label text="Path to todo.txt file"></Label>
-  <TextField
-    class="field"
-    formControlName="filePath"
-  ></TextField>
-  <Button
-    class="btn"
-    text="browse"
-    (tap)="openPicker()"
-  ></Button>
-  <Button
-    [className]="form.valid ? 'btn' : 'btn btn-disabled'"
-    text="save"
-    (tap)="save()"
-    [isEnabled]="form.valid"
-  ></Button>
-</StackLayout>
+<DockLayout class="page" stretchLastChild="false">
+  <StackLayout dock="top" [formGroup]="form">
+    <Label text="Path to todo.txt file"></Label>
+    <TextField
+      class="field"
+      formControlName="filePath"
+    ></TextField>
+    <Button
+      class="btn"
+      text="browse"
+      (tap)="openPicker()"
+    ></Button>
+    <Button
+      [className]="form.valid ? 'btn' : 'btn btn-disabled'"
+      text="save"
+      (tap)="save()"
+      [isEnabled]="form.valid"
+    ></Button>
+  </StackLayout>
 
+  <StackLayout dock="bottom">
+    <Label
+      text="Reset app settings"
+      textWrap="true"
+    ></Label>
+    <Button
+      class="btn"
+      text="reset"
+      (tap)="reset()"
+    ></Button>
+  </StackLayout>
+</DockLayout>
