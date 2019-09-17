@@ -12,6 +12,7 @@ import { TodoFileService } from '../shared/todo-file.service';
 import { Task } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 import { showConfirmDialog } from '../shared/helpers/dialogs';
+import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 import { isIOS } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
 
@@ -42,7 +43,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         private settings: SettingsService,
         private todoFile: TodoFileService,
         private sideDrawer: SideDrawerService,
-        private viewContainerRef: ViewContainerRef,
+        private view: ViewContainerRef,
     ) { }
 
     ngOnInit() {
@@ -52,10 +53,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
         // ngOnInit is not called after back-navigation
         // ngOnDestroy is not called before navigation
         // https://github.com/NativeScript/nativescript-angular/issues/1049
-        this.router.onNavigatedTo(this.viewContainerRef, () => {
+        onNavigatedTo(this.view, () => {
             this.fileSubscribe();
         });
-        this.router.onNavigatingFrom(this.viewContainerRef, () => {
+        onNavigatingFrom(this.view, () => {
             this.fileUnsubscribe();
         });
     }
@@ -120,7 +121,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     openDrawer() {
-        this.sideDrawer.open(this.viewContainerRef);
+        this.sideDrawer.open(this.view);
     }
 
     getTaskList(): Task[] {

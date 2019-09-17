@@ -14,13 +14,4 @@ export class RouterService {
 
     backToPreviousPage() {
     }
-
-    onNavigatedTo(container, handler: () => void) { // eslint-disable-line @typescript-eslint/no-unused-vars
-        // Execute immediately
-        handler();
-    }
-
-    onNavigatingFrom(container, handler: () => void) { // eslint-disable-line @typescript-eslint/no-unused-vars
-        // Do nothing
-    }
 }
