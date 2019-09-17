@@ -10,4 +10,8 @@ export class SideDrawerService {
     open(viewContainerRef?: any) {
         console.log(viewContainerRef);
     }
+
+    lock() {}
+
+    unlock() {}
 }

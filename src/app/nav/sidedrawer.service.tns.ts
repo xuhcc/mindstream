@@ -10,6 +10,10 @@ import { isAndroid, isIOS } from 'tns-core-modules/platform';
 import { NavModalComponent } from './nav-modal.component';
 import { APP_NAME } from '../app.constants';
 
+// https://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html
+const LOCK_MODE_LOCKED_CLOSED = 1;
+const LOCK_MODE_UNDEFINED = 3;
+
 @Injectable({
     providedIn: 'root',
 })
@@ -95,5 +99,21 @@ export class SideDrawerService {
                 this.router.navigateByUrl(url);
             }, 50);
         });
+    }
+
+    async lock() {
+        if (isAndroid) {
+            await this.loaded;
+            const layout = (this.drawer as any).drawer.getDrawerLayout();
+            layout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED);
+        }
+    }
+
+    async unlock() {
+        if (isAndroid) {
+            await this.loaded;
+            const layout = (this.drawer as any).drawer.getDrawerLayout();
+            layout.setDrawerLockMode(LOCK_MODE_UNDEFINED);
+        }
     }
 }

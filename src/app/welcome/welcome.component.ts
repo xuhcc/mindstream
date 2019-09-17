@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
+import { SideDrawerService } from '../nav/sidedrawer.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { FilePathValidator } from '../shared/validators';
 import { openFilePicker } from '../shared/helpers/file-picker';
@@ -21,6 +22,7 @@ export class WelcomeComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: RouterService,
         private settings: SettingsService,
+        private sideDrawer: SideDrawerService,
         private todoFile: TodoFileService,
         private view: ViewContainerRef,
     ) {
@@ -28,6 +30,7 @@ export class WelcomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.sideDrawer.lock();
         this.form = this.formBuilder.group({
             filePath: [
                 this.settings.path,
@@ -51,6 +54,7 @@ export class WelcomeComponent implements OnInit {
         const filePath = this.form.value.filePath;
         this.settings.path = filePath;
         this.todoFile.load().then(() => {
+            this.sideDrawer.unlock();
             this.router.navigate(['/tasks'], {clearHistory: true});
         });
     }
