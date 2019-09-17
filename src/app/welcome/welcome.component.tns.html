@@ -1,0 +1,35 @@
+<DockLayout class="page" stretchLastChild="false">
+  <StackLayout dock="bottom" [formGroup]="form">
+    <Label
+      id="welcome-header"
+      text="Welcome!"
+      textWrap="true"
+    ></Label>
+    <Label
+      id="welcome-text"
+      text="Mindstream is a task management app that uses todo.txt file format."
+      textWrap="true"
+    ></Label>
+
+    <Label
+      text="Please choose your todo.txt file:"
+      textWrap="true"
+    ></Label>
+    <TextField
+      class="field"
+      formControlName="filePath"
+    ></TextField>
+
+    <Button
+      class="btn"
+      text="Browse"
+      (tap)="openPicker()"
+    ></Button>
+    <Button
+      class="btn"
+      [className]="form.valid ? 'btn' : 'btn btn-disabled'"
+      text="Continue"
+      (tap)="save()"
+    ></Button>
+  </StackLayout>
+</DockLayout>

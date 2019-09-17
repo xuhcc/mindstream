@@ -5,13 +5,19 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
-import { TaskListGuard } from './task-list/task-list.guard';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { WelcomeGuard } from './welcome/welcome.guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/tasks',
+        redirectTo: '/welcome',
         pathMatch: 'full',
+    },
+    {
+        path: 'welcome',
+        component: WelcomeComponent,
+        canActivate: [WelcomeGuard],
     },
     {
         path: 'plaintext',
@@ -24,7 +30,6 @@ export const routes: Routes = [
     {
         path: 'tasks',
         component: TaskListComponent,
-        canActivate: [TaskListGuard],
     },
     {
         path: 'task-detail',

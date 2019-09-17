@@ -15,3 +15,8 @@ export function onNavigatingFrom(container: ViewContainerRef, handler: () => voi
     const page = container.injector.get(Page);
     page.on('navigatingFrom', handler);
 }
+
+export function hideActionBar(container: ViewContainerRef) {
+    const page = container.injector.get(Page);
+    page.actionBarHidden = true;
+}

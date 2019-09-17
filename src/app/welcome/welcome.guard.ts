@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 
-import { SettingsService } from '../shared/settings.service';
 import { RouterService } from '../shared/router.service';
+import { SettingsService } from '../shared/settings.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class TaskListGuard implements CanActivate {
+export class WelcomeGuard implements CanActivate {
 
     constructor(
         private settings: SettingsService,
         private router: RouterService,
     ) {}
 
-    canActivate() {
+    canActivate(): boolean {
         if (this.settings.path) {
-            return true;
-        } else {
-            this.router.navigate(['/settings']);
+            // Skip welcome screen
+            this.router.navigate(['/tasks']);
             return false;
+        } else {
+            return true;
         }
     }
 }

@@ -1,0 +1,25 @@
+@import '../../app-common';
+@import '../../app-variables';
+
+.page {
+    background: linear-gradient(to bottom, $menu-color, $page-color);
+    font-size: 16;
+}
+
+#welcome-header {
+    font-size: 46;
+    font-weight: 300;
+    margin-bottom: 16;
+}
+
+#welcome-text {
+    margin-bottom: 32;
+}
+
+.field {
+    margin: 5 0 0;
+}
+
+.btn {
+    margin-top: 10;
+}

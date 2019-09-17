@@ -8,8 +8,8 @@ export class RouterService {
 
     constructor(private router: RouterExtensions) { }
 
-    navigate(parameters: any[]) {
-        this.router.navigate(parameters);
+    navigate(parameters: any[], extras?: any) {
+        this.router.navigate(parameters, extras);
     }
 
     backToPreviousPage() {
