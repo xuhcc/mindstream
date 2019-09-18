@@ -16,6 +16,9 @@ import { hideActionBar } from '../shared/helpers/page';
 })
 export class WelcomeComponent implements OnInit {
 
+    welcomeText = 'Mindstream is a task management app that uses ' +
+        '<a href="http://todotxt.org/">todo.txt</a> file format.';
+
     form: FormGroup;
 
     constructor(

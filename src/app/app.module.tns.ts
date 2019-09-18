@@ -17,6 +17,7 @@ import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { CustomHtmlView } from './shared/custom-html-view/custom-html-view';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ export class AppModule {
     constructor() {
         registerElement('Fab', () => Fab);
         registerElement('PullToRefresh', () => PullToRefresh);
+        registerElement('CustomHtmlView', () => CustomHtmlView);
         if (isIOS) {
             const iqKeyboard = IQKeyboardManager.sharedManager(); // eslint-disable-line no-undef
             iqKeyboard.shouldResignOnTouchOutside = true;

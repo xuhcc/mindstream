@@ -5,11 +5,10 @@
       text="Welcome!"
       textWrap="true"
     ></Label>
-    <Label
+    <CustomHtmlView
       id="welcome-text"
-      text="Mindstream is a task management app that uses todo.txt file format."
-      textWrap="true"
-    ></Label>
+      [html]="welcomeText"
+    ></CustomHtmlView>
 
     <Label
       text="Please choose your todo.txt file or press &quot;Skip&quot; to create a new file:"
