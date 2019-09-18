@@ -103,4 +103,8 @@ export class TodoFileService {
         this.fileChanged.next(false);
     }
 
+    async create(): Promise<string> {
+        return this.file.create('todo.txt');
+    }
+
 }

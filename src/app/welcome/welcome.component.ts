@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
@@ -34,7 +34,7 @@ export class WelcomeComponent implements OnInit {
         this.form = this.formBuilder.group({
             filePath: [
                 this.settings.path,
-                [Validators.required, FilePathValidator()],
+                FilePathValidator(),
             ],
         });
     }
@@ -52,10 +52,19 @@ export class WelcomeComponent implements OnInit {
             return;
         }
         const filePath = this.form.value.filePath;
-        this.settings.path = filePath;
-        this.todoFile.load().then(() => {
-            this.sideDrawer.unlock();
-            this.router.navigate(['/tasks'], {clearHistory: true});
+        let filePromise;
+        if (!filePath) {
+            // Create empty todo.txt
+            filePromise = this.todoFile.create();
+        } else {
+            filePromise = new Promise((resolve) => resolve(filePath));
+        }
+        filePromise.then((path: string) => {
+            this.settings.path = path;
+            this.todoFile.load().then(() => {
+                this.sideDrawer.unlock();
+                this.router.navigate(['/tasks'], {clearHistory: true});
+            });
         });
     }
 

@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+export function isValidPath(path: string): boolean {
+    console.log(path);
+    return true;
+}
+
 @Injectable({
     providedIn: 'root',
 })
@@ -46,9 +51,8 @@ export class FileService {
             }, 0);
         });
     }
-}
 
-export function isValidPath(path: string): boolean {
-    console.log(path);
-    return true;
+    create(name: string): Promise<string> {
+        return new Promise(resolve => resolve(name));
+    }
 }

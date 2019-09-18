@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { File, Folder } from 'tns-core-modules/file-system';
+import { knownFolders, File, Folder } from 'tns-core-modules/file-system';
 import { isAndroid } from 'tns-core-modules/platform';
 import * as permissions from 'nativescript-permissions';
+
+export function isValidPath(path: string): boolean {
+    if (path && File.exists(path) && !Folder.exists(path)) {
+        return true;
+    }
+    return false;
+}
 
 @Injectable({
     providedIn: 'root',
@@ -45,11 +52,20 @@ export class FileService {
         const file = File.fromPath(path);
         await file.writeText(content);
     }
-}
 
-export function isValidPath(path: string): boolean {
-    if (path && File.exists(path) && !Folder.exists(path)) {
-        return true;
+    async create(name: string): Promise<string> {
+        const hasPermission = await this.checkPermission();
+        if (!hasPermission) {
+            throw new Error('permission denied');
+        }
+        const documents = knownFolders.documents();
+        const file = documents.getFile(name);
+        if (isValidPath(file.path)) {
+            console.warn('file already exists on default path');
+        } else {
+            // Write empty string to create a file
+            await file.writeText('');
+        }
+        return file.path;
     }
-    return false;
 }

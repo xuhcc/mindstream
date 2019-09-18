@@ -12,7 +12,7 @@
     ></Label>
 
     <Label
-      text="Please choose your todo.txt file:"
+      text="Please choose your todo.txt file or press &quot;Skip&quot; to create a new file:"
       textWrap="true"
     ></Label>
     <TextField
@@ -26,9 +26,8 @@
       (tap)="openPicker()"
     ></Button>
     <Button
-      class="btn"
       [className]="form.valid ? 'btn' : 'btn btn-disabled'"
-      text="Continue"
+      [text]="form.controls.filePath.value ? 'Continue' : 'Skip'"
       (tap)="save()"
     ></Button>
   </StackLayout>
