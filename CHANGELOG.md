@@ -7,6 +7,7 @@
 - Change app icon on iOS.
 - Render task text as markdown.
 - Enabled coloring of due date tag, similar to priorities.
+- Changed datepicker type to calendar on Android.
 
 ## 0.3.0
 
