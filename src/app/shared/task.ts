@@ -7,6 +7,29 @@ import { dateToString, stringToDate } from './misc';
 export const PROJECT_REGEXP = /^[^+\s]+$/;
 export const PRIORITY_REGEXP = /^[A-Z]$/;
 export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
+
+export enum DateType {
+    Past = 'past',
+    Today = 'today',
+    Tomorrow = 'tomorrow',
+    Future = 'future',
+}
+
+export function getDateType(date: Date): DateType {
+    const mDate = moment(date);
+    const today = moment().startOf('day');
+    const tomorrow = today.clone().add(1, 'day');
+    if (mDate < today) {
+        return DateType.Past;
+    } else if (mDate.isSame(today)) {
+        return DateType.Today;
+    } else if (mDate.isSame(tomorrow)) {
+        return DateType.Tomorrow;
+    } else {
+        return DateType.Future;
+    }
+}
+
 export const RECURRENCE_REGEXP = /^([1-7])(d|w|m)$/;
 const RECURRENCE_TAG_REGEXP = /rec:([1-7](d|w|m))(\s|$)/;
 const RECURRENCE_KEYS = {
@@ -117,11 +140,20 @@ export class Task {
         return this.todoItem.completed;
     }
 
-    isOverdue(): boolean {
+    getDueDatePriority(): string {
         if (!this.todoItem.due) {
-            return false;
+            return 'Z';
         }
-        return moment(this.todoItem.due) < moment().startOf('day');
+        const dueDateType = getDateType(this.todoItem.due);
+        if (dueDateType === DateType.Past) {
+            return 'A';
+        } else if (dueDateType === DateType.Today) {
+            return 'B';
+        } else if (dueDateType === DateType.Tomorrow) {
+            return 'C';
+        } else {
+            return 'Z';
+        }
     }
 
     static create(taskData: TaskData): Task {

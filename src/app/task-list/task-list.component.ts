@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild }
 import { formatDate } from '@angular/common';
 
 import * as MarkdownIt from 'markdown-it';
-import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
@@ -10,7 +9,7 @@ import { RouterService } from '../shared/router.service';
 import { TaskFilter } from '../shared/settings';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { Task } from '../shared/task';
+import { Task, DateType, getDateType } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 import { showConfirmDialog } from '../shared/helpers/dialogs';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
@@ -100,12 +99,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     getDateDisplay(date: Date): string {
-        const mDate = moment(date);
-        const today = moment().startOf('day');
-        const tomorrow = today.clone().add(1, 'day');
-        if (mDate.isSame(today)) {
+        const dateType = getDateType(date);
+        if (dateType === DateType.Today) {
             return 'today';
-        } else if (mDate.isSame(tomorrow)) {
+        } else if (dateType === DateType.Tomorrow) {
             return 'tomorrow';
         } else {
             return formatDate(date, 'dd.MM.yyyy', 'en-US');

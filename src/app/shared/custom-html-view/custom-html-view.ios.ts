@@ -16,7 +16,7 @@ export class CustomHtmlView extends HtmlView {
         // https://github.com/NativeScript/NativeScript/issues/4358
         this.nativeViewProtected.textContainer.lineFragmentPadding = 0;
         // https://stackoverflow.com/questions/746670/how-to-lose-margin-padding-in-uitextview
-        this.nativeViewProtected.textContainerInset = (UIEdgeInsets as any).zero;
+        this.nativeViewProtected.textContainerInset = (UIEdgeInsets as any).zero; // eslint-disable-line no-undef
     }
 
     [colorProperty.setNative](value: Color) {

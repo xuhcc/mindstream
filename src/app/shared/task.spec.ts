@@ -48,7 +48,7 @@ describe('RecurrenceExtension', () => {
     });
 });
 
-describe('TaskData', () => {
+describe('Task', () => {
     it('should init', () => {
         const todoItem = new TodoTxtItem(
             '(A) test +proj due:2019-01-01',
@@ -64,6 +64,11 @@ describe('TaskData', () => {
         expect(task.due).toEqual(stringToDate('2019-01-01'));
         expect(task.complete).toBe(false);
         expect(task.completed).toBe(null);
+    });
+
+    it('should get due date as priority', () => {
+        const task = Task.parse('(B) test due:2019-01-01');
+        expect(task.getDueDatePriority()).toBe('A');
     });
 
     it('should create task', () => {
