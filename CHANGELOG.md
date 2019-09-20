@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+- Removed camera and microphone permission requirements.
+
 ## 0.4.0
 
 - Added welcome screen.
