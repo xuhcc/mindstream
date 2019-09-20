@@ -10,7 +10,9 @@ Features:
 - Recurring tasks.
 - Filtering by project, due date.
 
-## Change log
+<img src="metadata/en-US/images/phoneScreenshots/screenshot_tasks.png" width="360"> <img src="metadata/en-US/images/phoneScreenshots/screenshot_add_task.png" width="360">
+
+## Changelog
 
 See [CHANGELOG](CHANGELOG.md).
 
