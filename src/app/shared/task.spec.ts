@@ -1,8 +1,27 @@
 import { TodoTxtItem } from 'jstodotxt';
 import { DueExtension } from 'jstodotxt/jsTodoExtensions';
+import * as moment from 'moment';
 
 import { Task, getExtensions, RecurrenceExtension, TaskRecurrence } from './task';
 import { stringToDate } from './misc';
+
+describe('TaskRecurrence', () => {
+    it('should add day', () => {
+        const date = new Date();
+        const recurrence = new TaskRecurrence('1d');
+        const newDate = recurrence.addTo(date);
+        const diff = moment.duration(+newDate - +date);
+        expect(diff.asDays()).toBeCloseTo(1);
+    });
+
+    it('should add month', () => {
+        const date = new Date();
+        const recurrence = new TaskRecurrence('1m');
+        const newDate = recurrence.addTo(date);
+        const diff = moment.duration(+newDate - +date);
+        expect(diff.asMonths()).toBeCloseTo(1, 1);
+    });
+});
 
 describe('DueExtension', () => {
     let extension;

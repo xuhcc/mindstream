@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+
+- Fixed bug where montly tasks were not completed properly.
+
 ## 0.4.1
 
 - Removed camera and microphone permission requirements.

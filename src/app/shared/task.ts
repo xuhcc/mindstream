@@ -55,7 +55,11 @@ export class TaskRecurrence {
 
     addTo(date: Date): Date {
         const mDate = moment(date) as any;
-        return mDate.add(this.amount, this.key).toDate();
+        const newDate = mDate.add(
+            this.amount,
+            this.key === 'm' ? 'M' : this.key,
+        ).toDate();
+        return newDate;
     }
 
     display(): string {
