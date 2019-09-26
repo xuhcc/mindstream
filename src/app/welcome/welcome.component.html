@@ -1,1 +1,4 @@
-<p>welcome works!</p>
+<form [formGroup]="form">
+  <input type="text" formControlName="filePath">
+  <button (click)="save()">save</button>
+</form>
