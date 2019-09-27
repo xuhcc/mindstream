@@ -3,6 +3,7 @@
 ## 0.4.2
 
 - Fixed bug where montly tasks were not completed properly.
+- Improved app performance.
 
 ## 0.4.1
 
