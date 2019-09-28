@@ -1,6 +1,7 @@
 # Mindstream
 
-[![License: GPL v3](https://img.shields.io/github/license/xuhcc/beancount-mobile)](https://github.com/xuhcc/beancount-mobile/blob/HEAD/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/xuhcc/mindstream)](https://github.com/xuhcc/mindstream/releases)
+[![License: GPL v3](https://img.shields.io/github/license/xuhcc/mindstream)](https://github.com/xuhcc/mindstream/blob/HEAD/LICENSE)
 
 Task management app that uses [todo.txt](http://todotxt.org/) format.
 
@@ -23,7 +24,7 @@ See [CHANGELOG](CHANGELOG.md).
 Prerequisites:
 
 * Node.js & NPM
-* [NativeScript CLI](https://docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 6.0
+* [NativeScript CLI](https://docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 6.1
 
 Install required packages:
 
@@ -33,7 +34,7 @@ npm install
 
 ### Mobile
 
-Run in android emulator:
+Run in Android emulator:
 
 ```
 npm run android
