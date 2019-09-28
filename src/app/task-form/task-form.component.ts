@@ -6,11 +6,17 @@ import { dateToString } from '../shared/misc';
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
-import { Task, PROJECT_REGEXP, PRIORITY_REGEXP, DATESTRING_REGEXP, RECURRENCE_REGEXP } from '../shared/task';
+import {
+    Task,
+    PROJECT_LIST_REGEXP,
+    PRIORITY_REGEXP,
+    DATESTRING_REGEXP,
+    RECURRENCE_REGEXP,
+} from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { showActionDialog } from '../shared/helpers/dialogs';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
-import { isIOS } from '../shared/helpers/platform';
+import { isAndroid, isIOS } from '../shared/helpers/platform';
 
 @Component({
     selector: 'ms-task-form',
@@ -28,8 +34,8 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
 
-    @ViewChild('taskProjectField', {static: false})
-    taskProjectField: ElementRef;
+    @ViewChild('taskProjectsField', {static: false})
+    taskProjectsField: ElementRef;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -45,9 +51,9 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
                 '',
                 Validators.required,
             ],
-            project: [
+            projects: [
                 this.settings.filter.project,
-                Validators.pattern(PROJECT_REGEXP),
+                Validators.pattern(PROJECT_LIST_REGEXP),
             ],
             priority: [
                 '',
@@ -87,10 +93,15 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         if (!this.projectSuggestionsVisible) {
             return [];
         }
-        const search = this.form.controls.project.value;
-        if (!search) {
+        const value = this.form.controls.projects.value
+        if (!value) {
             return [];
         }
+        const projects = value.split(/\s+/);
+        if (projects.length === 0) {
+            return [];
+        }
+        const search = projects[projects.length - 1];
         const searchRegexp = new RegExp(search, 'iu');
         return this.projects.filter((project) => {
             return project.search(searchRegexp) !== -1;
@@ -108,7 +119,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             if (this.projectSuggestionsLocked) {
                 // Unlock suggestion list and move focus back to project field
                 this.projectSuggestionsLocked = false;
-                this.taskProjectField.nativeElement.focus();
+                this.taskProjectsField.nativeElement.focus();
             } else {
                 // Hide suggestion list
                 this.projectSuggestionsVisible = false;
@@ -116,16 +127,26 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         }, 100);
     }
 
-    setProject(project: string) {
+    addProject(project: string) {
         if (isIOS) {
             // Prevent suggestions list from hiding on blur event
             this.projectSuggestionsLocked = true;
         }
-        this.form.controls.project.setValue(project);
+        const projects = this.form.controls.projects.value.split(/\s+/);
+        projects[projects.length - 1] = project;
+        const newValue = projects.join(' ');
+        this.form.controls.projects.setValue(newValue);
+        if (isAndroid) {
+            // Move cursor to the end of string
+            this.taskProjectsField.nativeElement.android.setSelection(newValue.length);
+        }
     }
 
-    clearProject() {
-        this.form.controls.project.reset();
+    removeProject() {
+        const projects = this.form.controls.projects.value.split(/\s+/);
+        projects.pop();
+        const newValue = projects.join(' ');
+        this.form.controls.projects.setValue(newValue);
     }
 
     setDueToday() {

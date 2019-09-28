@@ -17,22 +17,22 @@
       formControlName="text"
     ></TextField>
 
-    <Label text="Project"></Label>
+    <Label text="Projects"></Label>
     <FlexboxLayout flexDirection="row">
       <TextField
-        #taskProjectField
+        #taskProjectsField
         flexGrow="1"
         id="project-field"
         class="field field-with-addon"
-        formControlName="project"
+        formControlName="projects"
         (focus)="showProjectSuggestions()"
         (blur)="hideProjectSuggestions()"
       ></TextField>
       <Label
         id="clear-btn"
         class="field-addon field-addon-last icon"
-        [text]="form.controls.project.value ? '&#xe14c;' : ''"
-        (tap)="clearProject()"
+        [text]="form.controls.projects.value ? '&#xe14c;' : ''"
+        (tap)="removeProject()"
       ></Label>
     </FlexboxLayout>
     <StackLayout class="project-list">
@@ -40,7 +40,7 @@
         *ngFor="let project of getFilteredProjects()"
         class="project"
         [text]="project"
-        (tap)="setProject(project)"
+        (tap)="addProject(project)"
       ></Label>
     </StackLayout>
 

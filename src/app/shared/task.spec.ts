@@ -93,14 +93,17 @@ describe('Task', () => {
     it('should create task', () => {
         const formData = {
             text: 'test',
-            project: 'testproject',
+            projects: 'testproject1 testproject2',
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1w',
         };
         const task = Task.create(formData);
         expect(task.todoItem.text).toEqual('test');
-        expect(task.todoItem.projects).toEqual(['testproject']);
+        expect(task.todoItem.projects).toEqual([
+            'testproject1',
+            'testproject2',
+        ]);
         expect(task.todoItem.priority).toEqual('A');
         expect(task.todoItem.due).toEqual(stringToDate('2019-01-01'));
         expect(task.todoItem.dueString).toEqual('2019-01-01');
@@ -114,7 +117,7 @@ describe('Task', () => {
 
         const formData = {
             text: 'abc',
-            project: '',
+            projects: '',
             priority: 'B',
             dueDate: '',
             recurrence: '',
@@ -139,11 +142,11 @@ describe('Task', () => {
     });
 
     it('should transform to task data', () => {
-        const task = Task.parse('(A) test +pro due:2019-01-01 rec:1d');
+        const task = Task.parse('(A) test +pro1 +pro2 due:2019-01-01 rec:1d');
         const taskData = task.toTaskData();
         expect(taskData).toEqual({
             text: 'test',
-            project: 'pro',
+            projects: 'pro1 pro2',
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1d',

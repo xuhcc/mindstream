@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { dateToString, stringToDate } from './misc';
 
 export const PROJECT_REGEXP = /^[^+\s]+$/;
+export const PROJECT_LIST_REGEXP = /^[^+]+$/;
 export const PRIORITY_REGEXP = /^[A-Z]$/;
 export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
 
@@ -101,7 +102,7 @@ export function getExtensions(): TodoTxtExtension[] {
 
 export interface TaskData {
     text: string;
-    project: string;
+    projects: string;
     priority: string;
     dueDate: string;
     recurrence: string;
@@ -163,8 +164,8 @@ export class Task {
     static create(taskData: TaskData): Task {
         const todoItem = new TodoTxtItem(taskData.text, getExtensions());
         todoItem.date = new Date();
-        if (taskData.project) {
-            todoItem.projects = [taskData.project];
+        if (taskData.projects) {
+            todoItem.projects = taskData.projects.split(/\s+/);
         }
         if (taskData.priority) {
             todoItem.priority = taskData.priority;
@@ -192,8 +193,8 @@ export class Task {
 
     update(taskData: TaskData) {
         this.todoItem.text = taskData.text;
-        if (taskData.project) {
-            this.todoItem.projects = [taskData.project];
+        if (taskData.projects) {
+            this.todoItem.projects = taskData.projects.split(/\s+/);
         } else {
             this.todoItem.projects = null;
         }
@@ -219,9 +220,9 @@ export class Task {
     }
 
     toTaskData(): TaskData {
-        let project = '';
+        let projects = '';
         if (this.todoItem.projects && this.todoItem.projects.length > 0) {
-            project = this.todoItem.projects[0];
+            projects = this.todoItem.projects.join(' ');
         }
         let dueDate = '';
         if (this.todoItem.due) {
@@ -233,7 +234,7 @@ export class Task {
         }
         return {
             text: this.todoItem.text,
-            project: project,
+            projects: projects,
             priority: this.todoItem.priority,
             dueDate: dueDate,
             recurrence: recurrence,

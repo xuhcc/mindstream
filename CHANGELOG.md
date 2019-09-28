@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Allowed to add mutiple projects to task.
+
 ## 0.4.2
 
 - Fixed bug where montly tasks were not completed properly.
