@@ -75,7 +75,8 @@ export class TodoFileService {
     }
 
     removeTask(taskId: number) {
-        this.todoItems.splice(taskId, 1);
+        // Keep task IDs intact
+        delete this.todoItems[taskId];
         this.content = this.render();
         this.save();
     }

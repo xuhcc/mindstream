@@ -9,7 +9,10 @@ describe('TodoFileService', () => {
 
     beforeEach(() => TestBed.configureTestingModule({
         providers: [
-            {provide: FileService, useValue: {read: () => fileContent}},
+            {provide: FileService, useValue: {
+                read: () => fileContent,
+                write: () => {},
+            }},
             {provide: RouterService, useValue: {}},
         ],
     }));
@@ -35,5 +38,16 @@ describe('TodoFileService', () => {
             'project3',
             'project4',
         ]);
+    });
+
+    it('should remove task', async () => {
+        const service: TodoFileService = TestBed.get(TodoFileService);
+        fileContent = 'task1\ntask2\ntask3';
+        await service.load();
+        expect(service.todoItems.length).toBe(3);
+        service.removeTask(1);
+        expect(service.todoItems.length).toBe(3);
+        expect(service.todoItems[1]).toBeUndefined();
+        expect(service.content).toEqual('task1\ntask3');
     });
 });

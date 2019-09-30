@@ -3,10 +3,11 @@
 ## 0.5.0
 
 - Allowed to add mutiple projects to task.
+- Fixed bug in task removal.
 
 ## 0.4.2
 
-- Fixed bug where montly tasks were not completed properly.
+- Fixed bug where monthly tasks were not completed properly.
 - Improved app performance.
 
 ## 0.4.1
