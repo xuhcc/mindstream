@@ -11,7 +11,7 @@ import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task, DateType, getDateType } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
-import { showConfirmDialog } from '../shared/helpers/dialogs';
+import { showActionDialog, showConfirmDialog } from '../shared/helpers/dialogs';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 import { isAndroid, isIOS } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
@@ -180,6 +180,27 @@ export class TaskListComponent implements OnInit, OnDestroy {
         }
     }
 
+    showTaskMenu(task: Task, event: any) {
+        if (isIOS && event.ios.state !== 3) {
+            // Don't postpone until end of pressing
+            // https://github.com/NativeScript/NativeScript/issues/3573
+            return;
+        }
+        showActionDialog(
+            'Task menu',
+            'Choose action',
+            ['Postpone', 'Edit', 'Remove'],
+        ).then((action: string) => {
+            if (action === 'Postpone') {
+                this.postponeTask(task);
+            } else if (action === 'Edit') {
+                this.editTask(task, null);
+            } else if (action === 'Remove') {
+                this.removeTask(task);
+            }
+        });
+    }
+
     toggleComplete(task: Task) {
         if (task.due && task.rec && !task.completed) {
             const newTask = task.recur();
@@ -190,12 +211,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.todoFile.replaceTask(task.id, task);
     }
 
-    postponeTask(task: Task, event: any) {
-        if (isIOS && event.ios.state !== 3) {
-            // Don't postpone until end of pressing
-            // https://github.com/NativeScript/NativeScript/issues/3573
-            return;
-        }
+    postponeTask(task: Task) {
         if (task.postpone()) {
             this.refreshTaskList();
             this.todoFile.replaceTask(task.id, task);
@@ -203,7 +219,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     editTask(task: Task, event: any) {
-        if (isAndroid) {
+        if (isAndroid && event) {
             // Get tapped word
             const element = event.object.nativeView;
             const tapPosition = element.getOffsetForPosition(
@@ -227,19 +243,16 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.router.navigate(['/task-detail', {taskId: task.id}]);
     }
 
-    removeTask(task: Task, event: any) {
-        // Only when swiping right and left (NS SwipeDirection enum)
-        if (event.direction === 1 || event.direction === 2) {
-            showConfirmDialog(
-                'Task removal',
-                `Are you sure you want to remove "${task.text}"?`,
-            ).then((result: boolean) => {
-                if (result) {
-                    this.tasks.splice(this.tasks.indexOf(task), 1);
-                    this.todoFile.removeTask(task.id);
-                }
-            });
-        }
+    removeTask(task: Task) {
+        showConfirmDialog(
+            'Task removal',
+            `Are you sure you want to remove "${task.text}"?`,
+        ).then((result: boolean) => {
+            if (result) {
+                this.tasks.splice(this.tasks.indexOf(task), 1);
+                this.todoFile.removeTask(task.id);
+            }
+        });
     }
 
     addTask() {

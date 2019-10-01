@@ -40,10 +40,7 @@
       <ng-template let-task="item">
         <!-- Extra layout is needed for correct styling -->
         <StackLayout>
-          <StackLayout
-            class="task"
-            (swipe)="removeTask(task, $event)"
-          >
+          <StackLayout class="task">
             <FlexboxLayout
               flexDirection="row"
               justifyContent="flex-end"
@@ -78,7 +75,7 @@
                 class="task-checkbox icon"
                 [text]="task.complete ? '&#xe876;' : ''"
                 (tap)="toggleComplete(task)"
-                (longPress)="postponeTask(task, $event)">
+                (longPress)="showTaskMenu(task, $event)"
               ></Label>
               <CustomHtmlView
                 flexGrow="1"

@@ -8,6 +8,7 @@
 - Prevented opening of task form after tapping on link in Android app.
 - Enabled long-tap text selection on Android.
 - Changed project list design.
+- Show task menu after long press on checkbox.
 
 ## 0.4.2
 
