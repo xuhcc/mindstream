@@ -7,11 +7,17 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 
 <a href="https://play.google.com/store/apps/details?id=im.mindstream.mobile"><img width="200" alt="Get it on Google Play" src="https://play.google.com/intl/en_gb/badges/images/generic/en_badge_web_generic.png" /></a>
 
-Features:
+## Features
 
 - Projects, priorities, due dates.
 - Recurring tasks.
 - Filtering by project, due date.
+
+### Supported todo.txt extensions:
+
+- Tasks with due date: `due:2019-01-01`.
+- Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month).
+- Hidden tasks: `h:1`.
 
 <img src="metadata/en-US/images/phoneScreenshots/screenshot_tasks.png" width="360"> <img src="metadata/en-US/images/phoneScreenshots/screenshot_add_task.png" width="360">
 

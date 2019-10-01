@@ -9,10 +9,13 @@ describe('TodoFileService', () => {
 
     beforeEach(() => TestBed.configureTestingModule({
         providers: [
-            {provide: FileService, useValue: {
-                read: () => fileContent,
-                write: () => {},
-            }},
+            {
+                provide: FileService,
+                useValue: {
+                    read: () => fileContent,
+                    write: () => {},
+                },
+            },
             {provide: RouterService, useValue: {}},
         ],
     }));

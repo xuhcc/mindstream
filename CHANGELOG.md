@@ -4,6 +4,7 @@
 
 - Allowed to add mutiple projects to task.
 - Fixed bug in task removal.
+- Added support for hidden tasks.
 
 ## 0.4.2
 

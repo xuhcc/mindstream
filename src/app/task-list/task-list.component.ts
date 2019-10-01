@@ -128,14 +128,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     private isTaskVisible(task: Task): boolean {
-        let isVisible = true;
-        // Default filter
-        if (task.complete) {
+        let isVisible = !task.hidden;
+        // Default filter (hide old completed tasks)
+        if (isVisible && task.complete) {
             const timeDiff = +new Date() - +task.completed;
             const limit = 2 * 24 * 3600 * 1000; // 2 days
             isVisible = (timeDiff < limit);
-        } else {
-            isVisible = true;
         }
         // Filter by project
         if (isVisible && this.filter.project) {

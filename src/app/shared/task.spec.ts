@@ -75,7 +75,7 @@ describe('Task', () => {
         );
         const task = new Task(todoItem);
         expect(task.todoItem).toBe(todoItem);
-        expect(task.todoItem.extensions.length).toBe(2);
+        expect(task.todoItem.extensions.length).toBe(3);
         expect(task.todoItem.date).toBe(null);
         expect(task.text).toBe('test');
         expect(task.priority).toBe('A');
@@ -83,6 +83,7 @@ describe('Task', () => {
         expect(task.due).toEqual(stringToDate('2019-01-01'));
         expect(task.complete).toBe(false);
         expect(task.completed).toBe(null);
+        expect(task.hidden).toBe(false);
     });
 
     it('should get due date as priority', () => {

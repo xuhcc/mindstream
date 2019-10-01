@@ -1,5 +1,9 @@
 import { TodoTxtItem } from 'jstodotxt';
-import { TodoTxtExtension, DueExtension } from 'jstodotxt/jsTodoExtensions';
+import {
+    TodoTxtExtension,
+    DueExtension,
+    HiddenExtension,
+} from 'jstodotxt/jsTodoExtensions';
 import * as moment from 'moment';
 
 import { dateToString, stringToDate } from './misc';
@@ -97,6 +101,7 @@ export function getExtensions(): TodoTxtExtension[] {
     return [
         new DueExtension(),
         new RecurrenceExtension(),
+        new HiddenExtension(),
     ];
 }
 
@@ -143,6 +148,10 @@ export class Task {
 
     get completed(): Date {
         return this.todoItem.completed;
+    }
+
+    get hidden(): boolean {
+        return this.todoItem.hidden;
     }
 
     getDueDatePriority(): string {
