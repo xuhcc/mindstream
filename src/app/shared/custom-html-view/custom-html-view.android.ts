@@ -11,6 +11,13 @@ import { linkColorProperty } from './custom-html-view-common';
 
 export class CustomHtmlView extends HtmlView {
 
+    public initNativeView(): void {
+        super.initNativeView();
+        // For consistency with iOS
+        this.nativeViewProtected.setTextIsSelectable(true);
+        this.nativeViewProtected.setMovementMethod(android.text.method.LinkMovementMethod.getInstance());
+    }
+
     [colorProperty.setNative](value: Color) {
         this.nativeViewProtected.setTextColor(value.android);
     }

@@ -5,6 +5,8 @@
 - Allowed to add mutiple projects to task.
 - Fixed bug in task removal.
 - Added support for hidden tasks.
+- Prevented opening of task form after tapping on link in Android app.
+- Enabled long-tap text selection on Android.
 
 ## 0.4.2
 

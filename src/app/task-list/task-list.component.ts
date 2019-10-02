@@ -13,7 +13,7 @@ import { Task, DateType, getDateType } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 import { showConfirmDialog } from '../shared/helpers/dialogs';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
-import { isIOS } from '../shared/helpers/platform';
+import { isAndroid, isIOS } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
 
 // Use 'require' because the TypeScript module is buggy
@@ -202,7 +202,28 @@ export class TaskListComponent implements OnInit, OnDestroy {
         }
     }
 
-    editTask(task: Task) {
+    editTask(task: Task, event: any) {
+        if (isAndroid) {
+            // Get tapped word
+            const element = event.object.nativeView;
+            const tapPosition = element.getOffsetForPosition(
+                event.android.getX(),
+                event.android.getY(),
+            );
+            const text = element.getText().toString();
+            const left = text.slice(0, tapPosition + 1).search(/\S+$/);
+            const right = text.slice(tapPosition).search(/\s/);
+            let word;
+            if (right < 0) {
+                word = text.slice(left);
+            } else {
+                word = text.slice(left, right + tapPosition);
+            }
+            if (this.markdown.linkify.test(word)) {
+                // This is a link, don't open form
+                return;
+            }
+        }
         this.router.navigate(['/task-detail', {taskId: task.id}]);
     }
 
