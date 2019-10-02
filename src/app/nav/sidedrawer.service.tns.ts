@@ -21,12 +21,12 @@ export class SideDrawerService {
 
     private navigationMenu = [
         {
-            title: 'Tasks',
-            url: '/tasks',
-        },
-        {
             title: 'Projects',
             url: '/projects',
+        },
+        {
+            title: 'Tasks',
+            url: '/tasks',
         },
         {
             title: 'Plain text',

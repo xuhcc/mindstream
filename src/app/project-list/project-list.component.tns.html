@@ -14,24 +14,19 @@
   ></ActionItem>
 </ActionBar>
 
-<ListView
-  height="100%"
-  class="page item-list"
-  [items]="projects"
->
-  <ng-template let-project="item">
-    <!-- Extra layout is needed for correct styling -->
-    <StackLayout>
-      <StackLayout
-        class="project"
-      >
-        <Label
-          [text]="project"
-          textWrap="true"
-          (tap)="showTaskList(project)"
-        ></Label>
-      </StackLayout>
-    </StackLayout>
-  </ng-template>
-</ListView>
-
+<ScrollView>
+  <FlexboxLayout
+    class="page"
+    flexDirection="row"
+    flexWrap="wrap"
+    justifyContent="center"
+  >
+    <Label
+      *ngFor="let project of projects"
+      class="project"
+      [text]="project"
+      textWrap="true"
+      (tap)="showTaskList(project)"
+    ></Label>
+  </FlexboxLayout>
+</ScrollView>

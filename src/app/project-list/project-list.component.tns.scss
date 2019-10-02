@@ -2,6 +2,7 @@
 @import '../../app-variables';
 
 .project {
-    @extend %task;
-    color: $link-color;
+    @extend %tag;
+    font-size: 16;
+    margin: 0 $main-padding $main-padding 0;
 }

@@ -7,6 +7,7 @@
 - Added support for hidden tasks.
 - Prevented opening of task form after tapping on link in Android app.
 - Enabled long-tap text selection on Android.
+- Changed project list design.
 
 ## 0.4.2
 

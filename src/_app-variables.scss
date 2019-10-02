@@ -16,3 +16,9 @@ $field-border-radius: 3;
     padding: $main-padding;
     margin-bottom: 5;
 }
+
+%tag {
+    background-color: $button-color;
+    color: $link-color;
+    padding: 2 5;
+}
