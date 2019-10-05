@@ -187,7 +187,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
             return;
         }
         showActionDialog(
-            'Task menu',
+            task.text,
             'Choose action',
             ['Postpone', 'Edit', 'Remove'],
         ).then((action: string) => {
