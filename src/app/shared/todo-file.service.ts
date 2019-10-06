@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { TodoTxt, TodoTxtItem } from 'jstodotxt';
-import { Subject } from 'rxjs';
+import { Subject, Subscription, interval } from 'rxjs';
 
 import { FileService } from './file.service';
 import { RouterService } from './router.service';
@@ -9,24 +9,41 @@ import { SettingsService } from './settings.service';
 import { Task, TaskData, getExtensions } from './task';
 import { showToast } from './helpers/toast';
 
+const FILE_WATCH_INTERVAL = 60 * 1000;
+
 @Injectable({
     providedIn: 'root',
 })
-export class TodoFileService {
+export class TodoFileService implements OnDestroy {
 
     content = '';
     todoItems: TodoTxtItem[] = [];
     fileChanged: Subject<boolean>;
+    watcher: Subscription;
 
     constructor(
         private file: FileService,
         private router: RouterService,
         private settings: SettingsService,
     ) {
+        this.fileChanged = new Subject();
+        // Initial load
         if (settings.path) {
             this.load();
         }
-        this.fileChanged = new Subject();
+        // Periodic reload
+        this.watcher = interval(FILE_WATCH_INTERVAL).subscribe(() => {
+            if (!settings.path) {
+                // No path to watch
+                return;
+            }
+            this.load(true);
+        });
+    }
+
+    ngOnDestroy(): void {
+        // Stop file watcher when service is destroyed
+        this.watcher.unsubscribe();
     }
 
     private parse() {
@@ -81,15 +98,26 @@ export class TodoFileService {
         this.save();
     }
 
-    async load(): Promise<void> {
+    async load(watch = false): Promise<void> {
+        let content;
         try {
-            this.content = await this.file.read(this.settings.path);
+            content = await this.file.read(this.settings.path);
         } catch (error) {
-            this.router.navigate(['/settings']);
+            if (watch) {
+                // Ignore error
+                console.warn(error);
+            } else {
+                this.router.navigate(['/settings']);
+            }
             return;
         }
+        if (watch && this.content && this.content === content) {
+            // No changes for watcher
+            return;
+        }
+        this.content = content;
         this.parse();
-        this.fileChanged.next(true); // true = force task list reload
+        this.fileChanged.next(true); // true = trigger task list reload
         try {
             showToast('File loaded');
         } catch (error) {

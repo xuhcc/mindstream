@@ -25,6 +25,8 @@ describe('TodoFileService', () => {
         expect(service).toBeTruthy();
         expect(service.content).toBe('');
         expect(service.todoItems).toEqual([]);
+        expect(service.fileChanged).toBeDefined();
+        expect(service.watcher).toBeDefined();
     });
 
     it('shold get projects', async () => {

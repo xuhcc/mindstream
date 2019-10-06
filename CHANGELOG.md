@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Enabled automatic reloading of todo.txt file on changes.
+
 ## 0.5.0
 
 - Allowed to add mutiple projects to task.
