@@ -10,14 +10,22 @@ export function isValidPath(path: string): boolean {
 })
 export class FileService {
 
+    reading: Promise<string>;
+
     read(path: string): Promise<string> {
-        console.log(path);
-        return new Promise<string>((resolve) => {
+        if (this.reading) {
+            // File picker already present
+            return this.reading;
+        }
+        this.reading = new Promise<string>((resolve) => {
             // Create file input
+            const inputWrapper = document.createElement('div');
+            inputWrapper.setAttribute('id', 'file-picker');
             const input = document.createElement('input');
             input.setAttribute('type', 'file');
             const body = document.getElementsByTagName('body')[0];
-            body.insertBefore(input, body.firstChild);
+            body.insertBefore(inputWrapper, body.firstChild);
+            inputWrapper.appendChild(input);
             // Handle change event
             input.addEventListener('change', (event) => {
                 const fileList: FileList = (event.target as any).files;
@@ -26,13 +34,15 @@ export class FileService {
                     const reader = new FileReader();
                     reader.onload = (readerEvent) => {
                         const content = (readerEvent.target as any).result;
-                        body.removeChild(input);
+                        body.removeChild(inputWrapper);
+                        delete this.reading;
                         resolve(content);
                     };
                     reader.readAsText(file, 'UTF-8');
                 }
             });
         });
+        return this.reading;
     }
 
     write(path: string, content: string): Promise<void> {

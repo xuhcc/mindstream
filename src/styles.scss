@@ -1,4 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
-
-// Import common styles
+// Styles for the web app
+@import '~normalize.css';
 @import 'app-common';
+@import 'app-web';
+
+.page {
+    background-color: $page-color;
+    color: $text-color;
+    padding: $main-padding;
+}
+
+#file-picker {
+    padding: $main-padding;
+    text-align: center;
+}

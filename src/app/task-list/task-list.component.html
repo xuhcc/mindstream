@@ -1,6 +1,26 @@
-<div>
-  <div *ngFor="let task of getTaskList()">
-    <div>{{ task.text }}</div>
+<div class="page">
+  <div *ngFor="let task of getTaskList()" class="task">
+    <div class="tags">
+      <div *ngFor="let project of task.projects" class="tag">
+        {{ '+' + project }}
+      </div>
+      <div *ngIf="task.priority" [className]="'tag priority-' + task.priority">
+        {{ task.priority }}
+      </div>
+      <div *ngIf="task.due" [className]="'tag priority-' + task.getDueDatePriority()">
+        {{ getDateDisplay(task.due) }}
+      </div>
+      <div *ngIf="task.rec" class="tag">
+        {{ task.rec.display() }}
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="task-checkbox">{{ task.complete ? 'X' : '' }}</div>
+      <div
+        [className]="task.complete ? 'task-text completed' : 'task-text'"
+        [innerHTML]="getTaskHtml(task)"
+      ></div>
+    </div>
   </div>
   <button (click)="addTask()()">add task</button>
 </div>

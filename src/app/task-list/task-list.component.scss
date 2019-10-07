@@ -1,1 +1,86 @@
 @import '../../app-common';
+@import '../../app-web';
+
+.page {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.task {
+    background-color: $task-color;
+    border-color: $task-border-color;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    color: $text-color;
+    font-family: serif;
+    font-size: 16px;
+    padding: $main-padding;
+    margin-bottom: 5px;
+}
+
+.tags {
+    display: flex;
+    font-family: sans-serif;
+    font-size: 14px;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.tag {
+    background-color: $button-color;
+    color: $link-color;
+    margin-left: 5px;
+    padding: 2px 5px;
+
+    &.priority-A {
+        background-color: $priority-high;
+    }
+
+    &.priority-B {
+        background-color: $priority-medium;
+    }
+
+    &.priority-C {
+        background-color: $priority-low;
+    }
+
+    &.overdue {
+        background-color: $priority-high;
+    }
+}
+
+.task-body {
+    display: flex;
+}
+
+.task-checkbox {
+    background-color: #FFFFFF;
+    border-color: #333;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    color: $header-color;
+    font-size: 24px;
+    font-weight: bold;
+    height: 30px;
+    margin-right: $main-padding;
+    max-height: 30px;
+    min-width: 30px;
+    padding: 1px 0px;
+    text-align: center;
+    width: 30px;
+}
+
+.task-text {
+    padding-top: 5px;
+
+    &.completed {
+        color: #999;
+        text-decoration: line-through;
+
+        ::ng-deep a {
+            color: #999;
+        }
+    }
+}

@@ -11,10 +11,6 @@
     text-align: right;
 }
 
-$priority-high: #EEAAA7;
-$priority-medium: #F0D3A8;
-$priority-low: #F2EAAA;
-
 .tag {
     @extend %tag;
     margin-left: 5;

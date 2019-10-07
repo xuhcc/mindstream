@@ -55,6 +55,7 @@
         "nativescript-modal-datetimepicker": "~1.2.0",
         "nativescript-permissions": "~1.3.7",
         "nativescript-toasty": "~2.0.1",
+        "normalize.css": "~8.0.1",
         "reflect-metadata": "~0.1.12",
         "rxjs": "~6.5.2",
         "thenby": "~1.3.0",
