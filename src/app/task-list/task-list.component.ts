@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewContainerRef, ElementRef, ViewChild }
 import { formatDate } from '@angular/common';
 
 import * as MarkdownIt from 'markdown-it';
+import * as mila from 'markdown-it-link-attributes';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
@@ -34,7 +35,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
         .thenBy('projects');
 
     private fileSubscription: Subscription;
-    private markdown = new MarkdownIt({linkify: true});
+    private markdown = new MarkdownIt({linkify: true})
+        .use(mila, {attrs: {target: '_blank'}});
 
     @ViewChild('taskList', {static: false})
     taskList: ElementRef;
