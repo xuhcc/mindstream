@@ -1,4 +1,7 @@
 <div class="page">
+  <button (click)="addTask()" class="btn">
+    add task
+  </button>
   <div *ngFor="let task of getTaskList()" class="task">
     <div class="tags">
       <div *ngFor="let project of task.projects" class="tag">
@@ -24,5 +27,4 @@
       ></div>
     </div>
   </div>
-  <button (click)="addTask()()">add task</button>
 </div>

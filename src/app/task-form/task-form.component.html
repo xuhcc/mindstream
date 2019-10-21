@@ -1,1 +1,42 @@
-<p>task-form works!</p>
+<form [formGroup]="form" class="page">
+  <label>Task</label>
+  <input
+    type="text"
+    formControlName="text"
+    class="field"
+  >
+  <label>Projects</label>
+  <input
+    type="text"
+    formControlName="projects"
+    class="field"
+  >
+  <label>Priority</label>
+  <input
+    type="text"
+    formControlName="priority"
+    class="field"
+  >
+  <label>Due date</label>
+  <input
+    type="text"
+    formControlName="dueDate"
+    class="field"
+  >
+  <button (click)="setDueToday()" class="btn">today</button>
+  <label>Recurrence</label>
+  <input
+    type="text"
+    formControlName="recurrence"
+    class="field"
+  >
+
+  <button
+    [disabled]="!form.valid"
+    (click)="save()"
+    id="save-btn"
+    class="btn"
+  >
+    save
+  </button>
+</form>

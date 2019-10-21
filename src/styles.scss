@@ -6,10 +6,27 @@
 .page {
     background-color: $page-color;
     color: $text-color;
+    font-family: sans-serif;
     padding: $main-padding;
 }
 
 #file-picker {
     padding: $main-padding;
     text-align: center;
+}
+
+.btn {
+    background-color: $button-color;
+    border: 1px solid $button-border-color;
+    border-radius: 3px;
+    color: $link-color;
+    padding: $main-padding;
+}
+
+.field {
+    border: $field-border solid $field-border-color;
+    background-color: $field-color;
+    border-radius: $field-border-radius;
+    font-size: 16px;
+    padding: $main-padding;
 }
