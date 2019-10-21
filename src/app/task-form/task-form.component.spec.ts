@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { TaskFormComponent } from './task-form.component';
+import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
 
 describe('TaskFormComponent', () => {
@@ -14,6 +15,7 @@ describe('TaskFormComponent', () => {
             declarations: [TaskFormComponent],
             imports: [ReactiveFormsModule],
             providers: [
+                {provide: FileService, useValue: {}},
                 {provide: RouterService, useValue: {}},
                 {provide: ActivatedRoute, useValue: {snapshot: {params: {}}}},
             ],

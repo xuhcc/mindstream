@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListComponent } from './task-list.component';
+import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
 
 describe('TaskListComponent', () => {
@@ -11,6 +12,7 @@ describe('TaskListComponent', () => {
         TestBed.configureTestingModule({
             declarations: [TaskListComponent],
             providers: [
+                {provide: FileService, useValue: {}},
                 {
                     provide: RouterService,
                     useValue: {

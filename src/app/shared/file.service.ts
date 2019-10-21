@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 export function isValidPath(path: string): boolean {
     console.log(path);
@@ -10,59 +11,25 @@ export function isValidPath(path: string): boolean {
 })
 export class FileService {
 
-    reading: Promise<string>;
+    backendUrl = 'http://localhost:3003';
 
-    read(path: string): Promise<string> {
-        if (this.reading) {
-            // File picker already present
-            return this.reading;
-        }
-        this.reading = new Promise<string>((resolve) => {
-            // Create file input
-            const inputWrapper = document.createElement('div');
-            inputWrapper.setAttribute('id', 'file-picker');
-            const input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            const body = document.getElementsByTagName('body')[0];
-            body.insertBefore(inputWrapper, body.firstChild);
-            inputWrapper.appendChild(input);
-            // Handle change event
-            input.addEventListener('change', (event) => {
-                const fileList: FileList = (event.target as any).files;
-                if (fileList.length > 0) {
-                    const file: File = fileList[0];
-                    const reader = new FileReader();
-                    reader.onload = (readerEvent) => {
-                        const content = (readerEvent.target as any).result;
-                        body.removeChild(inputWrapper);
-                        delete this.reading;
-                        resolve(content);
-                    };
-                    reader.readAsText(file, 'UTF-8');
-                }
-            });
-        });
-        return this.reading;
+    constructor(private http: HttpClient) { }
+
+    async read(path: string): Promise<string> {
+        const encodedPath = encodeURIComponent(path);
+        const url = `${this.backendUrl}/file/${encodedPath}`
+        const response = await this.http.get(url).toPromise();
+        return (response as any).content;
     }
 
-    write(path: string, content: string): Promise<void> {
-        return new Promise<void>((resolve) => {
-            const file = new Blob([content], {type: 'text/plain'});
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(file);
-            link.href = url;
-            link.download = path.split('/').pop();
-            document.body.appendChild(link);
-            link.click();
-            setTimeout(function () {
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-                resolve();
-            }, 0);
-        });
+    async write(path: string, content: string): Promise<void> {
+        const encodedPath = encodeURIComponent(path);
+        const url = `${this.backendUrl}/file/${encodedPath}`
+        await this.http.post(url, {content: content}).toPromise();
     }
 
     create(name: string): Promise<string> {
         return new Promise(resolve => resolve(name));
     }
+
 }

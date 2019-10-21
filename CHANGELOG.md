@@ -3,7 +3,7 @@
 ## 0.6.0
 
 - Mobile: Enabled automatic reloading of todo.txt file on changes.
-- Web: Create template for task list
+- Web: Created task list.
 
 ## 0.5.0
 

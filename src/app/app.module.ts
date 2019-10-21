@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +23,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
         WelcomeComponent,
     ],
     imports: [
+        HttpClientModule,
+        ReactiveFormsModule,
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

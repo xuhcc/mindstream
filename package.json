@@ -16,7 +16,7 @@
     "scripts": {
         "postinstall": "./scripts/copy-fonts.js",
         "ng": "ng",
-        "start": "ng serve",
+        "start": "./scripts/file-manager.js & ng serve",
         "build": "ng build",
         "test": "ng test --browsers jsdom",
         "lint": "ng lint",
@@ -42,6 +42,7 @@
         "@nstudio/nativescript-floatingactionbutton": "~1.1.0",
         "@nstudio/nativescript-pulltorefresh": "~1.0.1",
         "core-js": "^2.5.4",
+        "express": "~4.17.1",
         "jstodotxt": "github:xuhcc/jsTodoTxt#due-fix",
         "markdown-it": "~10.0.0",
         "markdown-it-link-attributes": "~3.0.0",

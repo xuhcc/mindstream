@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SettingsComponent } from './settings.component';
+import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
 
 describe('SettingsComponent', () => {
@@ -13,6 +14,7 @@ describe('SettingsComponent', () => {
             declarations: [SettingsComponent],
             imports: [ReactiveFormsModule],
             providers: [
+                {provide: FileService, useValue: {}},
                 {provide: RouterService, useValue: {}},
             ],
         }).compileComponents();

@@ -52,6 +52,14 @@ Run in iOS emulator:
 npm run ios
 ```
 
+### Web
+
+Run in browser:
+
+```
+npm start
+```
+
 ### Testing
 
 ```

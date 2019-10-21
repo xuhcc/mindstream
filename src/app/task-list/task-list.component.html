@@ -15,7 +15,9 @@
       </div>
     </div>
     <div class="task-body">
-      <div class="task-checkbox">{{ task.complete ? 'X' : '' }}</div>
+      <div class="task-checkbox" (click)="toggleComplete(task)">
+        {{ task.complete ? 'X' : '' }}
+      </div>
       <div
         [className]="task.complete ? 'task-text completed' : 'task-text'"
         [innerHTML]="getTaskHtml(task)"
