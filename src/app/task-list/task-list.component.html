@@ -1,5 +1,9 @@
 <div class="page">
-  <button (click)="addTask()" class="btn">
+  <button
+    (click)="addTask()"
+    id="add-task-btn"
+    class="btn"
+  >
     add task
   </button>
   <div *ngFor="let task of getTaskList()" class="task">

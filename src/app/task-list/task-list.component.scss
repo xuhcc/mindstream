@@ -2,12 +2,18 @@
 @import '../../app-web';
 
 .page {
-    padding-left: 25%;
-    padding-right: 25%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#add-task-btn {
+    break-after: always;
+    margin-bottom: $main-padding;
 }
 
 .task {
     background-color: $task-color;
+    break-after: always;
     border-color: $task-border-color;
     border-style: solid;
     border-radius: 5px;
@@ -15,6 +21,7 @@
     color: $text-color;
     font-family: serif;
     font-size: 16px;
+    min-width: 33%;
     padding: $main-padding;
     margin-bottom: 5px;
 }

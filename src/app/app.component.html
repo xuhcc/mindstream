@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div id="wrapper">
+  <nav>
+    <h1>Mindstream</h1>
+    <div *ngFor="let item of navigationMenu">
+      <a [routerLink]="[item.url]">{{ item.title }}</a>
+    </div>
+  </nav>
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

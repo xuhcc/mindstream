@@ -5,10 +5,23 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 @import 'app-common';
 @import 'app-web';
 
+body {
+    font-family: sans-serif;
+}
+
+a {
+    color: $link-color;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $link-hover-color;
+}
+
 .page {
     background-color: $page-color;
     color: $text-color;
-    font-family: sans-serif;
     padding: $main-padding;
 }
 

@@ -8,6 +8,7 @@ import { Color } from 'tns-core-modules/color';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
 
 import { NavModalComponent } from './nav-modal.component';
+import { NAVIGATION_MENU } from './nav';
 import { APP_NAME } from '../app.constants';
 
 // https://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html
@@ -18,25 +19,6 @@ const LOCK_MODE_UNDEFINED = 3;
     providedIn: 'root',
 })
 export class SideDrawerService {
-
-    private navigationMenu = [
-        {
-            title: 'Projects',
-            url: '/projects',
-        },
-        {
-            title: 'Tasks',
-            url: '/tasks',
-        },
-        {
-            title: 'Plain text',
-            url: '/plaintext',
-        },
-        {
-            title: 'Settings',
-            url: '/settings',
-        },
-    ];
 
     private drawer: TnsSideDrawerClass;
     loaded: Promise<void>;
@@ -65,13 +47,13 @@ export class SideDrawerService {
         const config = {
             title: APP_NAME,
             subtitle: `v${getVersionNameSync()}`,
-            templates: this.navigationMenu,
+            templates: NAVIGATION_MENU,
             headerTextColor: new Color('#FBFCF0'), // $header-text-color
             textColor: new Color('#000000'), // $text-color
             headerBackgroundColor: new Color('#333333'), // $header-color
             backgroundColor: new Color('#FBFCF0'), // $page-color
             listener: (index: number) => {
-                const url = this.navigationMenu[index].url;
+                const url = NAVIGATION_MENU[index].url;
                 // Use NgZone because this is a callback from external JS library
                 this.ngZone.run(() => {
                     this.router.navigateByUrl(url);
@@ -90,7 +72,7 @@ export class SideDrawerService {
     private openModalNav(viewContainerRef: ViewContainerRef) {
         const options: ModalDialogOptions = {
             viewContainerRef: viewContainerRef,
-            context: this.navigationMenu,
+            context: NAVIGATION_MENU,
         };
         this.modalService.showModal(NavModalComponent, options).then((url: string) => {
             // Navigation is not working in callback

@@ -1,0 +1,26 @@
+@import '../app-common';
+@import '../app-web';
+
+#wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+nav {
+    background-color: $header-color;
+    color: $header-text-color;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+
+    a {
+        color: $header-text-color;
+    }
+}
+
+#content {
+    width: 75%;
+}
