@@ -55,32 +55,35 @@
 }
 
 .task-checkbox {
-    background-color: #FFFFFF;
-    border-color: #333;
+    background-color: $task-checkbox-color;
+    border-color: $task-checkbox-text-color;
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
-    color: $header-color;
-    font-size: 24px;
-    font-weight: bold;
+    color: $task-checkbox-text-color;
     height: 30px;
     margin-right: $main-padding;
     max-height: 30px;
     min-width: 30px;
-    padding: 1px 0px;
     text-align: center;
     width: 30px;
+
+    i {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 30px;
+    }
 }
 
 .task-text {
     padding-top: 5px;
 
     &.completed {
-        color: #999;
+        color: $task-completed-color;
         text-decoration: line-through;
 
         ::ng-deep a {
-            color: #999;
+            color: $task-completed-color;
         }
     }
 }

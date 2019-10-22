@@ -19,7 +19,7 @@
     </div>
     <div class="task-body">
       <div class="task-checkbox" (click)="toggleComplete(task)">
-        {{ task.complete ? 'X' : '' }}
+        <i *ngIf="task.complete" class="material-icons check"></i>
       </div>
       <div
         [className]="task.complete ? 'task-text completed' : 'task-text'"

@@ -33,11 +33,11 @@
 }
 
 .task-checkbox {
-    background-color: #FFFFFF;
-    border-color: #333;
+    background-color: $task-checkbox-color;
+    border-color: $task-checkbox-text-color;
     border-radius: 3;
     border-width: 1;
-    color: $header-color;
+    color: $task-checkbox-text-color;
     font-size: 24;
     font-weight: bold;
     height: 30;
@@ -57,8 +57,8 @@
 }
 
 .task-text.completed {
-    color: #999;
-    link-color: #999;
+    color: $task-completed-color;
+    link-color: $task-completed-color;
     text-decoration: line-through;
 }
 

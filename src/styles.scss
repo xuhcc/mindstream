@@ -1,5 +1,7 @@
 // Styles for the web app
 @import '~normalize.css';
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+@import '~material-design-icons-iconfont/src/material-design-icons';
 @import 'app-common';
 @import 'app-web';
 
