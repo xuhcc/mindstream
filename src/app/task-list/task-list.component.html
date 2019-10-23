@@ -1,3 +1,11 @@
+<div class="header">
+  <h2>{{ title }}</h2>
+  <a
+    *ngIf="isFilterEnabled()"
+    (click)="removeFilter()"
+    class="material-icons highlight_remove"
+  ></a>
+</div>
 <div class="page">
   <button
     (click)="addTask()"
@@ -8,13 +16,24 @@
   </button>
   <div *ngFor="let task of getTaskList()" class="task">
     <div class="tags">
-      <div *ngFor="let project of task.projects" class="tag">
+      <div
+        *ngFor="let project of task.projects"
+        (click)="setFilter({project: project})"
+        class="tag"
+      >
         {{ '+' + project }}
       </div>
-      <div *ngIf="task.priority" [className]="'tag priority-' + task.priority">
+      <div
+        *ngIf="task.priority"
+        [className]="'tag priority-' + task.priority"
+      >
         {{ task.priority }}
       </div>
-      <div *ngIf="task.due" [className]="'tag priority-' + task.getDueDatePriority()">
+      <div
+        *ngIf="task.due"
+        [className]="'tag priority-' + task.getDueDatePriority()"
+        (click)="setFilter({dueDate: task.due})"
+      >
         {{ getDateDisplay(task.due) }}
       </div>
       <div *ngIf="task.rec" class="tag">
