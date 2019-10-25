@@ -35,17 +35,17 @@
 
 .task {
     background-color: $task-color;
-    break-after: always;
     border-color: $task-border-color;
-    border-style: solid;
     border-radius: 5px;
+    border-style: solid;
     border-width: 1px;
+    break-after: always;
     color: $text-color;
     font-family: serif;
     font-size: 16px;
+    margin-bottom: 5px;
     min-width: 33%;
     padding: $main-padding;
-    margin-bottom: 5px;
 }
 
 .tags {
@@ -62,15 +62,15 @@
     margin-left: 5px;
     padding: 2px 5px;
 
-    &.priority-A {
+    &.priority-A { /* stylelint-disable-line selector-class-pattern */
         background-color: $priority-high;
     }
 
-    &.priority-B {
+    &.priority-B { /* stylelint-disable-line selector-class-pattern */
         background-color: $priority-medium;
     }
 
-    &.priority-C {
+    &.priority-C { /* stylelint-disable-line selector-class-pattern */
         background-color: $priority-low;
     }
 

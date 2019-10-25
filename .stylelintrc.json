@@ -1,0 +1,29 @@
+{
+    "extends": "stylelint-config-sass-guidelines",
+    "rules": {
+        "indentation": 4,
+        "color-hex-case": null,
+        "color-hex-length": null,
+        "selector-max-id": 1,
+        "max-nesting-depth": 2,
+        "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": [
+                    "link-color",
+                    "horizontal-align",
+                    "separator-color",
+                    "ripple-color"
+                ]
+            }
+        ],
+        "selector-pseudo-element-no-unknown": [
+            true,
+            {
+                "ignorePseudoElements": [
+                    "ng-deep"
+                ]
+            }
+        ]
+    }
+}

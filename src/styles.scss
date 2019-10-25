@@ -39,8 +39,8 @@ a:hover {
 }
 
 .field {
-    border: $field-border solid $field-border-color;
     background-color: $field-color;
+    border: $field-border solid $field-border-color;
     border-radius: $field-border-radius;
     font-size: 16px;
     padding: $main-padding;

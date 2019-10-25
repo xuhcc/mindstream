@@ -7,14 +7,14 @@ $field-border-radius: 3;
 %task {
     background-color: $task-color;
     border-color: $task-border-color;
-    border-style: solid;
     border-radius: 5;
+    border-style: solid;
     border-width: 1;
     color: $text-color;
     font-family: serif;
     font-size: 16;
-    padding: $main-padding;
     margin-bottom: 5;
+    padding: $main-padding;
 }
 
 %tag {

@@ -3,7 +3,7 @@
 @import 'app-variables';
 
 .icon {
-    font-family: "Material Icons", "MaterialIcons-Regular";
+    font-family: 'Material Icons', 'MaterialIcons-Regular';
 }
 
 .action-bar {
@@ -25,9 +25,9 @@
 
 .btn {
     background-color: $button-color;
-    border-width: 1;
     border-color: $button-border-color;
     border-radius: 3;
+    border-width: 1;
     color: $link-color;
     padding: $main-padding;
 }
