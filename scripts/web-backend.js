@@ -8,6 +8,7 @@ const fs = require('fs');
 const express = require('express');
 
 const app = express();
+app.use(express.static('static'));
 app.use(express.json());
 app.use((request, response, next) => {
     response.header('Access-Control-Allow-Origin', '*');
@@ -45,8 +46,8 @@ app.post('/file/:path', (request, response) => {
     });
 });
 
-const PORT = 3003;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-    console.log(`file manager running on port ${PORT}`);
+    console.log(`file manager running at http://localhost:${PORT}/`);
 });

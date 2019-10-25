@@ -3,7 +3,6 @@ hooks/
 node_modules/
 platforms/
 src/fonts/
-dist/
 
 # General
 Vagrantfile

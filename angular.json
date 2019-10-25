@@ -23,7 +23,7 @@
                         "customWebpackConfig": {
                             "path": "./webpack-web.config.js"
                         },
-                        "outputPath": "dist/mindstream",
+                        "outputPath": "platforms/web/static",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",

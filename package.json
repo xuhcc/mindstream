@@ -16,8 +16,9 @@
     "scripts": {
         "postinstall": "./scripts/copy-fonts.js",
         "ng": "ng",
-        "start": "./scripts/file-manager.js & ng serve",
-        "build": "ng build",
+        "web": "./scripts/web-backend.js & ng serve",
+        "web-release": "ng build && cp scripts/web-backend.js platforms/web/index.js",
+        "start": "npm run web",
         "test": "ng test --browsers jsdom",
         "lint": "npx eslint \"src/**/*.ts\"",
         "build-icons": "tns resources generate icons artwork/icon.png",
