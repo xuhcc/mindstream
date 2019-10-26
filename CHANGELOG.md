@@ -3,6 +3,7 @@
 ## 0.6.0
 
 - Mobile: Enabled automatic reloading of todo.txt file on changes.
+- IOS: Fixed incorrect size of action bar icons.
 - Web: Created task list, task form and project list.
 
 ## 0.5.0
