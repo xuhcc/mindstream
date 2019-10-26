@@ -1,1 +1,9 @@
-<p>project-list works!</p>
+<div class="page">
+  <a
+    *ngFor="let project of projects"
+    class="project"
+    (click)="showTaskList(project)"
+  >
+    {{ project }}
+  </a>
+</div>

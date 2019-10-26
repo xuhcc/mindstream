@@ -1,0 +1,13 @@
+@import '../../app-common';
+@import '../../app-web';
+
+.project {
+    @extend %tag;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 $main-padding $main-padding 0;
+
+    &:hover {
+        background-color: $tag-hover-color;
+    }
+}

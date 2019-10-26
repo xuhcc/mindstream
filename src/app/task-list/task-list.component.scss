@@ -57,10 +57,8 @@
 }
 
 .tag {
-    background-color: $button-color;
-    color: $link-color;
+    @extend %tag;
     margin-left: 5px;
-    padding: 2px 5px;
 
     &.priority-A { /* stylelint-disable-line selector-class-pattern */
         background-color: $priority-high;
@@ -76,6 +74,15 @@
 
     &.overdue {
         background-color: $priority-high;
+    }
+}
+
+.project,
+.due-date {
+    cursor: pointer;
+
+    &:hover {
+        background-color: $tag-hover-color;
     }
 }
 

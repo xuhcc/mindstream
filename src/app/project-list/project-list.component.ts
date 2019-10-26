@@ -1,19 +1,23 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+
+import { Subscription } from 'rxjs';
 
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { TodoFileService } from '../shared/todo-file.service';
+import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 
 @Component({
     selector: 'ms-project-list',
     templateUrl: './project-list.component.html',
     styleUrls: ['./project-list.component.scss'],
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectListComponent implements OnInit, OnDestroy {
 
     title = 'Projects';
     projects: string[];
+    private fileSubscription: Subscription;
 
     constructor(
         private router: RouterService,
@@ -24,7 +28,31 @@ export class ProjectListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.createProjectList();
+        onNavigatedTo(this.view, () => {
+            this.fileSubscribe();
+        });
+        onNavigatingFrom(this.view, () => {
+            this.fileUnsubscribe();
+        });
+    }
+
+    ngOnDestroy() {
+        this.fileUnsubscribe();
+    }
+
+    private createProjectList() {
         this.projects = this.todoFile.getProjects();
+    }
+
+    private fileSubscribe() {
+        this.fileSubscription = this.todoFile.fileChanged.subscribe(() => {
+            this.createProjectList();
+        });
+    }
+
+    private fileUnsubscribe() {
+        this.fileSubscription.unsubscribe();
     }
 
     openDrawer() {

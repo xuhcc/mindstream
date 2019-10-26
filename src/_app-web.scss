@@ -3,3 +3,9 @@ $main-padding: 7px;
 
 $field-border: 2px;
 $field-border-radius: 3px;
+
+%tag {
+    background-color: $tag-color;
+    color: $tag-text-color;
+    padding: 2px 5px;
+}
