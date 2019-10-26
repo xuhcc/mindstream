@@ -25,6 +25,39 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 
 See [CHANGELOG](CHANGELOG.md).
 
+## Usage
+
+### Android
+
+Android app can be installed from [Google Play](https://play.google.com/store/apps/details?id=im.mindstream.mobile).
+
+Alternatively, latest APK can be downloaded from [releases page](https://github.com/xuhcc/mindstream/releases).
+
+### iOS
+
+Build unsigned iOS package from source (only on MacOS):
+
+```
+npm install
+npm run ios-unsigned
+```
+
+### Web
+
+Build from source:
+
+```
+npm install
+npm run web-release
+```
+
+Run the web app (it will be available at `http://localhost:8080/`):
+
+```
+cd platforms/web/
+node index.js
+```
+
 ## Development
 
 Prerequisites:
