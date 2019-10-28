@@ -41,8 +41,8 @@
     border-width: 1px;
     break-after: always;
     color: $text-color;
-    font-family: serif;
-    font-size: 16px;
+    font-family: 'Vollkorn', serif;
+    font-size: 17px;
     margin-bottom: 5px;
     min-width: 33%;
     padding: $main-padding;
@@ -50,8 +50,8 @@
 
 .tags {
     display: flex;
-    font-family: sans-serif;
-    font-size: 14px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 12px;
     justify-content: flex-end;
     text-align: right;
 }
@@ -112,7 +112,7 @@
 }
 
 .task-text {
-    padding-top: 5px;
+    padding-top: 7px;
 
     &.completed {
         color: $task-completed-color;
