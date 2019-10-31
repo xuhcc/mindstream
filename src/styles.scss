@@ -7,9 +7,9 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 @import 'app-web';
 
 @font-face {
+    font-display: swap;
     font-family: 'Vollkorn';
     font-style: normal;
-    font-display: swap;
     font-weight: 400;
     src:
         local('Vollkorn Regular'),
@@ -18,9 +18,9 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 }
 
 @font-face {
+    font-display: swap;
     font-family: 'Vollkorn';
     font-style: italic;
-    font-display: swap;
     font-weight: 400;
     src:
         local('Vollkorn Italic'),
@@ -29,9 +29,9 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 }
 
 @font-face {
+    font-display: swap;
     font-family: 'Vollkorn';
     font-style: normal;
-    font-display: swap;
     font-weight: 700;
     src:
         local('Vollkorn Bold'),

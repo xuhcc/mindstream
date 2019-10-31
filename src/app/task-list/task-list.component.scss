@@ -90,6 +90,8 @@
     display: flex;
 }
 
+$task-checkbox-size: 20px;
+
 .task-checkbox {
     background-color: $task-checkbox-color;
     border-color: $task-checkbox-text-color;
@@ -97,22 +99,20 @@
     border-style: solid;
     border-width: 1px;
     color: $task-checkbox-text-color;
-    height: 30px;
+    height: $task-checkbox-size;
     margin-right: $main-padding;
-    max-height: 30px;
-    min-width: 30px;
     text-align: center;
-    width: 30px;
+    width: $task-checkbox-size;
 
     i {
-        font-size: 24px;
+        font-size: 19px;
         font-weight: bold;
-        line-height: 30px;
+        line-height: $task-checkbox-size;
     }
 }
 
 .task-text {
-    padding-top: 7px;
+    padding-top: 2px;
 
     &.completed {
         color: $task-completed-color;
