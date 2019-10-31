@@ -47,6 +47,7 @@
       <div
         [className]="task.complete ? 'task-text completed' : 'task-text'"
         [innerHTML]="getTaskHtml(task)"
+        (click)="editTask(task, $event)"
       ></div>
     </div>
   </div>

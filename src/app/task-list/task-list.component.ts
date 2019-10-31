@@ -14,7 +14,7 @@ import { Task, DateType, getDateType } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
 import { showActionDialog, showConfirmDialog } from '../shared/helpers/dialogs';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
-import { isAndroid, isIOS } from '../shared/helpers/platform';
+import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
 
 // Use 'require' because the TypeScript module is buggy
@@ -238,6 +238,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
                 word = text.slice(left, right + tapPosition);
             }
             if (this.markdown.linkify.test(word)) {
+                // This is a link, don't open form
+                return;
+            }
+        } else if (isWeb && event) {
+            if (event.target.tagName.toLowerCase() === 'a') {
                 // This is a link, don't open form
                 return;
             }
