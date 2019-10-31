@@ -55,7 +55,7 @@ export class TodoFileService implements OnDestroy {
     }
 
     getProjects(): string[] {
-        const projects = new Set();
+        const projects = new Set<string>();
         this.todoItems.forEach((todoItem: TodoTxtItem) => {
             (todoItem.projects || []).forEach((project: string) => {
                 projects.add(project);
