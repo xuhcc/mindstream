@@ -55,7 +55,7 @@ Run the web app (it will be available at `http://localhost:8080/`):
 
 ```
 cd platforms/web/
-node index.js
+PORT=8080 node index.js
 ```
 
 ## Development

@@ -6,5 +6,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             TodoTxtExtension: ['jstodotxt/jsTodoExtensions', 'TodoTxtExtension'],
         }),
+        // Allow to specify app port
+        new webpack.DefinePlugin({
+            PORT: process.env.PORT || 8080,
+        }),
     ],
 };

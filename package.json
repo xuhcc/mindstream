@@ -17,7 +17,7 @@
         "postinstall": "./scripts/copy-fonts.js",
         "ng": "ng",
         "web": "./scripts/web-backend.js & ng serve",
-        "web-release": "ng build && cp scripts/web-backend.js platforms/web/index.js",
+        "web-release": "ng build --prod && cp scripts/web-backend.js platforms/web/index.js",
         "start": "npm run web",
         "build-icons": "tns resources generate icons artwork/icon.png",
         "build-splashes": "tns resources generate splashes artwork/feature.png --background \"#333333\"",
