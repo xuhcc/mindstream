@@ -1,4 +1,16 @@
-<form [formGroup]="form">
-  <input type="text" formControlName="filePath">
-  <button (click)="save()">save</button>
+<form [formGroup]="form" class="page">
+  <label class="field-label">
+    Path to todo.txt file
+  </label>
+  <input
+    type="text"
+    formControlName="filePath"
+    class="field"
+  >
+  <button
+    [disabled]="!form.valid"
+    (click)="save()"
+    id="save-btn"
+    class="btn"
+  >save</button>
 </form>

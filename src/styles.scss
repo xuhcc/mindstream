@@ -73,10 +73,18 @@ a:hover {
     padding: $main-padding;
 }
 
+.field-label {
+    display: block;
+    margin: 5px 0;
+}
+
 .field {
     background-color: $field-color;
     border: $field-border solid $field-border-color;
     border-radius: $field-border-radius;
+    display: block;
     font-size: 16px;
+    min-width: 300px;
     padding: $main-padding;
+    width: 33%;
 }

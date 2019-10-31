@@ -1,4 +1,20 @@
-<form [formGroup]="form">
-  <input type="text" formControlName="filePath">
-  <button (click)="save()">save</button>
-</form>
+<div class="page">
+  <h3>Welcome!</h3>
+  <p [innerHTML]="welcomeText"></p>
+  <form [formGroup]="form">
+    <label class="field-label">
+      Please choose your todo.txt file or press &quot;Skip&quot; to create a new file:
+    </label>
+    <input
+      type="text"
+      formControlName="filePath"
+      class="field"
+    >
+    <button
+      [disabled]="!form.valid"
+      (click)="save()"
+      id="save-btn"
+      class="btn"
+    >save</button>
+  </form>
+</div>

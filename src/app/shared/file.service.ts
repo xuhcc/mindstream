@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
-export function isValidPath(path: string): boolean {
-    console.log(path);
+export function isValidPath(path: string): boolean { // eslint-disable-line @typescript-eslint/no-unused-vars
     return true;
 }
 

@@ -1,30 +1,36 @@
 <form [formGroup]="form" class="page">
-  <label>Task</label>
+  <label class="field-label">
+    Task
+  </label>
   <input
     type="text"
     formControlName="text"
     class="field"
   >
-  <label>Projects</label>
+  <label class="field-label">
+    Projects
+  </label>
   <input
     type="text"
     formControlName="projects"
     class="field"
   >
-  <label>Priority</label>
+  <label class="field-label">
+    Priority
+  </label>
   <input
     type="text"
     formControlName="priority"
     class="field"
   >
-  <label>Due date</label>
+  <label class="field-label">Due date</label>
   <input
     type="text"
     formControlName="dueDate"
     class="field"
   >
   <button (click)="setDueToday()" class="btn">today</button>
-  <label>Recurrence</label>
+  <label class="field-label">Recurrence</label>
   <input
     type="text"
     formControlName="recurrence"

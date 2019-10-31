@@ -1,18 +1,6 @@
 @import '../../app-common';
 @import '../../app-web';
 
-form {
-    label {
-        display: block;
-        margin: 5px 0;
-    }
-
-    input {
-        display: block;
-        width: 300px;
-    }
-}
-
 #save-btn {
     margin-top: 10px;
 }
