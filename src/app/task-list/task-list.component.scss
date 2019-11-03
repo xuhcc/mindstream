@@ -99,6 +99,7 @@ $task-checkbox-size: 20px;
     border-style: solid;
     border-width: 1px;
     color: $task-checkbox-text-color;
+    cursor: pointer;
     height: $task-checkbox-size;
     margin-right: $main-padding;
     text-align: center;
@@ -108,6 +109,11 @@ $task-checkbox-size: 20px;
         font-size: 19px;
         font-weight: bold;
         line-height: $task-checkbox-size;
+    }
+
+    &:hover {
+        border-color: #999;
+        color: #999;
     }
 }
 
