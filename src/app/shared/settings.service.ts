@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { Settings, TaskFilter } from './settings';
+import {
+    setValue,
+    getValue,
+    removeValue,
+} from './helpers/storage';
 
 @Injectable({
     providedIn: 'root',
@@ -10,18 +15,18 @@ export class SettingsService {
     constructor() { }
 
     get path(): string {
-        return localStorage.getItem(Settings.Path);
+        return getValue(Settings.Path);
     }
 
     set path(path: string) {
         if (!path) {
             throw Error('Path can not be empty.');
         }
-        localStorage.setItem(Settings.Path, path);
+        setValue(Settings.Path, path);
     }
 
     get filter(): TaskFilter {
-        const filterStr = localStorage.getItem(Settings.TaskFilter);
+        const filterStr = getValue(Settings.TaskFilter);
         if (!filterStr) {
             return {};
         }
@@ -34,11 +39,11 @@ export class SettingsService {
 
     set filter(filter: TaskFilter) {
         const filterStr = JSON.stringify(filter);
-        localStorage.setItem(Settings.TaskFilter, filterStr);
+        setValue(Settings.TaskFilter, filterStr);
     }
 
     get ordering(): string[] {
-        const orderingStr = localStorage.getItem(Settings.TaskOrdering);
+        const orderingStr = getValue(Settings.TaskOrdering);
         if (!orderingStr) {
             return [];
         }
@@ -47,11 +52,12 @@ export class SettingsService {
 
     set ordering(ordering: string[]) {
         const orderingStr = JSON.stringify(ordering);
-        localStorage.setItem(Settings.TaskOrdering, orderingStr);
+        setValue(Settings.TaskOrdering, orderingStr);
     }
 
     reset() {
-        localStorage.removeItem(Settings.TaskFilter);
-        localStorage.removeItem(Settings.Path);
+        removeValue(Settings.TaskFilter);
+        removeValue(Settings.TaskOrdering);
+        removeValue(Settings.Path);
     }
 }
