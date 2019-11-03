@@ -29,10 +29,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     tasks: Task[] = [];
     filter: TaskFilter = {};
-    private ordering = firstBy('complete')
-        .thenBy('due', {cmp: compareEmptyGreater})
-        .thenBy('priority', {cmp: compareEmptyGreater})
-        .thenBy('projects');
+    ordering: string[];
 
     private fileSubscription: Subscription;
     private markdown = new MarkdownIt({linkify: true})
@@ -51,6 +48,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.filter = this.settings.filter;
+        this.ordering = this.settings.ordering;
+        if (this.ordering.length === 0) {
+            this.ordering = ['due', 'priority'];
+        }
         this.createTaskList();
         // Workarounds for NS
         // ngOnInit is not called after back-navigation
@@ -68,6 +69,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.fileUnsubscribe();
     }
 
+    private getSorter(): any {
+        let sorter = firstBy('complete');
+        this.ordering.forEach((field: string) => {
+            sorter = sorter.thenBy(field, {cmp: compareEmptyGreater});
+        });
+        return sorter.thenBy('projects');
+    }
+
     private createTaskList() {
         this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
             const task = new Task(todoItem);
@@ -78,7 +87,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
             return task;
         });
         // Sort tasks
-        this.tasks.sort(this.ordering);
+        this.tasks.sort(this.getSorter());
     }
 
     private fileSubscribe() {
@@ -157,6 +166,22 @@ export class TaskListComponent implements OnInit, OnDestroy {
             // https://github.com/NativeScript/nativescript-angular/issues/377
             this.taskList.nativeElement.refresh();
         }
+    }
+
+    sortTaskList(): void {
+        showActionDialog(
+            'Sort by',
+            null,
+            ['Due date', 'Priority'],
+        ).then((choice: string) => {
+            if (choice === 'Due date') {
+                this.ordering = ['due', 'priority'];
+            } else if (choice === 'Priority') {
+                this.ordering = ['priority', 'due'];
+            }
+            this.settings.ordering = this.ordering;
+            this.tasks.sort(this.getSorter());
+        });
     }
 
     isFilterEnabled(): boolean {

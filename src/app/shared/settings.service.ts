@@ -37,6 +37,19 @@ export class SettingsService {
         localStorage.setItem(Settings.TaskFilter, filterStr);
     }
 
+    get ordering(): string[] {
+        const orderingStr = localStorage.getItem(Settings.TaskOrdering);
+        if (!orderingStr) {
+            return [];
+        }
+        return JSON.parse(orderingStr);
+    }
+
+    set ordering(ordering: string[]) {
+        const orderingStr = JSON.stringify(ordering);
+        localStorage.setItem(Settings.TaskOrdering, orderingStr);
+    }
+
     reset() {
         localStorage.removeItem(Settings.TaskFilter);
         localStorage.removeItem(Settings.Path);

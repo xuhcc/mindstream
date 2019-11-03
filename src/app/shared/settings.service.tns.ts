@@ -39,8 +39,22 @@ export class SettingsService {
         appSettings.setString(Settings.TaskFilter, filterStr);
     }
 
+    get ordering(): string[] {
+        const orderingStr = appSettings.getString(Settings.TaskOrdering);
+        if (!orderingStr) {
+            return [];
+        }
+        return JSON.parse(orderingStr);
+    }
+
+    set ordering(ordering: string[]) {
+        const orderingStr = JSON.stringify(ordering);
+        appSettings.setString(Settings.TaskOrdering, orderingStr);
+    }
+
     reset() {
         appSettings.remove(Settings.TaskFilter);
+        appSettings.remove(Settings.TaskOrdering);
         appSettings.remove(Settings.Path);
     }
 }

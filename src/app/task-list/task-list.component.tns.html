@@ -22,10 +22,12 @@
     (tap)="removeFilter()"
   ></ActionItem>
   <ActionItem
-    android.position="popup"
+    android.position="actionBar"
     ios.position="right"
-    text="Add task"
-    (tap)="addTask()"
+    icon="font://&#xe164;"
+    class="icon"
+    text="Sort tasks"
+    (tap)="sortTaskList()"
   ></ActionItem>
 </ActionBar>
 

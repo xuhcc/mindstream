@@ -3,6 +3,7 @@
 ## 0.6.0
 
 - Mobile: Enabled automatic reloading of todo.txt file on changes.
+- Mobile: Added ability to sort tasks by due date and priority.
 - IOS: Fixed incorrect size of action bar icons.
 - Web: Created task list, task form and project list.
 
