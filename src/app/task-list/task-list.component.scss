@@ -5,6 +5,7 @@
     background-color: $header-color;
     color: $header-text-color;
     display: flex;
+    font-family: $header-font;
     padding: 20px $main-padding;
 
     h2 {
@@ -50,7 +51,7 @@
 
 .tags {
     display: flex;
-    font-family: Tahoma, Geneva, sans-serif;
+    font-family: $main-font;
     font-size: 12px;
     justify-content: flex-end;
     text-align: right;

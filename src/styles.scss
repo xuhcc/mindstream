@@ -39,8 +39,30 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
         url('fonts/vollkorn-all-700.woff2') format('woff2');
 }
 
+@font-face {
+    font-display: swap;
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 400;
+    src:
+        local('PT Sans'),
+        local('PTSans-Regular'),
+        url('fonts/pt-sans-all-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 700;
+    src:
+        local('PT Sans Bold'),
+        local('PTSans-Bold'),
+        url('fonts/pt-sans-all-700.woff2') format('woff2');
+}
+
 body {
-    font-family: sans-serif;
+    font-family: $main-font;
 }
 
 a {
@@ -70,11 +92,19 @@ a:hover {
     border-radius: 3px;
     color: $link-color;
     cursor: pointer;
+    font-size: 14px;
     padding: $main-padding;
+}
+
+.btn:hover {
+    background: #EDEED9;
+    border: 1px solid #E2E6C6;
+    color: #995700;
 }
 
 .field-label {
     display: block;
+    font-size: 14px;
     margin: 5px 0;
 }
 

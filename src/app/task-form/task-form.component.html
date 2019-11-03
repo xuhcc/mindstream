@@ -30,7 +30,13 @@
     formControlName="dueDate"
     class="field"
   >
-  <button (click)="setDueToday()" class="btn">today</button>
+  <button
+    (click)="setDueToday()"
+    id="today-btn"
+    class="btn"
+  >
+    today
+  </button>
   <label class="field-label">Recurrence</label>
   <input
     type="text"

@@ -2,23 +2,39 @@
 @import '../app-web';
 
 #wrapper {
+    background-color: $page-color;
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
 
+$nav-color: #DFE6B8;
+$nav-text-color: #000000;
+
 nav {
-    background-color: $header-color;
-    color: $header-text-color;
+    background-color: $nav-color;
+    color: $nav-text-color;
+    font-family: $header-font;
     font-size: 20px;
     font-weight: bold;
-    padding: 10px;
     text-align: center;
     width: 25%;
 
     a {
-        color: $header-text-color;
+        color: $nav-text-color;
     }
+}
+
+.nav-header {
+    background-color: $header-color;
+    color: $header-text-color;
+    font-size: 20px;
+    line-height: 63px; /* Equal to task-list header height */
+    margin: 0;
+}
+
+.nav-item {
+    padding-top: 10px;
 }
 
 #content {

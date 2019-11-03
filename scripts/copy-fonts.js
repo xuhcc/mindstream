@@ -9,6 +9,8 @@ const FONTS = [
     'node_modules/@openfonts/vollkorn_all/files/vollkorn-all-400.woff2',
     'node_modules/@openfonts/vollkorn_all/files/vollkorn-all-400-italic.woff2',
     'node_modules/@openfonts/vollkorn_all/files/vollkorn-all-700.woff2',
+    'node_modules/@openfonts/pt-sans_all/files/pt-sans-all-400.woff2',
+    'node_modules/@openfonts/pt-sans_all/files/pt-sans-all-700.woff2',
 ];
 
 if (!fs.existsSync(FONT_FIR)){
