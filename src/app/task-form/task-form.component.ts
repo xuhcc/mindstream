@@ -93,7 +93,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         if (!this.projectSuggestionsVisible) {
             return [];
         }
-        const value = this.form.controls.projects.value
+        const value = this.form.controls.projects.value;
         if (!value) {
             return [];
         }

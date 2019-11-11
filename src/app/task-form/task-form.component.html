@@ -12,10 +12,21 @@
     Projects
   </label>
   <input
+    #taskProjectsField
     type="text"
     formControlName="projects"
     class="field"
+    (focus)="showProjectSuggestions()"
+    (blur)="hideProjectSuggestions()"
   >
+  <ul class="project-list">
+    <li
+      *ngFor="let project of getFilteredProjects()"
+      class="project"
+      (click)="addProject(project)"
+    >{{ project }}</li>
+  </ul>
+
   <label class="field-label">
     Priority
   </label>

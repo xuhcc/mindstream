@@ -2,6 +2,7 @@
 
 ## 0.6.1
 
+- Web: Enabled project suggestions in task form.
 - Web: Allowed text selection in task list.
 
 ## 0.6.0

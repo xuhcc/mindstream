@@ -1,6 +1,20 @@
 @import '../../app-common';
 @import '../../app-web';
 
+.project-list {
+    list-style-type: none;
+    margin: 0 2px 5px;
+    padding: 0;
+}
+
+.project {
+    background-color: #FFF;
+    font-size: 16px;
+    min-width: 300px;
+    padding: $main-padding;
+    width: 33%;
+}
+
 #today-btn,
 #save-btn {
     margin-top: 5px;
