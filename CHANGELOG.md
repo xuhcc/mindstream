@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Web: Allowed text selection in task list.
+
 ## 0.6.0
 
 - Mobile: Enabled automatic reloading of todo.txt file on changes.

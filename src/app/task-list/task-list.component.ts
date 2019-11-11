@@ -271,6 +271,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
                 // This is a link, don't open form
                 return;
             }
+            if (event.view.getSelection().type === 'Range') {
+                // This is a text selection event
+                return;
+            }
         }
         this.router.navigate(['/task-detail', {taskId: task.id}]);
     }
