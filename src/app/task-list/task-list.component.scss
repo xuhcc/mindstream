@@ -1,27 +1,8 @@
 @import '../../app-common';
 @import '../../app-web';
 
-.header {
-    background-color: $header-color;
-    color: $header-text-color;
+.page-header {
     display: flex;
-    font-family: $header-font;
-    padding: 20px $main-padding;
-
-    h2 {
-        font-size: 20px;
-        font-weight: bold;
-        margin: 0;
-    }
-
-    a {
-        color: $header-text-color;
-        display: block;
-        font-size: 20px;
-        font-weight: bold;
-        margin-left: $main-padding;
-        padding-top: 3px;
-    }
 }
 
 .page {

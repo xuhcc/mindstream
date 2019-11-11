@@ -75,6 +75,26 @@ a:hover {
     color: $link-hover-color;
 }
 
+.page-header {
+    background-color: $header-color;
+    color: $header-text-color;
+    font-family: $header-font;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px $main-padding;
+
+    a {
+        color: $header-text-color;
+    }
+
+    .material-icons {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: $main-padding;
+        padding-top: 3px;
+    }
+}
+
 .page {
     background-color: $page-color;
     color: $text-color;
