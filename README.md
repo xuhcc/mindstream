@@ -63,7 +63,7 @@ PORT=8080 node index.js
 Prerequisites:
 
 * Node.js & NPM
-* [NativeScript CLI](https://docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 6.1
+* [NativeScript CLI](https://docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 6.2
 
 Install required packages:
 
