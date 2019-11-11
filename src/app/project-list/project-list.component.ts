@@ -28,7 +28,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.createProjectList();
+        this.todoFile.fileLoaded.then(() => this.createProjectList());
         onNavigatedTo(this.view, () => {
             this.fileSubscribe();
         });

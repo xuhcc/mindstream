@@ -64,7 +64,7 @@ export class WelcomeComponent implements OnInit {
         }
         filePromise.then((path: string) => {
             this.settings.path = path;
-            this.todoFile.load().then(() => {
+            this.todoFile.initialLoad().then(() => {
                 this.sideDrawer.unlock();
                 this.router.navigate(['/tasks'], {clearHistory: true});
             });

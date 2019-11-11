@@ -55,7 +55,7 @@ export class SettingsComponent implements OnInit {
     save() {
         const filePath = this.form.value.filePath;
         this.settings.path = filePath;
-        this.todoFile.load().then(() => {
+        this.todoFile.initialLoad().then(() => {
             this.router.navigate(['/tasks']);
         });
     }

@@ -52,7 +52,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         if (this.ordering.length === 0) {
             this.ordering = ['due', 'priority'];
         }
-        this.createTaskList();
+        this.todoFile.fileLoaded.then(() => this.createTaskList());
         // Workarounds for NS
         // ngOnInit is not called after back-navigation
         // ngOnDestroy is not called before navigation

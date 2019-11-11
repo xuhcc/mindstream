@@ -18,6 +18,7 @@ export class TodoFileService implements OnDestroy {
 
     content = '';
     todoItems: TodoTxtItem[] = [];
+    fileLoaded: Promise<void>;
     fileChanged: Subject<boolean>;
     watcher: Subscription;
 
@@ -29,7 +30,7 @@ export class TodoFileService implements OnDestroy {
         this.fileChanged = new Subject();
         // Initial load
         if (settings.path) {
-            this.load();
+            this.initialLoad();
         }
         // Periodic reload
         this.watcher = interval(FILE_WATCH_INTERVAL).subscribe(() => {
@@ -39,6 +40,12 @@ export class TodoFileService implements OnDestroy {
             }
             this.load(true);
         });
+    }
+
+    initialLoad(): Promise<void> {
+        // Called on init and every time the file is switched
+        this.fileLoaded = this.load();
+        return this.fileLoaded;
     }
 
     ngOnDestroy(): void {
