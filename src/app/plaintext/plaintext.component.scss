@@ -1,1 +1,11 @@
+@import '../../app-common';
+@import '../../app-web';
 
+#file-content {
+    font-family: monospace;
+
+    pre {
+        font-size: 14px;
+        margin: 0;
+    }
+}
