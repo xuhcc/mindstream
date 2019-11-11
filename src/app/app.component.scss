@@ -32,3 +32,7 @@ nav {
 .nav-item {
     padding: 10px $main-padding 0;
 }
+
+#content {
+    flex-grow: 1;
+}
