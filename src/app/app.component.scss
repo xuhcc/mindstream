@@ -17,8 +17,7 @@ nav {
     font-family: $header-font;
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
-    width: 25%;
+    min-width: 200px;
 
     a {
         color: $nav-text-color;
@@ -26,17 +25,10 @@ nav {
 }
 
 .nav-header {
-    background-color: $header-color;
-    color: $header-text-color;
-    font-size: 20px;
-    line-height: 63px; /* Equal to task-list header height */
+    background: linear-gradient(90deg, $header-color 50%, #252622 100%);
     margin: 0;
 }
 
 .nav-item {
-    padding-top: 10px;
-}
-
-#content {
-    width: 75%;
+    padding: 10px $main-padding 0;
 }

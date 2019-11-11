@@ -1,6 +1,8 @@
 <div id="wrapper">
   <nav>
-    <h1 class="nav-header">Mindstream</h1>
+    <h1 class="header nav-header">
+      Mindstream
+    </h1>
     <div *ngFor="let item of navigationMenu" class="nav-item">
       <a [routerLink]="[item.url]">{{ item.title }}</a>
     </div>
