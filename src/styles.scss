@@ -1,5 +1,6 @@
 // Styles for the web app
 @import '~normalize.css';
+@import '~ngx-smart-modal/ngx-smart-modal';
 $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
 @import '~material-design-icons-iconfont/src/material-design-icons';
 
@@ -75,23 +76,19 @@ a:hover {
     color: $link-hover-color;
 }
 
-.dialog {
+.nsm-content {
     background-color: $button-color;
     border-radius: 3px;
-    box-shadow: 2px 2px 3px #000;
     font-size: 16px;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 30vh;
-    width: 160px;
-    z-index: 1;
 
-    div {
-        margin: 10px;
+    .dialog-title {
+        font-size: 20px;
         word-wrap: break-word;
+    }
+
+    .dialog-message {
+        margin: 10px;
     }
 
     a {
