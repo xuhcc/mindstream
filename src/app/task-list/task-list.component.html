@@ -53,6 +53,10 @@
           {{ task.rec.display() }}
         </div>
       </div>
+      <a
+        (click)="showTaskMenu(task, $event)"
+        class="task-menu material-icons more_vert"
+      ></a>
     </div>
   </div>
 </div>

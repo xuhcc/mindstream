@@ -25,7 +25,30 @@ export function showActionDialog(
 }
 
 export function showConfirmDialog(title: string, message: string): Promise<boolean> {
-    console.log(title);
-    console.log(message);
-    return new Promise((resolve) => resolve(true));
+    return new Promise<boolean>((resolve) => {
+        const dialog = document.createElement('div');
+        dialog.className = 'dialog';
+        const titleElement = document.createElement('div');
+        titleElement.innerHTML = title;
+        dialog.appendChild(titleElement);
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = message;
+        dialog.appendChild(messageElement);
+        const cancelBtn = document.createElement('a');
+        cancelBtn.innerHTML = 'Cancel';
+        dialog.appendChild(cancelBtn);
+        cancelBtn.addEventListener('click', () => {
+            document.body.removeChild(dialog);
+            resolve(false);
+        });
+        const okBtn = document.createElement('a');
+        okBtn.innerHTML = 'OK';
+        dialog.appendChild(okBtn);
+        okBtn.addEventListener('click', () => {
+            document.body.removeChild(dialog);
+            resolve(true);
+        });
+        const body = document.getElementsByTagName('body')[0];
+        body.insertBefore(dialog, body.firstChild);
+    });
 }

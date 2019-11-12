@@ -4,6 +4,7 @@
 
 - Web: Created plaintext page.
 - Web: Added task sorting dialog.
+- Web: Added task menu.
 - Web: Allowed text selection in task list.
 - Web: Enabled project suggestions in task form.
 

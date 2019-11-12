@@ -126,3 +126,11 @@ $task-checkbox-size: 20px;
         background-color: $tag-hover-color;
     }
 }
+
+.task-menu {
+    color: #999;
+
+    &:hover {
+        color: $link-color;
+    }
+}
