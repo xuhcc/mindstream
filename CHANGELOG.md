@@ -1,9 +1,11 @@
 # Changelog
 
-## 0.6.1
+## 0.7.0
 
-- Web: Enabled project suggestions in task form.
+- Web: Created plaintext page.
+- Web: Added task sorting dialog.
 - Web: Allowed text selection in task list.
+- Web: Enabled project suggestions in task form.
 
 ## 0.6.0
 
