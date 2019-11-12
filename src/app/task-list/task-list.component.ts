@@ -6,13 +6,13 @@ import * as mila from 'markdown-it-link-attributes';
 import { Subscription } from 'rxjs';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
+import { DialogService } from '../shared/dialog.service';
 import { RouterService } from '../shared/router.service';
 import { TaskFilter } from '../shared/settings';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { Task, DateType, getDateType } from '../shared/task';
 import { compareEmptyGreater } from '../shared/misc';
-import { showActionDialog, showConfirmDialog } from '../shared/helpers/dialogs';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
@@ -39,6 +39,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     taskList: ElementRef;
 
     constructor(
+        private dialog: DialogService,
         private router: RouterService,
         private settings: SettingsService,
         private todoFile: TodoFileService,
@@ -169,7 +170,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     sortTaskList(): void {
-        showActionDialog(
+        this.dialog.action(
             'Sort by',
             null,
             ['Due date', 'Priority'],
@@ -213,7 +214,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
             // https://github.com/NativeScript/NativeScript/issues/3573
             return;
         }
-        showActionDialog(
+        this.dialog.action(
             task.text,
             'Choose action',
             ['Postpone', 'Edit', 'Remove'],
@@ -280,7 +281,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     removeTask(task: Task) {
-        showConfirmDialog(
+        this.dialog.confirm(
             'Task removal',
             `Are you sure you want to remove "${task.text}"?`,
         ).then((result: boolean) => {

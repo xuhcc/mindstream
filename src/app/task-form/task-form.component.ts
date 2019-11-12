@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { dateToString } from '../shared/misc';
+import { DialogService } from '../shared/dialog.service';
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
@@ -14,7 +15,6 @@ import {
     RECURRENCE_REGEXP,
 } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
-import { showActionDialog } from '../shared/helpers/dialogs';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
 import { isAndroid, isIOS } from '../shared/helpers/platform';
 
@@ -38,6 +38,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     taskProjectsField: ElementRef;
 
     constructor(
+        private dialog: DialogService,
         private formBuilder: FormBuilder,
         private router: RouterService,
         private route: ActivatedRoute,
@@ -168,7 +169,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             'Every week': '1w',
             'Every month': '1m',
         };
-        showActionDialog(
+        this.dialog.action(
             'Task recurrence',
             'Choose recurrence interval',
             Object.keys(map),
