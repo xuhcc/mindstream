@@ -32,43 +32,9 @@
     margin-bottom: 5px;
     min-width: 33%;
     padding: $main-padding;
-}
-
-.tags {
-    display: flex;
-    font-family: $main-font;
-    font-size: 12px;
-    justify-content: flex-end;
-    text-align: right;
-}
-
-.tag {
-    @extend %tag;
-    margin-left: 5px;
-
-    &.priority-A { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-high;
-    }
-
-    &.priority-B { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-medium;
-    }
-
-    &.priority-C { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-low;
-    }
-
-    &.overdue {
-        background-color: $priority-high;
-    }
-}
-
-.project,
-.due-date {
-    cursor: pointer;
 
     &:hover {
-        background-color: $tag-hover-color;
+        border: 1px solid $menu-color;
     }
 }
 
@@ -104,6 +70,8 @@ $task-checkbox-size: 20px;
 }
 
 .task-text {
+    flex-grow: 1;
+    margin-right: 15px;
     padding-top: 2px;
 
     &.completed {
@@ -113,5 +81,48 @@ $task-checkbox-size: 20px;
         ::ng-deep a {
             color: $task-completed-color;
         }
+    }
+}
+
+.tags {
+    display: flex;
+    font-family: $main-font;
+    font-size: 12px;
+    height: 100%;
+    padding-top: 2px;
+    text-align: right;
+}
+
+.tag {
+    @extend %tag;
+    margin-left: 5px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &.priority-A { /* stylelint-disable-line selector-class-pattern */
+        background-color: $priority-high;
+    }
+
+    &.priority-B { /* stylelint-disable-line selector-class-pattern */
+        background-color: $priority-medium;
+    }
+
+    &.priority-C { /* stylelint-disable-line selector-class-pattern */
+        background-color: $priority-low;
+    }
+
+    &.overdue {
+        background-color: $priority-high;
+    }
+}
+
+.project,
+.due-date {
+    cursor: pointer;
+
+    &:hover {
+        background-color: $tag-hover-color;
     }
 }
