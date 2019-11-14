@@ -39,18 +39,15 @@
     class="field"
   >
   <label class="field-label">Due date</label>
-  <input
-    type="text"
-    formControlName="dueDate"
-    class="field"
-  >
-  <button
-    (click)="setDueToday()"
-    id="today-btn"
-    class="btn"
-  >
-    today
-  </button>
+  <div class="field-wrapper">
+    <input
+      type="text"
+      formControlName="dueDate"
+      class="field"
+    >
+    <a (click)="setDueToday()" class="field-addon">today</a>
+  </div>
+
   <label class="field-label">Recurrence</label>
   <input
     type="text"

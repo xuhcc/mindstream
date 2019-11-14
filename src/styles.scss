@@ -150,13 +150,40 @@ a:hover {
     margin: 5px 0;
 }
 
-.field {
+.field,
+.field-addon {
     background-color: $field-color;
     border: $field-border solid $field-border-color;
     border-radius: $field-border-radius;
+    box-sizing: border-box;
     display: block;
     font-size: 16px;
-    min-width: 300px;
+    height: 38px;
     padding: $main-padding;
+}
+
+.field {
+    min-width: 300px;
     width: 33%;
+}
+
+.field-wrapper {
+    /* Flex wrapper for field with addons */
+    display: flex;
+    min-width: 300px;
+    width: 33%;
+
+    .field {
+        border-bottom-right-radius: 0;
+        border-right-width: 0;
+        border-top-right-radius: 0;
+        flex-grow: 1;
+        width: auto;
+    }
+}
+
+.field-addon:last-child {
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
 }
