@@ -33,11 +33,25 @@
   <label class="field-label">
     Priority
   </label>
-  <input
-    type="text"
-    formControlName="priority"
-    class="field"
-  >
+  <div class="field-wrapper">
+    <input
+      type="text"
+      formControlName="priority"
+      class="field"
+    >
+    <div
+      *ngFor="let priority of priorities; let last = last;"
+      class="field-addon"
+    >
+      <a
+        (click)="setPriority(priority)"
+        [className]="'priority priority-' + priority.toLowerCase()"
+      >
+        {{ priority }}
+      </a>
+    </div>
+  </div>
+
   <label class="field-label">Due date</label>
   <div class="field-wrapper">
     <input

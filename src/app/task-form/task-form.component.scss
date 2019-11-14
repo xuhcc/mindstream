@@ -15,6 +15,22 @@
     width: 33%;
 }
 
+.priority {
+    @extend %tag;
+
+    &.priority-a {
+        background-color: $priority-high;
+    }
+
+    &.priority-b {
+        background-color: $priority-medium;
+    }
+
+    &.priority-c {
+        background-color: $priority-low;
+    }
+}
+
 #save-btn {
     margin-top: 5px;
 }

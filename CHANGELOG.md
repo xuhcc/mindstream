@@ -2,7 +2,7 @@
 
 ## 0.7.0
 
-- Mobile: Added priority selection buttons to task form.
+- Mobile, Web: Added priority selection buttons to task form.
 - Web: Created plaintext page.
 - Web: Added task sorting dialog.
 - Web: Added task menu.

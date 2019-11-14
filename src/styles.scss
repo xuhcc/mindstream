@@ -180,10 +180,17 @@ a:hover {
         flex-grow: 1;
         width: auto;
     }
-}
 
-.field-addon:last-child {
-    border-bottom-left-radius: 0;
-    border-left-width: 0;
-    border-top-left-radius: 0;
+    .field-addon {
+        border-left-width: 0;
+        border-radius: 0;
+        border-right-width: 0;
+        padding-left: 0;
+    }
+
+    .field-addon:last-child {
+        border-bottom-right-radius: $field-border-radius;
+        border-right-width: $field-border;
+        border-top-right-radius: $field-border-radius;
+    }
 }
