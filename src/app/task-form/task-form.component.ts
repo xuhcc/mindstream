@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { dateToString } from '../shared/misc';
+import { dateToString, escapeRegExp } from '../shared/misc';
 import { DialogService } from '../shared/dialog.service';
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
@@ -104,7 +104,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             return [];
         }
         const search = projects[projects.length - 1];
-        const searchRegexp = new RegExp(search, 'iu');
+        const searchRegexp = new RegExp(escapeRegExp(search), 'iu');
         return this.projects.filter((project) => {
             return project.search(searchRegexp) !== -1;
         }).sort();

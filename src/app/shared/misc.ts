@@ -29,3 +29,7 @@ export function compareEmptyGreater(v1: any, v2: any): number {
         return v2 ? 1 : v1 ? -1 : 0;
     }
 }
+
+export function escapeRegExp(value: string) {
+    return value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'); // eslint-disable-line no-useless-escape
+}

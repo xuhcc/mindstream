@@ -3,6 +3,7 @@
 ## 0.7.0
 
 - Mobile, Web: Added priority selection buttons to task form.
+- Mobile, Web: Fixed project search bug at task form.
 - Web: Created plaintext page.
 - Web: Added task sorting dialog.
 - Web: Added task menu.
