@@ -15,15 +15,15 @@
     @extend %tag;
     margin-left: 5;
 
-    &.priority-A { /* stylelint-disable-line selector-class-pattern */
+    &.priority-a {
         background-color: $priority-high;
     }
 
-    &.priority-B { /* stylelint-disable-line selector-class-pattern */
+    &.priority-b {
         background-color: $priority-medium;
     }
 
-    &.priority-C { /* stylelint-disable-line selector-class-pattern */
+    &.priority-c {
         background-color: $priority-low;
     }
 

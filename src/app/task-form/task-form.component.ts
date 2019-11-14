@@ -30,6 +30,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     projects: string[];
     projectSuggestionsVisible = false;
     projectSuggestionsLocked = false;
+    priorities = ['A', 'B', 'C'];
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
@@ -148,6 +149,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         projects.pop();
         const newValue = projects.join(' ');
         this.form.controls.projects.setValue(newValue);
+    }
+
+    setPriority(priority: string): void {
+        this.form.controls.priority.setValue(priority);
     }
 
     setDueToday() {

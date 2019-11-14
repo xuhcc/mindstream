@@ -46,10 +46,23 @@
     </StackLayout>
 
     <Label text="Priority"></Label>
-    <TextField
-      class="field"
-      formControlName="priority"
-    ></TextField>
+    <FlexboxLayout flexDirection="row">
+      <TextField
+        flexGrow="1"
+        class="field field-with-addon"
+        formControlName="priority"
+      ></TextField>
+      <StackLayout
+        *ngFor="let priority of priorities; let last = last;"
+        [className]="last ? 'field-addon field-addon-last' : 'field-addon'"
+      >
+        <Label
+          [className]="'priority priority-' + priority.toLowerCase()"
+          [text]="priority"
+          (tap)="setPriority(priority)"
+        ></Label>
+      </StackLayout>
+    </FlexboxLayout>
 
     <Label text="Due date"></Label>
     <FlexboxLayout flexDirection="row">

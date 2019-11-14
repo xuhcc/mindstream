@@ -58,12 +58,12 @@
               ></Label>
               <Label
                 *ngIf="task.priority"
-                [className]="'tag priority-' + task.priority"
+                [className]="'tag priority-' + task.priority.toLowerCase()"
                 [text]="task.priority"
               ></Label>
               <Label
                 *ngIf="task.due"
-                [className]="'tag priority-' + task.getDueDatePriority()"
+                [className]="'tag priority-' + task.getDueDatePriority().toLowerCase()"
                 [text]="getDateDisplay(task.due)"
                 (tap)="setFilter({dueDate: task.due})"
               ></Label>
