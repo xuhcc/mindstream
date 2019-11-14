@@ -16,7 +16,7 @@ import {
 } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
-import { isAndroid, isIOS } from '../shared/helpers/platform';
+import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 
 @Component({
     selector: 'ms-task-form',
@@ -115,7 +115,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     hideProjectSuggestions() {
-        // On iOS "blur" event is emitted before "tap" event,
+        // On iOS and Web the "blur" event is emitted before "tap" event,
         // so we need to delay hiding
         setTimeout(() => {
             if (this.projectSuggestionsLocked) {
@@ -130,7 +130,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     addProject(project: string) {
-        if (isIOS) {
+        if (isIOS || isWeb) {
             // Prevent suggestions list from hiding on blur event
             this.projectSuggestionsLocked = true;
         }

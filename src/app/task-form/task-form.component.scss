@@ -2,17 +2,18 @@
 @import '../../app-web';
 
 .project-list {
+    box-sizing: border-box;
     list-style-type: none;
-    margin: 0 2px 5px;
-    padding: 0;
+    margin: 0 0 5px;
+    min-width: 300px;
+    padding: 0 2px;
+    width: 33%;
 }
 
 .project {
     background-color: #FFF;
     font-size: 16px;
-    min-width: 300px;
     padding: $main-padding;
-    width: 33%;
 }
 
 .priority {

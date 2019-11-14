@@ -20,6 +20,7 @@
     formControlName="projects"
     class="field"
     (focus)="showProjectSuggestions()"
+    (input)="showProjectSuggestions()"
     (blur)="hideProjectSuggestions()"
   >
   <ul class="project-list">
