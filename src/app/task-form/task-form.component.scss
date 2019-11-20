@@ -12,8 +12,17 @@
 
 .project {
     background-color: #FFF;
+    cursor: pointer;
     font-size: 16px;
     padding: $main-padding;
+
+    &:hover {
+        background-color: $menu-color;
+    }
+
+    &:last-child {
+        border-radius: 0 0 $field-border-radius $field-border-radius;
+    }
 }
 
 .priority {
