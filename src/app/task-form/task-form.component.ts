@@ -30,6 +30,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     projects: string[];
     projectSuggestionsVisible = false;
     projectSuggestionsLocked = false;
+    selectedProject: string;
     priorities = ['A', 'B', 'C'];
 
     @ViewChild('taskTextField', {static: false})
@@ -127,6 +128,30 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
                 this.projectSuggestionsVisible = false;
             }
         }, 100);
+    }
+
+    selectProject(event: any): void {
+        if (isWeb) {
+            // Select project from keyboard
+            const key = event.key;
+            if (key === 'ArrowUp' || key === 'ArrowDown') {
+                const projects = this.getFilteredProjects();
+                let selectedIndex = projects.indexOf(this.selectedProject);
+                if (key === 'ArrowDown' && selectedIndex < projects.length - 1) {
+                    // Select next project
+                    selectedIndex++;
+                } else if (key === 'ArrowUp' && selectedIndex > 0) {
+                    // Select previous project
+                    selectedIndex--;
+                }
+                this.selectedProject = projects[selectedIndex];
+            }
+            if (key === 'Enter' && this.selectedProject) {
+                event.preventDefault();
+                this.addProject(this.selectedProject);
+                delete this.selectedProject;
+            }
+        }
     }
 
     addProject(project: string) {

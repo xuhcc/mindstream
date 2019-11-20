@@ -16,7 +16,8 @@
     font-size: 16px;
     padding: $main-padding;
 
-    &:hover {
+    &:hover,
+    &.selected {
         background-color: $menu-color;
     }
 

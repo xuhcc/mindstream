@@ -33,4 +33,21 @@ describe('TaskFormComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should select project', () => {
+        component.projects = ['pro1', 'pro2'];
+        component.form.controls.projects.setValue('pro');
+        component.projectSuggestionsVisible = true;
+        expect(component.selectedProject).toBeUndefined();
+        component.selectProject({key: 'ArrowDown'});
+        expect(component.selectedProject).toEqual('pro1');
+        component.selectProject({key: 'ArrowDown'});
+        expect(component.selectedProject).toEqual('pro2');
+        component.selectProject({key: 'ArrowDown'});
+        expect(component.selectedProject).toEqual('pro2');
+        component.selectProject({key: 'ArrowUp'});
+        expect(component.selectedProject).toEqual('pro1');
+        component.selectProject({key: 'ArrowUp'});
+        expect(component.selectedProject).toEqual('pro1');
+    });
 });

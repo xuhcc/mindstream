@@ -9,6 +9,7 @@
 - Web: Added task menu.
 - Web: Allowed text selection in task list.
 - Web: Enabled project suggestions in task form.
+- Web: Allowed to select project with keyboard.
 
 ## 0.6.0
 
