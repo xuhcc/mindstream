@@ -24,8 +24,9 @@ describe('TodoFileService', () => {
         const service: TodoFileService = TestBed.get(TodoFileService);
         expect(service).toBeTruthy();
         expect(service.content).toBe('');
-        expect(service.todoItems).toEqual([]);
         expect(service.fileChanged).toBeDefined();
+        // Private property
+        expect(service['todoItems']).toEqual([]); // eslint-disable-line dot-notation
     });
 
     it('should get tasks', async () => {
@@ -59,10 +60,12 @@ describe('TodoFileService', () => {
         const service: TodoFileService = TestBed.get(TodoFileService);
         fileContent = 'task1\ntask2\ntask3';
         await service.load();
-        expect(service.todoItems.length).toBe(3);
-        service.removeTask(2);
-        expect(service.todoItems.length).toBe(3);
-        expect(service.todoItems[1]).toBeUndefined();
+        // Get private property
+        const todoItems = service['todoItems']; // eslint-disable-line dot-notation
+        expect(todoItems.length).toBe(3);
+        await service.removeTask(2);
+        expect(todoItems.length).toBe(3);
+        expect(todoItems[1]).toBeUndefined();
         expect(service.content).toEqual('task1\ntask3');
     });
 });

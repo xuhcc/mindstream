@@ -17,10 +17,10 @@ const FILE_WATCH_INTERVAL = 60 * 1000;
 export class TodoFileService implements OnDestroy {
 
     content = '';
-    todoItems: TodoTxtItem[] = [];
     fileLoaded: Promise<void>;
     fileChanged: Subject<boolean>;
     private watcher: Subscription;
+    private todoItems: TodoTxtItem[] = [];
 
     constructor(
         private file: FileService,
@@ -53,14 +53,6 @@ export class TodoFileService implements OnDestroy {
         this.watcher.unsubscribe();
     }
 
-    private parse() {
-        this.todoItems = TodoTxt.parse(this.content, getExtensions());
-    }
-
-    private render(): string {
-        return TodoTxt.render(this.todoItems);
-    }
-
     getTask(taskId: number): Task {
         return new Task(this.todoItems[taskId - 1]);
     }
@@ -86,37 +78,31 @@ export class TodoFileService implements OnDestroy {
         return Array.from(projects).sort();
     }
 
-    createTask(taskData: TaskData) {
+    async createTask(taskData: TaskData): Promise<void> {
         const task = Task.create(taskData);
-        this.appendTask(task);
+        await this.appendTask(task);
     }
 
-    appendTask(task: Task) {
+    async appendTask(task: Task): Promise<void> {
         // Append to the end of file
         this.todoItems.push(task.todoItem);
-        this.content = this.render();
-        this.save();
+        await this.save();
     }
 
-    updateTask(taskId: number, taskData: TaskData) {
+    async updateTask(taskId: number, taskData: TaskData): Promise<void> {
         const task = new Task(this.todoItems[taskId - 1]);
         task.update(taskData);
-        // Rewrite all tasks
-        this.content = this.render();
-        this.save();
+        await this.save();
     }
 
-    replaceTask(taskId: number, task: Task) {
+    async replaceTask(taskId: number, task: Task): Promise<void> {
         this.todoItems[taskId - 1] = task.todoItem;
-        // Rewrite all tasks
-        this.content = this.render();
-        this.save();
+        await this.save();
     }
 
-    removeTask(taskId: number) {
+    async removeTask(taskId: number): Promise<void> {
         delete this.todoItems[taskId - 1]; // Keeps task IDs intact
-        this.content = this.render();
-        this.save();
+        await this.save();
     }
 
     async load(watch = false): Promise<void> {
@@ -137,7 +123,7 @@ export class TodoFileService implements OnDestroy {
             return;
         }
         this.content = content;
-        this.parse();
+        this.todoItems = TodoTxt.parse(this.content, getExtensions());
         this.fileChanged.next(true); // true = IDs are probably changed
         try {
             showToast('File loaded');
@@ -147,7 +133,8 @@ export class TodoFileService implements OnDestroy {
         }
     }
 
-    async save(): Promise<void> {
+    private async save(): Promise<void> {
+        this.content = TodoTxt.render(this.todoItems);
         await this.file.write(this.settings.path, this.content);
         this.fileChanged.next(false); // false => IDs are not changed
     }
