@@ -92,7 +92,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     private fileSubscribe() {
-        this.fileSubscription = this.todoFile.fileChanged.subscribe((reload) => {
+        this.fileSubscription = this.todoFile.fileChanged.subscribe((reload: boolean) => {
             if (!reload) {
                 return;
             }

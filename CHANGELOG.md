@@ -4,6 +4,7 @@
 
 - Mobile, Web: Added priority selection buttons to task form.
 - Mobile, Web: Fixed project search bug at task form.
+- Mobile, Web: Fixed bug where task IDs become wrong.
 - Web: Created plaintext page.
 - Web: Added task sorting dialog.
 - Web: Added task menu.

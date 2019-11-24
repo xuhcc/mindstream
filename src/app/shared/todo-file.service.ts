@@ -124,7 +124,7 @@ export class TodoFileService implements OnDestroy {
         }
         this.content = content;
         this.parse();
-        this.fileChanged.next(true); // true = trigger task list reload
+        this.fileChanged.next(true); // true = IDs are probably changed
         try {
             showToast('File loaded');
         } catch (error) {
@@ -135,8 +135,7 @@ export class TodoFileService implements OnDestroy {
 
     async save(): Promise<void> {
         await this.file.write(this.settings.path, this.content);
-        this.parse();
-        this.fileChanged.next(false);
+        this.fileChanged.next(false); // false => IDs are not changed
     }
 
     async create(): Promise<string> {
