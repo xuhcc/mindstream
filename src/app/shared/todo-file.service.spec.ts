@@ -26,10 +26,20 @@ describe('TodoFileService', () => {
         expect(service.content).toBe('');
         expect(service.todoItems).toEqual([]);
         expect(service.fileChanged).toBeDefined();
-        expect(service.watcher).toBeDefined();
     });
 
-    it('shold get projects', async () => {
+    it('should get tasks', async () => {
+        const service: TodoFileService = TestBed.get(TodoFileService);
+        fileContent = 'task1\ntask2\ntask3';
+        await service.load();
+        const tasks = service.getTasks();
+        expect(tasks.length).toBe(3);
+        // IDs are starting with 1
+        expect(tasks[0].id).toBe(1);
+        expect(tasks[0].text).toBe('task1');
+    });
+
+    it('should get projects', async () => {
         const service: TodoFileService = TestBed.get(TodoFileService);
         fileContent = (
             '(A) task1 +project1 +project2\n' +
@@ -50,7 +60,7 @@ describe('TodoFileService', () => {
         fileContent = 'task1\ntask2\ntask3';
         await service.load();
         expect(service.todoItems.length).toBe(3);
-        service.removeTask(1);
+        service.removeTask(2);
         expect(service.todoItems.length).toBe(3);
         expect(service.todoItems[1]).toBeUndefined();
         expect(service.content).toEqual('task1\ntask3');

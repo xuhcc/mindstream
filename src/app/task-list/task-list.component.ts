@@ -79,14 +79,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     private createTaskList() {
-        this.tasks = this.todoFile.todoItems.map((todoItem, index) => {
-            const task = new Task(todoItem);
-            // Set IDs
-            // TODO: index can change if file has been updated from another device
-            // TODO: use UUIDs?
-            task.id = index;
-            return task;
-        });
+        this.tasks = this.todoFile.getTasks();
         // Sort tasks
         this.tasks.sort(this.getSorter());
     }
@@ -205,6 +198,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
             return `<span style="text-decoration: line-through;">${html}</span>`;
         } else {
             return html;
+        }
+    }
+
+    getTaskExtras(task: Task): string {
+        if (task.created) {
+            return `#${task.id} from ${this.getDateDisplay(task.created)}`;
+        } else {
+            return `#${task.id}`;
         }
     }
 

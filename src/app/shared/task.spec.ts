@@ -77,6 +77,7 @@ describe('Task', () => {
         expect(task.todoItem).toBe(todoItem);
         expect(task.todoItem.extensions.length).toBe(3);
         expect(task.todoItem.date).toBe(null);
+        expect(task.created).toBe(null);
         expect(task.text).toBe('test');
         expect(task.priority).toBe('A');
         expect(task.projects).toEqual(['proj']);

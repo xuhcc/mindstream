@@ -20,7 +20,11 @@
   </button>
   <div *ngFor="let task of getTaskList()" class="task">
     <div class="task-body">
-      <div class="task-checkbox" (click)="toggleComplete(task)">
+      <div
+        (click)="toggleComplete(task)"
+        [title]="getTaskExtras(task)"
+        class="task-checkbox"
+      >
         <i *ngIf="task.complete" class="material-icons check"></i>
       </div>
       <div

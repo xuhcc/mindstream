@@ -20,7 +20,7 @@ export class TodoFileService implements OnDestroy {
     todoItems: TodoTxtItem[] = [];
     fileLoaded: Promise<void>;
     fileChanged: Subject<boolean>;
-    watcher: Subscription;
+    private watcher: Subscription;
 
     constructor(
         private file: FileService,
@@ -61,6 +61,21 @@ export class TodoFileService implements OnDestroy {
         return TodoTxt.render(this.todoItems);
     }
 
+    getTask(taskId: number): Task {
+        return new Task(this.todoItems[taskId - 1]);
+    }
+
+    getTasks(): Task[] {
+        return this.todoItems.map((todoItem, index) => {
+            const task = new Task(todoItem);
+            // Set IDs (line number, starting with 1, similar to todo.sh)
+            // TODO: index can change if file has been updated from another device
+            // TODO: use UUIDs?
+            task.id = index + 1;
+            return task;
+        });
+    }
+
     getProjects(): string[] {
         const projects = new Set<string>();
         this.todoItems.forEach((todoItem: TodoTxtItem) => {
@@ -84,7 +99,7 @@ export class TodoFileService implements OnDestroy {
     }
 
     updateTask(taskId: number, taskData: TaskData) {
-        const task = new Task(this.todoItems[taskId]);
+        const task = new Task(this.todoItems[taskId - 1]);
         task.update(taskData);
         // Rewrite all tasks
         this.content = this.render();
@@ -92,15 +107,14 @@ export class TodoFileService implements OnDestroy {
     }
 
     replaceTask(taskId: number, task: Task) {
-        this.todoItems[taskId] = task.todoItem;
+        this.todoItems[taskId - 1] = task.todoItem;
         // Rewrite all tasks
         this.content = this.render();
         this.save();
     }
 
     removeTask(taskId: number) {
-        // Keep task IDs intact
-        delete this.todoItems[taskId];
+        delete this.todoItems[taskId - 1]; // Keeps task IDs intact
         this.content = this.render();
         this.save();
     }

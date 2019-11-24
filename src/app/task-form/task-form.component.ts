@@ -8,7 +8,6 @@ import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import {
-    Task,
     PROJECT_LIST_REGEXP,
     PRIORITY_REGEXP,
     DATESTRING_REGEXP,
@@ -74,7 +73,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         this.taskId = this.route.snapshot.params.taskId;
         if (this.taskId) {
             // Pre-fill form with data if taskId is provided
-            const task = new Task(this.todoFile.todoItems[this.taskId]);
+            const task = this.todoFile.getTask(this.taskId);
             this.form.setValue(task.toTaskData());
         }
         this.projects = this.todoFile.getProjects();

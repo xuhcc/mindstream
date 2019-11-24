@@ -122,6 +122,10 @@ export class Task {
         this.todoItem = todoItem;
     }
 
+    get created(): Date {
+        return this.todoItem.date;
+    }
+
     get text(): string {
         return this.todoItem.text;
     }
