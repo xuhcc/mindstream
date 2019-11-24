@@ -10,7 +10,7 @@ import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
             <a (click)="close(action)">{{ action }}</a>
         </div>
         <div *ngIf="showCancel">
-            <a (click)="close(false)">cancel</a>
+            <a (click)="close(false)">Cancel</a>
         </div>
         <div *ngIf="showOK">
             <a (click)="close(true)">OK</a>
