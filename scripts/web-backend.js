@@ -46,6 +46,11 @@ app.post('/file/:path', (request, response) => {
     });
 });
 
+app.get('/*', (request, response) => {
+    // Handle angular routes
+    response.sendFile(__dirname + '/static/index.html');
+});
+
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {

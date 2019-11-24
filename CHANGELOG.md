@@ -10,6 +10,7 @@
 - Web: Allowed text selection in task list.
 - Web: Enabled project suggestions in task form.
 - Web: Allowed to select project with keyboard.
+- Web: Fixed error on app reloading.
 
 ## 0.6.0
 
