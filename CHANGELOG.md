@@ -12,6 +12,7 @@
 - Web: Enabled project suggestions in task form.
 - Web: Allowed to select project with keyboard.
 - Web: Fixed error on app reloading.
+- Web: Added 'tomorrow' button to task form.
 
 ## 0.6.0
 

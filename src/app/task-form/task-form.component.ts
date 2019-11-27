@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
+import * as moment from 'moment';
+
 import { dateToString, escapeRegExp } from '../shared/misc';
 import { DialogService } from '../shared/dialog.service';
 import { RouterService } from '../shared/router.service';
@@ -181,6 +183,12 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
 
     setDueToday() {
         const dateStr = dateToString(new Date());
+        this.form.controls.dueDate.setValue(dateStr);
+    }
+
+    setDueTomorrow() {
+        const tomorrow = moment().add(1, 'day').toDate();
+        const dateStr = dateToString(tomorrow);
         this.form.controls.dueDate.setValue(dateStr);
     }
 
