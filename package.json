@@ -43,6 +43,7 @@
         "@nstudio/nativescript-pulltorefresh": "~1.0.1",
         "@openfonts/pt-sans_all": "1.44.0",
         "@openfonts/vollkorn_all": "1.43.0",
+        "angular-mydatepicker": "~0.3.1",
         "core-js": "^2.5.4",
         "express": "~4.17.1",
         "jstodotxt": "github:xuhcc/jsTodoTxt#due-fix",

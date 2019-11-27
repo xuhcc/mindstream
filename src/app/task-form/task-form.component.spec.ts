@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+
 import { TaskFormComponent } from './task-form.component';
 import { DialogService } from '../shared/dialog.service';
 import { FileService } from '../shared/file.service';
@@ -14,7 +16,7 @@ describe('TaskFormComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [TaskFormComponent],
-            imports: [ReactiveFormsModule],
+            imports: [ReactiveFormsModule, AngularMyDatePickerModule],
             providers: [
                 {provide: DialogService, useValue: {}},
                 {provide: FileService, useValue: {}},

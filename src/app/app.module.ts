@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
         HttpClientModule,
         ReactiveFormsModule,
         BrowserModule,
+        AngularMyDatePickerModule,
         NgxSmartModalModule.forRoot(),
         AppRoutingModule,
     ],

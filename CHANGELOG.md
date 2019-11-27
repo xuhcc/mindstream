@@ -13,6 +13,7 @@
 - Web: Allowed to select project with keyboard.
 - Web: Fixed error on app reloading.
 - Web: Added 'tomorrow' button to task form.
+- Web: Added datepicker to task form.
 
 ## 0.6.0
 
