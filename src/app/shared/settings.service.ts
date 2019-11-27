@@ -12,8 +12,6 @@ import {
 })
 export class SettingsService {
 
-    constructor() { }
-
     get path(): string {
         return getValue(Settings.Path);
     }

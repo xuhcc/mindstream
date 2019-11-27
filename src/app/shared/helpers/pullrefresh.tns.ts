@@ -1,7 +1,7 @@
 import { PullToRefresh } from '@nstudio/nativescript-pulltorefresh';
 
 export function onPullRefresh(event, callback) {
-    const pullRefresh = <PullToRefresh>event.object;
+    const pullRefresh = event.object as PullToRefresh;
     setTimeout(() => {
         callback();
         pullRefresh.refreshing = false;

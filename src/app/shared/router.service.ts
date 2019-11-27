@@ -12,6 +12,5 @@ export class RouterService {
         this.router.navigate(parameters, extras);
     }
 
-    backToPreviousPage() {
-    }
+    backToPreviousPage() { } // eslint-disable-line @typescript-eslint/no-empty-function
 }

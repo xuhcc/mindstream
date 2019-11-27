@@ -7,8 +7,6 @@ import { action, confirm } from 'tns-core-modules/ui/dialogs';
 })
 export class DialogService {
 
-    constructor() { }
-
     action(
         title: string,
         message: string,

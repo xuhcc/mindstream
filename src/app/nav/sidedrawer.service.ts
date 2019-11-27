@@ -5,13 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class SideDrawerService {
 
-    constructor() { }
-
     open(viewContainerRef?: any) {
         console.log(viewContainerRef);
     }
 
-    lock() {}
+    lock() {} // eslint-disable-line @typescript-eslint/no-empty-function
 
-    unlock() {}
+    unlock() {} // eslint-disable-line @typescript-eslint/no-empty-function
 }
