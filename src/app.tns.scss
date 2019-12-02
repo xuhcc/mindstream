@@ -24,14 +24,14 @@
     border-color: $button-border-color;
     border-radius: 3;
     border-width: 1;
-    color: $link-color;
+    color: $button-text-color;
     padding: $main-padding;
 }
 
 .btn-disabled {
-    background-color: #EEEEEE;
-    border-color: #EEEEEE;
-    color: #B5B5B5;
+    background-color: $button-disabled-color;
+    border-color: $button-disabled-border-color;
+    color: $button-disabled-text-color;
 }
 
 .field {

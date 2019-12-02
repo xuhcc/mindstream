@@ -77,6 +77,7 @@ a:hover {
 }
 
 .nsm-content {
+    /* ngx-smart-modal */
     background-color: $button-color;
     border-radius: 3px;
     font-size: 16px;
@@ -123,25 +124,26 @@ a:hover {
     padding: $main-padding;
 }
 
-#file-picker {
-    padding: $main-padding;
-    text-align: center;
-}
-
 .btn {
     background-color: $button-color;
     border: 1px solid $button-border-color;
     border-radius: 3px;
-    color: $link-color;
+    color: $button-text-color;
     cursor: pointer;
     font-size: 14px;
     padding: $main-padding;
-}
 
-.btn:hover {
-    background: #EDEED9;
-    border: 1px solid #E2E6C6;
-    color: #995700;
+    &:hover {
+        background: #EDEED9;
+        border: 1px solid #E2E6C6;
+        color: #995700;
+    }
+
+    &[disabled] {
+        background-color: $button-disabled-color;
+        border-color: $button-disabled-border-color;
+        color: $button-disabled-text-color;
+    }
 }
 
 .field-label {
