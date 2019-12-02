@@ -10,6 +10,7 @@ import { dateToString, stringToDate } from './misc';
 
 export const PROJECT_REGEXP = /^[^+\s]+$/;
 export const PROJECT_LIST_REGEXP = /^[^+]+$/;
+export const CONTEXT_LIST_REGEXP = /^[^@]+$/;
 export const PRIORITY_REGEXP = /^[A-Z]$/;
 export const DATESTRING_REGEXP = /^\d{4}-(0\d|1[0-2])-([0-2]\d|3[01])$/;
 
@@ -108,6 +109,7 @@ export function getExtensions(): TodoTxtExtension[] {
 export interface TaskData {
     text: string;
     projects: string;
+    contexts: string;
     priority: string;
     dueDate: string;
     recurrence: string;
@@ -132,6 +134,10 @@ export class Task {
 
     get projects(): string[] {
         return this.todoItem.projects;
+    }
+
+    get contexts(): string[] {
+        return this.todoItem.contexts;
     }
 
     get priority(): string {
@@ -180,6 +186,9 @@ export class Task {
         if (taskData.projects) {
             todoItem.projects = taskData.projects.split(/\s+/);
         }
+        if (taskData.contexts) {
+            todoItem.contexts = taskData.contexts.split(/\s+/);
+        }
         if (taskData.priority) {
             todoItem.priority = taskData.priority;
         }
@@ -211,6 +220,11 @@ export class Task {
         } else {
             this.todoItem.projects = null;
         }
+        if (taskData.contexts) {
+            this.todoItem.contexts = taskData.contexts.split(/\s+/);
+        } else {
+            this.todoItem.contexts = null;
+        }
         if (taskData.priority) {
             this.todoItem.priority = taskData.priority;
         } else {
@@ -237,6 +251,10 @@ export class Task {
         if (this.todoItem.projects && this.todoItem.projects.length > 0) {
             projects = this.todoItem.projects.join(' ');
         }
+        let contexts = '';
+        if (this.todoItem.contexts && this.todoItem.contexts.length > 0) {
+            contexts = this.todoItem.contexts.join(' ');
+        }
         let dueDate = '';
         if (this.todoItem.due) {
             dueDate = dateToString(this.todoItem.due);
@@ -248,6 +266,7 @@ export class Task {
         return {
             text: this.todoItem.text,
             projects: projects,
+            contexts: contexts,
             priority: this.todoItem.priority,
             dueDate: dueDate,
             recurrence: recurrence,

@@ -11,6 +11,7 @@ import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import {
     PROJECT_LIST_REGEXP,
+    CONTEXT_LIST_REGEXP,
     PRIORITY_REGEXP,
     DATESTRING_REGEXP,
     RECURRENCE_REGEXP,
@@ -58,6 +59,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             projects: [
                 this.settings.filter.project,
                 Validators.pattern(PROJECT_LIST_REGEXP),
+            ],
+            contexts: [
+                '',
+                Validators.pattern(CONTEXT_LIST_REGEXP),
             ],
             priority: [
                 '',

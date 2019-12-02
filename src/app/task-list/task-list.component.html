@@ -41,6 +41,12 @@
           {{ '+' + project }}
         </div>
         <div
+          *ngFor="let context of task.contexts"
+          class="tag context"
+        >
+          {{ '@' + context }}
+        </div>
+        <div
           *ngIf="task.priority"
           [className]="'tag priority-' + task.priority"
         >

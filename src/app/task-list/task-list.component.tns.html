@@ -57,6 +57,11 @@
                 (tap)="setFilter({project: project})"
               ></Label>
               <Label
+                *ngFor="let context of task.contexts"
+                class="tag"
+                [text]="'@' + context"
+              ></Label>
+              <Label
                 *ngIf="task.priority"
                 [className]="'tag priority-' + task.priority.toLowerCase()"
                 [text]="task.priority"

@@ -70,7 +70,7 @@ describe('RecurrenceExtension', () => {
 describe('Task', () => {
     it('should init', () => {
         const todoItem = new TodoTxtItem(
-            '(A) test +proj due:2019-01-01',
+            '(A) test +proj @ctx due:2019-01-01',
             getExtensions(),
         );
         const task = new Task(todoItem);
@@ -81,6 +81,7 @@ describe('Task', () => {
         expect(task.text).toBe('test');
         expect(task.priority).toBe('A');
         expect(task.projects).toEqual(['proj']);
+        expect(task.contexts).toEqual(['ctx']);
         expect(task.due).toEqual(stringToDate('2019-01-01'));
         expect(task.complete).toBe(false);
         expect(task.completed).toBe(null);
@@ -95,7 +96,8 @@ describe('Task', () => {
     it('should create task', () => {
         const formData = {
             text: 'test',
-            projects: 'testproject1 testproject2',
+            projects: 'project1 project2',
+            contexts: 'ctx1 ctx2',
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1w',
@@ -103,9 +105,10 @@ describe('Task', () => {
         const task = Task.create(formData);
         expect(task.todoItem.text).toEqual('test');
         expect(task.todoItem.projects).toEqual([
-            'testproject1',
-            'testproject2',
+            'project1',
+            'project2',
         ]);
+        expect(task.todoItem.contexts).toEqual(['ctx1', 'ctx2']);
         expect(task.todoItem.priority).toEqual('A');
         expect(task.todoItem.due).toEqual(stringToDate('2019-01-01'));
         expect(task.todoItem.dueString).toEqual('2019-01-01');
@@ -114,12 +117,13 @@ describe('Task', () => {
     });
 
     it('should update task', () => {
-        const task = Task.parse('(A) test +proj due:2019-01-01');
+        const task = Task.parse('(A) test +proj @ctx due:2019-01-01');
         expect(task.todoItem.due).toBeDefined();
 
         const formData = {
             text: 'abc',
             projects: '',
+            contexts: '',
             priority: 'B',
             dueDate: '',
             recurrence: '',
@@ -127,6 +131,7 @@ describe('Task', () => {
         task.update(formData);
         expect(task.todoItem.text).toEqual('abc');
         expect(task.todoItem.projects).toBe(null);
+        expect(task.todoItem.contexts).toBe(null);
         expect(task.todoItem.priority).toEqual('B');
         expect(task.todoItem.due).toBeUndefined();
         expect(task.todoItem.dueString).toBeUndefined();
@@ -149,6 +154,7 @@ describe('Task', () => {
         expect(taskData).toEqual({
             text: 'test',
             projects: 'pro1 pro2',
+            contexts: '',
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1d',
