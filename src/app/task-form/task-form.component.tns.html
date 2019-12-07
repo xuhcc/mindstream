@@ -23,6 +23,7 @@
       <TextField
         #taskProjectsField
         flexGrow="1"
+        id="project-field"
         class="field field-with-addon"
         formControlName="projects"
         (focus)="showProjectSuggestions()"
@@ -48,7 +49,7 @@
     <FlexboxLayout flexDirection="row">
       <TextField
         flexGrow="1"
-        class="field field-with-addon"
+        class="field"
         formControlName="contexts"
       ></TextField>
     </FlexboxLayout>
