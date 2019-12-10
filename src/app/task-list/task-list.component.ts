@@ -118,6 +118,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
         if (this.filter.project) {
             return `Tasks: ${this.filter.project}`;
         }
+        if (this.filter.context) {
+            return `Tasks: ${this.filter.context}`;
+        }
         if (this.filter.dueDate) {
             return `Tasks: ${this.getDateDisplay(this.filter.dueDate)}`;
         }
@@ -143,6 +146,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
         // Filter by project
         if (isVisible && this.filter.project) {
             isVisible = (task.projects || []).includes(this.filter.project);
+        }
+        if (isVisible && this.filter.context) {
+            isVisible = (task.contexts || []).includes(this.filter.context);
         }
         // Filter by due date
         if (isVisible && this.filter.dueDate) {

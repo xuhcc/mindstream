@@ -6,5 +6,6 @@ export enum Settings {
 
 export interface TaskFilter {
     project?: string;
+    context?: string;
     dueDate?: Date;
 }

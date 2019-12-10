@@ -42,6 +42,7 @@
         </div>
         <div
           *ngFor="let context of task.contexts"
+          (click)="setFilter({context: context})"
           class="tag context"
         >
           {{ '@' + context }}

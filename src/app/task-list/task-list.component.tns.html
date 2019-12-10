@@ -60,6 +60,7 @@
                 *ngFor="let context of task.contexts"
                 class="tag"
                 [text]="'@' + context"
+                (tap)="setFilter({context: context})"
               ></Label>
               <Label
                 *ngIf="task.priority"
