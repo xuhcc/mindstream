@@ -6,6 +6,7 @@
 - Mobile, Web: Added support for contexts.
 - Mobile, Web: Fixed project search bug at task form.
 - Mobile, Web: Fixed bug where task IDs become wrong.
+- Mobile, Web: Fixed 'hidden' extension.
 - Web: Created plaintext page.
 - Web: Added task sorting dialog.
 - Web: Added task menu.

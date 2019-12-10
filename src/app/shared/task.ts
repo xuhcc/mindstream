@@ -161,7 +161,7 @@ export class Task {
     }
 
     get hidden(): boolean {
-        return this.todoItem.hidden;
+        return this.todoItem.h || false;
     }
 
     getDueDatePriority(): string {
