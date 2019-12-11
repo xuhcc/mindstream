@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.7.0
+## 1.0.0
 
 - Mobile, Web: Added priority selection buttons to task form.
 - Mobile, Web: Added support for contexts.
