@@ -11,8 +11,9 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 
 - Projects, contexts, priorities, due dates.
 - Recurring tasks.
-- Filtering by project, due date.
-- Sorting by due date and priority.
+- Filtering by project, context or due date.
+- Sorting by due date or priority.
+- Markdown support.
 
 ### Supported todo.txt extensions:
 
