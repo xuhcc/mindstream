@@ -303,4 +303,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.router.navigate(['/task-detail']);
     }
 
+    onHotKey(event: any) {
+        if (isWeb && event.keyCode === 65 && event.altKey) {
+            // {Alt + A} - add new task
+            event.preventDefault();
+            this.addTask();
+        }
+    }
+
 }

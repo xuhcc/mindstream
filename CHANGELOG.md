@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Web: Added Alt+A hotkey for adding new task.
+
 ## 1.0.0
 
 - Mobile, Web: Added priority selection buttons to task form.

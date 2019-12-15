@@ -10,7 +10,7 @@
     class="material-icons sort"
   ></a>
 </div>
-<div class="page">
+<div class="page" (window:keydown)="onHotKey($event)">
   <button
     (click)="addTask()"
     id="add-task-btn"
