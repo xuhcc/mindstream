@@ -1,0 +1,18 @@
+<input
+  #inputField
+  type="text"
+  class="field"
+  [formControl]="inputControl"
+  (focus)="show()"
+  (input)="show()"
+  (blur)="hide()"
+  (keydown)="navigate($event)"
+>
+<div class="suggestions">
+  <li
+    *ngFor="let suggestion of getSuggestions()"
+    class="suggestion"
+    [class.highlighted]="suggestion === highlightedItem"
+    (click)="select(suggestion)"
+  >{{ suggestion }}</li>
+</div>

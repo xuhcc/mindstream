@@ -18,24 +18,11 @@
   <label class="field-label">
     Projects
   </label>
-  <input
-    #taskProjectsField
-    type="text"
-    formControlName="projects"
-    class="field"
-    (focus)="showProjectSuggestions()"
-    (input)="showProjectSuggestions()"
-    (blur)="hideProjectSuggestions()"
-    (keydown)="selectProject($event)"
+  <task-form-autosuggest
+    [items]="projects"
+    [inputControl]="form.controls.projects"
   >
-  <ul class="project-list">
-    <li
-      *ngFor="let project of getFilteredProjects()"
-      class="project"
-      [class.selected]="project === selectedProject"
-      (click)="addProject(project)"
-    >{{ project }}</li>
-  </ul>
+  </task-form-autosuggest>
 
   <label class="field-label">
     Contexts

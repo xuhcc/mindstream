@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import * as moment from 'moment';
 
-import { dateToString, escapeRegExp } from '../shared/misc';
+import { dateToString } from '../shared/misc';
 import { DialogService } from '../shared/dialog.service';
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
@@ -18,7 +18,6 @@ import {
 } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
-import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 
 @Component({
     selector: 'ms-task-form',
@@ -30,9 +29,6 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     form: FormGroup;
     taskId: number;
     projects: string[];
-    projectSuggestionsVisible = false;
-    projectSuggestionsLocked = false;
-    selectedProject: string;
     priorities = ['A', 'B', 'C'];
 
     @ViewChild('taskTextField', {static: false})
@@ -96,90 +92,6 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
 
     get title(): string {
         return this.taskId ? 'Edit task' : 'Add task';
-    }
-
-    getFilteredProjects(): string[] {
-        if (!this.projectSuggestionsVisible) {
-            return [];
-        }
-        const value = this.form.controls.projects.value;
-        if (!value) {
-            return [];
-        }
-        const projects = value.split(/\s+/);
-        if (projects.length === 0) {
-            return [];
-        }
-        const search = projects[projects.length - 1];
-        const searchRegexp = new RegExp(escapeRegExp(search), 'iu');
-        return this.projects.filter((project) => {
-            return project.search(searchRegexp) !== -1;
-        }).sort();
-    }
-
-    showProjectSuggestions() {
-        this.projectSuggestionsVisible = true;
-    }
-
-    hideProjectSuggestions() {
-        // On iOS and Web the "blur" event is emitted before "tap" event,
-        // so we need to delay hiding
-        setTimeout(() => {
-            if (this.projectSuggestionsLocked) {
-                // Unlock suggestion list and move focus back to project field
-                this.projectSuggestionsLocked = false;
-                this.taskProjectsField.nativeElement.focus();
-            } else {
-                // Hide suggestion list
-                this.projectSuggestionsVisible = false;
-            }
-        }, 100);
-    }
-
-    selectProject(event: any): void {
-        if (isWeb) {
-            // Select project from keyboard
-            const key = event.key;
-            if (key === 'ArrowUp' || key === 'ArrowDown') {
-                const projects = this.getFilteredProjects();
-                let selectedIndex = projects.indexOf(this.selectedProject);
-                if (key === 'ArrowDown' && selectedIndex < projects.length - 1) {
-                    // Select next project
-                    selectedIndex++;
-                } else if (key === 'ArrowUp' && selectedIndex > 0) {
-                    // Select previous project
-                    selectedIndex--;
-                }
-                this.selectedProject = projects[selectedIndex];
-            }
-            if (key === 'Enter' && this.selectedProject) {
-                event.preventDefault();
-                this.addProject(this.selectedProject);
-                delete this.selectedProject;
-            }
-        }
-    }
-
-    addProject(project: string) {
-        if (isIOS || isWeb) {
-            // Prevent suggestions list from hiding on blur event
-            this.projectSuggestionsLocked = true;
-        }
-        const projects = this.form.controls.projects.value.split(/\s+/);
-        projects[projects.length - 1] = project;
-        const newValue = projects.join(' ');
-        this.form.controls.projects.setValue(newValue);
-        if (isAndroid) {
-            // Move cursor to the end of string
-            this.taskProjectsField.nativeElement.android.setSelection(newValue.length);
-        }
-    }
-
-    removeProject() {
-        const projects = this.form.controls.projects.value.split(/\s+/);
-        projects.pop();
-        const newValue = projects.join(' ');
-        this.form.controls.projects.setValue(newValue);
     }
 
     setPriority(priority: string): void {

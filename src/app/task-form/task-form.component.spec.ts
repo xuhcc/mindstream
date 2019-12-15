@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 import { TaskFormComponent } from './task-form.component';
+import { TaskFormAutosuggestComponent } from './task-form-autosuggest.component';
 import { DialogService } from '../shared/dialog.service';
 import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
@@ -15,7 +16,10 @@ describe('TaskFormComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TaskFormComponent],
+            declarations: [
+                TaskFormComponent,
+                TaskFormAutosuggestComponent,
+            ],
             imports: [ReactiveFormsModule, AngularMyDatePickerModule],
             providers: [
                 {provide: DialogService, useValue: {}},
@@ -34,22 +38,5 @@ describe('TaskFormComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
-    });
-
-    it('should select project', () => {
-        component.projects = ['pro1', 'pro2'];
-        component.form.controls.projects.setValue('pro');
-        component.projectSuggestionsVisible = true;
-        expect(component.selectedProject).toBeUndefined();
-        component.selectProject({key: 'ArrowDown'});
-        expect(component.selectedProject).toEqual('pro1');
-        component.selectProject({key: 'ArrowDown'});
-        expect(component.selectedProject).toEqual('pro2');
-        component.selectProject({key: 'ArrowDown'});
-        expect(component.selectedProject).toEqual('pro2');
-        component.selectProject({key: 'ArrowUp'});
-        expect(component.selectedProject).toEqual('pro1');
-        component.selectProject({key: 'ArrowUp'});
-        expect(component.selectedProject).toEqual('pro1');
     });
 });

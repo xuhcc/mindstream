@@ -1,0 +1,20 @@
+@import '../../app-common';
+@import '../../app-variables';
+
+.field-with-suggestions {
+    margin-bottom: 0;
+}
+
+.clear-btn {
+    margin: 5 0 0;
+}
+
+.suggestions {
+    margin: 0 2 5;
+}
+
+.suggestion {
+    background-color: #FFF;
+    font-size: 16;
+    padding: $main-padding;
+}

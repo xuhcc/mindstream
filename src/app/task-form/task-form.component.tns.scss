@@ -1,24 +1,6 @@
 @import '../../app-common';
 @import '../../app-variables';
 
-#project-field {
-    margin-bottom: 0;
-}
-
-#clear-btn {
-    margin: 5 0 0;
-}
-
-.project-list {
-    margin: 0 2 5;
-}
-
-.project {
-    background-color: #FFF;
-    font-size: 16;
-    padding: $main-padding;
-}
-
 .priority {
     @extend %tag;
 

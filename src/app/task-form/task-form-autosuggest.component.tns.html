@@ -1,0 +1,23 @@
+<FlexboxLayout flexDirection="row">
+  <TextField
+    #inputField
+    flexGrow="1"
+    class="field field-with-addon field-with-suggestions"
+    [formControl]="inputControl"
+    (focus)="show()"
+    (blur)="hide()"
+  ></TextField>
+  <Label
+    class="field-addon field-addon-last icon clear-btn"
+    [text]="inputControl.value ? '&#xe14c;' : ''"
+    (tap)="removeItem()"
+  ></Label>
+</FlexboxLayout>
+<StackLayout class="suggestions">
+  <Label
+    *ngFor="let suggestion of getSuggestions()"
+    class="suggestion"
+    [text]="suggestion"
+    (tap)="select(suggestion)"
+  ></Label>
+</StackLayout>
