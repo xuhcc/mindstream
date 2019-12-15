@@ -41,6 +41,7 @@
     border-width: $field-border;
     font-size: 16;
     height: 40;
+    margin: 5 0;
     padding: $main-padding;
 }
 
@@ -56,7 +57,13 @@
     border-width: $field-border 0;
     color: $link-color;
     height: 40;
+    margin: 5 0;
     padding: $main-padding $main-padding $main-padding 0;
+
+    &.icon {
+        font-size: 28;
+        padding: 3 3 0 0;
+    }
 }
 
 .field-addon-last {
