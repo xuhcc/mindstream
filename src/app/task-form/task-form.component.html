@@ -70,6 +70,7 @@
       type="text"
       formControlName="dueDate"
       class="field"
+      (keydown.ArrowDown)="setDueToday()"
     >
     <a (click)="setDueToday()" class="field-addon">today</a>
     <span class="field-addon">|</span>
@@ -108,7 +109,7 @@
   >
 
   <button
-    type="button"
+    type="submit"
     [disabled]="!form.valid"
     (click)="save()"
     id="save-btn"

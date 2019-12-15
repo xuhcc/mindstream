@@ -3,6 +3,7 @@
 ## 1.1.0
 
 - Web: Added Alt+A hotkey for adding new task.
+- Web: Allowed to submit task form by pressing 'Enter'.
 
 ## 1.0.0
 
