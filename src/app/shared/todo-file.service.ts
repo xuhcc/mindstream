@@ -78,6 +78,16 @@ export class TodoFileService implements OnDestroy {
         return Array.from(projects).sort();
     }
 
+    getContexts(): string[] {
+        const contexts = new Set<string>();
+        this.todoItems.forEach((todoItem: TodoTxtItem) => {
+            (todoItem.contexts || []).forEach((context: string) => {
+                contexts.add(context);
+            });
+        });
+        return Array.from(contexts).sort();
+    }
+
     async createTask(taskData: TaskData): Promise<void> {
         const task = Task.create(taskData);
         await this.appendTask(task);

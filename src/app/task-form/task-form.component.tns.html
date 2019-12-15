@@ -26,13 +26,11 @@
     </task-form-autosuggest>
 
     <Label text="Contexts"></Label>
-    <FlexboxLayout flexDirection="row">
-      <TextField
-        flexGrow="1"
-        class="field"
-        formControlName="contexts"
-      ></TextField>
-    </FlexboxLayout>
+    <task-form-autosuggest
+      [items]="contexts"
+      [inputControl]="form.controls.contexts"
+    >
+    </task-form-autosuggest>
 
     <Label text="Priority"></Label>
     <FlexboxLayout flexDirection="row">

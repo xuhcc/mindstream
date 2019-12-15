@@ -27,11 +27,11 @@
   <label class="field-label">
     Contexts
   </label>
-  <input
-    type="text"
-    formControlName="contexts"
-    class="field"
+  <task-form-autosuggest
+    [items]="contexts"
+    [inputControl]="form.controls.contexts"
   >
+  </task-form-autosuggest>
 
   <label class="field-label">
     Priority

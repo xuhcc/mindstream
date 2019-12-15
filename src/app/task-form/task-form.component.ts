@@ -29,13 +29,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     form: FormGroup;
     taskId: number;
     projects: string[];
+    contexts: string[];
     priorities = ['A', 'B', 'C', 'D'];
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
-
-    @ViewChild('taskProjectsField', {static: false})
-    taskProjectsField: ElementRef;
 
     constructor(
         private dialog: DialogService,
@@ -81,6 +79,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         }
         this.todoFile.fileLoaded.then(() => {
             this.projects = this.todoFile.getProjects();
+            this.contexts = this.todoFile.getContexts();
         });
     }
 
