@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -6,11 +7,16 @@ import { Router } from '@angular/router';
 })
 export class RouterService {
 
-    constructor(private router: Router) { }
+    constructor(
+        private location: Location,
+        private router: Router,
+    ) { }
 
     navigate(parameters: any[], extras?: any) {
         this.router.navigate(parameters, extras);
     }
 
-    backToPreviousPage() { } // eslint-disable-line @typescript-eslint/no-empty-function
+    backToPreviousPage() {
+        this.location.back();
+    }
 }

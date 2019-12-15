@@ -1,7 +1,11 @@
 <div class="header">
   <div class="title">{{ title }}</div>
 </div>
-<form [formGroup]="form" class="page">
+<form
+  [formGroup]="form"
+  (window:keydown.esc)="goBack()"
+  class="page"
+>
   <label class="field-label">
     Task
   </label>
