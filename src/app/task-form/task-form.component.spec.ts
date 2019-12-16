@@ -9,6 +9,7 @@ import { TaskFormAutosuggestComponent } from './task-form-autosuggest.component'
 import { DialogService } from '../shared/dialog.service';
 import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
+import { SettingsService } from '../shared/settings.service';
 
 describe('TaskFormComponent', () => {
     let component: TaskFormComponent;
@@ -23,9 +24,13 @@ describe('TaskFormComponent', () => {
             imports: [ReactiveFormsModule, AngularMyDatePickerModule],
             providers: [
                 {provide: DialogService, useValue: {}},
-                {provide: FileService, useValue: {}},
+                {provide: FileService, useValue: {read: () => 'test'}},
                 {provide: RouterService, useValue: {}},
                 {provide: ActivatedRoute, useValue: {snapshot: {params: {}}}},
+                {
+                    provide: SettingsService,
+                    useValue: {path: 'test', filter: {}, ordering: []},
+                },
             ],
         }).compileComponents();
     }));

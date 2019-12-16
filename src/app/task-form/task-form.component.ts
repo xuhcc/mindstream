@@ -79,7 +79,9 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             const task = this.todoFile.getTask(this.taskId);
             this.form.setValue(task.toTaskData());
         }
-        this.projects = this.todoFile.getProjects();
+        this.todoFile.fileLoaded.then(() => {
+            this.projects = this.todoFile.getProjects();
+        });
     }
 
     ngAfterViewInit(): void {
