@@ -6,7 +6,7 @@ import {
 } from 'jstodotxt/jsTodoExtensions';
 import * as moment from 'moment';
 
-import { dateToString, stringToDate } from './misc';
+import { dateToString, stringToDate, splitStringWithSpace } from './misc';
 
 export const PROJECT_REGEXP = /^[^+\s]+$/;
 export const PROJECT_LIST_REGEXP = /^[^+]+$/;
@@ -184,10 +184,10 @@ export class Task {
         const todoItem = new TodoTxtItem(taskData.text, getExtensions());
         todoItem.date = new Date();
         if (taskData.projects) {
-            todoItem.projects = taskData.projects.split(/\s+/);
+            todoItem.projects = splitStringWithSpace(taskData.projects);
         }
         if (taskData.contexts) {
-            todoItem.contexts = taskData.contexts.split(/\s+/);
+            todoItem.contexts = splitStringWithSpace(taskData.contexts);
         }
         if (taskData.priority) {
             todoItem.priority = taskData.priority;
@@ -216,12 +216,12 @@ export class Task {
     update(taskData: TaskData) {
         this.todoItem.text = taskData.text;
         if (taskData.projects) {
-            this.todoItem.projects = taskData.projects.split(/\s+/);
+            this.todoItem.projects = splitStringWithSpace(taskData.projects);
         } else {
             this.todoItem.projects = null;
         }
         if (taskData.contexts) {
-            this.todoItem.contexts = taskData.contexts.split(/\s+/);
+            this.todoItem.contexts = splitStringWithSpace(taskData.contexts);
         } else {
             this.todoItem.contexts = null;
         }

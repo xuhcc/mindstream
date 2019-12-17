@@ -33,3 +33,7 @@ export function compareEmptyGreater(v1: any, v2: any): number {
 export function escapeRegExp(value: string) {
     return value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'); // eslint-disable-line no-useless-escape
 }
+
+export function splitStringWithSpace(value: string): string[] {
+    return value.trim().split(/\s+/);
+}
