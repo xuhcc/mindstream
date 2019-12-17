@@ -64,4 +64,11 @@ export class ProjectListComponent implements OnInit, OnDestroy {
         this.router.navigate(['/tasks']);
     }
 
+    switchToTasks(event: any): void {
+        if (event.direction !== 1) {
+            return;
+        }
+        this.router.navigate(['/tasks']);
+    }
+
 }

@@ -6,6 +6,7 @@
 - Mobile, Web: Enabled autocompletion for contexts.
 - Mobile, Web: Trimming whitespace from projects and contexts in task form.
 - Mobile: Added 'tomorrow' shortcut to due date field.
+- Mobile: Enabled switching between tasks and projects with swipe gesture.
 - Android: Moving cursor to the end of line when removing item from autocomplete field.
 - Web: Added Alt+A hotkey for adding new task.
 - Web: Allowed to submit task form by pressing 'Enter'.

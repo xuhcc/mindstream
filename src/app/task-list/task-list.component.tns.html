@@ -33,7 +33,12 @@
   ></ActionItem>
 </ActionBar>
 
-<GridLayout rows="*" height="100%" class="page">
+<GridLayout
+  rows="*"
+  height="100%"
+  class="page"
+  (swipe)="switchToProjects($event)"
+>
   <PullToRefresh (refresh)="reloadFile($event)">
     <ListView
       #taskList
