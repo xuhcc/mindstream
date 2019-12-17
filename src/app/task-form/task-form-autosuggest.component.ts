@@ -60,6 +60,10 @@ export class TaskFormAutosuggestComponent {
         pieces.pop();
         const newValue = pieces.join(' ');
         this.inputControl.setValue(newValue);
+        if (isAndroid) {
+            // Move cursor to the end of string
+            this.inputField.nativeElement.android.setSelection(newValue.length);
+        }
     }
 
     show(): void {

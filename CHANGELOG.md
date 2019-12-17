@@ -4,6 +4,7 @@
 
 - Mobile, Web: Added shortcut for priority D to task form.
 - Mobile, Web: Enabled autocompletion for contexts.
+- Android: Moving cursor to the end of line when removing item from autocomplete field.
 - Web: Added Alt+A hotkey for adding new task.
 - Web: Allowed to submit task form by pressing 'Enter'.
 - Web: Allowed to close task form by pressing 'Esc'.
