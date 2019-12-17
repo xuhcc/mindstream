@@ -5,11 +5,11 @@ import { escapeRegExp } from '../shared/misc';
 import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 
 @Component({
-    selector: 'task-form-autosuggest',
-    templateUrl: './task-form-autosuggest.component.html',
-    styleUrls: ['./task-form-autosuggest.component.scss'],
+    selector: 'task-form-autocomplete',
+    templateUrl: './task-form-autocomplete.component.html',
+    styleUrls: ['./task-form-autocomplete.component.scss'],
 })
-export class TaskFormAutosuggestComponent {
+export class TaskFormAutocompleteComponent {
 
     @Input() items: string[];
     @Input() inputControl: FormControl;

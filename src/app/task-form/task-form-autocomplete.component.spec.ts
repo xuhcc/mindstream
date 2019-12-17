@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
-import { TaskFormAutosuggestComponent } from './task-form-autosuggest.component';
+import { TaskFormAutocompleteComponent } from './task-form-autocomplete.component';
 
-describe('TaskFormAutosuggestComponent', () => {
-    let component: TaskFormAutosuggestComponent;
-    let fixture: ComponentFixture<TaskFormAutosuggestComponent>;
+describe('TaskFormAutocompleteComponent', () => {
+    let component: TaskFormAutocompleteComponent;
+    let fixture: ComponentFixture<TaskFormAutocompleteComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                TaskFormAutosuggestComponent,
+                TaskFormAutocompleteComponent,
             ],
             imports: [ReactiveFormsModule],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TaskFormAutosuggestComponent);
+        fixture = TestBed.createComponent(TaskFormAutocompleteComponent);
         component = fixture.componentInstance;
         component.items = ['pro1', 'pro2'];
         component.inputControl = new FormControl('');

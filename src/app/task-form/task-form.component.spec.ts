@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 import { TaskFormComponent } from './task-form.component';
-import { TaskFormAutosuggestComponent } from './task-form-autosuggest.component';
+import { TaskFormAutocompleteComponent } from './task-form-autocomplete.component';
 import { DialogService } from '../shared/dialog.service';
 import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
@@ -19,7 +19,7 @@ describe('TaskFormComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 TaskFormComponent,
-                TaskFormAutosuggestComponent,
+                TaskFormAutocompleteComponent,
             ],
             imports: [ReactiveFormsModule, AngularMyDatePickerModule],
             providers: [

@@ -19,18 +19,18 @@
     ></TextField>
 
     <Label text="Projects"></Label>
-    <task-form-autosuggest
+    <task-form-autocomplete
       [items]="projects"
       [inputControl]="form.controls.projects"
     >
-    </task-form-autosuggest>
+    </task-form-autocomplete>
 
     <Label text="Contexts"></Label>
-    <task-form-autosuggest
+    <task-form-autocomplete
       [items]="contexts"
       [inputControl]="form.controls.contexts"
     >
-    </task-form-autosuggest>
+    </task-form-autocomplete>
 
     <Label text="Priority"></Label>
     <FlexboxLayout flexDirection="row">
