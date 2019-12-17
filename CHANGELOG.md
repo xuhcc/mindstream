@@ -2,6 +2,7 @@
 
 ## 1.1.0
 
+- Mobile, Web: Added shortcut for priority D to task form.
 - Web: Added Alt+A hotkey for adding new task.
 - Web: Allowed to submit task form by pressing 'Enter'.
 - Web: Allowed to close task form by pressing 'Esc'.

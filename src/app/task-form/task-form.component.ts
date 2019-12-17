@@ -29,7 +29,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     form: FormGroup;
     taskId: number;
     projects: string[];
-    priorities = ['A', 'B', 'C'];
+    priorities = ['A', 'B', 'C', 'D'];
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;

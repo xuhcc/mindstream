@@ -101,20 +101,24 @@ $task-checkbox-size: 20px;
         margin-left: 0;
     }
 
-    &.priority-A { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-high;
+    &.priority-a {
+        background-color: $priority-a;
     }
 
-    &.priority-B { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-medium;
+    &.priority-b {
+        background-color: $priority-b;
     }
 
-    &.priority-C { /* stylelint-disable-line selector-class-pattern */
-        background-color: $priority-low;
+    &.priority-c {
+        background-color: $priority-c;
+    }
+
+    &.priority-d {
+        background-color: $priority-d;
     }
 
     &.overdue {
-        background-color: $priority-high;
+        background-color: $priority-a;
     }
 }
 

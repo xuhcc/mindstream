@@ -16,19 +16,23 @@
     margin-left: 5;
 
     &.priority-a {
-        background-color: $priority-high;
+        background-color: $priority-a;
     }
 
     &.priority-b {
-        background-color: $priority-medium;
+        background-color: $priority-b;
     }
 
     &.priority-c {
-        background-color: $priority-low;
+        background-color: $priority-c;
+    }
+
+    &.priority-d {
+        background-color: $priority-d;
     }
 
     &.overdue {
-        background-color: $priority-high;
+        background-color: $priority-a;
     }
 }
 
