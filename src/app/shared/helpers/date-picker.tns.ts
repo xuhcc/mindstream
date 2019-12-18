@@ -1,12 +1,14 @@
-import { ModalDatetimepicker } from 'nativescript-modal-datetimepicker';
+import { ModalDatetimepicker, PickerOptions } from 'nativescript-modal-datetimepicker';
 
-import { dateToString } from '../misc';
+import { dateToString, stringToDate } from '../misc';
 
-export function openDatePicker(datepicker: void): Promise<string> { // eslint-disable-line @typescript-eslint/no-unused-vars
+export function openDatePicker(initialDate: string, datepicker: void): Promise<string> { // eslint-disable-line @typescript-eslint/no-unused-vars
     const picker = new ModalDatetimepicker();
-    return picker.pickDate({
+    const options: PickerOptions = {
         theme: 'overlay',
-    }).then((result) => {
+        startingDate: initialDate ? stringToDate(initialDate) : new Date(),
+    };
+    return picker.pickDate(options).then((result) => {
         if (!result) {
             throw new Error('Picker cancelled');
         }
