@@ -160,4 +160,10 @@ describe('Task', () => {
             recurrence: '1d',
         });
     });
+
+    it('should postpone task', () => {
+        const task = Task.parse('test due:2019-12-31');
+        task.postpone();
+        expect(task.due).toEqual(stringToDate('2020-01-01'));
+    });
 });

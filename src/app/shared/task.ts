@@ -273,7 +273,7 @@ export class Task {
         };
     }
 
-    toggleComplete() {
+    toggleComplete(): void {
         if (!this.todoItem.complete) {
             this.todoItem.complete = true;
             this.todoItem.completed = new Date();
@@ -283,12 +283,12 @@ export class Task {
         }
     }
 
-    postpone() {
+    postpone(): boolean {
         if (!this.todoItem.due) {
             return false;
         }
-        const newDueDate = new Date(this.todoItem.due);
-        newDueDate.setDate(newDueDate.getDate() + 1);
+        const newDueDate = moment(new Date(this.todoItem.due))
+            .add(1, 'day').toDate();
         this.todoItem.due = newDueDate;
         this.todoItem.dueString = dateToString(newDueDate);
         return true;

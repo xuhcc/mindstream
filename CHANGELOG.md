@@ -6,6 +6,7 @@
 - Mobile, Web: Enabled autocompletion for contexts.
 - Mobile, Web: Trimming whitespace from projects and contexts in task form.
 - Mobile, Web: Showing current due date in calendar when editing task.
+- Mobile, Web: Fixed task postponement bug.
 - Mobile: Added 'tomorrow' shortcut to due date field.
 - Mobile: Enabled switching between tasks and projects with swipe gesture.
 - Android: Moving cursor to the end of line when removing item from autocomplete field.
