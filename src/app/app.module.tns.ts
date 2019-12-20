@@ -18,7 +18,6 @@ import { TaskFormAutocompleteComponent } from './task-form/task-form-autocomplet
 import { TaskListComponent } from './task-list/task-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { CustomHtmlView } from './shared/custom-html-view/custom-html-view';
 import { AboutComponent } from './about/about.component';
 
 @NgModule({
@@ -52,7 +51,6 @@ export class AppModule {
     constructor() {
         registerElement('Fab', () => Fab);
         registerElement('PullToRefresh', () => PullToRefresh);
-        registerElement('CustomHtmlView', () => CustomHtmlView);
         if (isIOS) {
             const iqKeyboard = IQKeyboardManager.sharedManager(); // eslint-disable-line no-undef
             iqKeyboard.shouldResignOnTouchOutside = true;

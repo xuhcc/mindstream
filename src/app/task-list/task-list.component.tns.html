@@ -95,12 +95,12 @@
                 (tap)="toggleComplete(task, $event)"
                 (longPress)="showTaskMenu(task, $event)"
               ></Label>
-              <CustomHtmlView
+              <HtmlView
                 flexGrow="1"
                 [className]="task.complete ? 'task-text completed' : 'task-text'"
                 [html]="getTaskHtml(task)"
                 (tap)="editTask(task, $event)"
-              ></CustomHtmlView>
+              ></HtmlView>
             </FlexboxLayout>
           </StackLayout>
         </StackLayout>

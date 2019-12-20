@@ -11,13 +11,13 @@
     id="app-name"
     [text]="appName + ' v' + appVersion"
   ></Label>
-  <CustomHtmlView
+  <HtmlView
     id="app-description"
     [html]="description"
-  ></CustomHtmlView>
+  ></HtmlView>
 
-  <CustomHtmlView
+  <HtmlView
     [html]="getBugTrackerLink()"
     id="report-bug"
-  ></CustomHtmlView>
+  ></HtmlView>
 </StackLayout>
