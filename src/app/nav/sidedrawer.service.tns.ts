@@ -1,11 +1,11 @@
 import { Injectable, NgZone, ViewContainerRef } from '@angular/core';
-import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular/modal-dialog';
+import { RouterExtensions } from '@nativescript/angular/router';
 
 import { getVersionNameSync } from 'nativescript-appversion';
 import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer';
-import { Color } from 'tns-core-modules/color';
-import { isAndroid, isIOS } from 'tns-core-modules/platform';
+import { Color } from '@nativescript/core/color';
+import { isAndroid, isIOS } from '@nativescript/core/platform';
 
 import { NavModalComponent } from './nav-modal.component';
 import { NAVIGATION_MENU } from './nav';

@@ -1,10 +1,10 @@
-import { Color } from 'tns-core-modules/color';
-import { HtmlView, htmlProperty } from 'tns-core-modules/ui/html-view';
-import { Font } from 'tns-core-modules/ui/styling/font';
+import { Color } from '@nativescript/core/color';
+import { HtmlView, htmlProperty } from '@nativescript/core/ui/html-view';
+import { Font } from '@nativescript/core/ui/styling/font';
 import {
     colorProperty,
     fontInternalProperty,
-} from 'tns-core-modules/ui/styling/style-properties';
+} from '@nativescript/core/ui/styling/style-properties';
 
 import { linkColorProperty } from './custom-html-view-common';
 

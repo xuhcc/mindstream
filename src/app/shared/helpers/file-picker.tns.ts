@@ -1,6 +1,6 @@
-import { knownFolders, File, path as pathUtils } from 'tns-core-modules/file-system/file-system';
-import { ImageAsset } from 'tns-core-modules/image-asset';
-import { isAndroid, isIOS } from 'tns-core-modules/platform';
+import { knownFolders, File, path as pathUtils } from '@nativescript/core/file-system/file-system';
+import { ImageAsset } from '@nativescript/core/image-asset';
+import { isAndroid, isIOS } from '@nativescript/core/platform';
 
 import { ImagePicker, ImagePickerMediaType } from 'nativescript-imagepicker';
 import { Mediafilepicker, FilePickerOptions } from 'nativescript-mediafilepicker';

@@ -1,5 +1,5 @@
-import { Color } from 'tns-core-modules/color';
-import { Style, CssProperty } from 'tns-core-modules/ui/core/properties';
+import { Color } from '@nativescript/core/color';
+import { Style, CssProperty } from '@nativescript/core/ui/core/properties';
 
 export const linkColorProperty = new CssProperty<Style, Color>({
     name: 'linkColor',

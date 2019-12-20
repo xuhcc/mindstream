@@ -1,6 +1,6 @@
 import { ViewContainerRef, NgZone } from '@angular/core';
 
-import { Page } from 'tns-core-modules/ui/page';
+import { Page } from '@nativescript/core/ui/page';
 
 export function onNavigatedTo(container: ViewContainerRef, handler: () => void) {
     const page = container.injector.get(Page);

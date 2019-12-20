@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { knownFolders, File, Folder } from 'tns-core-modules/file-system';
-import { isAndroid } from 'tns-core-modules/platform';
+import { knownFolders, File, Folder } from '@nativescript/core/file-system';
+import { isAndroid } from '@nativescript/core/platform';
 import * as permissions from 'nativescript-permissions';
 
 export function isValidPath(path: string): boolean {

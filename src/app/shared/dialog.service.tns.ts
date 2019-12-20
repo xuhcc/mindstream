@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { action, confirm } from 'tns-core-modules/ui/dialogs';
+import { action, confirm } from '@nativescript/core/ui/dialogs';
 
 @Injectable({
     providedIn: 'root',

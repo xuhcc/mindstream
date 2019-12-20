@@ -1,4 +1,4 @@
-import * as appSettings from 'tns-core-modules/application-settings';
+import * as appSettings from '@nativescript/core/application-settings';
 
 export function setValue(key: string, value: string): void {
     appSettings.setString(key, value);

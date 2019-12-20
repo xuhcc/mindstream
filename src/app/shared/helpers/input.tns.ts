@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 
-import { isAndroid } from 'tns-core-modules/platform';
+import { isAndroid } from '@nativescript/core/platform';
 
 export function focusOnInput(input: ElementRef) {
     input.nativeElement.focus();
