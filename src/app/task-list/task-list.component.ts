@@ -4,6 +4,7 @@ import { formatDate } from '@angular/common';
 import * as MarkdownIt from 'markdown-it';
 import * as mila from 'markdown-it-link-attributes';
 import { Subscription } from 'rxjs';
+import { firstBy } from 'thenby';
 
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { DialogService } from '../shared/dialog.service';
@@ -16,9 +17,6 @@ import { compareEmptyGreater } from '../shared/misc';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 import { onPullRefresh } from '../shared/helpers/pullrefresh';
-
-// Use 'require' because the TypeScript module is buggy
-const firstBy = require('thenby'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 @Component({
     selector: 'ms-task-list',
@@ -71,11 +69,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     private getSorter(): any {
-        let sorter = firstBy('complete');
+        let sorter = firstBy('complete') as any;
         this.ordering.forEach((field: string) => {
             sorter = sorter.thenBy(field, {cmp: compareEmptyGreater});
         });
-        return sorter.thenBy('projects');
+        sorter = sorter.thenBy('projects');
+        return sorter;
     }
 
     private createTaskList() {

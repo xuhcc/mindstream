@@ -18,6 +18,7 @@ export function stringToDate(dateStr: string): Date {
 
 function compare(v1: any, v2: any): number {
     // Default cmp function from the thenBy module
+    // https://github.com/Teun/thenBy.js/blob/da9ec2149e530a4c491492cc127dbf13b1c0ae36/thenBy.js#L33
     return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 }
 
