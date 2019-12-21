@@ -9,6 +9,7 @@
 - Mobile, Web: Fixed task postponement bug.
 - Mobile: Added 'tomorrow' shortcut to due date field.
 - Mobile: Enabled switching between tasks and projects with swipe gesture.
+- Mobile: Moved 'save' button to action bar at task form page.
 - Android: Moving cursor to the end of line when removing item from autocomplete field.
 - Web: Added Alt+A hotkey for adding new task.
 - Web: Allowed to submit task form by pressing 'Enter'.

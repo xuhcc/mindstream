@@ -18,6 +18,7 @@ import {
 } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
+import { isAndroid, isIOS } from '../shared/helpers/platform';
 
 @Component({
     selector: 'ms-task-form',
@@ -91,8 +92,25 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         }, 100);
     }
 
+    goBack() {
+        this.router.backToPreviousPage();
+    }
+
     get title(): string {
         return this.taskId ? 'Edit task' : 'Add task';
+    }
+
+    onActionBarLoaded(event: any): void {
+        if (isAndroid || isIOS) {
+            // Workaround for https://github.com/NativeScript/NativeScript/issues/8211
+            const actionBar = event.object;
+            this.form.statusChanges.subscribe(() => {
+                // Delay update so it will be done after class toggle
+                setTimeout(() => {
+                    actionBar.update();
+                }, 0);
+            });
+        }
     }
 
     setPriority(priority: string): void {
@@ -147,10 +165,6 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             this.todoFile.createTask(this.form.value);
         }
         this.router.navigate(['/tasks']);
-    }
-
-    goBack() {
-        this.router.backToPreviousPage();
     }
 
 }

@@ -1,11 +1,24 @@
 <ScrollView>
-  <ActionBar class="action-bar" [title]="title">
+  <ActionBar
+    class="action-bar"
+    [title]="title"
+    (loaded)="onActionBarLoaded($event)"
+  >
     <NavigationButton
       icon="font://&#xe5cd;"
       class="icon"
       text="Back"
       (tap)="goBack()"
     ></NavigationButton>
+    <ActionItem
+      android.position="actionBar"
+      ios.position="right"
+      icon="font://&#xe161;"
+      text="Save"
+      class="icon"
+      [class.disabled]="!form.valid"
+      (tap)="save()"
+    ></ActionItem>
   </ActionBar>
 
   <StackLayout [formGroup]="form" class="page">
@@ -98,12 +111,5 @@
       ></Label>
     </FlexboxLayout>
 
-    <Button
-      id="save-btn"
-      [className]="form.valid ? 'btn' : 'btn btn-disabled'"
-      text="save"
-      (tap)="save()"
-      [isEnabled]="form.valid"
-    ></Button>
   </StackLayout>
 </ScrollView>

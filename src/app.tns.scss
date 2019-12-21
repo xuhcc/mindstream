@@ -11,6 +11,10 @@
     color: $header-text-color;
     font-size: 20;
     font-weight: bold;
+
+    .disabled {
+        color: #666666;
+    }
 }
 
 .page {
