@@ -1,12 +1,5 @@
 <div id="wrapper">
-  <nav>
-    <h1 class="header nav-header">
-      Mindstream
-    </h1>
-    <div *ngFor="let item of navigationMenu" class="nav-item">
-      <a [routerLink]="[item.url]">{{ item.title }}</a>
-    </div>
-  </nav>
+  <ms-navigation></ms-navigation>
   <div id="content">
     <router-outlet></router-outlet>
   </div>

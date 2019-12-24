@@ -8,31 +8,6 @@
     width: 100%;
 }
 
-$nav-color: #DFE6B8;
-$nav-text-color: #000000;
-
-nav {
-    background-color: $nav-color;
-    color: $nav-text-color;
-    font-family: $header-font;
-    font-size: 20px;
-    font-weight: bold;
-    min-width: 200px;
-
-    a {
-        color: $nav-text-color;
-    }
-}
-
-.nav-header {
-    background: linear-gradient(90deg, $header-color 50%, #252622 100%);
-    margin: 0;
-}
-
-.nav-item {
-    padding: 10px $main-padding 0;
-}
-
 #content {
     flex-grow: 1;
 }

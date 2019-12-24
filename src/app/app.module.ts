@@ -8,6 +8,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './nav/navigation.component';
 import { DialogComponent } from './shared/dialog.component';
 import { PlainTextComponent } from './plaintext/plaintext.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -20,6 +21,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 @NgModule({
     declarations: [
         AppComponent,
+        NavigationComponent,
         DialogComponent,
         PlainTextComponent,
         SettingsComponent,
