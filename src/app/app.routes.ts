@@ -7,6 +7,7 @@ import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { WelcomeGuard } from './welcome/welcome.guard';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
     {
@@ -38,5 +39,9 @@ export const routes: Routes = [
     {
         path: 'projects',
         component: ProjectListComponent,
+    },
+    {
+        path: 'about',
+        component: AboutComponent,
     },
 ];

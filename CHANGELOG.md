@@ -2,6 +2,7 @@
 
 ## 1.1.0
 
+- Mobile, Web: Added 'About' page.
 - Mobile, Web: Added shortcut for priority D to task form.
 - Mobile, Web: Enabled autocompletion for contexts.
 - Mobile, Web: Trimming whitespace from projects and contexts in task form.

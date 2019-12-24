@@ -19,6 +19,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CustomHtmlView } from './shared/custom-html-view/custom-html-view';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { CustomHtmlView } from './shared/custom-html-view/custom-html-view';
         TaskListComponent,
         ProjectListComponent,
         WelcomeComponent,
+        AboutComponent,
     ],
     entryComponents: [
         NavModalComponent,

@@ -1,0 +1,24 @@
+<ActionBar class="action-bar" [title]="title">
+  <NavigationButton
+    icon="font://&#xe5d2;"
+    class="icon nav-icon"
+    (tap)="openDrawer()"
+  ></NavigationButton>
+</ActionBar>
+
+<StackLayout class="page">
+  <Label
+    id="app-name"
+    [text]="appName + ' v' + appVersion"
+  ></Label>
+  <Label
+    id="app-description"
+    [text]="description"
+    textWrap="true"
+  ></Label>
+
+  <CustomHtmlView
+    [html]="getBugTrackerLink()"
+    class="report-bug"
+  ></CustomHtmlView>
+</StackLayout>

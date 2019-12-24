@@ -17,6 +17,7 @@ import { TaskFormAutocompleteComponent } from './task-form/task-form-autocomplet
 import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
         TaskListComponent,
         ProjectListComponent,
         WelcomeComponent,
+        AboutComponent,
     ],
     entryComponents: [
         DialogComponent,
