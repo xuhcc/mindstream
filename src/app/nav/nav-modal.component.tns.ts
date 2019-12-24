@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalDialogParams } from '@nativescript/angular/modal-dialog';
 
-import { getVersionNameSync } from 'nativescript-appversion';
-
 import { APP_NAME } from '../app.constants';
+import { getVersion } from '../shared/helpers/version';
 
 @Component({
     selector: 'ms-nav-modal',
@@ -19,7 +18,7 @@ export class NavModalComponent {
     constructor(
         private modalParams: ModalDialogParams,
     ) {
-        this.subtitle = `v${getVersionNameSync()}`;
+        this.subtitle = `v${getVersion()}`;
         this.pages = modalParams.context;
     }
 

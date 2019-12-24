@@ -14,6 +14,7 @@
 - Web: Added Alt+A hotkey for adding new task.
 - Web: Allowed to submit task form by pressing 'Enter'.
 - Web: Allowed to close task form by pressing 'Esc'.
+- Web: Showing app version in navigation bar.
 
 ## 1.0.0
 

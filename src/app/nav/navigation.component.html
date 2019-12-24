@@ -1,6 +1,6 @@
 <nav>
   <h1 class="header nav-header">
-    Mindstream
+    {{ appName }} <sup class="version">v{{ appVersion }}</sup>
   </h1>
   <div *ngFor="let item of navigationMenu" class="nav-item">
     <a [routerLink]="[item.url]">{{ item.title }}</a>

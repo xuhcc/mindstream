@@ -2,7 +2,6 @@ import { Injectable, NgZone, ViewContainerRef } from '@angular/core';
 import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular/modal-dialog';
 import { RouterExtensions } from '@nativescript/angular/router';
 
-import { getVersionNameSync } from 'nativescript-appversion';
 import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer';
 import { Color } from '@nativescript/core/color';
 import { isAndroid, isIOS } from '@nativescript/core/platform';
@@ -10,6 +9,7 @@ import { isAndroid, isIOS } from '@nativescript/core/platform';
 import { NavModalComponent } from './nav-modal.component';
 import { NAVIGATION_MENU } from './nav';
 import { APP_NAME } from '../app.constants';
+import { getVersion } from '../shared/helpers/version';
 
 // https://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html
 const LOCK_MODE_LOCKED_CLOSED = 1;
@@ -46,7 +46,7 @@ export class SideDrawerService {
 
         const config = {
             title: APP_NAME,
-            subtitle: `v${getVersionNameSync()}`,
+            subtitle: `v${getVersion()}`,
             templates: NAVIGATION_MENU,
             headerTextColor: new Color('#FBFCF0'), // $header-text-color
             textColor: new Color('#000000'), // $text-color

@@ -15,4 +15,8 @@ export const NAVIGATION_MENU = [
         title: 'Settings',
         url: '/settings',
     },
+    {
+        title: 'About',
+        url: '/about',
+    },
 ];
