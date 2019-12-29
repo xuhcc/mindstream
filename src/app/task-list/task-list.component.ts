@@ -235,7 +235,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
         });
     }
 
-    toggleComplete(task: Task) {
+    toggleComplete(task: Task, event: any) {
+        if (isWeb && event.ctrlKey) {
+            // Postpone task on ctrl-click
+            this.postponeTask(task);
+            return;
+        }
         if (task.due && task.rec && !task.completed) {
             const newTask = task.recur();
             this.todoFile.appendTask(newTask);

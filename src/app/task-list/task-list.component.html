@@ -21,7 +21,7 @@
   <div *ngFor="let task of getTaskList()" class="task">
     <div class="task-body">
       <div
-        (click)="toggleComplete(task)"
+        (click)="toggleComplete(task, $event)"
         [title]="getTaskExtras(task)"
         class="task-checkbox"
       >

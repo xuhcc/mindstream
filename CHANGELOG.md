@@ -17,6 +17,7 @@
 - Web: Allowed to close task form by pressing 'Esc'.
 - Web: Showing app version in navigation bar.
 - Web: Fixed switching with 'Tab' between projects and contexts in task form.
+- Web: Allowed to postpone task by ctrl-clicking on checkbox.
 
 ## 1.0.0
 

@@ -89,7 +89,7 @@
                 alignSelf="flex-start"
                 class="task-checkbox icon"
                 [text]="task.complete ? '&#xe876;' : ''"
-                (tap)="toggleComplete(task)"
+                (tap)="toggleComplete(task, $event)"
                 (longPress)="showTaskMenu(task, $event)"
               ></Label>
               <CustomHtmlView
