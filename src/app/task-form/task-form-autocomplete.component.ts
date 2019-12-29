@@ -40,8 +40,8 @@ export class TaskFormAutocompleteComponent {
         }).sort();
     }
 
-    select(item: string): void {
-        if (isIOS || isWeb) {
+    select(item: string, lock = false): void {
+        if (lock && (isIOS || isWeb)) {
             // Prevent suggestions list from hiding on blur event
             this.isLocked = true;
         }

@@ -18,6 +18,6 @@
     *ngFor="let suggestion of getSuggestions()"
     class="suggestion"
     [text]="suggestion"
-    (tap)="select(suggestion)"
+    (tap)="select(suggestion, true)"
   ></Label>
 </StackLayout>

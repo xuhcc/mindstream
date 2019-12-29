@@ -13,6 +13,6 @@
     *ngFor="let suggestion of getSuggestions()"
     class="suggestion"
     [class.highlighted]="suggestion === highlightedItem"
-    (click)="select(suggestion)"
+    (click)="select(suggestion, true)"
   >{{ suggestion }}</li>
 </div>

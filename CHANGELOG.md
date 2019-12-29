@@ -16,6 +16,7 @@
 - Web: Allowed to submit task form by pressing 'Enter'.
 - Web: Allowed to close task form by pressing 'Esc'.
 - Web: Showing app version in navigation bar.
+- Web: Fixed switching with 'Tab' between projects and contexts in task form.
 
 ## 1.0.0
 
