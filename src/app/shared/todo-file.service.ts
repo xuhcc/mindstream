@@ -133,7 +133,11 @@ export class TodoFileService implements OnDestroy {
             return;
         }
         this.content = content;
-        this.todoItems = TodoTxt.parse(this.content, getExtensions());
+        if (this.content === '') {
+            this.todoItems = [];
+        } else {
+            this.todoItems = TodoTxt.parse(this.content, getExtensions());
+        }
         this.fileChanged.next(true); // true = IDs are probably changed
         try {
             showToast('File loaded');
