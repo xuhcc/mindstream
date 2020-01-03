@@ -3,7 +3,7 @@
 </div>
 <div class="page">
   <div>{{ appName }} v{{ appVersion }}</div>
-  <p>{{ description }}</p>
+  <p [innerHtml]="description"></p>
   <a
     href="{{ bugTracker }}"
     target="_blank"

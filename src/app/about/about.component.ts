@@ -4,6 +4,10 @@ import { APP_NAME } from '../app.constants';
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { getVersion } from '../shared/helpers/version';
 
+const APP_DESCRIPTION = `
+Task management app, built on <a href="http://todotxt.org/" target="_blank">todo.txt</a>.
+`;
+
 @Component({
     selector: 'ms-about',
     templateUrl: './about.component.html',
@@ -14,7 +18,7 @@ export class AboutComponent {
     title = 'About';
     appName = APP_NAME;
     appVersion = getVersion();
-    description = 'Task management app, built on todo.txt';
+    description = APP_DESCRIPTION;
     bugTracker = 'https://github.com/xuhcc/mindstream/issues';
 
     constructor(
