@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { RouterService } from '../shared/router.service';
+import { TaskFilter } from '../shared/settings';
 import { SettingsService } from '../shared/settings.service';
 import { SideDrawerService } from '../nav/sidedrawer.service';
 import { TodoFileService } from '../shared/todo-file.service';
@@ -16,7 +17,8 @@ import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 export class TagListComponent implements OnInit, OnDestroy {
 
     title = 'Tags';
-    projects: string[];
+    projects: string[] = [];
+    contexts: string[] = [];
     private fileSubscription: Subscription;
 
     constructor(
@@ -28,7 +30,7 @@ export class TagListComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.todoFile.fileLoaded.then(() => this.createProjectList());
+        this.todoFile.fileLoaded.then(() => this.updatePage());
         onNavigatedTo(this.view, () => {
             this.fileSubscribe();
         });
@@ -41,13 +43,14 @@ export class TagListComponent implements OnInit, OnDestroy {
         this.fileUnsubscribe();
     }
 
-    private createProjectList() {
+    private updatePage() {
         this.projects = this.todoFile.getProjects();
+        this.contexts = this.todoFile.getContexts();
     }
 
     private fileSubscribe() {
         this.fileSubscription = this.todoFile.fileChanged.subscribe(() => {
-            this.createProjectList();
+            this.updatePage();
         });
     }
 
@@ -59,8 +62,8 @@ export class TagListComponent implements OnInit, OnDestroy {
         this.sideDrawer.open(this.view);
     }
 
-    showTaskList(project: string) {
-        this.settings.filter = {project: project};
+    showTaskList(filter: TaskFilter) {
+        this.settings.filter = filter;
         this.router.navigate(['/tasks']);
     }
 

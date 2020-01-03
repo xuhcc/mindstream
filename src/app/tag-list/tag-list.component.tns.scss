@@ -1,7 +1,13 @@
 @import '../../app-common';
 @import '../../app-variables';
 
-.project {
+.subheader {
+    font-size: 16;
+    margin: 0 0 $main-padding;
+    text-align: center;
+}
+
+.tag {
     @extend %tag;
     font-size: 16;
     margin: 0 $main-padding $main-padding 0;

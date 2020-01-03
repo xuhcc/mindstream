@@ -2,11 +2,26 @@
   <div class="title">{{ title }}</div>
 </div>
 <div class="page">
+  <div
+    *ngIf="projects.length > 0"
+    class="subheader"
+  >Projects</div>
   <a
     *ngFor="let project of projects"
-    class="project"
-    (click)="showTaskList(project)"
+    class="tag"
+    (click)="showTaskList({project: project})"
   >
-    {{ project }}
+    {{ '+' + project }}
+  </a>
+  <div
+    *ngIf="contexts.length > 0"
+    class="subheader"
+  >Contexts</div>
+  <a
+    *ngFor="let context of contexts"
+    class="tag"
+    (click)="showTaskList({context: context})"
+  >
+    {{ '@' + context }}
   </a>
 </div>

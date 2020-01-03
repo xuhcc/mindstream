@@ -16,19 +16,46 @@
   ></ActionItem>
 </ActionBar>
 
-<ScrollView (swipe)="switchToTasks($event)">
-  <FlexboxLayout
-    class="page"
-    flexDirection="row"
-    flexWrap="wrap"
-    justifyContent="center"
-  >
+<ScrollView
+  (swipe)="switchToTasks($event)"
+  class="page"
+>
+  <StackLayout>
     <Label
-      *ngFor="let project of projects"
-      class="project"
-      [text]="project"
-      textWrap="true"
-      (tap)="showTaskList(project)"
+      *ngIf="projects.length > 0"
+      text="Projects"
+      class="subheader"
     ></Label>
-  </FlexboxLayout>
+    <FlexboxLayout
+      flexDirection="row"
+      flexWrap="wrap"
+      justifyContent="center"
+    >
+      <Label
+        *ngFor="let project of projects"
+        class="tag"
+        [text]="'+' + project"
+        textWrap="true"
+        (tap)="showTaskList({project: project})"
+      ></Label>
+    </FlexboxLayout>
+    <Label
+      *ngIf="contexts.length > 0"
+      text="Contexts"
+      class="subheader"
+    ></Label>
+    <FlexboxLayout
+      flexDirection="row"
+      flexWrap="wrap"
+      justifyContent="center"
+    >
+      <Label
+        *ngFor="let context of contexts"
+        class="tag"
+        [text]="'@' + context"
+        textWrap="true"
+        (tap)="showTaskList({context: context})"
+      ></Label>
+    </FlexboxLayout>
+  </StackLayout>
 </ScrollView>

@@ -1,7 +1,11 @@
 @import '../../app-common';
 @import '../../app-web';
 
-.project {
+.subheader {
+    margin: 0 0 $main-padding;
+}
+
+.tag {
     @extend %tag;
     display: inline-block;
     font-size: 16px;

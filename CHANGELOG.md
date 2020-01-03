@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+- Mobile, Web: Renamed 'Projects' page to 'Tags', added contexts to it.
+
 ## 1.1.0
 
 - Mobile, Web: Added 'About' page.
