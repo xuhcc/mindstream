@@ -3,12 +3,11 @@
 
 .subheader {
     font-size: 16;
-    margin: 0 0 $main-padding;
-    text-align: center;
+    margin: $main-padding $main-padding 0;
 }
 
 .tag {
     @extend %tag;
     font-size: 16;
-    margin: 0 $main-padding $main-padding 0;
+    margin: $main-padding 0 0 $main-padding;
 }

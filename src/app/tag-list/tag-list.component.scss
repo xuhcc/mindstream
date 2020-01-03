@@ -1,6 +1,10 @@
 @import '../../app-common';
 @import '../../app-web';
 
+.page {
+    width: 33%;
+}
+
 .subheader {
     margin: 0 0 $main-padding;
 }
