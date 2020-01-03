@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectListComponent } from './project-list.component';
+import { TagListComponent } from './tag-list.component';
 import { FileService } from '../shared/file.service';
 import { RouterService } from '../shared/router.service';
 import { SettingsService } from '../shared/settings.service';
 
-describe('ProjectListComponent', () => {
-    let component: ProjectListComponent;
-    let fixture: ComponentFixture<ProjectListComponent>;
+describe('TagListComponent', () => {
+    let component: TagListComponent;
+    let fixture: ComponentFixture<TagListComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ProjectListComponent],
+            declarations: [TagListComponent],
             providers: [
                 {provide: FileService, useValue: {read: () => 'test'}},
                 {provide: RouterService, useValue: {}},
@@ -21,7 +21,7 @@ describe('ProjectListComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ProjectListComponent);
+        fixture = TestBed.createComponent(TagListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

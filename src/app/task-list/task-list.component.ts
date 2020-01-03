@@ -315,11 +315,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
         }
     }
 
-    switchToProjects(event: any): void {
+    switchToTags(event: any): void {
         if (event.direction !== 2) {
             return;
         }
-        this.router.navigate(['/projects']);
+        this.router.navigate(['/tags']);
     }
 
 }

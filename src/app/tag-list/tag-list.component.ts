@@ -9,13 +9,13 @@ import { TodoFileService } from '../shared/todo-file.service';
 import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
 
 @Component({
-    selector: 'ms-project-list',
-    templateUrl: './project-list.component.html',
-    styleUrls: ['./project-list.component.scss'],
+    selector: 'ms-tag-list',
+    templateUrl: './tag-list.component.html',
+    styleUrls: ['./tag-list.component.scss'],
 })
-export class ProjectListComponent implements OnInit, OnDestroy {
+export class TagListComponent implements OnInit, OnDestroy {
 
-    title = 'Projects';
+    title = 'Tags';
     projects: string[];
     private fileSubscription: Subscription;
 

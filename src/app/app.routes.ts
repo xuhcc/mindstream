@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { PlainTextComponent } from './plaintext/plaintext.component';
-import { ProjectListComponent } from './project-list/project-list.component';
+import { TagListComponent } from './tag-list/tag-list.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskListComponent } from './task-list/task-list.component';
@@ -37,8 +37,8 @@ export const routes: Routes = [
         component: TaskFormComponent,
     },
     {
-        path: 'projects',
-        component: ProjectListComponent,
+        path: 'tags',
+        component: TagListComponent,
     },
     {
         path: 'about',

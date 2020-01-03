@@ -1,7 +1,7 @@
 export const NAVIGATION_MENU = [
     {
-        title: 'Projects',
-        url: '/projects',
+        title: 'Tags',
+        url: '/tags',
     },
     {
         title: 'Tasks',
