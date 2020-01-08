@@ -73,7 +73,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.ordering.forEach((field: string) => {
             sorter = sorter.thenBy(field, {cmp: compareEmptyGreater});
         });
-        sorter = sorter.thenBy('projects');
+        sorter = sorter.thenBy('projects').thenBy('contexts');
         return sorter;
     }
 

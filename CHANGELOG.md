@@ -4,6 +4,7 @@
 
 - Mobile, Web: Renamed 'Projects' page to 'Tags', added contexts to it.
 - Mobile, Web: Not showing empty task when creating new todo.txt file.
+- Mobile, Web: Sorting tasks by project first, then by context.
 
 ## 1.1.0
 
