@@ -2,7 +2,13 @@ import { TodoTxtItem } from 'jstodotxt';
 import { DueExtension } from 'jstodotxt/jsTodoExtensions';
 import * as moment from 'moment';
 
-import { Task, getExtensions, RecurrenceExtension, TaskRecurrence } from './task';
+import {
+    Task,
+    getExtensions,
+    RecurrenceExtension,
+    TaskRecurrence,
+    ColorExtension,
+} from './task';
 import { stringToDate } from './misc';
 
 describe('TaskRecurrence', () => {
@@ -60,7 +66,28 @@ describe('RecurrenceExtension', () => {
         expect(result[2]).toEqual('1w');
     });
 
-    it('should parse line without due tag', () => {
+    it('should parse line without recurrence tag', () => {
+        const line = 'test test:2019-01-01';
+        const result = extension.parsingFunction(line);
+        expect(result).toEqual([null, null, null]);
+    });
+});
+
+describe('ColorExtension', () => {
+    let extension;
+    beforeEach(() => {
+        extension = new ColorExtension();
+    });
+
+    it('should parse line with color tag', () => {
+        const line = 'test color:#e4ebf7';
+        const result = extension.parsingFunction(line);
+        expect(result[0]).toEqual('#e4ebf7');
+        expect(result[1]).toEqual('test ');
+        expect(result[2]).toEqual('#e4ebf7');
+    });
+
+    it('should parse line without color tag', () => {
         const line = 'test test:2019-01-01';
         const result = extension.parsingFunction(line);
         expect(result).toEqual([null, null, null]);
@@ -75,7 +102,7 @@ describe('Task', () => {
         );
         const task = new Task(todoItem);
         expect(task.todoItem).toBe(todoItem);
-        expect(task.todoItem.extensions.length).toBe(3);
+        expect(task.todoItem.extensions.length).toBe(4);
         expect(task.todoItem.date).toBe(null);
         expect(task.created).toBe(null);
         expect(task.text).toBe('test');
@@ -83,8 +110,10 @@ describe('Task', () => {
         expect(task.projects).toEqual(['proj']);
         expect(task.contexts).toEqual(['ctx']);
         expect(task.due).toEqual(stringToDate('2019-01-01'));
+        expect(task.rec).toBe(undefined);
         expect(task.complete).toBe(false);
         expect(task.completed).toBe(null);
+        expect(task.color).toBe(undefined);
         expect(task.hidden).toBe(false);
     });
 

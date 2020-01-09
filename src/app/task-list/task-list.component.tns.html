@@ -49,7 +49,10 @@
       <ng-template let-task="item">
         <!-- Extra layout is needed for correct styling -->
         <StackLayout>
-          <StackLayout class="task">
+          <StackLayout
+            class="task"
+            [style.background-color]="task.color"
+          >
             <FlexboxLayout
               flexDirection="row"
               justifyContent="flex-end"

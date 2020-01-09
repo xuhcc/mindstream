@@ -18,7 +18,11 @@
   >
     add task
   </button>
-  <div *ngFor="let task of getTaskList()" class="task">
+  <div
+    *ngFor="let task of getTaskList()"
+    class="task"
+    [style.background-color]="task.color"
+  >
     <div class="task-body">
       <div
         (click)="toggleComplete(task, $event)"

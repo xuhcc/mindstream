@@ -98,11 +98,33 @@ RecurrenceExtension.prototype.parsingFunction = (line: string): any[] => {
     return [null, null, null];
 };
 
+const COLOR_TAG_REGEXP = /color:(#[0-9a-fA-F]{6})(\s|$)/;
+
+export function ColorExtension() {
+    this.name = 'color';
+}
+
+ColorExtension.prototype = new TodoTxtExtension();
+
+ColorExtension.prototype.parsingFunction = (line: string): any[] => {
+    const match = COLOR_TAG_REGEXP.exec(line);
+    if (match) {
+        return [
+            match[1], // color
+            line.replace(COLOR_TAG_REGEXP, ''), // line with tag removed
+            match[1], // colorString
+        ];
+    }
+    // Return nulls if not found
+    return [null, null, null];
+}
+
 export function getExtensions(): TodoTxtExtension[] {
     return [
         new DueExtension(),
         new RecurrenceExtension(),
         new HiddenExtension(),
+        new ColorExtension(),
     ];
 }
 
@@ -158,6 +180,10 @@ export class Task {
 
     get completed(): Date {
         return this.todoItem.completed;
+    }
+
+    get color(): string {
+        return this.todoItem.color;
     }
 
     get hidden(): boolean {
