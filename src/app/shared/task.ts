@@ -239,7 +239,7 @@ export class Task {
         return Task.parse(todoItemStr);
     }
 
-    update(taskData: TaskData) {
+    update(taskData: TaskData): void {
         this.todoItem.text = taskData.text;
         if (taskData.projects) {
             this.todoItem.projects = splitStringWithSpace(taskData.projects);
@@ -270,6 +270,8 @@ export class Task {
             delete this.todoItem.rec;
             delete this.todoItem.recString;
         }
+        // Re-parse the text
+        this.todoItem.parse(this.todoItem.toString());
     }
 
     toTaskData(): TaskData {

@@ -168,6 +168,23 @@ describe('Task', () => {
         expect(task.todoItem.recString).toBeUndefined();
     });
 
+    it('should re-parse tags in task text on update', () => {
+        const task = Task.parse('(A) test');
+        expect(task.todoItem.h).toBeUndefined();
+        const formData = {
+            text: 'test-hidden h:1',
+            projects: '',
+            contexts: '',
+            priority: 'A',
+            dueDate: '',
+            recurrence: '',
+        };
+        task.update(formData);
+        expect(task.todoItem.text).toEqual('test-hidden');
+        expect(task.todoItem.h).toBe(true);
+        expect(task.todoItem.hString).toEqual('1');
+    });
+
     it('should parse and render recurrence tag', () => {
         const taskStr = '(A) testTask due:2019-01-01 rec:1w';
         const task = Task.parse(taskStr);

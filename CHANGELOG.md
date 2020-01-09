@@ -6,6 +6,7 @@
 - Mobile, Web: Not showing empty task when creating new todo.txt file.
 - Mobile, Web: Sorting tasks by project first, then by context.
 - Mobile, Web: Added support for 'color' extension.
+- Mobile, Web: Fixed parsing of task text on update.
 
 ## 1.1.0
 
