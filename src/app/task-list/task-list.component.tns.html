@@ -71,11 +71,6 @@
                 (tap)="setFilter({context: context})"
               ></Label>
               <Label
-                *ngIf="task.priority"
-                [className]="'tag priority-' + task.priority.toLowerCase()"
-                [text]="task.priority"
-              ></Label>
-              <Label
                 *ngIf="task.due"
                 [className]="'tag priority-' + task.getDueDatePriority().toLowerCase()"
                 [text]="getDateDisplay(task.due)"
@@ -85,6 +80,11 @@
                 *ngIf="task.rec"
                 class="tag"
                 [text]="task.rec.display()"
+              ></Label>
+              <Label
+                *ngIf="task.priority"
+                [className]="'tag priority-' + task.priority.toLowerCase()"
+                [text]="task.priority"
               ></Label>
             </FlexboxLayout>
             <FlexboxLayout flexDirection="row">

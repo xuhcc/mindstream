@@ -52,20 +52,20 @@
           {{ '@' + context }}
         </div>
         <div
-          *ngIf="task.priority"
-          [className]="'tag priority-' + task.priority.toLowerCase()"
-        >
-          {{ task.priority }}
-        </div>
-        <div
           *ngIf="task.due"
           [className]="'tag due-date priority-' + task.getDueDatePriority().toLowerCase()"
           (click)="setFilter({dueDate: task.due})"
         >
           {{ getDateDisplay(task.due) }}
         </div>
-        <div *ngIf="task.rec" class="tag">
+        <div *ngIf="task.rec" class="tag recurrence">
           {{ task.rec.display() }}
+        </div>
+        <div
+          *ngIf="task.priority"
+          [className]="'tag priority-' + task.priority.toLowerCase()"
+        >
+          {{ task.priority }}
         </div>
       </div>
       <a
