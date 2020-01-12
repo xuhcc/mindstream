@@ -56,7 +56,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
                 Validators.pattern(PROJECT_LIST_REGEXP),
             ],
             contexts: [
-                '',
+                this.settings.filter.context,
                 Validators.pattern(CONTEXT_LIST_REGEXP),
             ],
             priority: [
