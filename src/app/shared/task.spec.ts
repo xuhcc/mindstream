@@ -130,6 +130,7 @@ describe('Task', () => {
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1w',
+            color: '#ebebeb',
         };
         const task = Task.create(formData);
         expect(task.todoItem.text).toEqual('test');
@@ -143,6 +144,8 @@ describe('Task', () => {
         expect(task.todoItem.dueString).toEqual('2019-01-01');
         expect(task.todoItem.rec.toString()).toEqual('1w');
         expect(task.todoItem.recString).toEqual('1w');
+        expect(task.todoItem.color).toEqual('#ebebeb');
+        expect(task.todoItem.colorString).toEqual('#ebebeb');
     });
 
     it('should update task', () => {
@@ -156,6 +159,7 @@ describe('Task', () => {
             priority: 'B',
             dueDate: '',
             recurrence: '',
+            color: '',
         };
         task.update(formData);
         expect(task.todoItem.text).toEqual('abc');
@@ -166,6 +170,8 @@ describe('Task', () => {
         expect(task.todoItem.dueString).toBeUndefined();
         expect(task.todoItem.rec).toBeUndefined();
         expect(task.todoItem.recString).toBeUndefined();
+        expect(task.todoItem.color).toBeUndefined();
+        expect(task.todoItem.colorString).toBeUndefined();
     });
 
     it('should re-parse tags in task text on update', () => {
@@ -178,6 +184,7 @@ describe('Task', () => {
             priority: 'A',
             dueDate: '',
             recurrence: '',
+            color: '',
         };
         task.update(formData);
         expect(task.todoItem.text).toEqual('test-hidden');
@@ -204,6 +211,7 @@ describe('Task', () => {
             priority: 'A',
             dueDate: '2019-01-01',
             recurrence: '1d',
+            color: '',
         });
     });
 

@@ -15,6 +15,7 @@ import {
     PRIORITY_REGEXP,
     DATESTRING_REGEXP,
     RECURRENCE_REGEXP,
+    COLOR_REGEXP,
 } from '../shared/task';
 import { openDatePicker } from '../shared/helpers/date-picker';
 import { focusOnInput, enableInputSuggestions } from '../shared/helpers/input';
@@ -70,6 +71,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             recurrence: [
                 '',
                 Validators.pattern(RECURRENCE_REGEXP),
+            ],
+            color: [
+                '',
+                Validators.pattern(COLOR_REGEXP),
             ],
         });
         this.taskId = this.route.snapshot.params.taskId;

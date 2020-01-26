@@ -98,6 +98,7 @@ RecurrenceExtension.prototype.parsingFunction = (line: string): any[] => {
     return [null, null, null];
 };
 
+export const COLOR_REGEXP = /^(#[0-9a-fA-F]{6})$/;
 const COLOR_TAG_REGEXP = /color:(#[0-9a-fA-F]{6})(\s|$)/;
 
 export function ColorExtension() {
@@ -135,6 +136,7 @@ export interface TaskData {
     priority: string;
     dueDate: string;
     recurrence: string;
+    color: string;
 }
 
 export class Task {
@@ -226,6 +228,10 @@ export class Task {
             todoItem.rec = new TaskRecurrence(taskData.recurrence);
             todoItem.recString = taskData.recurrence;
         }
+        if (taskData.color) {
+            todoItem.color = taskData.color;
+            todoItem.colorString = taskData.color;
+        }
         return new Task(todoItem);
     }
 
@@ -270,6 +276,13 @@ export class Task {
             delete this.todoItem.rec;
             delete this.todoItem.recString;
         }
+        if (taskData.color) {
+            this.todoItem.color = taskData.color;
+            this.todoItem.colorString = taskData.color;
+        } else {
+            delete this.todoItem.color;
+            delete this.todoItem.colorString;
+        }
         // Re-parse the text
         this.todoItem.parse(this.todoItem.toString());
     }
@@ -298,6 +311,7 @@ export class Task {
             priority: this.todoItem.priority,
             dueDate: dueDate,
             recurrence: recurrence,
+            color: this.todoItem.color || '',
         };
     }
 
