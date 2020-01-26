@@ -115,9 +115,19 @@
     <FlexboxLayout flexDirection="row">
       <TextField
         flexGrow="1"
-        class="field"
+        class="field field-with-addon"
         formControlName="color"
       ></TextField>
+      <StackLayout
+        *ngFor="let color of colors; let last = last;"
+        [className]="last ? 'field-addon field-addon-last' : 'field-addon'"
+      >
+        <Label
+          (tap)="setColor(color)"
+          class="color"
+          [style.background-color]="color"
+        ></Label>
+      </StackLayout>
     </FlexboxLayout>
 
   </StackLayout>

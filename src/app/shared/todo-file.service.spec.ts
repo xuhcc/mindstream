@@ -56,6 +56,17 @@ describe('TodoFileService', () => {
         ]);
     });
 
+    it('should get colors', async () => {
+        const service: TodoFileService = TestBed.get(TodoFileService);
+        fileContent = (
+            '(A) task1 color:#cccccc\n' +
+            'task2 color:#ffffff\n' +
+            'x 2019-09-01 task3 color:#cccccc\n');
+        await service.load();
+        const colors = service.getColors();
+        expect(colors).toEqual(['#cccccc', '#ffffff']);
+    });
+
     it('should remove task', async () => {
         const service: TodoFileService = TestBed.get(TodoFileService);
         fileContent = 'task1\ntask2\ntask3';

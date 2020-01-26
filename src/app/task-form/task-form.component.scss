@@ -29,6 +29,15 @@
     font-size: 20px;
 }
 
+.color {
+    border: 1px solid $field-border-color;
+    border-radius: $field-border-radius;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
 #save-btn {
     margin-top: 5px;
 }

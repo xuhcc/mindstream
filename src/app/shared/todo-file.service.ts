@@ -88,6 +88,16 @@ export class TodoFileService implements OnDestroy {
         return Array.from(contexts).sort();
     }
 
+    getColors(): string[] {
+        const colors = new Set<string>();
+        this.todoItems.forEach((todoItem: TodoTxtItem) => {
+            if (todoItem.color) {
+                colors.add(todoItem.color);
+            }
+        });
+        return Array.from(colors).sort();
+    }
+
     async createTask(taskData: TaskData): Promise<void> {
         const task = Task.create(taskData);
         await this.appendTask(task);

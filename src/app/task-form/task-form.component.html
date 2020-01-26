@@ -100,11 +100,23 @@
   >
 
   <label class="field-label">Color</label>
-  <input
-    type="text"
-    formControlName="color"
-    class="field"
-  >
+  <div class="field-wrapper">
+    <input
+      type="text"
+      formControlName="color"
+      class="field"
+    >
+    <div
+      *ngFor="let color of colors; let last = last;"
+      class="field-addon"
+    >
+      <a
+        (click)="setColor(color)"
+        class="color"
+        [style.background-color]="color"
+      ></a>
+    </div>
+  </div>
 
   <button
     type="submit"

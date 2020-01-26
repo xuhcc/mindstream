@@ -33,6 +33,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     projects: string[];
     contexts: string[];
     priorities = ['A', 'B', 'C', 'D'];
+    colors: string[];
 
     @ViewChild('taskTextField', {static: false})
     taskTextField: ElementRef;
@@ -86,6 +87,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         this.todoFile.fileLoaded.then(() => {
             this.projects = this.todoFile.getProjects();
             this.contexts = this.todoFile.getContexts();
+            this.colors = this.todoFile.getColors();
+            // Add default initial color (white)
+            if (this.colors.length === 0) {
+                this.colors.push('#ffffff');
+            }
         });
     }
 
@@ -158,6 +164,10 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             const recurrence = map[result];
             this.form.controls.recurrence.setValue(recurrence);
         });
+    }
+
+    setColor(color: string): void {
+        this.form.controls.color.setValue(color);
     }
 
     save() {
