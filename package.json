@@ -71,7 +71,7 @@
     },
     "devDependencies": {
         "@angular-builders/custom-webpack": "~8.2.0",
-        "@angular-devkit/build-angular": "~0.803.21",
+        "@angular-devkit/build-angular": "~0.803.24",
         "@angular/cli": "~8.3.2",
         "@angular/compiler-cli": "8.2.8",
         "@nativescript/schematics": "~0.4.0",
@@ -93,7 +93,7 @@
         "karma-jsdom-launcher": "~7.1.1",
         "karma-mocha-reporter": "~2.2.5",
         "nativescript-dev-webpack": "~1.4.0",
-        "node-sass": "4.12.0",
+        "node-sass": "~4.13.1",
         "stylelint": "~11.1.1",
         "stylelint-config-sass-guidelines": "~6.1.0",
         "tns-platform-declarations": "~6.3.1",
