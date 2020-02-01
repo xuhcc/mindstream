@@ -95,7 +95,7 @@ export class TodoFileService implements OnDestroy {
                 colors.add(todoItem.color);
             }
         });
-        return Array.from(colors).sort();
+        return Array.from(colors);
     }
 
     async createTask(taskData: TaskData): Promise<void> {

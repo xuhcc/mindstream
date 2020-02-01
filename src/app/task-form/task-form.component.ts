@@ -87,7 +87,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
         this.todoFile.fileLoaded.then(() => {
             this.projects = this.todoFile.getProjects();
             this.contexts = this.todoFile.getContexts();
-            this.colors = this.todoFile.getColors();
+            this.colors = this.todoFile.getColors().slice(-6).sort();
             // Add default initial color (white)
             if (this.colors.length === 0) {
                 this.colors.push('#ffffff');
