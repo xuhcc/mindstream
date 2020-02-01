@@ -128,7 +128,7 @@ export class TodoFileService implements OnDestroy {
     async load(watch = false): Promise<void> {
         let content;
         try {
-            content = await this.file.read(this.settings.path);
+            content = (await this.file.read(this.settings.path)).trim();
         } catch (error) {
             if (watch) {
                 // Ignore error

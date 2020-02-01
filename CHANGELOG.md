@@ -8,6 +8,7 @@
 - Mobile, Web: Added support for 'color' extension.
 - Mobile, Web: Fixed parsing of task text on update.
 - Mobile, Web: Filling 'contexts' field on task form from current filter.
+- Mobile, Web: Not showing an empty task if todo.txt file ends with a newline.
 
 ## 1.1.0
 
