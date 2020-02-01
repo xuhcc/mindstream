@@ -15,12 +15,14 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 - Sorting by due date or priority.
 - Markdown support.
 
-### Supported todo.txt extensions:
+### Supported todo.txt extensions
 
 - Tasks with due date: `due:2019-01-01`.
 - Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month).
 - Colored tasks: `color:#e9dce5`.
 - Hidden tasks: `h:1`.
+
+See [example](metadata/todo.txt).
 
 <img src="metadata/en-US/images/phoneScreenshots/screenshot_tasks.png" width="360"> <img src="metadata/en-US/images/phoneScreenshots/screenshot_add_task.png" width="360">
 
