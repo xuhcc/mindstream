@@ -3,6 +3,7 @@
 ## 1.3.0
 
 - Mobile, Web: Added usage tips to 'About' page.
+- Mobile, Web: Disabled auto-focusing on text field when editing a task.
 
 ## 1.2.0
 

@@ -96,9 +96,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        // Focus on task text field
         setTimeout(() => {
-            focusOnInput(this.taskTextField);
+            if (!this.taskId) {
+                // Focus on text field when creating new task
+                focusOnInput(this.taskTextField);
+            }
             enableInputSuggestions(this.taskTextField);
         }, 100);
     }
