@@ -2,11 +2,12 @@
   <div class="title">{{ title }}</div>
 </div>
 <div class="page">
-  <div>{{ appName }} v{{ appVersion }}</div>
-  <p [innerHtml]="description"></p>
+  <div id="app-name">{{ appName }} v{{ appVersion }}</div>
+  <div [innerHtml]="description"></div>
   <a
     href="{{ bugTracker }}"
     target="_blank"
+    id="report-bug"
   >
     Report bug
   </a>

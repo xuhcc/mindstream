@@ -2,10 +2,16 @@ import { Component, ViewContainerRef } from '@angular/core';
 
 import { APP_NAME } from '../app.constants';
 import { SideDrawerService } from '../nav/sidedrawer.service';
+import { isAndroid, isIOS } from '../shared/helpers/platform';
 import { getVersion } from '../shared/helpers/version';
 
 const APP_DESCRIPTION = `
-Task management app, built on <a href="http://todotxt.org/" target="_blank">todo.txt</a>.
+<p>Task management app, built on <a href="http://todotxt.org/" target="_blank">todo.txt</a>.</p>
+<strong>Tips:</strong>
+<ul>
+    ${isAndroid || isIOS ? '<li>Press and hold on a task checkbox to see additional actions.</li>' : ''}
+    <li>Add <code>h:1</code> tag to create a hidden task. You can define new projects, contexts and colors in it.</li>
+</ul>
 `;
 
 @Component({

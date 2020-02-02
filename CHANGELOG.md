@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- Mobile, Web: Added usage tips to 'About' page.
+
 ## 1.2.0
 
 - Mobile, Web: Renamed 'Projects' page to 'Tags', added contexts to it.
