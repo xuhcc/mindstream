@@ -7,6 +7,7 @@ import { SettingsService } from '../shared/settings.service';
 import { TodoFileService } from '../shared/todo-file.service';
 import { FilePathValidator } from '../shared/validators';
 import { openFilePicker } from '../shared/helpers/file-picker';
+import { showToast } from '../shared/helpers/toast';
 
 @Component({
     selector: 'ms-settings',
@@ -42,9 +43,12 @@ export class SettingsComponent implements OnInit {
 
     openPicker() {
         openFilePicker().then((filePath) => {
-            this.form.controls.filePath.setValue(filePath);
+            if (filePath) {
+                this.form.controls.filePath.setValue(filePath);
+            }
         }).catch((error) => {
             console.warn(error);
+            showToast(error.toString());
         });
     }
 

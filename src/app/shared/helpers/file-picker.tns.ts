@@ -14,7 +14,10 @@ class AndroidFilePicker extends ImagePicker {
     }
 }
 
-export function openFilePicker(): Promise<string> {
+/**
+ * Resolves with the file path on success or with null if cancelled
+ */
+export function openFilePicker(): Promise<string | null> {
     if (isAndroid) {
         const androidFilePicker = new AndroidFilePicker({
             mode: 'single',
@@ -23,7 +26,15 @@ export function openFilePicker(): Promise<string> {
         });
         return androidFilePicker.authorize()
             .then(() => androidFilePicker.present())
-            .then((selection: ImageAsset[]) => selection[0].android);
+            .then((selection: ImageAsset[]) => selection[0].android)
+            .catch((error) => {
+                if (error.message === 'Image picker activity result code 0') {
+                    // Picker has been cancelled
+                    return null;
+                } else {
+                    throw error;
+                }
+            });
 
     } else if (isIOS) {
         const options: FilePickerOptions = {
@@ -53,9 +64,8 @@ export function openFilePicker(): Promise<string> {
                 const message = res.object.get('msg');
                 reject(message);
             });
-            iosFilePicker.on('cancel', (res) => {
-                const message = res.object.get('msg');
-                reject(message);
+            iosFilePicker.on('cancel', () => {
+                resolve(null);
             });
         });
     }
