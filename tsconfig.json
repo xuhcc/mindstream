@@ -14,7 +14,8 @@
         "lib": [
             "es2017",
             "dom"
-        ]
+        ],
+        "baseUrl": "."
     },
     "exclude": [
         "**/*.tns.ts",
