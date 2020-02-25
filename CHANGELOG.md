@@ -4,7 +4,7 @@
 
 - Mobile, Web: Added usage tips to 'About' page.
 - Mobile, Web: Disabled auto-focusing on text field when editing a task.
-- Mobile: Notifying of file picker errors with toast.
+- Mobile: Notifying of file access errors with a toast.
 
 ## 1.2.0
 

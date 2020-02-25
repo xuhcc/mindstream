@@ -130,12 +130,11 @@ export class TodoFileService implements OnDestroy {
         try {
             content = (await this.file.read(this.settings.path)).trim();
         } catch (error) {
-            if (watch) {
-                // Ignore error
-                console.warn(error);
-            } else {
+            if (!watch) {
                 this.router.navigate(['/settings']);
             }
+            console.error(error);
+            showToast(error.toString());
             return;
         }
         if (watch && this.content && this.content === content) {
@@ -149,17 +148,18 @@ export class TodoFileService implements OnDestroy {
             this.todoItems = TodoTxt.parse(this.content, getExtensions());
         }
         this.fileChanged.next(true); // true = IDs are probably changed
-        try {
-            showToast('File loaded');
-        } catch (error) {
-            // Ignore error if view is not ready
-            console.warn(error);
-        }
+        showToast('File loaded');
     }
 
     private async save(): Promise<void> {
         this.content = TodoTxt.render(this.todoItems);
-        await this.file.write(this.settings.path, this.content);
+        try {
+            await this.file.write(this.settings.path, this.content);
+        } catch (error) {
+            console.error(error);
+            showToast(error.toString());
+            return;
+        }
         this.fileChanged.next(false); // false => IDs are not changed
     }
 
