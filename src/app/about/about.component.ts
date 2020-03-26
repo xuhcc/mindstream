@@ -2,7 +2,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 
 import { APP_NAME } from '../app.constants';
 import { SideDrawerService } from '../nav/sidedrawer.service';
-import { isAndroid, isIOS } from '../shared/helpers/platform';
+import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
 import { getVersion } from '../shared/helpers/version';
 
 const APP_DESCRIPTION = `
@@ -10,6 +10,7 @@ const APP_DESCRIPTION = `
 <strong>Tips:</strong>
 <ul>
     ${isAndroid || isIOS ? '<li>Press and hold on a task checkbox to see additional actions.</li>' : ''}
+    ${isWeb ? '<li>Press Alt+A to add a new task.</li>' : ''}
     <li>Add <code>h:1</code> tag to create a hidden task. You can define new projects, contexts and colors in it.</li>
 </ul>
 `;
