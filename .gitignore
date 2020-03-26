@@ -3,6 +3,7 @@ hooks/
 node_modules/
 platforms/
 src/fonts/
+webpack.config.js
 
 # General
 Vagrantfile

@@ -92,7 +92,7 @@
         "karma-jasmine": "~2.0.1",
         "karma-jsdom-launcher": "~7.1.1",
         "karma-mocha-reporter": "~2.2.5",
-        "nativescript-dev-webpack": "~1.5.0",
+        "nativescript-dev-webpack": "~1.5.1",
         "node-sass": "~4.13.1",
         "stylelint": "~11.1.1",
         "stylelint-config-sass-guidelines": "~6.1.0",
