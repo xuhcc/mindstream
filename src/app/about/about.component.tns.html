@@ -1,9 +1,19 @@
 <ActionBar class="action-bar" [title]="title">
   <NavigationButton
     icon="font://&#xe5d2;"
-    class="icon nav-icon"
+    class="icon"
+    text="Menu"
+    ios:visibility="collapse"
     (tap)="openDrawer()"
   ></NavigationButton>
+  <ActionItem
+    icon="font://&#xe5d2;"
+    class="icon"
+    text="Menu"
+    android:visibility="collapse"
+    ios.position="left"
+    (tap)="openDrawer()"
+  ></ActionItem>
 </ActionBar>
 
 <StackLayout class="page">

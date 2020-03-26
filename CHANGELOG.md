@@ -5,6 +5,7 @@
 - Mobile, Web: Added usage tips to 'About' page.
 - Mobile, Web: Disabled auto-focusing on text field when editing a task.
 - Mobile: Notifying of file access errors with a toast.
+- iOS: Fixed wrong behaviour of menu button on 'About' page.
 
 ## 1.2.0
 
