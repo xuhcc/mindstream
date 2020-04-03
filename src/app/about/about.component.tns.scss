@@ -5,6 +5,11 @@
     font-size: 16;
 }
 
+HtmlView {
+    // For iOS
+    background-color: $page-color;
+}
+
 #app-name {
     font-weight: bold;
 }

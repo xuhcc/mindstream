@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- iOS: Fixed wrong background color on 'About' page.
+
 ## 1.3.0
 
 - Mobile, Web: Added usage tips to 'About' page.
