@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { ModalDialogParams } from '@nativescript/angular/modal-dialog';
+import { Component } from '@angular/core'
+import { ModalDialogParams } from '@nativescript/angular/modal-dialog'
 
-import { APP_NAME } from '../app.constants';
-import { getVersion } from '../shared/helpers/version';
+import { APP_NAME } from '../app.constants'
+import { getVersion } from '../shared/helpers/version'
 
 @Component({
     selector: 'ms-nav-modal',
@@ -18,12 +18,12 @@ export class NavModalComponent {
     constructor(
         private modalParams: ModalDialogParams,
     ) {
-        this.subtitle = `v${getVersion()}`;
-        this.pages = modalParams.context;
+        this.subtitle = `v${getVersion()}`
+        this.pages = modalParams.context
     }
 
     navigateTo(url: string): void {
-        this.modalParams.closeCallback(url);
+        this.modalParams.closeCallback(url)
     }
 
 }

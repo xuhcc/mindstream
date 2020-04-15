@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { action, confirm } from '@nativescript/core/ui/dialogs';
+import { action, confirm } from '@nativescript/core/ui/dialogs'
 
 @Injectable({
     providedIn: 'root',
@@ -17,8 +17,8 @@ export class DialogService {
             message: message,
             actions: actions,
             cancelButtonText: 'Cancel',
-        };
-        return action(options);
+        }
+        return action(options)
     }
 
     confirm(title: string, message: string): Promise<boolean> {
@@ -28,7 +28,7 @@ export class DialogService {
             okButtonText: 'Yes',
             cancelButtonText: 'No',
             neutralButtonText: 'Cancel',
-        };
-        return confirm(options);
+        }
+        return confirm(options)
     }
 }

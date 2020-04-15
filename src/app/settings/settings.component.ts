@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewContainerRef } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
-import { SideDrawerService } from '../nav/sidedrawer.service';
-import { RouterService } from '../shared/router.service';
-import { SettingsService } from '../shared/settings.service';
-import { TodoFileService } from '../shared/todo-file.service';
-import { FilePathValidator } from '../shared/validators';
-import { openFilePicker } from '../shared/helpers/file-picker';
-import { showToast } from '../shared/helpers/toast';
+import { SideDrawerService } from '../nav/sidedrawer.service'
+import { RouterService } from '../shared/router.service'
+import { SettingsService } from '../shared/settings.service'
+import { TodoFileService } from '../shared/todo-file.service'
+import { FilePathValidator } from '../shared/validators'
+import { openFilePicker } from '../shared/helpers/file-picker'
+import { showToast } from '../shared/helpers/toast'
 
 @Component({
     selector: 'ms-settings',
@@ -34,42 +34,42 @@ export class SettingsComponent implements OnInit {
                 this.settings.path,
                 [Validators.required, FilePathValidator()],
             ],
-        });
+        })
     }
 
     openDrawer() {
-        this.sideDrawer.open(this.viewContainerRef);
+        this.sideDrawer.open(this.viewContainerRef)
     }
 
     openPicker() {
         openFilePicker().then((filePath) => {
             if (filePath) {
-                this.form.controls.filePath.setValue(filePath);
+                this.form.controls.filePath.setValue(filePath)
             }
         }).catch((error) => {
-            console.warn(error);
-            showToast(error.toString());
-        });
+            console.warn(error)
+            showToast(error.toString())
+        })
     }
 
     goBack() {
-        this.router.backToPreviousPage();
+        this.router.backToPreviousPage()
     }
 
     save() {
-        const filePath = this.form.value.filePath;
-        this.settings.path = filePath;
+        const filePath = this.form.value.filePath
+        this.settings.path = filePath
         this.todoFile.initialLoad().then(() => {
-            this.router.navigate(['/tasks']);
-        });
+            this.router.navigate(['/tasks'])
+        })
     }
 
     reset() {
-        this.settings.reset();
-        this.form.reset();
+        this.settings.reset()
+        this.form.reset()
         this.router.navigate(['/welcome'], {
             clearHistory: true,
-        });
+        })
     }
 
 }

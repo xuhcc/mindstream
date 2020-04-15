@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { ReactiveFormsModule } from '@angular/forms'
 
-import { FileService } from '../shared/file.service';
-import { RouterService } from '../shared/router.service';
-import { WelcomeComponent } from './welcome.component';
+import { FileService } from '../shared/file.service'
+import { RouterService } from '../shared/router.service'
+import { WelcomeComponent } from './welcome.component'
 
 describe('WelcomeComponent', () => {
-    let component: WelcomeComponent;
-    let fixture: ComponentFixture<WelcomeComponent>;
+    let component: WelcomeComponent
+    let fixture: ComponentFixture<WelcomeComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -17,16 +17,16 @@ describe('WelcomeComponent', () => {
                 {provide: FileService, useValue: {}},
                 {provide: RouterService, useValue: {}},
             ],
-        }).compileComponents();
-    }));
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(WelcomeComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+        fixture = TestBed.createComponent(WelcomeComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
     it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-});
+        expect(component).toBeTruthy()
+    })
+})

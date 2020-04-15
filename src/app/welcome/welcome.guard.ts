@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { Injectable } from '@angular/core'
+import { CanActivate } from '@angular/router'
 
-import { RouterService } from '../shared/router.service';
-import { SettingsService } from '../shared/settings.service';
+import { RouterService } from '../shared/router.service'
+import { SettingsService } from '../shared/settings.service'
 
 @Injectable({
     providedIn: 'root',
@@ -17,10 +17,10 @@ export class WelcomeGuard implements CanActivate {
     canActivate(): boolean {
         if (this.settings.path) {
             // Skip welcome screen
-            this.router.navigate(['/tasks']);
-            return false;
+            this.router.navigate(['/tasks'])
+            return false
         } else {
-            return true;
+            return true
         }
     }
 }

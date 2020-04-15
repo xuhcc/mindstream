@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { knownFolders, File, Folder } from '@nativescript/core/file-system';
-import { isAndroid } from '@nativescript/core/platform';
-import * as permissions from 'nativescript-permissions';
+import { knownFolders, File, Folder } from '@nativescript/core/file-system'
+import { isAndroid } from '@nativescript/core/platform'
+import * as permissions from 'nativescript-permissions'
 
 export function isValidPath(path: string): boolean {
     if (path && File.exists(path) && !Folder.exists(path)) {
-        return true;
+        return true
     }
-    return false;
+    return false
 }
 
 @Injectable({
@@ -17,55 +17,55 @@ export function isValidPath(path: string): boolean {
 export class FileService {
 
     private async checkPermission(): Promise<boolean> {
-        let hasPermission = true;
+        let hasPermission = true
         if (isAndroid) {
-            const permissionName = 'android.permission.WRITE_EXTERNAL_STORAGE';
-            hasPermission = permissions.hasPermission(permissionName);
+            const permissionName = 'android.permission.WRITE_EXTERNAL_STORAGE'
+            hasPermission = permissions.hasPermission(permissionName)
             if (!hasPermission) {
                 try {
                     const result = await permissions.requestPermission(
                         permissionName,
                         'Your permission is required.',
-                    );
-                    hasPermission = result[permissionName];
+                    )
+                    hasPermission = result[permissionName]
                 } catch (error) {
-                    hasPermission = false;
+                    hasPermission = false
                 }
             }
         }
-        return hasPermission;
+        return hasPermission
     }
 
     async read(path: string): Promise<string> {
-        let content;
-        const hasPermission = await this.checkPermission();
+        let content
+        const hasPermission = await this.checkPermission()
         if (hasPermission) {
-            const file = File.fromPath(path);
-            content = await file.readText();
+            const file = File.fromPath(path)
+            content = await file.readText()
         } else {
-            throw new Error('permission denied');
+            throw new Error('permission denied')
         }
-        return content;
+        return content
     }
 
     async write(path: string, content: string): Promise<void> {
-        const file = File.fromPath(path);
-        await file.writeText(content);
+        const file = File.fromPath(path)
+        await file.writeText(content)
     }
 
     async create(name: string): Promise<string> {
-        const hasPermission = await this.checkPermission();
+        const hasPermission = await this.checkPermission()
         if (!hasPermission) {
-            throw new Error('permission denied');
+            throw new Error('permission denied')
         }
-        const documents = knownFolders.documents();
-        const file = documents.getFile(name);
+        const documents = knownFolders.documents()
+        const file = documents.getFile(name)
         if (isValidPath(file.path)) {
-            console.warn('file already exists on default path');
+            console.warn('file already exists on default path')
         } else {
             // Write empty string to create a file
-            await file.writeText('');
+            await file.writeText('')
         }
-        return file.path;
+        return file.path
     }
 }

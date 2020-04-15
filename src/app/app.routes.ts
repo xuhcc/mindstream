@@ -1,13 +1,13 @@
-import { Routes } from '@angular/router';
+import { Routes } from '@angular/router'
 
-import { PlainTextComponent } from './plaintext/plaintext.component';
-import { TagListComponent } from './tag-list/tag-list.component';
-import { SettingsComponent } from './settings/settings.component';
-import { TaskFormComponent } from './task-form/task-form.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { WelcomeGuard } from './welcome/welcome.guard';
-import { AboutComponent } from './about/about.component';
+import { PlainTextComponent } from './plaintext/plaintext.component'
+import { TagListComponent } from './tag-list/tag-list.component'
+import { SettingsComponent } from './settings/settings.component'
+import { TaskFormComponent } from './task-form/task-form.component'
+import { TaskListComponent } from './task-list/task-list.component'
+import { WelcomeComponent } from './welcome/welcome.component'
+import { WelcomeGuard } from './welcome/welcome.guard'
+import { AboutComponent } from './about/about.component'
 
 export const routes: Routes = [
     {
@@ -44,4 +44,4 @@ export const routes: Routes = [
         path: 'about',
         component: AboutComponent,
     },
-];
+]

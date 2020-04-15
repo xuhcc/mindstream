@@ -1,1 +1,1 @@
-export const APP_NAME = 'Mindstream';
+export const APP_NAME = 'Mindstream'

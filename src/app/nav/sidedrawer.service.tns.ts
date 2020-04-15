@@ -1,19 +1,19 @@
-import { Injectable, NgZone, ViewContainerRef } from '@angular/core';
-import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular/modal-dialog';
-import { RouterExtensions } from '@nativescript/angular/router';
+import { Injectable, NgZone, ViewContainerRef } from '@angular/core'
+import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular/modal-dialog'
+import { RouterExtensions } from '@nativescript/angular/router'
 
-import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer';
-import { Color } from '@nativescript/core/color';
-import { isAndroid, isIOS } from '@nativescript/core/platform';
+import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer'
+import { Color } from '@nativescript/core/color'
+import { isAndroid, isIOS } from '@nativescript/core/platform'
 
-import { NavModalComponent } from './nav-modal.component';
-import { NAVIGATION_MENU } from './nav';
-import { APP_NAME } from '../app.constants';
-import { getVersion } from '../shared/helpers/version';
+import { NavModalComponent } from './nav-modal.component'
+import { NAVIGATION_MENU } from './nav'
+import { APP_NAME } from '../app.constants'
+import { getVersion } from '../shared/helpers/version'
 
 // https://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html
-const LOCK_MODE_LOCKED_CLOSED = 1;
-const LOCK_MODE_UNDEFINED = 3;
+const LOCK_MODE_LOCKED_CLOSED = 1
+const LOCK_MODE_UNDEFINED = 3
 
 @Injectable({
     providedIn: 'root',
@@ -29,20 +29,20 @@ export class SideDrawerService {
         private modalService: ModalDialogService,
     ) {
         if (isAndroid) {
-            this.createAndroidDrawer();
+            this.createAndroidDrawer()
         }
     }
 
     open(viewContainerRef?: ViewContainerRef) {
         if (isAndroid) {
-            this.drawer.open();
+            this.drawer.open()
         } else if (isIOS) {
-            this.openModalNav(viewContainerRef);
+            this.openModalNav(viewContainerRef)
         }
     }
 
     private createAndroidDrawer() {
-        this.drawer = new TnsSideDrawerClass();
+        this.drawer = new TnsSideDrawerClass()
 
         const config = {
             title: APP_NAME,
@@ -53,49 +53,49 @@ export class SideDrawerService {
             headerBackgroundColor: new Color('#333333'), // $header-color
             backgroundColor: new Color('#FBFCF0'), // $page-color
             listener: (index: number) => {
-                const url = NAVIGATION_MENU[index].url;
+                const url = NAVIGATION_MENU[index].url
                 // Use NgZone because this is a callback from external JS library
                 this.ngZone.run(() => {
-                    this.router.navigateByUrl(url);
-                });
+                    this.router.navigateByUrl(url)
+                })
             },
-        };
+        }
         this.loaded = new Promise((resolve) => {
             // https://gitlab.com/burke-software/nativescript-foss-sidedrawer/issues/2
             setTimeout(() => {
-                this.drawer.build(config);
-                resolve();
-            }, 0);
-        });
+                this.drawer.build(config)
+                resolve()
+            }, 0)
+        })
     }
 
     private openModalNav(viewContainerRef: ViewContainerRef) {
         const options: ModalDialogOptions = {
             viewContainerRef: viewContainerRef,
             context: NAVIGATION_MENU,
-        };
+        }
         this.modalService.showModal(NavModalComponent, options).then((url: string) => {
             // Navigation is not working in callback
             // https://github.com/NativeScript/nativescript-angular/issues/1380
             setTimeout(() => {
-                this.router.navigateByUrl(url);
-            }, 50);
-        });
+                this.router.navigateByUrl(url)
+            }, 50)
+        })
     }
 
     async lock() {
         if (isAndroid) {
-            await this.loaded;
-            const layout = (this.drawer as any).drawer.getDrawerLayout();
-            layout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED);
+            await this.loaded
+            const layout = (this.drawer as any).drawer.getDrawerLayout()
+            layout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
         }
     }
 
     async unlock() {
         if (isAndroid) {
-            await this.loaded;
-            const layout = (this.drawer as any).drawer.getDrawerLayout();
-            layout.setDrawerLockMode(LOCK_MODE_UNDEFINED);
+            await this.loaded
+            const layout = (this.drawer as any).drawer.getDrawerLayout()
+            layout.setDrawerLockMode(LOCK_MODE_UNDEFINED)
         }
     }
 }

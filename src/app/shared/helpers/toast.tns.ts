@@ -1,4 +1,4 @@
-import { Toasty, ToastPosition, ToastDuration } from 'nativescript-toasty';
+import { Toasty, ToastPosition, ToastDuration } from 'nativescript-toasty'
 
 export function showToast(text: string) {
     try {
@@ -6,10 +6,10 @@ export function showToast(text: string) {
             text: text,
             position: ToastPosition.BOTTOM,
             duration: ToastDuration.LONG,
-        });
-        toast.show();
+        })
+        toast.show()
     } catch (error) {
         // Log error if view is not ready
-        console.warn(error);
+        console.warn(error)
     }
 }

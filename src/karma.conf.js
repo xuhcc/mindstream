@@ -15,5 +15,5 @@ module.exports = function (config) {
         autoWatch: false,
         browsers: ['jsdom'],
         singleRun: true,
-    });
-};
+    })
+}

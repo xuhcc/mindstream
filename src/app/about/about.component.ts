@@ -1,9 +1,9 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core'
 
-import { APP_NAME } from '../app.constants';
-import { SideDrawerService } from '../nav/sidedrawer.service';
-import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform';
-import { getVersion } from '../shared/helpers/version';
+import { APP_NAME } from '../app.constants'
+import { SideDrawerService } from '../nav/sidedrawer.service'
+import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform'
+import { getVersion } from '../shared/helpers/version'
 
 const APP_DESCRIPTION = `
 <p>Task management app, built on <a href="http://todotxt.org/" target="_blank">todo.txt</a>.</p>
@@ -13,7 +13,7 @@ const APP_DESCRIPTION = `
     ${isWeb ? '<li>Press Alt+A to add a new task.</li>' : ''}
     <li>Add <code>h:1</code> tag to create a hidden task. You can define new projects, contexts and colors in it.</li>
 </ul>
-`;
+`
 
 @Component({
     selector: 'ms-about',
@@ -34,10 +34,10 @@ export class AboutComponent {
     ) {}
 
     openDrawer() {
-        this.sideDrawer.open(this.view);
+        this.sideDrawer.open(this.view)
     }
 
     getBugTrackerLink(): string {
-        return `<a href="${this.bugTracker}">Report bug</a>`;
+        return `<a href="${this.bugTracker}">Report bug</a>`
     }
 }

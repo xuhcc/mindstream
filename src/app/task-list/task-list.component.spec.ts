@@ -1,14 +1,14 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { TaskListComponent } from './task-list.component';
-import { DialogService } from '../shared/dialog.service';
-import { FileService } from '../shared/file.service';
-import { RouterService } from '../shared/router.service';
-import { SettingsService } from '../shared/settings.service';
+import { TaskListComponent } from './task-list.component'
+import { DialogService } from '../shared/dialog.service'
+import { FileService } from '../shared/file.service'
+import { RouterService } from '../shared/router.service'
+import { SettingsService } from '../shared/settings.service'
 
 describe('TaskListComponent', () => {
-    let component: TaskListComponent;
-    let fixture: ComponentFixture<TaskListComponent>;
+    let component: TaskListComponent
+    let fixture: ComponentFixture<TaskListComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -32,17 +32,17 @@ describe('TaskListComponent', () => {
                     },
                 },
             ],
-        }).compileComponents();
-    }));
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TaskListComponent);
+        fixture = TestBed.createComponent(TaskListComponent)
         component = fixture.componentInstance;
-        (component as any).fileSubscription = {unsubscribe: () => {}};
-        fixture.detectChanges();
-    });
+        (component as any).fileSubscription = {unsubscribe: () => {}}
+        fixture.detectChanges()
+    })
 
     it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-});
+        expect(component).toBeTruthy()
+    })
+})

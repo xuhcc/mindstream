@@ -1,6 +1,6 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core'
 
-import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
+import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal'
 
 @Component({
     template: `
@@ -36,27 +36,27 @@ export class DialogComponent {
         // https://github.com/biig-io/ngx-smart-modal/issues/235
         this.loader = setInterval(() => {
             try {
-                this.modal = this.modalService.getModal('dialog');
+                this.modal = this.modalService.getModal('dialog')
             } catch (error) {
                 // Not loaded yet
-                return;
+                return
             }
-            clearInterval(this.loader);
-            this.onInit(this.modal.getData());
-        }, 100);
+            clearInterval(this.loader)
+            this.onInit(this.modal.getData())
+        }, 100)
     }
 
     onInit(data: any) {
-        this.title = data.title;
-        this.message = data.message;
-        this.actions = data.actions || [];
-        this.showCancel = data.showCancel;
-        this.showOK = data.showOK;
-        this.changeDetector.detectChanges();
+        this.title = data.title
+        this.message = data.message
+        this.actions = data.actions || []
+        this.showCancel = data.showCancel
+        this.showOK = data.showOK
+        this.changeDetector.detectChanges()
     }
 
     close(value: any) {
-        this.modal.setData({result: value}, true);
-        this.modal.close();
+        this.modal.setData({result: value}, true)
+        this.modal.close()
     }
 }

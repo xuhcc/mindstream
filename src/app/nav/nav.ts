@@ -19,4 +19,4 @@ export const NAVIGATION_MENU = [
         title: 'About',
         url: '/about',
     },
-];
+]

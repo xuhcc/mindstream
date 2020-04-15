@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
 @Injectable({
     providedIn: 'root',
@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class SideDrawerService {
 
     open(viewContainerRef?: any) {
-        console.log(viewContainerRef);
+        console.log(viewContainerRef)
     }
 
     lock() {} // eslint-disable-line @typescript-eslint/no-empty-function

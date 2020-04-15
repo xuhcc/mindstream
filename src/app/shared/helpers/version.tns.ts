@@ -1,3 +1,3 @@
-import { getVersionNameSync } from 'nativescript-appversion';
+import { getVersionNameSync } from 'nativescript-appversion'
 
-export const getVersion = getVersionNameSync;
+export const getVersion = getVersionNameSync

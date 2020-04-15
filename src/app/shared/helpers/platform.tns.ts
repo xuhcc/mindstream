@@ -1,3 +1,3 @@
-export { isAndroid, isIOS } from '@nativescript/core/platform';
+export { isAndroid, isIOS } from '@nativescript/core/platform'
 
-export const isWeb = false;
+export const isWeb = false

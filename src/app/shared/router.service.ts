@@ -1,6 +1,6 @@
-import { Location } from '@angular/common';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common'
+import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Injectable({
     providedIn: 'root',
@@ -13,10 +13,10 @@ export class RouterService {
     ) { }
 
     navigate(parameters: any[], extras?: any) {
-        this.router.navigate(parameters, extras);
+        this.router.navigate(parameters, extras)
     }
 
     backToPreviousPage() {
-        this.location.back();
+        this.location.back()
     }
 }

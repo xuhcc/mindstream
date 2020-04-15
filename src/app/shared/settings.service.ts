@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { Settings, TaskFilter } from './settings';
+import { Settings, TaskFilter } from './settings'
 import {
     setValue,
     getValue,
     removeValue,
-} from './helpers/storage';
+} from './helpers/storage'
 
 @Injectable({
     providedIn: 'root',
@@ -13,49 +13,49 @@ import {
 export class SettingsService {
 
     get path(): string {
-        return getValue(Settings.Path);
+        return getValue(Settings.Path)
     }
 
     set path(path: string) {
         if (!path) {
-            throw Error('Path can not be empty.');
+            throw Error('Path can not be empty.')
         }
-        setValue(Settings.Path, path);
+        setValue(Settings.Path, path)
     }
 
     get filter(): TaskFilter {
-        const filterStr = getValue(Settings.TaskFilter);
+        const filterStr = getValue(Settings.TaskFilter)
         if (!filterStr) {
-            return {};
+            return {}
         }
-        const filter = JSON.parse(filterStr);
+        const filter = JSON.parse(filterStr)
         if (filter.dueDate) {
-            filter.dueDate = new Date(filter.dueDate);
+            filter.dueDate = new Date(filter.dueDate)
         }
-        return filter;
+        return filter
     }
 
     set filter(filter: TaskFilter) {
-        const filterStr = JSON.stringify(filter);
-        setValue(Settings.TaskFilter, filterStr);
+        const filterStr = JSON.stringify(filter)
+        setValue(Settings.TaskFilter, filterStr)
     }
 
     get ordering(): string[] {
-        const orderingStr = getValue(Settings.TaskOrdering);
+        const orderingStr = getValue(Settings.TaskOrdering)
         if (!orderingStr) {
-            return [];
+            return []
         }
-        return JSON.parse(orderingStr);
+        return JSON.parse(orderingStr)
     }
 
     set ordering(ordering: string[]) {
-        const orderingStr = JSON.stringify(ordering);
-        setValue(Settings.TaskOrdering, orderingStr);
+        const orderingStr = JSON.stringify(ordering)
+        setValue(Settings.TaskOrdering, orderingStr)
     }
 
     reset() {
-        removeValue(Settings.TaskFilter);
-        removeValue(Settings.TaskOrdering);
-        removeValue(Settings.Path);
+        removeValue(Settings.TaskFilter)
+        removeValue(Settings.TaskOrdering)
+        removeValue(Settings.Path)
     }
 }

@@ -1,3 +1,3 @@
 export function showToast(text: string) {
-    console.log(text);
+    console.log(text)
 }

@@ -1,19 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { ReactiveFormsModule } from '@angular/forms'
+import { ActivatedRoute } from '@angular/router'
 
-import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { AngularMyDatePickerModule } from 'angular-mydatepicker'
 
-import { TaskFormComponent } from './task-form.component';
-import { TaskFormAutocompleteComponent } from './task-form-autocomplete.component';
-import { DialogService } from '../shared/dialog.service';
-import { FileService } from '../shared/file.service';
-import { RouterService } from '../shared/router.service';
-import { SettingsService } from '../shared/settings.service';
+import { TaskFormComponent } from './task-form.component'
+import { TaskFormAutocompleteComponent } from './task-form-autocomplete.component'
+import { DialogService } from '../shared/dialog.service'
+import { FileService } from '../shared/file.service'
+import { RouterService } from '../shared/router.service'
+import { SettingsService } from '../shared/settings.service'
 
 describe('TaskFormComponent', () => {
-    let component: TaskFormComponent;
-    let fixture: ComponentFixture<TaskFormComponent>;
+    let component: TaskFormComponent
+    let fixture: ComponentFixture<TaskFormComponent>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -32,16 +32,16 @@ describe('TaskFormComponent', () => {
                     useValue: {path: 'test', filter: {}, ordering: []},
                 },
             ],
-        }).compileComponents();
-    }));
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TaskFormComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+        fixture = TestBed.createComponent(TaskFormComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
     it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-});
+        expect(component).toBeTruthy()
+    })
+})

@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef } from '@angular/core'
 
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs'
 
-import { RouterService } from '../shared/router.service';
-import { TaskFilter } from '../shared/settings';
-import { SettingsService } from '../shared/settings.service';
-import { SideDrawerService } from '../nav/sidedrawer.service';
-import { TodoFileService } from '../shared/todo-file.service';
-import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page';
+import { RouterService } from '../shared/router.service'
+import { TaskFilter } from '../shared/settings'
+import { SettingsService } from '../shared/settings.service'
+import { SideDrawerService } from '../nav/sidedrawer.service'
+import { TodoFileService } from '../shared/todo-file.service'
+import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page'
 
 @Component({
     selector: 'ms-tag-list',
@@ -30,48 +30,48 @@ export class TagListComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.todoFile.fileLoaded.then(() => this.updatePage());
+        this.todoFile.fileLoaded.then(() => this.updatePage())
         onNavigatedTo(this.view, () => {
-            this.fileSubscribe();
-        });
+            this.fileSubscribe()
+        })
         onNavigatingFrom(this.view, () => {
-            this.fileUnsubscribe();
-        });
+            this.fileUnsubscribe()
+        })
     }
 
     ngOnDestroy() {
-        this.fileUnsubscribe();
+        this.fileUnsubscribe()
     }
 
     private updatePage() {
-        this.projects = this.todoFile.getProjects();
-        this.contexts = this.todoFile.getContexts();
+        this.projects = this.todoFile.getProjects()
+        this.contexts = this.todoFile.getContexts()
     }
 
     private fileSubscribe() {
         this.fileSubscription = this.todoFile.fileChanged.subscribe(() => {
-            this.updatePage();
-        });
+            this.updatePage()
+        })
     }
 
     private fileUnsubscribe() {
-        this.fileSubscription.unsubscribe();
+        this.fileSubscription.unsubscribe()
     }
 
     openDrawer() {
-        this.sideDrawer.open(this.view);
+        this.sideDrawer.open(this.view)
     }
 
     showTaskList(filter: TaskFilter) {
-        this.settings.filter = filter;
-        this.router.navigate(['/tasks']);
+        this.settings.filter = filter
+        this.router.navigate(['/tasks'])
     }
 
     switchToTasks(event: any): void {
         if (event.direction !== 1) {
-            return;
+            return
         }
-        this.router.navigate(['/tasks']);
+        this.router.navigate(['/tasks'])
     }
 
 }

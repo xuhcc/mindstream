@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
-import { first } from 'rxjs/operators';
+import { NgxSmartModalService } from 'ngx-smart-modal'
+import { first } from 'rxjs/operators'
 
-import { DialogComponent } from './dialog.component';
+import { DialogComponent } from './dialog.component'
 
 @Injectable({
     providedIn: 'root',
@@ -17,17 +17,17 @@ export class DialogService {
             const modal = this.modalService
                 .create('dialog', DialogComponent)
                 .setData(params)
-                .open();
+                .open()
             modal.onClose.pipe(first()).subscribe(() => {
-                const data = modal.getData();
-                this.modalService.removeModal('dialog');
-                resolve(data.result);
-            });
+                const data = modal.getData()
+                this.modalService.removeModal('dialog')
+                resolve(data.result)
+            })
             modal.onDismiss.pipe(first()).subscribe(() => {
-                this.modalService.removeModal('dialog');
-                resolve(null);
-            });
-        });
+                this.modalService.removeModal('dialog')
+                resolve(null)
+            })
+        })
     }
 
     action(
@@ -39,7 +39,7 @@ export class DialogService {
             title: title,
             message: message,
             actions: actions,
-        });
+        })
     }
 
     confirm(title: string, message: string): Promise<boolean> {
@@ -48,6 +48,6 @@ export class DialogService {
             message: message,
             showCancel: true,
             showOK: true,
-        });
+        })
     }
 }

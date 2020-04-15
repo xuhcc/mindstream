@@ -1,8 +1,8 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core'
 
-import { SideDrawerService } from '../nav/sidedrawer.service';
-import { RouterService } from '../shared/router.service';
-import { TodoFileService } from '../shared/todo-file.service';
+import { SideDrawerService } from '../nav/sidedrawer.service'
+import { RouterService } from '../shared/router.service'
+import { TodoFileService } from '../shared/todo-file.service'
 
 @Component({
     selector: 'ms-plaintext',
@@ -21,6 +21,6 @@ export class PlainTextComponent {
     ) { }
 
     openDrawer() {
-        this.sideDrawer.open(this.viewContainerRef);
+        this.sideDrawer.open(this.viewContainerRef)
     }
 }

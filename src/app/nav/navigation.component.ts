@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
-import { APP_NAME } from '../app.constants';
-import { NAVIGATION_MENU } from './nav';
-import { getVersion } from '../shared/helpers/version';
+import { APP_NAME } from '../app.constants'
+import { NAVIGATION_MENU } from './nav'
+import { getVersion } from '../shared/helpers/version'
 
 @Component({
     selector: 'ms-navigation',
