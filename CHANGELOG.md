@@ -2,6 +2,7 @@
 
 ## 1.3.1
 
+- Web: Added recurrence picker to task form.
 - iOS: Fixed wrong background color on 'About' page.
 
 ## 1.3.0

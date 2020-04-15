@@ -87,17 +87,22 @@
     ></span>
     <a
       (click)="showDatePicker(datepicker)"
-      id="calendar-icon"
       class="field-addon material-icons event"
     ></a>
   </div>
 
   <label class="field-label">Recurrence</label>
-  <input
-    type="text"
-    formControlName="recurrence"
-    class="field"
-  >
+  <div class="field-wrapper">
+    <input
+      type="text"
+      formControlName="recurrence"
+      class="field"
+    >
+    <a
+      (click)="showRecurrencePicker()"
+      class="field-addon material-icons format_list_bulleted"
+    ></a>
+  </div>
 
   <label class="field-label">Color</label>
   <div class="field-wrapper">
