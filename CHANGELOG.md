@@ -4,6 +4,7 @@
 
 - Web: Added recurrence picker to task form.
 - Android: Fixed file-picking from 'SDCARD' location.
+- Android: Showing error message when file picker can't retrieve the file path.
 - iOS: Fixed wrong background color on 'About' page.
 
 ## 1.3.0

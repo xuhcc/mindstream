@@ -26,7 +26,13 @@ export function openFilePicker(): Promise<string | null> {
         })
         return androidFilePicker.authorize()
             .then(() => androidFilePicker.present())
-            .then((selection: ImageAsset[]) => selection[0].android)
+            .then((selection: ImageAsset[]) => {
+                const filePath = selection[0].android
+                if (!filePath) {
+                    throw new Error('Can not get file path')
+                }
+                return filePath
+            })
             .catch((error) => {
                 if (error.message === 'Image picker activity result code 0') {
                     // Picker has been cancelled
