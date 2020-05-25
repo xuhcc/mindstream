@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2
+
+- Android: Fixed filesystem access errors on Android 10.
+
 ## 1.3.1
 
 - Web: Added recurrence picker to task form.
