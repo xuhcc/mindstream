@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+- Mobile: Enabled horizontal scrolling on plain text page.
+
 ## 1.3.2
 
 - Android: Fixed filesystem access errors on Android 10.

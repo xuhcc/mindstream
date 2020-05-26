@@ -18,10 +18,12 @@
 
 <DockLayout class="page" stretchLastChild="true">
   <ScrollView dock="top">
-    <Label
-      id="file-content"
-      text="{{ todoFile.content }}"
-      textWrap="true"
-    ></Label>
+    <ScrollView orientation="horizontal">
+      <Label
+        id="file-content"
+        text="{{ todoFile.content }}"
+        textWrap="true"
+      ></Label>
+    </ScrollView>
   </ScrollView>
 </DockLayout>
