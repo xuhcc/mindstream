@@ -9,6 +9,7 @@ android {
   defaultConfig {
     versionCode versionInt
     versionName "$version"
+    minSdkVersion = 17
 
     generatedDensities = []
   }

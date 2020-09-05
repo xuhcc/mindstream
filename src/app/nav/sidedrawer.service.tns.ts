@@ -1,6 +1,5 @@
 import { Injectable, NgZone, ViewContainerRef } from '@angular/core'
-import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular/modal-dialog'
-import { RouterExtensions } from '@nativescript/angular/router'
+import { ModalDialogOptions, ModalDialogService, RouterExtensions } from '@nativescript/angular'
 
 import { TnsSideDrawerClass } from 'nativescript-foss-sidedrawer'
 import { Color } from '@nativescript/core/color'

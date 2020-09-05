@@ -1,8 +1,8 @@
-import { knownFolders, File, path as pathUtils } from '@nativescript/core/file-system/file-system'
+import { knownFolders, File, path as pathUtils } from '@nativescript/core/file-system'
 import { ImageAsset } from '@nativescript/core/image-asset'
 import { isAndroid, isIOS } from '@nativescript/core/platform'
 
-import { ImagePicker, ImagePickerMediaType } from 'nativescript-imagepicker'
+import { ImagePicker, ImagePickerMediaType } from '@nativescript/imagepicker'
 import { Mediafilepicker, FilePickerOptions } from 'nativescript-mediafilepicker'
 
 class AndroidFilePicker extends ImagePicker {

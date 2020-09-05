@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ModalDialogParams } from '@nativescript/angular/modal-dialog'
+import { ModalDialogParams } from '@nativescript/angular'
 
 import { APP_NAME } from '../app.constants'
 import { getVersion } from '../shared/helpers/version'

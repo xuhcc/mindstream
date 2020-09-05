@@ -1,8 +1,10 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
-import { NativeScriptModule } from '@nativescript/angular/nativescript.module'
-import { NativeScriptFormsModule } from '@nativescript/angular/forms'
-import { registerElement } from '@nativescript/angular/element-registry'
+import {
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    registerElement,
+} from '@nativescript/angular'
 
 import { Fab } from '@nstudio/nativescript-floatingactionbutton'
 import { PullToRefresh } from '@nstudio/nativescript-pulltorefresh'
