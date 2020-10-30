@@ -48,7 +48,7 @@
         "angular-mydatepicker": "0.3.2",
         "core-js": "^2.5.4",
         "express": "~4.17.1",
-        "jstodotxt": "github:xuhcc/jsTodoTxt#fork",
+        "jstodotxt": "~0.9.0",
         "markdown-it": "~10.0.0",
         "markdown-it-link-attributes": "~3.0.0",
         "material-design-icons-iconfont": "~5.0.1",
