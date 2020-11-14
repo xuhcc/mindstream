@@ -2,6 +2,7 @@
 
 ## 1.4.0
 
+- Mobile, Web: Allowed more recurrence options (#6 by @oli-ver).
 - Mobile: Enabled horizontal scrolling on plain text page.
 
 ## 1.3.2
