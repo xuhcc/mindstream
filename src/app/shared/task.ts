@@ -36,8 +36,8 @@ export function getDateType(date: Date): DateType {
     }
 }
 
-export const RECURRENCE_REGEXP = /^([1-9]*)(d|w|m)$/
-const RECURRENCE_TAG_REGEXP = /rec:([1-9]*(d|w|m))(\s|$)/
+export const RECURRENCE_REGEXP = /^([1-9][0-9]*)(d|w|m)$/
+const RECURRENCE_TAG_REGEXP = /rec:([1-9][0-9]*(d|w|m))(\s|$)/
 const RECURRENCE_KEYS = {
     d: 'day',
     w: 'week',
