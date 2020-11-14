@@ -10,3 +10,4 @@ Vagrantfile
 vagrant/
 .vagrant/
 .vagrant_ssh_config
+todo.txt
