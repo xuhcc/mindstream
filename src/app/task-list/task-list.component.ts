@@ -31,7 +31,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     private fileSubscription: Subscription;
     private markdown = new MarkdownIt({linkify: true})
-        .use(mila, {attrs: {target: '_blank'}});
+        .use(mila, {
+            attrs: {
+                target: '_blank',
+                rel: 'noopener',
+            },
+        })
 
     @ViewChild('taskList', {static: false})
     taskList: ElementRef;
