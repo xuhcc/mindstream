@@ -18,6 +18,10 @@ import { onNavigatedTo, onNavigatingFrom } from '../shared/helpers/page'
 import { isAndroid, isIOS, isWeb } from '../shared/helpers/platform'
 import { onPullRefresh } from '../shared/helpers/pullrefresh'
 
+function taskListId(list: Task[]): string {
+    return JSON.stringify(list.map((task) => task.todoItem.toString()))
+}
+
 @Component({
     selector: 'ms-task-list',
     templateUrl: './task-list.component.html',
@@ -28,6 +32,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     tasks: Task[] = [];
     filter: TaskFilter = {};
     ordering: string[];
+    private filteredTasks: Task[] = []
 
     private fileSubscription: Subscription;
     private markdown = new MarkdownIt({linkify: true})
@@ -136,7 +141,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
     }
 
     getTaskList(): Task[] {
-        return this.tasks.filter((task) => this.isTaskVisible(task))
+        const filteredTasks = this.tasks.filter((task) => this.isTaskVisible(task))
+        // Check for changes to prevent unnecessary reloads of ListView
+        if (taskListId(filteredTasks) !== taskListId(this.filteredTasks)) {
+            this.filteredTasks = filteredTasks
+        }
+        return this.filteredTasks
     }
 
     private isTaskVisible(task: Task): boolean {
