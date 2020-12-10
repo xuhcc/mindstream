@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+
+- Common: Upgraded to NativeScript 7.0.
+
 ## 1.4.0
 
 - Mobile, Web: Allowed more recurrence options (#6 by @oli-ver).
