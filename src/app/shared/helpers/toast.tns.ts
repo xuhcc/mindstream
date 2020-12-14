@@ -1,4 +1,4 @@
-import { Toasty, ToastPosition, ToastDuration } from 'nativescript-toasty'
+import { Toasty, ToastPosition, ToastDuration } from '@triniwiz/nativescript-toasty'
 
 export function showToast(text: string) {
     try {
@@ -6,6 +6,7 @@ export function showToast(text: string) {
             text: text,
             position: ToastPosition.BOTTOM,
             duration: ToastDuration.LONG,
+            yAxisOffset: 10,
         })
         toast.show()
     } catch (error) {
