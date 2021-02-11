@@ -3,6 +3,7 @@
 ## 1.5.0
 
 - Common: Upgraded to NativeScript 7.0.
+- Common: Added backslash trick to usage tips.
 
 ## 1.4.0
 
