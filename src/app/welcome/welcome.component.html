@@ -6,11 +6,14 @@
       Please choose your todo.txt file or press &quot;Skip&quot; to create a new file:
     </label>
     <input
+      id="filePath"
       type="text"
       formControlName="filePath"
       class="field"
+      autocomplete="on"
     >
     <button
+      type="submit"
       [disabled]="!form.valid"
       (click)="save()"
       id="save-btn"

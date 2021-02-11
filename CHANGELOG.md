@@ -5,6 +5,7 @@
 - Mobile, Web: Upgraded to NativeScript 7.0.
 - Mobile, Web: Added backslash trick to usage tips.
 - Mobile, Web: Redirecting to welcome page if file is not set.
+- Web: Enabled autocomplete in todo file path field.
 
 ## 1.4.0
 
