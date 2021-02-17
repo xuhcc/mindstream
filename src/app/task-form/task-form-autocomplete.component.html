@@ -8,11 +8,11 @@
   (blur)="hide()"
   (keydown)="navigate($event)"
 >
-<div class="suggestions">
+<ul class="suggestions">
   <li
     *ngFor="let suggestion of getSuggestions()"
     class="suggestion"
     [class.highlighted]="suggestion === highlightedItem"
     (click)="select(suggestion, true)"
   >{{ suggestion }}</li>
-</div>
+</ul>

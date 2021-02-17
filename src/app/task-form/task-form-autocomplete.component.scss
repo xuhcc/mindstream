@@ -5,7 +5,9 @@
     box-sizing: border-box;
     list-style-type: none;
     margin: 0 0 5px;
+    max-height: 200px;
     min-width: 300px;
+    overflow-y: auto;
     padding: 0 2px;
     width: 33%;
 }
