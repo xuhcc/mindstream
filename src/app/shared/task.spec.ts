@@ -25,7 +25,7 @@ describe('TaskRecurrence', () => {
         const recurrence = new TaskRecurrence('1m')
         const newDate = recurrence.addTo(date)
         const diff = moment.duration(+newDate - +date)
-        expect(diff.asMonths()).toBeCloseTo(1, 1)
+        expect(diff.asMonths()).toBeCloseTo(1, 0)
     })
 })
 
