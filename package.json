@@ -20,7 +20,7 @@
         "lint": "eslint 'src/**/*.ts' && stylelint 'src/**/*.scss'",
         "test": "ng test --browsers jsdom",
         "clean": "rm -rf platforms",
-        "version": "./scripts/check-changelog.js && ./scripts/bump-ios-version.js && git add -A"
+        "version": "./scripts/check-changelog.js && ./scripts/bump-version.js && git add -A"
     },
     "dependencies": {
         "@angular/animations": "~10.1.0",
