@@ -75,6 +75,10 @@ $task-checkbox-size: 20px;
     margin-right: 15px;
     padding-top: 2px;
 
+    ::ng-deep code {
+        font-size: 14px;
+    }
+
     &.completed {
         color: $task-completed-color;
         text-decoration: line-through;
