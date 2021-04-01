@@ -1,6 +1,6 @@
 export enum Settings {
     Path = 'todoFilePath',
-    TaskFilter = 'taskFiler',
+    TaskFilter = 'taskFilter',
     TaskOrdering = 'taskOrdering',
 }
 
