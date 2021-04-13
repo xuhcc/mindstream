@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+
+- Android: Create todo.txt file in user-accessible location.
+
 ## 1.5.0
 
 - Mobile, Web: Upgraded to NativeScript 7.0.
