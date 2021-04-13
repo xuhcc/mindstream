@@ -38,7 +38,7 @@ Android app can be installed from [Google Play](https://play.google.com/store/ap
 
 Alternatively, latest APK can be downloaded from [releases page](https://github.com/xuhcc/mindstream/releases).
 
-### iOS
+### iOS (unmaintained)
 
 Build unsigned iOS package from source (only on MacOS):
 
