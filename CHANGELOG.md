@@ -1,8 +1,9 @@
 # Changelog
 
-## 1.5.1
+## 1.6.0
 
-- Android: Create todo.txt file in user-accessible location.
+- Android: Created todo.txt file in user-accessible location.
+- Android: Made text on plaintext page selectable.
 
 ## 1.5.0
 
