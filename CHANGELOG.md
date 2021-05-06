@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1
+
+- Web: Fixed styles for chrome browser.
+
 ## 1.6.0
 
 - Android: Created todo.txt file in user-accessible location.
