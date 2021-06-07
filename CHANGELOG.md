@@ -2,6 +2,7 @@
 
 ## 1.6.1
 
+- Mobile, Web: Upgraded jsTodoTxt to version 0.10.0.
 - Web: Fixed styles for chrome browser.
 
 ## 1.6.0
