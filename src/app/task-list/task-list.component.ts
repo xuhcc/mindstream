@@ -256,13 +256,21 @@ export class TaskListComponent implements OnInit, OnDestroy {
             this.postponeTask(task)
             return
         }
+        let recurDone: Promise<void>
         if (task.due && task.rec && !task.completed) {
+            // Create a copy if task is recurrent
+            // and wait for append operation to complete
             const newTask = task.recur()
-            this.todoFile.appendTask(newTask)
+            recurDone = this.todoFile.appendTask(newTask)
+        } else {
+            // Otherwise resolve immediately
+            recurDone = Promise.resolve()
         }
-        task.toggleComplete()
-        this.refreshTaskList()
-        this.todoFile.replaceTask(task.id, task)
+        recurDone.then(() => {
+            task.toggleComplete()
+            this.refreshTaskList()
+            this.todoFile.replaceTask(task.id, task)
+        })
     }
 
     postponeTask(task: Task) {

@@ -2,6 +2,7 @@
 
 ## 1.6.1
 
+- Mobile, Web: Fix task duplication during completion of recurrent task.
 - Mobile: Upgraded datepicker plugin.
 - Mobile, Web: Upgraded jsTodoTxt to version 0.10.0.
 - Web: Fixed styles for chrome browser.
