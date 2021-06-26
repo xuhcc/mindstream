@@ -6,6 +6,7 @@
 - Mobile, Web: Upgraded jsTodoTxt to version 0.10.0.
 - Web: Fixed styles for chrome browser.
 - Web: Changed hotkey for adding new task from {Alt+A} to {A}.
+- Web: Fixed "Payload too large" error occuring when todo.txt file is large.
 
 ## 1.6.0
 

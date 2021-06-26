@@ -9,7 +9,7 @@ const express = require('express');
 
 const app = express();
 app.use(express.static('static'));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use((request, response, next) => {
     response.header('Access-Control-Allow-Origin', '*');
     response.header(
