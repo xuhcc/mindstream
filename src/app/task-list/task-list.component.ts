@@ -266,9 +266,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
             // Otherwise resolve immediately
             recurDone = Promise.resolve()
         }
+        task.toggleComplete()
+        this.refreshTaskList()
         recurDone.then(() => {
-            task.toggleComplete()
-            this.refreshTaskList()
             this.todoFile.replaceTask(task.id, task)
         })
     }
