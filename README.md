@@ -18,7 +18,7 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 ### Supported todo.txt extensions
 
 - Tasks with due date: `due:2019-01-01`.
-- Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month).
+- Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month, `y` = year).
 - Colored tasks: `color:#e9dce5`.
 - Hidden tasks: `h:1`.
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Mobile, Web: Added support for yearly tasks.
+
 ## 1.6.1
 
 - Mobile, Web: Fix task duplication during completion of recurrent task.
