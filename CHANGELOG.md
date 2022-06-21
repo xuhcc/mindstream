@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Mobile, Web: Added support for yearly tasks.
+- Web: Showing alert if server connection fails.
 
 ## 1.6.1
 

@@ -1,3 +1,5 @@
-export function showToast(text: string) {
-    console.log(text)
+export function showToast(text: string, isError: boolean) {
+    if (isError) {
+        alert(text)
+    }
 }

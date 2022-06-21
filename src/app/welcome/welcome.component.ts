@@ -50,7 +50,7 @@ export class WelcomeComponent implements OnInit {
             }
         }).catch((error) => {
             console.warn(error)
-            showToast(error.toString())
+            showToast(error.toString(), true)
         })
     }
 

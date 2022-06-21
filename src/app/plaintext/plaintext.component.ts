@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, AfterViewInit, ViewChild, ElementRef } from '@angular/core'
+import { Component, ViewContainerRef, ViewChild, ElementRef } from '@angular/core'
 
 import { SideDrawerService } from '../nav/sidedrawer.service'
 import { RouterService } from '../shared/router.service'
