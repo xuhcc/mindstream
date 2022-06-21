@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased
+
+- Mobile, Web: Added support for yearly tasks.
+- Web: Showing alert if server connection fails.
+
+## 1.6.1
+
+- Mobile, Web: Fix task duplication during completion of recurrent task.
+- Mobile: Upgraded datepicker plugin.
+- Mobile, Web: Upgraded jsTodoTxt to version 0.10.0.
+- Web: Fixed styles for chrome browser.
+- Web: Changed hotkey for adding new task from {Alt+A} to {A}.
+- Web: Fixed "Payload too large" error occuring when todo.txt file is large.
+
+## 1.6.0
+
+- Android: Created todo.txt file in user-accessible location.
+- Android: Made text on plaintext page selectable.
+
 ## 1.5.0
 
 - Mobile, Web: Upgraded to NativeScript 7.0.

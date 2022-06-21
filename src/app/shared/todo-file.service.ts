@@ -134,7 +134,7 @@ export class TodoFileService implements OnDestroy {
                 this.router.navigate(['/settings'])
             }
             console.error(error)
-            showToast(error.toString())
+            showToast(error.toString(), true)
             return
         }
         if (watch && this.content && this.content === content) {
@@ -148,7 +148,7 @@ export class TodoFileService implements OnDestroy {
             this.todoItems = TodoTxt.parse(this.content, getExtensions())
         }
         this.fileChanged.next(true) // true = IDs are probably changed
-        showToast('File loaded')
+        showToast('File loaded', false)
     }
 
     private async save(): Promise<void> {
@@ -157,7 +157,7 @@ export class TodoFileService implements OnDestroy {
             await this.file.write(this.settings.path, this.content)
         } catch (error) {
             console.error(error)
-            showToast(error.toString())
+            showToast(error.toString(), true)
             return
         }
         this.fileChanged.next(false) // false => IDs are not changed

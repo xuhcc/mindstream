@@ -18,7 +18,7 @@ Task management app that uses [todo.txt](http://todotxt.org/) format.
 ### Supported todo.txt extensions
 
 - Tasks with due date: `due:2019-01-01`.
-- Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month).
+- Recurrent tasks: `rec:1d` (`d` = day, `w` = week, `m` = month, `y` = year).
 - Colored tasks: `color:#e9dce5`.
 - Hidden tasks: `h:1`.
 
@@ -38,7 +38,7 @@ Android app can be installed from [Google Play](https://play.google.com/store/ap
 
 Alternatively, latest APK can be downloaded from [releases page](https://github.com/xuhcc/mindstream/releases).
 
-### iOS
+### iOS (unmaintained)
 
 Build unsigned iOS package from source (only on MacOS):
 
@@ -68,7 +68,7 @@ PORT=8080 node index.js
 Prerequisites:
 
 * Node.js & NPM
-* [NativeScript CLI](https://docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 7.0
+* [NativeScript CLI](https://v7.docs.nativescript.org/angular/start/quick-setup#step-2-install-the-nativescript-cli) 7.0
 
 Install required packages:
 

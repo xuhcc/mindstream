@@ -10,8 +10,9 @@
 }
 
 .page {
+    align-items: flex-start;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 #add-task-btn {
@@ -25,7 +26,7 @@
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;
-    break-after: always;
+    box-sizing: border-box;
     color: $text-color;
     font-family: 'Vollkorn', serif;
     font-size: 17px;
@@ -54,6 +55,7 @@ $task-checkbox-size: 20px;
     cursor: pointer;
     height: $task-checkbox-size;
     margin-right: $main-padding;
+    min-width: $task-checkbox-size;
     text-align: center;
     width: $task-checkbox-size;
 
@@ -71,9 +73,12 @@ $task-checkbox-size: 20px;
 
 .task-text {
     flex-grow: 1;
-    height: $task-checkbox-size - 1px;
     margin-right: 15px;
     padding-top: 2px;
+
+    ::ng-deep code {
+        font-size: 14px;
+    }
 
     &.completed {
         color: $task-completed-color;
@@ -96,6 +101,7 @@ $task-checkbox-size: 20px;
 
 .tag {
     @extend %tag;
+    line-height: $task-checkbox-size - 2 * 2px;
     margin-left: 5px;
 
     &:first-child {
@@ -139,5 +145,11 @@ $task-checkbox-size: 20px;
 
     &:hover {
         color: $link-color;
+    }
+}
+
+@media (max-width: 1000px) {
+    .task {
+        width: 100%;
     }
 }

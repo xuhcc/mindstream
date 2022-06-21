@@ -11,4 +11,5 @@ $header-font: 'PT Sans', sans-serif;
     background-color: $tag-color;
     color: $tag-text-color;
     padding: 2px 5px;
+    white-space: nowrap;
 }

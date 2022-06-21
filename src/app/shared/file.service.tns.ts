@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core'
 
-import { knownFolders, File, Folder } from '@nativescript/core/file-system'
+import { File, Folder, path } from '@nativescript/core/file-system'
 import { isAndroid } from '@nativescript/core/platform'
+
+import { getAppId } from 'nativescript-appversion'
 import * as permissions from 'nativescript-permissions'
 
 export function isValidPath(path: string): boolean {
@@ -58,8 +60,15 @@ export class FileService {
         if (!hasPermission) {
             throw new Error('permission denied')
         }
-        const documents = knownFolders.documents()
-        const file = documents.getFile(name)
+        if (!isAndroid) {
+            throw new Error('not implemented')
+        }
+        // WARNING: deprecated in Android 10
+        const externalPath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath().toString()
+        const appId = await getAppId()
+        const appFolderPath = path.join(externalPath, 'data', appId)
+        const appFolder = Folder.fromPath(appFolderPath)
+        const file = appFolder.getFile(name)
         if (isValidPath(file.path)) {
             console.warn('file already exists on default path')
         } else {
