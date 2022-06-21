@@ -157,6 +157,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
             'Every day': '1d',
             'Every week': '1w',
             'Every month': '1m',
+            'Every year': '1y',
         }
         this.dialog.action(
             'Task recurrence',
