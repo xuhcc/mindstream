@@ -5,8 +5,6 @@
 
 Task management app that uses [todo.txt](http://todotxt.org/) format.
 
-<a href="https://play.google.com/store/apps/details?id=im.mindstream.mobile"><img width="200" alt="Get it on Google Play" src="https://play.google.com/intl/en_gb/badges/images/generic/en_badge_web_generic.png" /></a>
-
 ## Features
 
 - Projects, contexts, priorities, due dates.
@@ -34,9 +32,7 @@ See [CHANGELOG](CHANGELOG.md).
 
 ### Android
 
-Android app can be installed from [Google Play](https://play.google.com/store/apps/details?id=im.mindstream.mobile).
-
-Alternatively, latest APK can be downloaded from [releases page](https://github.com/xuhcc/mindstream/releases).
+Latest APK can be downloaded from [releases page](https://github.com/xuhcc/mindstream/releases).
 
 ### iOS (unmaintained)
 
