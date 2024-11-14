@@ -11,7 +11,7 @@ const APP_DESCRIPTION = `
 <ul>
     ${isAndroid || isIOS ? '<li>Press and hold on a task checkbox to see additional actions.</li>' : ''}
     ${isWeb ? '<li>Press A to add a new task from task list.</li>' : ''}
-    ${isWeb ? '<li>Ctrl-click a task's checkbox to postpone it by one day.</li>' : ''}
+    ${isWeb ? '<li>Ctrl-click a task\'s checkbox to postpone it by one day.</li>' : ''}
     <li>Add <code>h:1</code> tag to create a hidden task. You can define new projects, contexts and colors in it.</li>
     <li>Use backslash to prevent words starting with <code>+</code> or <code>@</code> from being parsed as projects or contexts: <code>\\+test \\@test</code>.</li>
 </ul>
