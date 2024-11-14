@@ -326,17 +326,32 @@ export class TaskListComponent implements OnInit, OnDestroy {
         })
     }
 
-    addTask() {
-        this.router.navigate(['/task-detail'])
+    addTask(dueDaysFromNow?: number) {
+        if (typeof dueDaysFromNow !== 'undefined') {
+            this.router.navigate(['/task-detail', dueDaysFromNow])
+        } else {
+            this.router.navigate(['/task-detail'])
+        }
     }
 
     onHotKey(event: any) {
-        if (isWeb && event.keyCode === 65) {
-            // {A} - add new task
-            event.preventDefault()
-            this.addTask()
+        if (isWeb) {
+            switch (event.keyCode) {
+                case 65: // {A} - add new task
+                    event.preventDefault();
+                    this.addTask();
+                    break;
+                case 84: // {T} - add new task due today
+                    event.preventDefault();
+                    this.addTask(0);
+                    break;
+                case 87: // {W} - add new task due tomorrow
+                    event.preventDefault();
+                    this.addTask(1);
+                    break;
+            }
         }
-    }
+    }    
 
     switchToTags(event: any): void {
         if (event.direction !== 2) {
