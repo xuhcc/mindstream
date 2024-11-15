@@ -38,6 +38,11 @@ export const routes: Routes = [
         canActivate: [FileGuard],
     },
     {
+        path: 'task-detail/:dueDaysFromNow',
+        component: TaskFormComponent,
+        canActivate: [FileGuard],
+    },
+    {
         path: 'task-detail',
         component: TaskFormComponent,
         canActivate: [FileGuard],

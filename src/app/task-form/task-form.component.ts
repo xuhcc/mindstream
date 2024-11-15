@@ -48,6 +48,11 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
     ) { }
 
     ngOnInit() {
+        const dueDaysFromNow = this.route.snapshot.paramMap.get('dueDaysFromNow');
+        let dueDateString = '';
+        if (dueDaysFromNow !== null) {
+            dueDateString = moment().add(dueDaysFromNow, 'days').format('YYYY-MM-DD');
+        }
         this.form = this.formBuilder.group({
             text: [
                 '',
@@ -66,7 +71,7 @@ export class TaskFormComponent implements OnInit, AfterViewInit {
                 Validators.pattern(PRIORITY_REGEXP),
             ],
             dueDate: [
-                '',
+                dueDateString,
                 Validators.pattern(DATESTRING_REGEXP),
             ],
             recurrence: [
